@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-//pepito
-=======
-//juanito
->>>>>>> origin/master
+
 require_once('../persistencia/ExistenciaUsuario.class.php');
 
 class Usuario
