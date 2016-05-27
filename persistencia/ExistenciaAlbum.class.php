@@ -27,77 +27,28 @@ class ExistenciaAlbum
           return(false);
         }
     }
-
-     
-
-   //Devuelve true si el login coincide con la password
-   public function coincideLoginPassword($param, $conex)
-   {
-        //Obtiene los datos del objeto $param
-        $log= trim($param->getLogin());
-        $pass= trim($param->getPassword());
-		//Vuelvo a encriptar la clave incluyendo el salt
-		
-		$salt = '34a@$#aA9823$';
-//		$pass= hash('sha512', $salt . $pass);
-		
-        $sql = "SELECT * FROM persona WHERE Login=:login AND Password=:password";
-		
-        $result = $conex->prepare($sql);
-		$result->execute(array(":login" => $log, ":password" => $pass));
-        //Obtiene el registro de la tabla Usuario 
-
-        if($result->rowCount()==0)
-        {
-       		
-			return false;
-        }
-        else
-        {
-        	
-          	return true;
-        }
-    }
-
-
     
-	public function consultaUno($param, $conex)
+	public function consultaAlbum($param, $conex)
 	{
-//        $idp= trim($param->getIDpersona());   
-		$log= trim($param->getLogin());
-        $sql = "SELECT * FROM persona WHERE Login=:login";
-		
+		$ida= trim($param->getId_Album());
+        $sql = "SELECT * FROM Album WHERE Id_Album=:idalbum";
         $result = $conex->prepare($sql);
-	    $result->execute(array(":login" => $log));
+	    $result->execute(array(":idalbum" => $ida));
 		$resultados=$result->fetchAll();
        
 
        return $resultados;
     }
 
-	public function consultaAlbum($param, $conex)
+	public function consultaTodosAlbum($conex)
    {
-//        $idp= trim($param->getIDpersona());   
-		$log= trim($param->getLogin());
-        $sql = "SELECT Nombre, Apellido, Login, IDrol FROM persona";
-		
+        $sql = "SELECT * FROM Album";
         $result = $conex->prepare($sql);
-	    $result->execute(array(":login" => $log));
+	    $result->execute();
 		$resultados=$result->fetchAll();
-       
-
-       return $resultados;
+		return $resultados;
     }
 	
-	public function consultaIDrol($param, $conex)
-	{
-//        $idp= trim($param->getIDpersona());   
-		$log= trim($param->getLogin());
-		$sql = "SELECT IDrol FROM persona WHERE Login=:login";
-		
-		$result = $conex->prepare($sql);
-		$result->execute(array(":login" => $log));
-		return $result->fetchAll();
-	}
+
 }
 ?>

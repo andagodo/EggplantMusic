@@ -16,7 +16,7 @@ $link=trim($_POST['link']);
 
 
 $conex = conectar();
-$a= new Album ($nom,$anio,$link);
+$a= new Album ('',$nom,$anio,$link);
 $ok=$a->altaAlbum($conex);
 
 if ($ok)

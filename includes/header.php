@@ -5,8 +5,9 @@ session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Album.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Playlist.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
-
 
 $conex = conectar();
 $u= new Admin ('','','',$_SESSION["mai"]);

@@ -4,13 +4,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/persistencia/ExistenciaAlbum.class.ph
 
 class Album
 {
+	private $Id_Album;
     private $Nom_Album;
 	private $Anio_Album;
     private $Link_Foto_Album;
 
 
-    function __construct($nom='',$anio='', $link='')
+    function __construct($ida='',$nom='',$anio='', $link='')
     {
+		$this->Id_Album= $ida;
         $this->Nom_Album= $nom;
 		$this->Anio_Album= $anio;
         $this->Link_Foto_Album= $link;
@@ -18,7 +20,12 @@ class Album
     }
     
     //Métodos set
-    
+	
+    public function setId_Album($ida)
+    {
+      $this->Id_Album= $ida;
+    }    
+	
     public function setNom_Album($nom)
     {
       $this->Nom_Album= $nom;
@@ -35,6 +42,11 @@ class Album
     }
     
     //Métodos get
+	
+    public function getId_Album()
+    {
+      return $this->Id_Album;
+    }	
     
     public function getNom_Album()
     {
@@ -68,11 +80,13 @@ class Album
       return $datos;
     }
 	
-	public function consultaEstado($conex)
-	{
-      $pu= new ExistenciaEstado;
-      return $pu->consultaEstado($this, $conex);
-	  
-    }
+	public function consultaTodosAlbum($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->consultaTodosAlbum($conex);
+      return $datos;
+    }	
+	
+
 }
 ?>
