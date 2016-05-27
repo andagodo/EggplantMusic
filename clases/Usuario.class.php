@@ -1,5 +1,5 @@
 <?php
-
+//juanito
 require_once('../persistencia/ExistenciaUsuario.class.php');
 
 class Usuario
