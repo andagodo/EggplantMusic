@@ -9,8 +9,8 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
 		?>		
 	        <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="<?php if ($menu=="cargaMenu.php") {echo "active"; } else  {echo "noactive";}?>">
-                        <a href="/presentacion/cargaMenu.php/"><i class="fa fa-fw fa-dashboard"></i> Music Dashboard</a>
+                    <li class="<?php if ($pagina=="cargaMenu.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/presentacion/cargaMenu.php"><i class="fa fa-fw fa-dashboard"></i> Music Dashboard</a>
                     </li>
 
                     <li class="<?php if ($pagina=="AltaMusica.php") {echo "active"; } else  {echo "noactive";}?>">

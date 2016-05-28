@@ -115,11 +115,48 @@ class ExistenciaAdmin
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
-		//echo $sql;
 		$resultados=$result->fetchAll();
 
        return $resultados;
     }		
+
+
+	public function buscaMailAdmin($param, $conex)
+	{
+        $mail= trim($param->getMail_Usr_Sist());   
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Fech_Login_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai";
+        $result = $conex->prepare($sql);
+		$mail = "%".$mail."%";
+	    $result->execute(array(":mai" => $mail));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+
+	public function buscaFAltaAdmin($param, $conex)
+	{
+        $falta= trim($param->getFech_Alta_Usr_Sist());   
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Fech_Login_Usr_Sist FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa";
+        $result = $conex->prepare($sql);
+		$falta = "%".$falta."%";
+	    $result->execute(array(":fa" => $falta));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+	
+	public function buscaFLoginAdmin($param, $conex)
+	{
+        $flogin= trim($param->getFech_Login_Usr_Sist());   
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Fech_Login_Usr_Sist FROM Usr_Sistema WHERE Fech_Login_Usr_Sist LIKE :flog";
+        $result = $conex->prepare($sql);
+		$flogin = "%".$flogin."%";
+	    $result->execute(array(":flog" => $flogin));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
+	
 	
 
 	public function consultaTodos($param, $conex)

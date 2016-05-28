@@ -140,6 +140,29 @@ class Admin
       return $datos;
     }
 	
+	public function buscaMailAdmin($conex)
+    {
+      $pu= new ExistenciaAdmin;
+      $datos= $pu->buscaMailAdmin($this, $conex);
+      return $datos;
+    }
+
+
+	public function buscaFAltaAdmin($conex)
+    {
+      $pu= new ExistenciaAdmin;
+      $datos= $pu->buscaFAltaAdmin($this, $conex);
+      return $datos;
+    }
+
+	public function buscaFLoginAdmin($conex)
+    {
+      $pu= new ExistenciaAdmin;
+      $datos= $pu->buscaFLoginAdmin($this, $conex);
+      return $datos;
+    }
+
+	
 	public function consultaTodos($conex)
     {
       $pu= new ExistenciaUsuario;

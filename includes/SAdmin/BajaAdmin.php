@@ -76,17 +76,38 @@
                 <div class="col-lg-10">
 			<?php
 				if (isset($_POST['tus'])){
-				$tus=trim($_POST['tus']);
-				$ba = new Admin($tus);
-				$datos_ba=$ba->consultaAdmin($conex);
-				$Cuenta=count($datos_ba);
-				}elseif (isset($_POST['texto'])){
-					$nomu=trim($_POST['texto']);
-					$ba = new Admin('','',$nomu);
-					$datos_ba=$ba->buscaNombreAdmin($conex);
-	//				echo $datos_ba[1][1];
+					$tus=trim($_POST['tus']);
+					$ba = new Admin($tus);
+					$datos_ba=$ba->consultaAdmin($conex);
 					$Cuenta=count($datos_ba);
-					}else{
+					
+				}elseif (isset($_POST['texto'])){
+					
+					if ($_POST['campo'] == "Nombre_Usr_Sist"){
+						$nomu=trim($_POST['texto']);
+						$ba = new Admin('','',$nomu);
+						$datos_ba=$ba->buscaNombreAdmin($conex);
+						$Cuenta=count($datos_ba);
+					}
+					elseif ($_POST['campo'] == "Mail_Usr_Sist"){
+						$nomu=trim($_POST['texto']);
+						$ba = new Admin('','',$nomu);
+						$datos_ba=$ba->buscaMailAdmin($conex);
+						$Cuenta=count($datos_ba);
+					}
+					elseif ($_POST['campo'] == "Fech_Alta_Usr_Sist"){
+						$nomu=trim($_POST['texto']);
+						$ba = new Admin('','',$nomu);
+						$datos_ba=$ba->buscaFAltaAdmin($conex);
+						$Cuenta=count($datos_ba);
+					}					
+					elseif ($_POST['campo'] == "Fech_Login_Usr_Sist"){
+						$nomu=trim($_POST['texto']);
+						$ba = new Admin('','',$nomu);
+						$datos_ba=$ba->buscaFLoginAdmin($conex);
+						$Cuenta=count($datos_ba);
+					}					
+				}else{
 					$Cuenta = 0;
 				}
 			?>		
