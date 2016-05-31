@@ -90,20 +90,20 @@
 						$Cuenta=count($datos_ba);
 					}
 					elseif ($_POST['campo'] == "Mail_Usr_Sist"){
-						$nomu=trim($_POST['texto']);
-						$ba = new Admin('','',$nomu);
+						$mai=trim($_POST['texto']);
+						$ba = new Admin('','','',$mai);
 						$datos_ba=$ba->buscaMailAdmin($conex);
 						$Cuenta=count($datos_ba);
 					}
 					elseif ($_POST['campo'] == "Fech_Alta_Usr_Sist"){
-						$nomu=trim($_POST['texto']);
-						$ba = new Admin('','',$nomu);
+						$fal=trim($_POST['texto']);
+						$ba = new Admin('','','','','',$fal);
 						$datos_ba=$ba->buscaFAltaAdmin($conex);
 						$Cuenta=count($datos_ba);
 					}					
 					elseif ($_POST['campo'] == "Fech_Login_Usr_Sist"){
-						$nomu=trim($_POST['texto']);
-						$ba = new Admin('','',$nomu);
+						$flog=trim($_POST['texto']);
+						$ba = new Admin('',$flog);
 						$datos_ba=$ba->buscaFLoginAdmin($conex);
 						$Cuenta=count($datos_ba);
 					}					
