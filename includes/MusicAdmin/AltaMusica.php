@@ -9,14 +9,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Alta de Canciónes
+                            Alta de Canciones
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="/presentacion/cargaMenu.php">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Alta de Canciónes
+                                <i class="fa fa-edit"></i> Alta de Canciones
                             </li>
                         </ol>
                     </div>

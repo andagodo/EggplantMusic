@@ -90,16 +90,15 @@ class ExistenciaCancion
 
        return $resultados;
     }
-	
-	public function consultaIDrol($param, $conex)
+/*	
+	public function consultaPerteneceCancion($param, $conex)
 	{
-//        $idp= trim($param->getIDpersona());   
-		$log= trim($param->getLogin());
-		$sql = "SELECT IDrol FROM persona WHERE Login=:login";
-		
-		$result = $conex->prepare($sql);
-		$result->execute(array(":login" => $log));
-		return $result->fetchAll();
+		$sql = "SELECT Id_Cancion, Nom_Cancion, Dur_Cancion FROM Cancion WHERE cancion.Id_Cancion NOT IN (SELECT Id_Cancion FROM Pertenece_Cancion)";
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+       return $resultados;
 	}
+	*/
 }
 ?>

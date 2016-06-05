@@ -7,6 +7,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Album.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Playlist.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/PerteneceCancion.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 
 $conex = conectar();
@@ -17,9 +18,8 @@ $rol = $Tipo[0][0];
 $nombre = $Tipo[0][1];
 
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
-    // last request was more than 30 minutes ago
-    session_unset();     // unset $_SESSION variable for the run-time 
-    session_destroy();   // destroy session data in storage
+    session_unset();
+    session_destroy();
 	?>
 	<script language="javascript">
 		window.alert("Tiempo de espera excedido.");

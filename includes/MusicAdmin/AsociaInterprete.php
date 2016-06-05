@@ -8,14 +8,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Alta de Género
+                            Asocia Canción - Album
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="/presentacion/cargaMenu.php">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Alta de Género
+                                <i class="fa fa-edit"></i> Asocia Canción - Album
                             </li>
                         </ol>
                     </div>
@@ -24,22 +24,23 @@
             </div>
 			
 			<?php
-			$ge = new Genero('','','');
-			$datos_ge=$ge->consultaTodosGenero($conex);
-			$Cuenta=count($datos_ge);
+			$ac = new PerteneceCancion();
+			$datos_ac=$ac->consultaPCCancion($conex);
+			$Cuenta=count($datos_ac);
 			?>
 			
 			
 			<div class="row">
                 <div class="col-lg-6">
-						<h4>Géneros:</h4>
+					<h4>Canciones sin Álbum:</h4>
+					<form role="form" action='/logica/AsociaAlbum.php' method="POST">
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
 							<div class="form-group">
                                 <thead>
                                     <tr>
-										<th>Género</th>
-                                        <th>Descripción</th>
+										<th>Nombre</th>
+                                        <th>Duración</th>
                                     </tr>
                                 </thead>
 								<?php
@@ -49,8 +50,15 @@
 								
                                 <tbody>
                                     <tr>
-                                        <td><?php echo $datos_ge[$i][1]?></td>
-                                        <td><?php echo $datos_ge[$i][2]?></td>
+										<td>
+											<div class="radio">
+												<label>
+													<input type="radio" name="idc" id="optionsRadios1" value="<?php echo $datos_ac[$i][0]?>">
+												</label>
+											</div>
+										</td>
+                                        <td><?php echo $datos_ac[$i][1]?></td>
+                                        <td><?php echo $datos_ac[$i][2]?></td>
 									</tr>
 									
 								<?php
@@ -63,23 +71,31 @@
                         </div>
 				</div>
 				<div class="col-lg-6">
-					<h4>Alta de Géneros:</h4></br>
-					<form role="form" action='/logica/NuevaGenero.php' method="POST">
-					    <div class="form-group">
-                            <label>Nombre Género:</label>
-                            <input class="form-control" placeholder="Ejemplo: Reggae." name='nomg' required/>
-                        </div>
-
-						<div class="form-group">
-							<label>Descripción:</label>
-								<input type="text" class="form-control" name='desc' required/>
-						</div>
-						</br>
-						<button type="submit" class="btn btn-default">Alta Género</button>
+					<h4>Asociación:</h4></br>
+					
+					<?php
+					$album = new PerteneceCancion();
+					$datos_al=$album->consultaPCAlbum($conex);
+					$Cuenta=count($datos_al);
+					?>
+					
+					<select class="form-control" name='idi' required>
+						<option value="00">Álbum</option>
+						<?php
+						for ($i=0;$i<$Cuenta;$i++)
+						{
+						?>
+							<option value="<?php echo $datos_al[$i][0]?>"  ><?php echo $datos_al[$i][1]?> // <?php echo $datos_al[$i][2]?></option>
+						<?php
+						}
+						?>
+                    </select></br>
+					
+					<button type="submit" class="btn btn-default">Aplicar Asociación</button>
 						
-						</div>
+				</div>
 
-					</form>
+				</form>
 
 			</div>
 

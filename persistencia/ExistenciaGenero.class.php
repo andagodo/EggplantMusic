@@ -47,7 +47,7 @@ class ExistenciaGenero
 		public function consultaTodosGenero($param,$conex)
 	{
 
-        $sql = "SELECT Nom_Genero, Desc_Genero FROM Genero";
+        $sql = "SELECT Id_Genero, Nom_Genero, Desc_Genero FROM Genero";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();
