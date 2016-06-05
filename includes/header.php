@@ -15,6 +15,20 @@ $u= new Admin ('','','',$_SESSION["mai"]);
 $Tipo=$u->consultaTipoAdmin($conex);
 $rol = $Tipo[0][0];
 $nombre = $Tipo[0][1];
+
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
+    // last request was more than 30 minutes ago
+    session_unset();     // unset $_SESSION variable for the run-time 
+    session_destroy();   // destroy session data in storage
+	?>
+	<script language="javascript">
+		window.alert("Tiempo de espera excedido.");
+		location.href="/presentacion/indice.php";
+	</script>
+	<?php
+}else{
+	$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+
 ?>
 
 <head>
@@ -67,3 +81,8 @@ $nombre = $Tipo[0][1];
                     </ul>
                 </li>
             </ul>
+			
+<?php
+}
+?>
+

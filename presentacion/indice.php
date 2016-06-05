@@ -18,7 +18,7 @@
 
 <div class="container">
 
-	<h1 class="form-signin-heading" p align=center>EggplatMusic - Administraci&#243;n</h1>
+	<h1 class="form-signin-heading" p align=center>EggplantMusic - Administraci&#243;n</h1>
 	<form action="/logica/ingresoSistema.php" method="POST" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin">
 		
         <h2 class="form-signin-heading">Iniciar sesi&#243;n</h2>
