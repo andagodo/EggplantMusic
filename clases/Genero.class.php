@@ -61,14 +61,14 @@ class Genero
     }
 	
 	
-	/*
-    public function altaIncidente($conex)
+	
+    public function altaGenero($conex)
     {
-        $pu=new ExistenciaIncidente;
-        return ($pu->altaIncidente($this, $conex));
+        $pu=new ExistenciaGenero;
+        return ($pu->altaGenero($this, $conex));
     }    
     
-	
+/*	
 	public function consultaEstado($conex)
 	{
       $pu= new ExistenciaEstado;

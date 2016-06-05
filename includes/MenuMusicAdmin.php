@@ -19,8 +19,8 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
                     <li class="<?php if ($pagina=="AltaAlbum.php") {echo "active"; } else  {echo "noactive";}?>">
                         <a href="/includes/MusicAdmin/AltaAlbum.php"><i class="fa fa-fw fa-table"></i> Alta Álbum</a>
                     </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Categorías</a>
+                    <li class="<?php if ($pagina=="AltaGenero.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/MusicAdmin/AltaGenero.php"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Géneros</a>
                     </li>
                     <li>
                         <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>

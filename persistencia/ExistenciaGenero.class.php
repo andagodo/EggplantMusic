@@ -2,23 +2,19 @@
 
 class ExistenciaGenero
 {
-	/*
+
 	
-    public function altaIncidente($param, $conex)
+    public function altaGenero($param, $conex)
     {
 
-        $fec = $param->getFecha();
-        $hrs=$param->getHora();
-        $idpr=$param->getIDpersonaReporta();
-        $ide = $param->getIDequipo();
-        $desc = $param->getDescripcion();
-        $idpa = $param->getIDpersonaAsignado();
+        $nomg=$param->getNom_Genero();
+        $desc=$param->getDesc_Genero();
 
-        $sql = "INSERT INTO incidente (Fecha,Hora,IDpersonaReporta,IDequipo,Descripcion,IDpersonaAsignado) VALUES (:fecha, :hora, :idpersonareporta, :idequipo, :descripcion, :idpersonaasignado)";
+        $sql = "INSERT INTO Genero (Nom_Genero,Desc_Genero) VALUES (:nombre, :descripcion)";
       
 
 		$result = $conex->prepare($sql);
-		$result->execute(array(":fecha" => $fec, ":hora" => $hrs, ":idpersonareporta" => $idpr, ":idequipo" => $ide, ":descripcion" => $desc, ":idpersonaasignado" => $idpa));
+		$result->execute(array(":nombre" => $nomg, ":descripcion" => $desc));
         
         
         if($result)
@@ -31,7 +27,7 @@ class ExistenciaGenero
         }
     }
 
-    
+    /*
 	public function consultaUno($param, $conex)
 	{
 //        $idp= trim($param->getIDpersona());   
