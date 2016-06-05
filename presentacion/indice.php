@@ -23,9 +23,9 @@
 		
         <h2 class="form-signin-heading">Iniciar sesi&#243;n</h2>
         <label name="NomUsuario" for="inputEmail" class="sr-only">Email</label>
-        <input name="NomUsuario" id="NomUsuario" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
+        <input name="NomUsuario" id="NomUsuario" class="form-control" placeholder="Direcci&#243;n de Email" required="" autofocus="" type="email">
         <label name="PassUsuario" for="inputPassword" class="sr-only">Password</label>
-        <input name="PassUsuario" id="PassUsuario" class="form-control" placeholder="Password" required="" type="password">
+        <input name="PassUsuario" id="PassUsuario" class="form-control" placeholder="Contrase&ntilde;a" required="" type="password">
         <input  class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar"  title="Ingresar a la aplicación" />    
 	</form>		 
 </div>
