@@ -1,7 +1,6 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"; ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/MenuMusicAdmin.php"; ?>
 
-
 		<div id="page-wrapper">
 
             <div class="container-fluid">
@@ -24,11 +23,48 @@
 				
             </div>
 			
+			<?php
+			$ge = new Genero('','','');
+			$datos_ge=$ge->consultaTodosGenero($conex);
+			$Cuenta=count($datos_ge);
+			?>
+			
+			
 			<div class="row">
                 <div class="col-lg-6">
+						<h4>Géneros:</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+							<div class="form-group">
+                                <thead>
+                                    <tr>
+										<th>Género</th>
+                                        <th>Descripción</th>
+                                    </tr>
+                                </thead>
+								<?php
+									for ($i=0;$i<$Cuenta;$i++)
+									{
+								?>
+								
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $datos_ge[$i][0]?></td>
+                                        <td><?php echo $datos_ge[$i][1]?></td>
+									</tr>
+									
+								<?php
+								}
+								?>
+			
+								</tbody>
+							</div>	
+                            </table>
+                        </div>
+				</div>
+				<div class="col-lg-6">
+					<h4>Alta de Géneros:</h4></br>
 					<form role="form" action='/logica/NuevaGenero.php' method="POST">
-
-					
 					    <div class="form-group">
                             <label>Nombre Género:</label>
                             <input class="form-control" placeholder="Ejemplo: Reggae." name='nomg' required/>

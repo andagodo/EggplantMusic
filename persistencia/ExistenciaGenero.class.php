@@ -44,10 +44,10 @@ class ExistenciaGenero
 
 	*/
 	
-		public function consultaTodosGenero($param, $conex)
+		public function consultaTodosGenero($param,$conex)
 	{
 
-        $sql = "SELECT * FROM genero";
+        $sql = "SELECT Nom_Genero, Desc_Genero FROM Genero";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();
