@@ -1,19 +1,19 @@
 <?php
 
-class ExistenciaPerteneceCancion
+class ExistenciaContieneAlbum
 {
 
-    public function altaPerteneceCancion($param, $conex)
+    public function altaContieneAlbum($param, $conex)
     {
 
 
-        $idi=$param->getId_Interprete();
-        $idc=$param->getId_Cancion();
+        $ida=$param->getId_Album();
+        $idpc=$param->getId_Pertenece_Cancion();
 
-        $sql = "INSERT INTO Pertenece_Cancion (Id_Interprete, Id_Cancion) VALUES (:interprete, :cancion)";
+        $sql = "INSERT INTO Contiene_Album (Id_Album, Id_Pertenece_Cancion) VALUES (:album, :cancion)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":interprete" => $idi, ":cancion" => $idc));
+		$result->execute(array(":album" => $ida, ":cancion" => $idpc));
         
         
         if($result)
@@ -26,20 +26,19 @@ class ExistenciaPerteneceCancion
         }
     }
 	
-	public function consultaPCCancion($param, $conex)
+	public function consultaCACancion($param, $conex)
 	{
-		$sql = "SELECT Id_Cancion, Nom_Cancion, Dur_Cancion FROM Cancion WHERE cancion.Id_Cancion NOT IN (SELECT Id_Cancion FROM Pertenece_Cancion)";
+		$sql = "SELECT pc.Id_Pertenece_Cancion, c.Nom_Cancion, c.Dur_Cancion FROM Pertenece_Cancion pc, Cancion c WHERE Id_Pertenece_Cancion NOT IN (SELECT Id_Pertenece_Cancion FROM Contiene_Album) AND pc.Id_Cancion = c.Id_Cancion";
         $result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
        return $resultados;
 	}	
 
-	public function consultaPCAlbum($param, $conex)
+	public function consultaAlbum($param, $conex)
 	{
-	//	$sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete WHERE Interprete.Id_Interprete NOT IN (SELECT Id_Interprete FROM Pertenece_Cancion)";
-        $sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete";
-		$result = $conex->prepare($sql);
+		$sql = "SELECT Id_Album, Nomb_Album, Anio_Album FROM Album";
+        $result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
        return $resultados;

@@ -8,6 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Album.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Playlist.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/PerteneceCancion.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/ContieneAlbum.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 
 $conex = conectar();

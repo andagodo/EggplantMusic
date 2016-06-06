@@ -8,14 +8,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Asocia Canción - Intérprete
+                            Asocia Canción - Album
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="/presentacion/cargaMenu.php">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Asocia Canción - Intérprete
+                                <i class="fa fa-edit"></i> Asocia Canción - Album
                             </li>
                         </ol>
                     </div>
@@ -24,16 +24,16 @@
             </div>
 			
 			<?php
-			$ac = new PerteneceCancion();
-			$datos_ac=$ac->consultaPCCancion($conex);
-			$Cuenta=count($datos_ac);
+			$ca = new ContieneAlbum();
+			$datos_ca=$ca->consultaCACancion($conex);
+			$Cuenta=count($datos_ca);
 			?>
 			
-			
+			<p><b>NOTA: </b>Sólo se muestran canciones que tengan asociado un intérprete.</p>
 			<div class="row">
                 <div class="col-lg-6">
-					<h4>Canciones sin Intérprete:</h4>
-					<form role="form" action='/logica/CancionInterprete.php' method="POST">
+					<h4>Canciones sin Álbum:</h4>
+					<form role="form" action='/logica/CancionAlbum.php' method="POST">
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
 							<div class="form-group">
@@ -53,12 +53,12 @@
 										<td>
 											<div class="radio">
 												<label>
-													<input type="radio" name="idc" id="optionsRadios1" value="<?php echo $datos_ac[$i][0]?>">
+													<input type="radio" name="idpc" id="optionsRadios1" value="<?php echo $datos_ca[$i][0]?>">
 												</label>
 											</div>
 										</td>
-                                        <td><?php echo $datos_ac[$i][1]?></td>
-                                        <td><?php echo $datos_ac[$i][2]?></td>
+                                        <td><?php echo $datos_ca[$i][1]?></td>
+                                        <td><?php echo $datos_ca[$i][2]?></td>
 									</tr>
 									
 								<?php
@@ -74,13 +74,13 @@
 					<h4>Asociación:</h4></br>
 					
 					<?php
-					$album = new PerteneceCancion();
-					$datos_al=$album->consultaPCAlbum($conex);
+					$album = new ContieneAlbum();
+					$datos_al=$album->consultaAlbum($conex);
 					$Cuenta=count($datos_al);
 					?>
 					
-					<select class="form-control" name='idi' required>
-						<option value="00">Interpretes</option>
+					<select class="form-control" name='ida' required>
+						<option value="00">Álbum</option>
 						<?php
 						for ($i=0;$i<$Cuenta;$i++)
 						{
