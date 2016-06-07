@@ -10,7 +10,7 @@ if ($rol == "PlaylAdmin" ){
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dashboard <small>Resumen de Estadísticas</small>
+                            Dashboard <small>Resumen de Playlists</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">

@@ -12,9 +12,14 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
                     <li class="<?php if ($pagina=="cargaMenu.php") {echo "active"; } else  {echo "noactive";}?>">
                         <a href="/presentacion/cargaMenu.php"><i class="fa fa-fw fa-dashboard"></i> Tickets Dashboard</a>
                     </li>
-                    <li class="<?php if ($pagina=="AltaAdmin.php") {echo "active"; } else  {echo "noactive";}?>">
-                        <a href="/presentacion/AltaAdmin.php"><i class="fa fa-fw fa-edit"></i> Alta Administradores</a>
+                    <li class="<?php if ($pagina=="RespondeTicket.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/TicketAdmin/RespondeTicket.php"><i class="fa fa-fw fa-edit"></i> Responder Ticket</a>
                     </li>
+					
+                    <li class="<?php if ($pagina=="BajaTicket.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/TicketAdmin/BajaTicket.php"><i class="fa fa-fw fa-file"></i> Baja Ticket</a>
+                    </li>					
+	 <!-- 				
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>
@@ -44,6 +49,7 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
                     <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                     </li>
+	-->					
                 </ul>
             </div>	
         </nav>

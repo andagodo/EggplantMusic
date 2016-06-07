@@ -12,9 +12,22 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
                     <li class="<?php if ($pagina=="cargaMenu.php") {echo "active"; } else  {echo "noactive";}?>">
                         <a href="/presentacion/cargaMenu.php"><i class="fa fa-fw fa-dashboard"></i> Playlist Dashboard</a>
                     </li>
-                    <li class="<?php if ($pagina=="AltaAdmin.php") {echo "active"; } else  {echo "noactive";}?>">
-                        <a href="/presentacion/AltaAdmin.php"><i class="fa fa-fw fa-edit"></i> Alta Administradores</a>
+                    <li class="<?php if ($pagina=="AltaPlaylist.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/PlaylistAdmin/AltaPlaylist.php"><i class="fa fa-fw fa-edit"></i> Alta Playlist</a>
                     </li>
+					
+                    <li class="<?php if ($pagina=="BajaPlaylist.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/PlaylistAdmin/BajaPlaylist.php"><i class="fa fa-fw fa-file"></i> Baja Playlist</a>
+                    </li>
+					
+                    <li class="<?php if ($pagina=="ModificaPlaylist.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/PlaylistAdmin/ModificaPlaylist.php"><i class="fa fa-fw fa-table"></i> Modificar Playlist</a>
+                    </li>						
+
+                    <li class="<?php if ($pagina=="EstadisticaPlaylist.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/PlaylistAdmin/EstadisticaPlaylist.php"><i class="fa fa-fw fa-bar-chart-o"></i> Estadisticas</a>
+                    </li>						
+	<!--				
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>
@@ -44,6 +57,8 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
                     <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                     </li>
+					
+	-->				
                 </ul>
             </div>	
         </nav>
