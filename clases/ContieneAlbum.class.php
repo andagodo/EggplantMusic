@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/persistencia/ExistenciaContieneAlbum.
 class ContieneAlbum
 {
 	private $Id_Contiene_Al;
-    private $Id_Album;
+  private $Id_Album;
 	private $Id_Pertenece_Cancion;
 
 
@@ -72,6 +72,12 @@ class ContieneAlbum
       $pu= new ExistenciaContieneAlbum;
       return $pu->consultaAlbum($this, $conex);
     }	
+
+  public function consultaCancionA($conex)
+  {
+      $pu= new ExistenciaContieneAlbum;
+      return $pu->consultaCancionA($this, $conex);
+    } 
 /*		
     
 	public function consultaAlbum($conex)

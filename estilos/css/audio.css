@@ -1,0 +1,96 @@
+#player1{
+	float: right; 
+}
+#playlist, #player, #playlist1 {
+width: 100%; /* Ancho de todo el contenedor */
+padding: 0px;
+margin: 0 auto;
+display: block;
+text-align: center;
+}
+#player {
+/* Imagen de fondo del primer contenedor */
+background: url(//lh3.googleusercontent.com/-9dx_GmP6Yeg/U06qBO9M4EI/AAAAAAAAFEY/FXrhlltF7xc/s300/bg.png);
+padding: 10px 20px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+audio {
+width:100%; /* Ancho del reproductor */
+margin:0 auto;
+display: inline-block;
+}
+#playlist, #playlist1 {display: block;
+background: #424242; /* Fondo del segundo contenedor */
+border-top: 5px solid #337ab7;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+text-align: left;
+font-size: 12px; /* Estilos de fuente */
+font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif;
+font-weight: normal;
+}
+#playlist li, #playlist ul li {
+background-image: none;
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+#playlist li a {
+color: #CCC; /* Color de las canciones */
+background: #222; /* Fondo de las canciones */
+padding: 7px 5px;
+display: block;
+padding-left: 10px;
+text-decoration: none;
+}
+#playlist li a:hover{
+background: #337ab7; /* Color de fondo al pasar el cursor */
+text-decoration: none;
+}
+#playlist .active a {
+color: #337ab7; /* Color de la canción activa */
+font-style: italic;
+text-decoration: none;
+}
+#playlist .active a:before {
+content: "\25B6";
+color: #CCC;
+font-style: normal;
+padding-right: 8px;
+}
+
+#playlist .active a:hover {
+color: #222; /* Color de la canción activa al pasar el cursor */
+}
+#playlist1 li, #playlist1 ul li {
+background-image: none;
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+#playlist1 li a {
+color: #CCC; /* Color de las canciones */
+background: #222; /* Fondo de las canciones */
+padding: 7px 5px;
+display: block;
+padding-left: 10px;
+text-decoration: none;
+}
+#playlist1 li a:hover{
+background: #337ab7; /* Color de fondo al pasar el cursor */
+text-decoration: none;
+}
+#playlist1 .active a {
+color: #337ab7; /* Color de la canción activa */
+font-style: italic;
+text-decoration: none;
+}
+#playlist1 .active a:before {
+color: #CCC;
+font-style: normal;
+}
+
+#playlist1 .active a:hover {
+color: #222; /* Color de la canción activa al pasar el cursor */
+}
