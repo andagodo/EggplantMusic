@@ -49,6 +49,20 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
                         </ul>
                     </li>
 
+					
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#interprete"><i class="fa fa-fw fa-arrows-v"></i> Intérpretes <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="interprete" class="collapse">
+							<li class="<?php if ($pagina=="AltaGenero.php") {echo "active"; } else  {echo "noactive";}?>">
+								<a href="/includes/MusicAdmin/AltaInterprete.php"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Intérprete</a>
+							</li>
+							<li class="<?php if ($pagina=="BajaGenero.php") {echo "active"; } else  {echo "noactive";}?>">
+								<a href="/includes/MusicAdmin/BajaInterprete.php"><i class="fa fa-fw fa-edit"></i> Baja Intérprete</a>
+							</li>
+                        </ul>
+                    </li>					
+					
+					
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#asocia"><i class="fa fa-fw fa-arrows-v"></i> Asociaciones <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="asocia" class="collapse">
