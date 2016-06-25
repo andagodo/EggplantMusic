@@ -73,6 +73,13 @@ class PerteneceCancion
       return $pu->consultaPCAlbum($this, $conex);
     }	
 	
+	public function buscaInterpreteCancion($conex)
+    {
+      $pu= new ExistenciaPerteneceCancion;
+      $datos= $pu->buscaInterpreteCancion($this, $conex);
+      return $datos;
+    }	
+	
  /*   
 	public function consultaAlbum($conex)
     {

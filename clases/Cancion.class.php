@@ -113,6 +113,22 @@ class Cancion
       $datos= $pu->consultaIncidente($this, $conex);
       return $datos;
     }
+
+	public function consultaCancionGenero($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->consultaCancionGenero($this, $conex);
+      return $datos;
+    }
+	
+	public function buscaNombreCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->buscaNombreCancion($this, $conex);
+      return $datos;
+    }	
+	
+
 	
 	public function consultaEstado($conex)
 	{
@@ -120,6 +136,13 @@ class Cancion
       return $pu->consultaEstado($this, $conex);
 	  
     }
+	
+	public function eliminaCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->eliminaCancion($this, $conex);
+      return $datos;
+    }		
 	
 }
 ?>

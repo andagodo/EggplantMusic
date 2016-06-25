@@ -45,6 +45,17 @@ class ExistenciaPerteneceCancion
        return $resultados;
 	}	
 	
+	public function buscaInterpreteCancion($param, $conex)
+	{
+        $interprete= trim($param->getId_Interprete());   
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g, Pertenece_Cancion pc WHERE c.Id_Genero = g.Id_Genero AND c.Id_Cancion = pc.Id_Cancion AND pc.Id_Interprete = :int";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":int" => $interprete));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
+	
 	
 /*	
     

@@ -30,15 +30,25 @@
                 <div class="col-lg-3">
 				
 					<form role="form" action='/includes/MusicAdmin/BajaMusica.php' method="POST">
-
+						<?php
+						$i = new Interprete();
+						$datos_i=$i->consultaTodosInterprete($conex);
+						$Cuenta=count($datos_i);
+						?>
                         <div class="form-group">
                             <label>Seleccione Artista:</label>
-                            <select class="form-control" name='tus'>
-                                <option value="SuperAdmin">Super Administrador</option>
-                                <option value="PlaylAdmin">Administrador de Playlists</option>
-                                <option value="TicketAdmin">Administrador de Tickets</option>
-                                <option value="MusicAdmin">Administrador de Música</option>
-                            </select>
+                            <select class="form-control" name='idi'>
+								<option value="00">Artista</option>
+									<?php
+									for ($i=0;$i<$Cuenta;$i++)
+									{
+									?>
+									<option value="<?php echo $datos_i[$i][0]?>"  ><?php echo $datos_i[$i][1]?></option>
+								<?php
+								}
+						?>		
+							</select>							
+							
                         </div>				
 						
 						<button type="submit" class="btn btn-default">Consultar</button>
@@ -78,44 +88,12 @@
 
                         <div class="form-group">
                             <label>Nombre de Canción:</label>
-                            <select class="form-control" name='tus'>
-                                <option value="SuperAdmin">Super Administrador</option>
-                                <option value="PlaylAdmin">Administrador de Playlists</option>
-                                <option value="TicketAdmin">Administrador de Tickets</option>
-                                <option value="MusicAdmin">Administrador de Música</option>
-                            </select>
+							<input class="form-control" name='nom' required/>
                         </div>				
 						
 						<button type="submit" class="btn btn-default">Consultar</button>
 					</form>
 				</div>				
-
-<!--					
-				<form role="form" action='/includes/SAdmin/BajaAdmin.php' method="POST">
-				<div class="col-lg-3">
-				
-					<div class="form-group">
-                            <label>Buscador:</label>
-                            <select class="form-control" name='campo'>
-                                <option value="Nombre_Usr_Sist">Nombre</option>
-                                <option value="Mail_Usr_Sist">Mail</option>
-                                <option value="Fech_Alta_Usr_Sist">Fecha Alta</option>
-                                <option value="Fech_Login_Usr_Sist">Fecha Último Login</option>
-                            </select>
-                    </div>
-					<button type="submit" class="btn btn-default">Buscar</button>
-				</div>
-				
-				<div class="col-lg-3">
-					<div class="form-group">
-                            <label>Texto</label>
-                            <input class="form-control" name='texto' required/>
-                    </div>
-				</div>
-				</form>
-				
--->				
-				
 			</div>
 			
                         		
@@ -123,43 +101,31 @@
 			<div class="row">
                 <div class="col-lg-10">
 			<?php
-				if (isset($_POST['tus'])){
-					$tus=trim($_POST['tus']);
-					$ba = new Admin($tus);
-					$datos_ba=$ba->consultaAdmin($conex);
+				if (isset($_POST['idi'])){
+					$idi=trim($_POST['idi']);
+					$ba = new PerteneceCancion('',$idi);
+					$datos_ba=$ba->buscaInterpreteCancion($conex);
 					$Cuenta=count($datos_ba);
 					
-				}elseif (isset($_POST['texto'])){
+				}elseif (isset($_POST['idg'])){
 					
-					if ($_POST['campo'] == "Nombre_Usr_Sist"){
-						$nomu=trim($_POST['texto']);
-						$ba = new Admin('','',$nomu);
-						$datos_ba=$ba->buscaNombreAdmin($conex);
-						$Cuenta=count($datos_ba);
-					}
-					elseif ($_POST['campo'] == "Mail_Usr_Sist"){
-						$mai=trim($_POST['texto']);
-						$ba = new Admin('','','',$mai);
-						$datos_ba=$ba->buscaMailAdmin($conex);
-						$Cuenta=count($datos_ba);
-					}
-					elseif ($_POST['campo'] == "Fech_Alta_Usr_Sist"){
-						$fal=trim($_POST['texto']);
-						$ba = new Admin('','','','','',$fal);
-						$datos_ba=$ba->buscaFAltaAdmin($conex);
-						$Cuenta=count($datos_ba);
-					}					
-					elseif ($_POST['campo'] == "Fech_Login_Usr_Sist"){
-						$flog=trim($_POST['texto']);
-						$ba = new Admin('',$flog);
-						$datos_ba=$ba->buscaFLoginAdmin($conex);
-						$Cuenta=count($datos_ba);
-					}					
+					$idg=trim($_POST['idg']);
+					$ba = new Cancion('','','','','','',$idg);
+					$datos_ba=$ba->consultaCancionGenero($conex);
+					$Cuenta=count($datos_ba);
+					
+				}elseif (isset($_POST['nom'])){
+					
+					$nom=trim($_POST['nom']);
+					$ba = new Cancion('',$nom);
+					$datos_ba=$ba->buscaNombreCancion($conex);
+					$Cuenta=count($datos_ba);
+					
 				}else{
 					$Cuenta = 0;
 				}
 			?>		
-					<form role="form" action='/logica/EliminaAdmin.php' method="POST">
+					<form role="form" action='/logica/EliminaCancion.php' method="POST">
                         <h4>Canciones:</h4>
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
@@ -170,7 +136,6 @@
                                         <th>Nombre</th>
                                         <th>Duración</th>
                                         <th>Género</th>
-                                        <th> NO VA</th>
                                     </tr>
                                 </thead>
 								<?php
@@ -183,14 +148,13 @@
 										<td>
 											<div class="radio">
 												<label>
-													<input type="radio" name="mus" id="optionsRadios1" value="<?php echo $datos_ba[$i][1]?>">
+													<input type="radio" name="idc" id="optionsRadios1" value="<?php echo $datos_ba[$i][0]?>">
 												</label>
 											</div>
 										</td>
-                                        <td><?php echo $datos_ba[$i][0]?></td>
                                         <td><?php echo $datos_ba[$i][1]?></td>
                                         <td><?php echo $datos_ba[$i][2]?></td>
-                                        <td><?php echo $datos_ba[$i][3]?></td>	
+                                        <td><?php echo $datos_ba[$i][3]?></td>
 									</tr>
 									
 								<?php

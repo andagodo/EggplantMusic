@@ -31,7 +31,7 @@ class ExistenciaCancion
     }
 
      
-
+/*
    //Devuelve true si el login coincide con la password
    public function coincideLoginPassword($param, $conex)
    {
@@ -60,7 +60,7 @@ class ExistenciaCancion
           	return true;
         }
     }
-
+*/
 
     
 	public function consultaUno($param, $conex)
@@ -77,6 +77,33 @@ class ExistenciaCancion
        return $resultados;
     }
 
+	public function consultaCancionGenero($param, $conex)
+	{
+//        $idp= trim($param->getIDpersona());   
+		$idg= trim($param->getId_Genero());
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g WHERE c.Id_Genero=:genero AND c.Id_Genero = g.Id_Genero";
+
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":genero" => $idg));
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }	
+
+	public function buscaNombreCancion($param, $conex)
+	{
+        $nombre= trim($param->getNom_Cancion());   
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g WHERE Nom_Cancion LIKE :nom AND c.Id_Genero = g.Id_Genero";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
+
+	
 	public function consultaTodos($param, $conex)
    {
 //        $idp= trim($param->getIDpersona());   
@@ -90,6 +117,21 @@ class ExistenciaCancion
 
        return $resultados;
     }
+	
+	
+	public function eliminaCancion($param, $conex)
+	{
+		$idc= trim($param->getId_Cancion());
+		
+		$sql = "DELETE FROM Pertenece_Cancion WHERE Id_Cancion =:idc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc));
+		$sql = "DELETE FROM Cancion WHERE Id_Cancion =:idc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc));
+		return $result;
+	}			
+	
 /*	
 	public function consultaPerteneceCancion($param, $conex)
 	{

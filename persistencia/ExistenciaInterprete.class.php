@@ -59,7 +59,7 @@ class ExistenciaInterprete
 
 
     
-	public function consultaUno($param, $conex)
+	public function consultaUnoInterprete($param, $conex)
 	{
 //        $idp= trim($param->getIDpersona());   
 		$log= trim($param->getLogin());
