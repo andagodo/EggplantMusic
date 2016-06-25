@@ -8,7 +8,7 @@
   <title>Eggplant Music</title>
   <link rel="stylesheet" type ="text/css" href="../estilos/css/bootstrap.css" />
   <script src="../estilos/js/bootstrap.js"></script>
-     <link href="../estilos/css/signin.css" rel="stylesheet">
+  <link href="../estilos/css/signinfront.css" rel="stylesheet">
  
   
 </head>
@@ -17,7 +17,7 @@
 <body>
 
 <div class="container">
-<form action="../logica/ingresoSistema.php" method="POST" target="principal" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin">
+<form action="../logica/ingresoSistemafront.php" method="POST" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin">
 
         <h2 class="form-signin-heading">Iniciar sesi&#243;n</h2>
         <label name="NomUsuario" for="NomUsuario" class="sr-only">Email</label>

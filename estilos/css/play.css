@@ -105,3 +105,25 @@
     padding: 0px;
 }
 .heading-menu > li a {background:black;color:black}
+
+/*menu1*/
+#menu1{
+  background-color: #FFF;
+  min-width: 300px;
+  position: fixed;
+  top: 0;
+  z-index: 8000;
+  display: none;
+}
+#menu1 ul{
+  list-style: none;
+}
+#menu1 ul li{
+  width: 100%;
+}
+#menu1 ul li a{
+  text-decoration: none;
+  display: block;
+  padding: 8px 16px;
+  width: 100%;
+}

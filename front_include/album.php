@@ -24,7 +24,7 @@ $Cuenta1=count($datos_r);
 <div class="col-sm-2 col-md-3 affix-content">
 <div class="container">
 
-<ul id='playlist1'>
+<ul id='album'>
 <?php
     for ($i=0;$i<$Cuenta;$i++)
 {
