@@ -39,11 +39,11 @@ if ($rol == "MusicAdmin" ){
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">26</div>
-                                        <div>Nuevos Comentarios!</div>
+                                        <div>Canciones sin Intérprete!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="/includes/MusicAdmin/AsociaInterprete.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -61,11 +61,11 @@ if ($rol == "MusicAdmin" ){
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">12</div>
-                                        <div>Nuevas Tareas!</div>
+                                        <div>Canciones sin Álbum!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="/includes/MusicAdmin/AsociaAlbum.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -83,11 +83,11 @@ if ($rol == "MusicAdmin" ){
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">124</div>
-                                        <div>Nuevas Órdenes!</div>
+                                        <div>Canciones Totales!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="/includes/MusicAdmin/AltaMusica.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -105,11 +105,11 @@ if ($rol == "MusicAdmin" ){
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">13</div>
-                                        <div>Tickets de Soporte!</div>
+                                        <div>Álbumes totales!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="/includes/MusicAdmin/AltaAlbum.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

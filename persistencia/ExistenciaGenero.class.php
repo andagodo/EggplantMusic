@@ -27,6 +27,17 @@ class ExistenciaGenero
         }
     }
 
+	
+	public function eliminaGenero($param, $conex)
+	{
+		$idg = trim($param->getId_Genero());
+		$sql = "DELETE FROM Genero WHERE Id_Genero = :idg";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idg" => $idg));
+		return $result;
+	}			
+	
+	
     /*
 	public function consultaUno($param, $conex)
 	{
@@ -55,6 +66,30 @@ class ExistenciaGenero
        return $resultados;
     }
 	
+	
+	public function buscaNombreGenero($param, $conex)
+	{
+        $nombre= trim($param->getNom_Genero());   
+        $sql = "SELECT Id_Genero, Nom_Genero, Desc_Genero FROM Genero WHERE Nom_Genero LIKE :nom";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }		
+	
+	public function buscaDescGenero($param, $conex)
+	{
+        $nombre= trim($param->getDesc_Genero());   
+        $sql = "SELECT Id_Genero, Nom_Genero, Desc_Genero FROM Genero WHERE Desc_Genero LIKE :nom";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }		
 
 }
 ?>

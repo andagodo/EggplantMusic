@@ -27,6 +27,21 @@ class ExistenciaAlbum
           return(false);
         }
     }
+	
+	
+	public function eliminaAlbum($param, $conex)
+	{
+		$ida= trim($param->getId_Album());
+		
+		$sql = "DELETE FROM Contiene_Album WHERE Id_Album = :ida";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":ida" => $ida));
+		$sql = "DELETE FROM Album WHERE Id_Album = :ida";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":ida" => $ida));
+		return $result;
+	}		
+	
     
 	public function consultaAlbum($param, $conex)
 	{
@@ -48,6 +63,30 @@ class ExistenciaAlbum
 		$resultados=$result->fetchAll();
 		return $resultados;
     }
+	
+	public function buscaNombreAlbum($param, $conex)
+	{
+        $nombre= trim($param->getNom_Album());   
+        $sql = "SELECT Id_Album, Nomb_Album, Anio_Album FROM Album WHERE Nomb_Album LIKE :nom";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
+	
+
+	public function buscaAnioAlbum($param, $conex)
+	{
+        $anio= trim($param->getAnio_Album());
+        $sql = "SELECT Id_Album, Nomb_Album, Anio_Album FROM Album WHERE Anio_Album = :anio";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":anio" => $anio));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
 	
 
 }

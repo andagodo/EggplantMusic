@@ -53,7 +53,7 @@
 										<td>
 											<div class="radio">
 												<label>
-													<input type="radio" name="idpc" id="optionsRadios1" value="<?php echo $datos_ca[$i][0]?>">
+													<input type="radio" name="idpc" id="optionsRadios1" value="<?php echo $datos_ca[$i][0]?>" required>
 												</label>
 											</div>
 										</td>

@@ -73,6 +73,15 @@ class Album
         return ($pu->altaAlbum($this, $conex));
     }    
     
+	public function eliminaAlbum($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->eliminaAlbum($this, $conex);
+      return $datos;
+    }	
+	
+	
+	
 	public function consultaAlbum($conex)
     {
       $pu= new ExistenciaAlbum;
@@ -84,6 +93,21 @@ class Album
     {
       $pu= new ExistenciaAlbum;
       $datos= $pu->consultaTodosAlbum($conex);
+      return $datos;
+    }	
+
+	public function buscaNombreAlbum($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->buscaNombreAlbum($this, $conex);
+      return $datos;
+    }		
+
+
+	public function buscaAnioAlbum($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->buscaAnioAlbum($this, $conex);
       return $datos;
     }	
 	

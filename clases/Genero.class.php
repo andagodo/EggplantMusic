@@ -11,7 +11,7 @@ class Genero
 
     function __construct($idg='',$nomg='', $desc='')
     {
-        $this->IDequipo= $idg;
+        $this->Id_Genero= $idg;
 		$this->Nom_Genero= $nomg;
         $this->Desc_Genero= $desc;
     }
@@ -68,6 +68,14 @@ class Genero
         return ($pu->altaGenero($this, $conex));
     }    
     
+	
+	public function eliminaGenero($conex)
+    {
+      $pu= new ExistenciaGenero;
+      $datos= $pu->eliminaGenero($this, $conex);
+      return $datos;
+    }		
+	
 /*	
 	public function consultaEstado($conex)
 	{
@@ -77,5 +85,20 @@ class Genero
     }
 
 	*/
+	
+	public function buscaNombreGenero($conex)
+    {
+      $pu= new ExistenciaGenero;
+      $datos= $pu->buscaNombreGenero($this, $conex);
+      return $datos;
+    }		
+
+	public function buscaDescGenero($conex)
+    {
+      $pu= new ExistenciaGenero;
+      $datos= $pu->buscaDescGenero($this, $conex);
+      return $datos;
+    }		
+	
 }
 ?>

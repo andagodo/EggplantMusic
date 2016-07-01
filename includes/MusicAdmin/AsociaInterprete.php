@@ -53,7 +53,7 @@
 										<td>
 											<div class="radio">
 												<label>
-													<input type="radio" name="idc" id="optionsRadios1" value="<?php echo $datos_ac[$i][0]?>">
+													<input type="radio" name="idc" id="optionsRadios1" value="<?php echo $datos_ac[$i][0]?>" required>
 												</label>
 											</div>
 										</td>
@@ -79,13 +79,13 @@
 					$Cuenta=count($datos_al);
 					?>
 					
-					<select class="form-control" name='idi' required>
-						<option value="00">Interpretes</option>
+					<select class="form-control" name='idi'>
+						<option value="00" required>Interpretes</option>
 						<?php
 						for ($i=0;$i<$Cuenta;$i++)
 						{
 						?>
-							<option value="<?php echo $datos_al[$i][0]?>"  ><?php echo $datos_al[$i][1]?> // <?php echo $datos_al[$i][2]?></option>
+							<option value="<?php echo $datos_al[$i][0]?>"><?php echo $datos_al[$i][1]?> // <?php echo $datos_al[$i][2]?></option>
 						<?php
 						}
 						?>
