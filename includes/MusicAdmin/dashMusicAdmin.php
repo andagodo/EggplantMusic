@@ -83,11 +83,11 @@ if ($rol == "MusicAdmin" ){
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">124</div>
-                                        <div>Canciones Totales!</div>
+                                        <div>Álbum sin Canciones!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/MusicAdmin/AltaMusica.php">
+                            <a href="/includes/MusicAdmin/AsociaAlbum.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -105,11 +105,11 @@ if ($rol == "MusicAdmin" ){
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">13</div>
-                                        <div>Álbumes totales!</div>
+                                        <div>Intérpretes sin Canciones!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/MusicAdmin/AltaAlbum.php">
+                            <a href="/includes/MusicAdmin/AsociaInterprete.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

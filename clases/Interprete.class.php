@@ -81,12 +81,33 @@ class Interprete
       return $datos;
     }
 	
+	public function buscaNombreInterprete($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->buscaNombreInterprete($this, $conex);
+      return $datos;
+    }
+
+	public function buscaPaisInterprete($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->buscaPaisInterprete($this, $conex);
+      return $datos;
+    }			
+	
 	// public function consultaEstado($conex)
 	// {
       // $pu= new ExistenciaEstado;
       // return $pu->consultaEstado($this, $conex);
 	  
     // }
+	
+	public function eliminaInterprete($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->eliminaInterprete($this, $conex);
+      return $datos;
+    }	
 	
 }
 ?>

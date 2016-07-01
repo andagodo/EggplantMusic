@@ -57,7 +57,17 @@ class ExistenciaInterprete
         }
     }
 
-
+	public function eliminaInterprete($param, $conex)
+	{
+		$idi = trim($param->getId_Interprete());
+		$sql = "DELETE FROM Pertenece_Cancion WHERE Id_Interprete = :idi";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idi" => $idi));
+		$sql = "DELETE FROM Interprete WHERE Id_Interprete = :idi";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idi" => $idi));
+		return $result;
+	}
     
 	public function consultaUnoInterprete($param, $conex)
 	{
@@ -92,5 +102,31 @@ class ExistenciaInterprete
        return $resultados;
 	}
 	*/
+	
+	public function buscaNombreInterprete($param, $conex)
+	{
+        $nombre= trim($param->getNom_Interprete());   
+        $sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete WHERE Nom_Interprete LIKE :nom";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }			
+	
+
+	public function buscaPaisInterprete($param, $conex)
+	{
+        $pais= trim($param->getPais_Interprete());   
+        $sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete WHERE Pais_Interprete LIKE :pais";
+        $result = $conex->prepare($sql);
+		$pais = "%".$pais."%";
+	    $result->execute(array(":pais" => $pais));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+	
 }
 ?>
