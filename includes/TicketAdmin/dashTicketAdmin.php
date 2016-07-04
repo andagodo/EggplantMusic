@@ -1,8 +1,5 @@
-<?php
-if ($rol == "TicketAdmin" ){
-?>
-
-<div id="page-wrapper">
+<div id="DASH">
+	<div id="page-wrapper">
 
             <div class="container-fluid">
 
@@ -127,8 +124,5 @@ if ($rol == "TicketAdmin" ){
 				
             </div>
 
-		</div>
-		
-<?php
-
-	}
+	</div>
+</div>

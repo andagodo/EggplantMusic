@@ -1,8 +1,5 @@
-<?php
-if ($rol == "SuperAdmin" ){
-?>
-
-<div id="page-wrapper">
+<div id="DASH">	
+	<div id="page-wrapper">
 
             <div class="container-fluid">
 
@@ -128,7 +125,4 @@ if ($rol == "SuperAdmin" ){
             </div>
 
 		</div>
-	
-<?php
-
-	}
+</div>

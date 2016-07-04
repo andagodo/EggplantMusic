@@ -5,15 +5,23 @@ $path = parse_url($directoryURI, PHP_URL_PATH);
 $posision = explode('/', $path);
 if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2];}
 
-	if ($rol == "MusicAdmin"){
-		?>		
+	if ($rol == "SuperAdmin" ){
+		?>
+			
+	
 	        <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="<?php if ($pagina=="cargaMenu.php") {echo "active"; } else  {echo "noactive";}?>">
-                        <a href="/presentacion/cargaMenu.php"><i class="fa fa-fw fa-dashboard"></i> Music Dashboard</a>
+                        <a href="/presentacion/cargaMenu.php"><i class="fa fa-fw fa-dashboard"></i> SuperAdmin Dashboard</a>
+                    </li>
+                    <li class="<?php if ($pagina=="AltaAdmin.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/SAdmin/AltaAdmin.php"><i class="fa fa-fw fa-file"></i> Alta Administradores</a>
+                    </li>
+                    <li class="<?php if ($pagina=="BajaAdmin.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/SAdmin/BajaAdmin.php"><i class="fa fa-fw fa-edit"></i> Baja Administradores</a>
                     </li>
 					
-                    <li>
+                   <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#musica"><i class="fa fa-fw fa-arrows-v"></i> Canciones <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="musica" class="collapse">
 							<li class="<?php if ($pagina=="AltaMusica.php") {echo "active"; } else  {echo "noactive";}?>">
@@ -49,20 +57,6 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
                         </ul>
                     </li>
 
-					
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#interprete"><i class="fa fa-fw fa-arrows-v"></i> Intérpretes <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="interprete" class="collapse">
-							<li class="<?php if ($pagina=="AltaGenero.php") {echo "active"; } else  {echo "noactive";}?>">
-								<a href="/includes/MusicAdmin/AltaInterprete.php"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Intérprete</a>
-							</li>
-							<li class="<?php if ($pagina=="BajaGenero.php") {echo "active"; } else  {echo "noactive";}?>">
-								<a href="/includes/MusicAdmin/BajaInterprete.php"><i class="fa fa-fw fa-edit"></i> Baja Intérprete</a>
-							</li>
-                        </ul>
-                    </li>					
-					
-					
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#asocia"><i class="fa fa-fw fa-arrows-v"></i> Asociaciones <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="asocia" class="collapse">
@@ -75,28 +69,33 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
                         </ul>
                     </li>
 					
- <!--                   <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+					<li class="<?php if ($pagina=="AltaPlaylist.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/PlaylistAdmin/AltaPlaylist.php"><i class="fa fa-fw fa-edit"></i> Alta Playlist</a>
                     </li>
 					
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    <li class="<?php if ($pagina=="BajaPlaylist.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/PlaylistAdmin/BajaPlaylist.php"><i class="fa fa-fw fa-file"></i> Baja Playlist</a>
                     </li>
+					
+                    <li class="<?php if ($pagina=="ModificaPlaylist.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/PlaylistAdmin/ModificaPlaylist.php"><i class="fa fa-fw fa-table"></i> Modificar Playlist</a>
+                    </li>						
 
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    <li class="<?php if ($pagina=="EstadisticaPlaylist.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/PlaylistAdmin/EstadisticaPlaylist.php"><i class="fa fa-fw fa-bar-chart-o"></i> Estadisticas</a>
                     </li>
 					
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    <li class="<?php if ($pagina=="RespondeTicket.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/TicketAdmin/RespondeTicket.php"><i class="fa fa-fw fa-edit"></i> Responder Ticket</a>
                     </li>
 					
--->	
-	
+                    <li class="<?php if ($pagina=="BajaTicket.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <a href="/includes/TicketAdmin/BajaTicket.php"><i class="fa fa-fw fa-file"></i> Baja Ticket</a>
+                    </li>		
+					
                 </ul>
             </div>	
         </nav>
-			
-<?php
+		
 
-	}
+<script src="../estilos/js/jssadmin.js"></script>	

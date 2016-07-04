@@ -14,7 +14,6 @@ $salt = '34a@$#aA9823$';
 $pass= hash('sha512', $salt . $pass);
 
 $conex = conectar();
-//$u= new Usuario ('',$login,md5($pass));
 $u= new Admin ('','','',$mai,$pass);
 
 $ok=$u->coincideLoginAdmin($conex);
@@ -36,7 +35,7 @@ if ($ok)
      
   <script language="javascript">
   
-   location.href="/presentacion/cargaMenu.php";
+   location.href="/presentacion/Menu.php";
 
  </script>  
   <?php

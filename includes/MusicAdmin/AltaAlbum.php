@@ -1,6 +1,9 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/MenuMusicAdmin.php"; ?>
+<?php
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Album.class.php';
+$conex = conectar();
+?>
 
 		<div id="page-wrapper">
 
@@ -57,6 +60,3 @@
 
 		</div>
 	</div>
-
-
- <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"; ?>

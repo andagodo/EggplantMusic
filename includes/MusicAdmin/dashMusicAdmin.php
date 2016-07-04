@@ -1,9 +1,7 @@
-<?php
-if ($rol == "MusicAdmin" ){
-?>
 
+<div id="DASH">
         <div id="page-wrapper">
-
+		
             <div class="container-fluid">
 
                 <!-- Page Heading -->
@@ -128,7 +126,4 @@ if ($rol == "MusicAdmin" ){
             </div>
 
 		</div>	
-		
-<?php
-
-	}
+</div>
