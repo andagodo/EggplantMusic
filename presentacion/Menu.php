@@ -268,4 +268,5 @@ if ($rol == "SuperAdmin" ){
 	include $_SERVER['DOCUMENT_ROOT'] . "/includes/TicketAdmin/dashTicketAdmin.php";
 }
 include $_SERVER['DOCUMENT_ROOT'] . "../includes/footer.php"; 
+
 ?>

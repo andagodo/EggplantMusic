@@ -1,7 +1,20 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/PerteneceCancion.class.php';
+session_start();
 $conex = conectar();
+
+if(! isset($_SESSION["mai"])){
+	?>
+ <script language="javascript">
+   window.alert("Debes de estar logeado para ingresar a esta página.");
+   location.href="/presentacion/indice.php";
+ </script>
+ <?php
+}
+
+
+
 ?>
 		<div id="page-wrapper">
 
