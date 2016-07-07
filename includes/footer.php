@@ -7,7 +7,6 @@ if(! isset($_SESSION["mai"])){
  </script>
  <?php
 }
-
 ?>
 
 
@@ -17,4 +16,3 @@ if(! isset($_SESSION["mai"])){
     <script src="../estilos/js/plugins/morris/morris-data.js"></script>
 
 </body>
-

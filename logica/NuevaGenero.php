@@ -25,7 +25,7 @@ if ($ok)
     echo "<tr height='400'>";
         echo "<td class='leyenda'>";
             echo "Se inserto el Género: $nomg";
-			echo " </br><a href=\"\presentacion\cargaMenu.php\.\" style='color: black'>Volver</a>";
+			echo " </br><a href=\"\presentacion\Menu.php\.\" style='color: black'>Volver</a>";
         echo "</td>";
     echo "</tr>";
     echo "</table>";

@@ -20,6 +20,27 @@
         });
 		
 		$(document).ready(function() {
+            $('#sadmindash').click(function(){
+                $("#DASH").load('../includes/SAdmin/dashSAdmin.php');
+
+            });
+        });
+
+		$(document).ready(function() {
+            $('#playlistdash').click(function(){
+                $("#DASH").load('../includes/PlaylistAdmin/dashPlaylistAdmin.php');
+
+            });
+        });
+		
+		$(document).ready(function() {
+            $('#ticketdash').click(function(){
+                $("#DASH").load('../includes/TicketAdmin/dashTicketAdmin.php');
+
+            });
+        });		
+		
+		$(document).ready(function() {
             $('#altamusica').click(function(){
                 $("#DASH").load('../includes/MusicAdmin/AltaMusica.php');
 

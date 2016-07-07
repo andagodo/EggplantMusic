@@ -111,17 +111,17 @@ if ($rol == "SuperAdmin" ){
 ?>
 	        <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li id="menumusicadashboard">
+                    <li id="menumusicadashboard" class="active">
                         <a href="#" id="musicdash"><i class="fa fa-fw fa-dashboard"></i> Music Dashboard</a>
                     </li>
-                    <li id="menusuperdashboard">
-                        <a href="#" id="musicdash"><i class="fa fa-fw fa-dashboard"></i> Super Admin Dashboard</a>
+                    <li id="menusuperdashboard" class="active">
+                        <a href="#" id="sadmindash"><i class="fa fa-fw fa-dashboard"></i> Super Admin Dashboard</a>
                     </li>					
-                    <li id="menuplaylistdashboard">
-                        <a href="#" id="musicdash"><i class="fa fa-fw fa-dashboard"></i> Playlist Dashboard</a>
+                    <li id="menuplaylistdashboard" class="active">
+                        <a href="#" id="playlistdash"><i class="fa fa-fw fa-dashboard"></i> Playlist Dashboard</a>
                     </li>
-                    <li id="menuticketdashboard">
-                        <a href="#" id="musicdash"><i class="fa fa-fw fa-dashboard"></i> Ticket Dashboard</a>
+                    <li id="menuticketdashboard" class="active">
+                        <a href="#" id="ticketdash"><i class="fa fa-fw fa-dashboard"></i> Ticket Dashboard</a>
                     </li>
 					
                     <li id="menusadmin">

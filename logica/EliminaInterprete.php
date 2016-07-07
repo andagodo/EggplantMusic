@@ -18,7 +18,7 @@ $ok=$u->eliminaInterprete($conex);
 		echo "<tr height='400'>";
 			echo "<td class='leyenda'>";
 				echo "Se eliminó el Intérprete";
-				echo " </br><a href=\"\presentacion\cargaMenu.php\.\" style='color: black'>Volver</a>";
+				echo " </br><a href=\"\presentacion\Menu.php\.\" style='color: black'>Volver</a>";
 			echo "</td>";
 		echo "</tr>";
 		echo "</table>";
@@ -27,7 +27,7 @@ $ok=$u->eliminaInterprete($conex);
 }
 catch (PDOException $e) {
     print "Error en la base de datos!: " . "<br/>" . $e->getMessage() . "<br/>";
-	print " </br><a href=\"\presentacion\cargaMenu.php\.\" style='color: black'>Volver</a>";
+	print " </br><a href=\"\presentacion\Menu.php\.\" style='color: black'>Volver</a>";
 
 }
 // desconectar($conex);
