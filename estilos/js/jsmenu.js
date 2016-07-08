@@ -1,4 +1,37 @@
         $(document).ready(function() {
+            $('#dashSAdmin').click(function(){
+                $("#DASH").load('../includes/SAdmin/dashSAdmin.php');
+
+            });
+        });
+		
+		$(document).ready(function() {
+            $('#dashMusicAdmin').click(function(){
+                $("#DASH").load('../includes/MusicAdmin/dashMusicAdmin.php');
+
+            });
+        });
+
+        $(document).ready(function() {
+            $('#dashPlaylistAdmin').click(function(){
+                $("#DASH").load('../includes/PlaylistAdmin/dashPlaylistAdmin.php');
+
+            });
+        });
+		
+		$(document).ready(function() {
+            $('#dashTicketAdmin').click(function(){
+                $("#DASH").load('../includes/TicketAdmin/dashTicketAdmin.php');
+
+            });
+        });
+
+
+
+
+
+
+        $(document).ready(function() {
             $('#altaadmin').click(function(){
                 $("#DASH").load('../includes/SAdmin/AltaAdmin.php');
 

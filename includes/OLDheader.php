@@ -20,8 +20,8 @@ $u= new Admin ('','','',$_SESSION["mai"]);
 $Tipo=$u->consultaTipoAdmin($conex);
 $rol = $Tipo[0][0];
 $nombre = $Tipo[0][1];
-
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 150)) {
     session_unset();
     session_destroy();
 	?>
@@ -31,7 +31,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 	</script>
 	<?php
 }else{
-	$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+	
 
 ?>
 
@@ -86,7 +86,5 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
                 </li>
             </ul>
 			
-<?php
-}
-?>
+
 

@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 if(! isset($_SESSION["mai"])){
 	?>
  <script language="javascript">
@@ -10,7 +11,7 @@ if(! isset($_SESSION["mai"])){
 }
 ?>
 
-<div id="DASH">	
+
 	<div id="page-wrapper">
 
             <div class="container-fluid">
@@ -137,4 +138,3 @@ if(! isset($_SESSION["mai"])){
             </div>
 
 		</div>
-</div>

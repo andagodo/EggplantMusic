@@ -1,6 +1,44 @@
 <?php
+session_start();
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
+$conex = conectar();
+?>
+<script src="../estilos/js/jquery.js"></script>
+<?php
+if(! isset($_SESSION["mai"])){
+	?>
+ <script language="javascript">
+   window.alert("Debes de estar logeado para ingresar a esta página.");
+   location.href="/presentacion/indice.php";
+ </script>
+ <?php
+}
 
-include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php";
+$u= new Admin ('','','',$_SESSION["mai"]);
+
+$Tipo=$u->consultaTipoAdmin($conex);
+$rol = $Tipo[0][0];
+$nombre = $Tipo[0][1];
+
+
+
+if (isset($_SESSION["LAST_ACTIVITY"])) {
+    if (time() - $_SESSION["LAST_ACTIVITY"] > 50) {
+        // last request was more than 30 minutes ago
+        session_unset();     // unset $_SESSION variable for the run-time 
+        session_destroy();   // destroy session data in storage
+		?>
+	<script language="javascript">
+		window.alert("Tiempo de espera excedido.");
+		location.href="/presentacion/indice.php";
+	</script>
+	<?php
+    } else if (time() - $_SESSION["LAST_ACTIVITY"] > 1) {
+        $_SESSION["LAST_ACTIVITY"] = time(); // update last activity time stamp
+    }
+}
+
 
 //////////////////////// MENU DE SUPER ADMINISTRADOR////////////////////////
 if ($rol == "SuperAdmin" ){
@@ -18,7 +56,8 @@ if ($rol == "SuperAdmin" ){
 			$('#menuinterprete').show();
 			$('#menuasocia').show();
 			$('#menuplaylist').show();
-			$('#menuticket').show();			
+			$('#menuticket').show();
+			$("#DASH").load('../includes/SAdmin/dashSAdmin.php');			
 	});
 </script>
 <?php
@@ -40,6 +79,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuasocia').show();
 			$('#menuplaylist').hide();
 			$('#menuticket').hide();
+			$("#DASH").load('../includes/MusicAdmin/dashMusicAdmin.php');
 	});
 </script>
 <?php
@@ -60,7 +100,8 @@ if ($rol == "SuperAdmin" ){
 			$('#menuinterprete').hide();
 			$('#menuasocia').hide();
 			$('#menuplaylist').show();
-			$('#menuticket').hide();	
+			$('#menuticket').hide();
+			$("#DASH").load('../includes/PlaylistAdmin/dashPlaylistAdmin.php');
 	});
 </script>
 <?php
@@ -82,6 +123,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuasocia').hide();
 			$('#menuplaylist').hide();
 			$('#menuticket').show();
+			$("#DASH").load('../includes/TicketAdmin/dashTicketAdmin.php');
 	});
 </script>
 <?php
@@ -107,20 +149,71 @@ if ($rol == "SuperAdmin" ){
 	</script>
 <?php
 }
-	
 ?>
+
+<head>
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EggplantMusic - Administración">
+    <meta name="author" content="EggplantMusic">
+
+    <title>EggplantMusic - Admin</title>
+	<link rel="stylesheet" type ="text/css" href="../estilos/estilos.css" />
+    <link href="../estilos/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../estilos/css/sb-admin.css" rel="stylesheet">
+    <link href="../estilos/css/plugins/morris.css" rel="stylesheet">
+    <link href="../estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+	<div id="wrapper">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		    <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../presentacion/Menu.php">EggplantMusic // Administración</a>
+            </div>
+			<ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php  echo $nombre; ?> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Mensajes</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Configuración</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="../presentacion/logout.php"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
 	        <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li id="menumusicadashboard" class="active">
+                    <li id="menumusicadashboard">
                         <a href="#" id="musicdash"><i class="fa fa-fw fa-dashboard"></i> Music Dashboard</a>
                     </li>
-                    <li id="menusuperdashboard" class="active">
+                    <li id="menusuperdashboard">
                         <a href="#" id="sadmindash"><i class="fa fa-fw fa-dashboard"></i> Super Admin Dashboard</a>
                     </li>					
-                    <li id="menuplaylistdashboard" class="active">
+                    <li id="menuplaylistdashboard">
                         <a href="#" id="playlistdash"><i class="fa fa-fw fa-dashboard"></i> Playlist Dashboard</a>
                     </li>
-                    <li id="menuticketdashboard" class="active">
+                    <li id="menuticketdashboard">
                         <a href="#" id="ticketdash"><i class="fa fa-fw fa-dashboard"></i> Ticket Dashboard</a>
                     </li>
 					
@@ -255,18 +348,13 @@ if ($rol == "SuperAdmin" ){
             </div>	
         </nav>
 
-<script src="../estilos/js/jsmenu.js"></script>
-		
-<?php
-if ($rol == "SuperAdmin" ){
-	include $_SERVER['DOCUMENT_ROOT'] . "../includes/SAdmin/dashSAdmin.php";
-}elseif ($rol == "MusicAdmin" ){
-	include $_SERVER['DOCUMENT_ROOT'] . "../includes/MusicAdmin/dashMusicAdmin.php";
-}elseif ($rol == "PlaylAdmin" ){
-	include $_SERVER['DOCUMENT_ROOT'] . "/includes/PlaylistAdmin/dashPlaylistAdmin.php";
-}elseif ($rol == "TicketAdmin" ){
-	include $_SERVER['DOCUMENT_ROOT'] . "/includes/TicketAdmin/dashTicketAdmin.php";
-}
-include $_SERVER['DOCUMENT_ROOT'] . "../includes/footer.php"; 
+<div id="DASH">	
+</div>
 
-?>
+	<script src="../estilos/js/jsmenu.js"></script>
+    <script src="../estilos/js/bootstrap.min.js"></script>
+    <script src="../estilos/js/plugins/morris/raphael.min.js"></script>
+    <script src="../estilos/js/plugins/morris/morris.min.js"></script>
+    <script src="../estilos/js/plugins/morris/morris-data.js"></script>
+
+</body>
