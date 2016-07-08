@@ -1,0 +1,15 @@
+<script type="text/javascript">
+//esto es prueba para agregar a playlist now//
+        $(document).ready(function() {
+            <?php for ($i=0;$i<$Cuenta;$i++) { ?>
+            $('#<?php echo $i;?>').click(function(){
+             //  <?php $_SESSION['pl']= $i;?>//
+               	$("#menu1").addClass('.<?php echo $i?>');
+              //  $("#central").load('../front_include/nowplay.php', { pl : "<?php echo $i;?>" 
+          });
+
+            });
+            
+            <?php  } ?>
+        });
+    </script>
