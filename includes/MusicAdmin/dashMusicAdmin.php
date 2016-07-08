@@ -1,9 +1,17 @@
 <?php
-if ($rol == "MusicAdmin" ){
+if(! isset($_SESSION["mai"])){
+	?>
+ <script language="javascript">
+   window.alert("Debes de estar logeado para ingresar a esta página.");
+   location.href="/presentacion/indice.php";
+ </script>
+ <?php
+}
 ?>
 
+<div id="DASH">
         <div id="page-wrapper">
-
+		
             <div class="container-fluid">
 
                 <!-- Page Heading -->
@@ -128,7 +136,4 @@ if ($rol == "MusicAdmin" ){
             </div>
 
 		</div>	
-		
-<?php
-
-	}
+</div>
