@@ -122,5 +122,34 @@ class Cancion
       return $datos;
     }		
 	
+	
+	public function consultaCancionSinInterprete($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->consultaCancionSinInterprete($this, $conex);
+      return $datos;
+    }
+	
+	public function consultaCancionSinAlbum($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->consultaCancionSinAlbum($this, $conex);
+      return $datos;
+    }	
+
+	public function consultaAlbumSinCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->consultaAlbumSinCancion($this, $conex);
+      return $datos;
+    }	
+
+	public function consultaInterpreteSinCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->consultaInterpreteSinCancion($this, $conex);
+      return $datos;
+    }		
+	
 }
 ?>

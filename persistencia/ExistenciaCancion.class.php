@@ -140,5 +140,53 @@ class ExistenciaCancion
        return $resultados;
 	}
 	*/
+	
+	public function consultaCancionSinInterprete($param,$conex)
+	{
+
+        $sql = "SELECT COUNT (Id_Cancion) FROM Cancion WHERE Id_Cancion NOT IN (SELECT Id_Cancion FROM Pertenece_Cancion)";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
+	
+	
+	public function consultaCancionSinAlbum($param,$conex)
+	{
+
+        $sql = "SELECT COUNT (Id_Cancion) FROM Cancion WHERE Id_Cancion IN (SELECT Id_Cancion FROM Pertenece_Cancion WHERE Id_Pertenece_Cancion NOT IN (SELECT Id_Pertenece_Cancion FROM Contiene_Album))";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
+	
+	public function consultaAlbumSinCancion($param,$conex)
+	{
+
+        $sql = "SELECT count(Id_Album) FROM Album WHERE Id_Album NOT IN (SELECT Id_Album FROM Contiene_Album)";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
+	
+	public function consultaInterpreteSinCancion($param,$conex)
+	{
+
+        $sql = "SELECT count(Id_Interprete) FROM Interprete WHERE Id_Interprete NOT IN (SELECT Id_Interprete FROM Pertenece_Cancion)";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }	
+	
+		
+		
 }
 ?>

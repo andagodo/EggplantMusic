@@ -1,6 +1,9 @@
  <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
  
 session_start();
+$conex = conectar();
 
 if(! isset($_SESSION["mai"])){
 	?>
@@ -49,7 +52,13 @@ if(! isset($_SESSION["mai"])){
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
+                                        <div class="huge">
+											<?php
+												$cuenta1 = new Cancion();
+												$datos1=$cuenta1->consultaCancionSinInterprete($conex);
+												echo $datos1[0][0];
+											?>
+										</div>
                                         <div>Canciones sin Intérprete!</div>
                                     </div>
                                 </div>
@@ -71,7 +80,14 @@ if(! isset($_SESSION["mai"])){
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                        <div class="huge">
+											<?php
+												$cuenta2 = new Cancion();
+												$datos2=$cuenta2->consultaCancionSinAlbum($conex);
+												echo $datos2[0][0];
+											?>										
+										
+										</div>
                                         <div>Canciones sin Álbum!</div>
                                     </div>
                                 </div>
@@ -93,7 +109,14 @@ if(! isset($_SESSION["mai"])){
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
+                                        <div class="huge">
+											<?php
+												$cuenta3 = new Cancion();
+												$datos3=$cuenta3->consultaAlbumSinCancion($conex);
+												echo $datos3[0][0];
+											?>										
+										
+										</div>
                                         <div>Álbum sin Canciones!</div>
                                     </div>
                                 </div>
@@ -115,7 +138,14 @@ if(! isset($_SESSION["mai"])){
                                         <i class="fa fa-support fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
+                                        <div class="huge">
+											<?php
+												$cuenta4 = new Cancion();
+												$datos4=$cuenta4->consultaInterpreteSinCancion($conex);
+												echo $datos4[0][0];
+											?>											
+										
+										</div>
                                         <div>Intérpretes sin Canciones!</div>
                                     </div>
                                 </div>
