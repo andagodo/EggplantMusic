@@ -177,7 +177,13 @@ class Admin
       $pu= new ExistenciaAdmin;
       return $pu->eliminaAdmin($this, $conex);
     }	
-
+	
+	public function TotalAdmin($conex)
+    {
+      $pu= new ExistenciaAdmin;
+      $datos= $pu->TotalAdmin($this, $conex);
+      return $datos;
+    }	
 
 	
 }

@@ -1,9 +1,9 @@
 <?php
 
-class ExistenciaPlaylist
+class ExistenciaTicket
 {
-
-    public function altaPlaylist($param, $conex)
+/*
+    public function altaTicket($param, $conex)
     {
 
 
@@ -64,10 +64,10 @@ class ExistenciaPlaylist
 	
 */
 
-	public function TotalPlaylist($param,$conex)
+	public function TotalTicket($param,$conex)
 	{
 
-        $sql = "SELECT COUNT(Id_Playlist) FROM Crea_Playlist WHERE Id_Usuario = '0'";
+        $sql = "SELECT COUNT(Id_Ticket) FROM Ticket WHERE Resuelto_Ticket = 'N'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();

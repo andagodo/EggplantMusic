@@ -84,7 +84,15 @@ class Playlist
 	  
     }
 
-*/	
+*/
+
+	public function TotalPlaylist($conex)
+    {
+      $pu= new ExistenciaPlaylist;
+      $datos= $pu->TotalPlaylist($this, $conex);
+      return $datos;
+    }
+	
 	
 }
 ?>

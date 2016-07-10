@@ -217,5 +217,18 @@ class ExistenciaAdmin
 		$result->execute(array(":login" => $log));
 		return $result->fetchAll();
 	}
+	
+	public function TotalAdmin($param,$conex)
+	{
+
+        $sql = "SELECT COUNT(Id_Usr_Sistema) FROM Usr_Sistema";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }	
+	
+	
 }
 ?>
