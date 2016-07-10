@@ -27,17 +27,24 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 
 ?>
 
-<html >
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>EggPlantMusic</title>
-     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-     <link rel="stylesheet" href="../estilos/css/play.css">
-     <link rel="stylesheet" href="../estilos/css/audio.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-     <link rel="stylesheet" type ="text/css" href="../estilos/estilos.css" />
-     <link href="../estilos/css/sb-admin.css" rel="stylesheet">
+      
+ <script
+
+        src="https://code.jquery.com/jquery-1.12.4.js"
+        integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="../estilos/css/play.css">
+    <link rel="stylesheet" href="../estilos/css/audio.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type ="text/css" href="../estilos/estilos.css" />
+    <link href="../estilos/css/sb-admin.css" rel="stylesheet">
     <link href="../estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     
   </head>
@@ -147,17 +154,17 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
   <li><a href="#">Añadir playlist</a></li>
 </ul>
 </div>
- </body>
-    <footer>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
-  <script src="../estilos/js/bootstrap.min.js"></script>
-	<script src="../estilos/js/play.js"></script>
-  <script src="../estilos/js/jquery.js"></script>
+
+  <script src="../estilos/js/play.js"></script>
+  
   <script src="../estilos/js/plugins/morris/raphael.min.js"></script>
   <script src="../estilos/js/plugins/morris/morris.min.js"></script>
   <script src="../estilos/js/plugins/morris/morris-data.js"></script>
-  <script src="../estilos/js/menu1.js"></script>
+
+ </body>
+    <footer>
+
+
 </footer>
 </footer>
 </html>
