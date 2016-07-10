@@ -14,7 +14,7 @@ $salt = '34a@$#aA9823$';
 $pass= hash('sha512', $salt . $pass);
 
 $conex = conectar();
-$u= new Admin ('','','',$mai,$pass);
+$u= new Admin ('','',$mai,$pass);
 
 $ok=$u->coincideLoginAdmin($conex);
 

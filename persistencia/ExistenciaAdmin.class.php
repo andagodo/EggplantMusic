@@ -11,7 +11,6 @@ class ExistenciaAdmin
 
 		$tus=$param->getTipo_Usr_Sist();
 		$feal=$param->getFech_Alta_Usr_Sist();
-		$felo=$param->getFech_Login_Usr_Sist();
         $nomu=$param->getNombre_Usr_Sist();
         $mus=$param->getMail_Usr_Sist();
         $pus=$param->getPass_Usr_Sist();
@@ -24,12 +23,11 @@ class ExistenciaAdmin
         
         //Genera la sentencia a ejecutar
 		//La sql ES UN EJEMPLO LE FALTA todos los campos, depende de sus atributos
-        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Fech_Login_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist) VALUES (:tipousr, :fecha, :nombre, :mail, :pass, :fechaalta)";
+        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist) VALUES (:tipousr, :nombre, :mail, :pass, :fechaalta)";
       
-		echo $felo;
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":tipousr" => $tus, ":fecha" => $felo, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal));
+		$result->execute(array(":tipousr" => $tus, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal));
         
         //Para saber si ocurrió un error
         if($result)
@@ -79,7 +77,7 @@ class ExistenciaAdmin
 	{
 //        $idp= trim($param->getIDpersona());   
 		$tus= trim($param->getTipo_Usr_Sist());
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Fech_Login_Usr_Sist FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo";
 		
         $result = $conex->prepare($sql);
 	    $result->execute(array(":tipo" => $tus));
@@ -96,7 +94,7 @@ class ExistenciaAdmin
 //        $idp= trim($param->getIDpersona());   
 		$texto= trim($texto);
 		$campo= trim($campo);
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Fech_Login_Usr_Sist FROM Usr_Sistema WHERE :campo='%:texto%'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE :campo='%:texto%'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute(array(":texto" => $texto,":campo" => $campo ));
@@ -111,7 +109,7 @@ class ExistenciaAdmin
 	public function buscaNombreAdmin($param, $conex)
 	{
         $nombre= trim($param->getNombre_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Fech_Login_Usr_Sist FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -124,7 +122,7 @@ class ExistenciaAdmin
 	public function buscaMailAdmin($param, $conex)
 	{
         $mail= trim($param->getMail_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Fech_Login_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai";
         $result = $conex->prepare($sql);
 		$mail = "%".$mail."%";
 	    $result->execute(array(":mai" => $mail));
@@ -136,7 +134,7 @@ class ExistenciaAdmin
 	public function buscaFAltaAdmin($param, $conex)
 	{
         $falta= trim($param->getFech_Alta_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Fech_Login_Usr_Sist FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa";
         $result = $conex->prepare($sql);
 		$falta = "%".$falta."%";
 	    $result->execute(array(":fa" => $falta));

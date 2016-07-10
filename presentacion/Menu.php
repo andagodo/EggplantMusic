@@ -15,7 +15,7 @@ if(! isset($_SESSION["mai"])){
  <?php
 }
 
-$u= new Admin ('','','',$_SESSION["mai"]);
+$u= new Admin ('','',$_SESSION["mai"]);
 
 $Tipo=$u->consultaTipoAdmin($conex);
 $rol = $Tipo[0][0];

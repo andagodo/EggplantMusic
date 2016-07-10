@@ -8,18 +8,14 @@ class Cancion
 	private $Nom_Cancion;
     private $Dur_Cancion;
     private $Ruta_Arch_Cancion;
-	private $Cant_V_Playlist;
-    private $Cant_Repr;
 	private $Id_Genero;
 
-    function __construct($idc='',$nom='', $dur='', $ruta='', $cvp='', $crep='', $idg='')
+    function __construct($idc='',$nom='', $dur='', $ruta='', $idg='')
     {
         $this->Id_Cancion= $idc;
 		$this->Nom_Cancion= $nom;
         $this->Dur_Cancion= $dur;
         $this->Ruta_Arch_Cancion= $ruta;
-        $this->Cant_V_Playlist= $cvp;
-        $this->Cant_Repr= $crep;
 		$this->Id_Genero= $idg;
     }
     
@@ -45,15 +41,6 @@ class Cancion
       $this->Ruta_Arch_Cancion= $ruta;
     }
     
-     public function setCant_V_Playlist($cvp)
-    {
-      $this->Cant_V_Playlist= $cvp;
-    }
-
-    public function setCant_Repr($crep)
-    {
-      $this->Cant_Repr= $crep;
-    }
 	
     public function setId_Genero($idg)
     {
@@ -82,15 +69,6 @@ class Cancion
       return $this->Ruta_Arch_Cancion;
     }
     
-    public function getCant_V_Playlist()
-    {
-      return $this->Cant_V_Playlist;
-    }
-
-    public function getCant_Repr()
-    {
-      return $this->Cant_Repr;
-    }
 	
     public function getId_Genero()
     {

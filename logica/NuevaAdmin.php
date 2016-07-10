@@ -15,7 +15,7 @@ $feal=date("d/m/Y");
 
 $conex = conectar();
 //$u= new Persona ('',$login,md5($pass));
-$u= new Admin ($tus,'',$nomu,$mus,$pus,$feal);
+$u= new Admin ($tus,$nomu,$mus,$pus,$feal);
 
 $ok=$u->altaAdmin($conex);
 
@@ -26,7 +26,7 @@ if ($ok)
     echo "<tr height='400'>";
         echo "<td class='leyenda'>";
             echo "Se creo un nuevo Administrador: $nomu";
-			echo " </br><a href=\"\presentacion\Menu.php\.\" style='color: black'>Volver</a>";
+			echo " </br><a href=\"\presentacion\Menu.php\" style='color: black'>Volver</a>";
         echo "</td>";
     echo "</tr>";
     echo "</table>";

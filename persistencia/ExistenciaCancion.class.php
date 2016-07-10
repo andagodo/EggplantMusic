@@ -10,14 +10,12 @@ class ExistenciaCancion
         $nom=$param->getNom_Cancion();
         $dur=$param->getDur_Cancion();
         $ruta = $param->getRuta_Arch_Cancion();
-        $cvp = "0";
-        $crep = "0";
 		$idg = $param->getId_Genero();
 
-        $sql = "INSERT INTO Cancion ( Nom_Cancion, Dur_Cancion, Ruta_Arch_Cancion, Cant_V_Playlist, Cant_Repr, Id_Genero) VALUES ( :nombre, :duracancion, :rutaarch, :cantplay, :cantrepr, :idgenero)";
+        $sql = "INSERT INTO Cancion ( Nom_Cancion, Dur_Cancion, Ruta_Arch_Cancion, Id_Genero) VALUES ( :nombre, :duracancion, :rutaarch, :idgenero)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":duracancion" => $dur, ":rutaarch" => $ruta, ":cantplay" => $cvp, ":cantrepr" => $crep, ":idgenero" => $idg));
+		$result->execute(array(":nombre" => $nom, ":duracancion" => $dur, ":rutaarch" => $ruta, ":idgenero" => $idg));
         
         
         if($result)

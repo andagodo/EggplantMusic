@@ -7,16 +7,14 @@ class Admin
 //    private $Id_Usr_Sistema;
 	private $Tipo_Usr_Sist;
     private $Fech_Alta_Usr_Sist;
-    private $Fech_Login_Usr_Sist;
 	private $Nombre_Usr_Sist;
     private $Mail_Usr_Sist;
     private $Pass_Usr_Sist;
 
     
-    function __construct($tus='', $felo='', $nomu='', $mus='', $pus='', $feal='')
+    function __construct($tus='', $nomu='', $mus='', $pus='', $feal='')
     {
         $this->Tipo_Usr_Sist= $tus;
-		$this->Fech_Login_Usr_Sist= $felo;
         $this->Nombre_Usr_Sist= $nomu;
         $this->Mail_Usr_Sist= $mus;
         $this->Pass_Usr_Sist= $pus;
@@ -36,10 +34,6 @@ class Admin
       $this->Fech_Alta_Usr_Sist= $feal;
     }
     
-    public function setFech_Login_Usr_Sist($felo)
-    {
-      $this->Fech_Login_Usr_Sist= $felo;
-    }
     
     public function setNombre_Usr_Sist($nomu)
     {
@@ -71,10 +65,6 @@ class Admin
       return $this->Fech_Alta_Usr_Sist;
     }	
     
-    public function getFech_Login_Usr_Sist()
-    {
-      return $this->Fech_Login_Usr_Sist;
-    }
     
     public function getNombre_Usr_Sist()
     {
