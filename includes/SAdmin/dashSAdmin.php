@@ -7,7 +7,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Ticket.class.php';
  
 session_start();
 $conex = conectar();
+?>
 
+<script src="../estilos/js/jquery.js"></script>
+<script src="../estilos/js/jsmenu.js"></script>
+
+<?php
 if(! isset($_SESSION["mai"])){
 	?>
  <script language="javascript">
@@ -67,7 +72,7 @@ if(! isset($_SESSION["mai"])){
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/SAdmin/AltaAdmin.php">
+                            <a href="#" id="altaadmin2">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -95,7 +100,7 @@ if(! isset($_SESSION["mai"])){
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/MusicAdmin/AsociaInterprete.php">
+                            <a href="#" id="asociainterprete4">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -123,7 +128,7 @@ if(! isset($_SESSION["mai"])){
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/PlaylistAdmin/AltaPlaylist.php">
+                            <a href="#" id="altaplaylist2">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -152,7 +157,7 @@ if(! isset($_SESSION["mai"])){
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/TicketAdmin/RespondeTicket.php">
+                            <a href="#" id="respticket2">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

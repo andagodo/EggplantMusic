@@ -45,9 +45,11 @@ if(! isset($_SESSION["mai"])){
 			
 			
 			<div class="row">
-                <div class="col-lg-6">
+			<form role="form" action='/logica/CancionInterprete.php' method="POST">
+				<div class="col-lg-6">
+					
 					<h4>Canciones sin Intérprete:</h4>
-					<form role="form" action='/logica/CancionInterprete.php' method="POST">
+					
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
 							<div class="form-group">
@@ -61,11 +63,12 @@ if(! isset($_SESSION["mai"])){
 									for ($i=0;$i<$Cuenta;$i++)
 									{
 								?>
-								
+
                                 <tbody>
                                     <tr>
 										<td>
 											<div class="radio">
+											
 												<label>
 													<input type="radio" name="idc" id="optionsRadios1" value="<?php echo $datos_ac[$i][0]?>" required>
 												</label>
@@ -80,13 +83,18 @@ if(! isset($_SESSION["mai"])){
 								?>
 			
 								</tbody>
+								
 							</div>	
                             </table>
+											
                         </div>
+
 				</div>
+
 				<div class="col-lg-6">
+
 					<h4>Asociación:</h4></br>
-					
+										
 					<?php
 					$album = new PerteneceCancion();
 					$datos_al=$album->consultaPCAlbum($conex);
@@ -103,15 +111,13 @@ if(! isset($_SESSION["mai"])){
 						<?php
 						}
 						?>
-                    </select></br>
-					
-					<button type="submit" class="btn btn-default">Aplicar Asociación</button>
 						
+                    </select></br>
+					<button type="submit" class="btn btn-default">Aplicar Asociación</button>					
+	
 				</div>
-
-				</form>
-
+			</form>
+				
 			</div>
 
 		</div>
-	</div>

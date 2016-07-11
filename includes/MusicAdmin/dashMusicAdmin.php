@@ -4,7 +4,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
  
 session_start();
 $conex = conectar();
+?>
 
+<script src="../estilos/js/jquery.js"></script>
+<script src="../estilos/js/jsmenu.js"></script>
+
+<?php
 if(! isset($_SESSION["mai"])){
 	?>
  <script language="javascript">
@@ -63,7 +68,7 @@ if(! isset($_SESSION["mai"])){
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/MusicAdmin/AsociaInterprete.php">
+                            <a href="#" id="asociainterprete2">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -92,7 +97,7 @@ if(! isset($_SESSION["mai"])){
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/MusicAdmin/AsociaAlbum.php">
+                            <a href="#" id="asociaalbum2">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -121,7 +126,7 @@ if(! isset($_SESSION["mai"])){
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/MusicAdmin/AsociaAlbum.php">
+                            <a href="#" id="asociaalbum3">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -150,7 +155,7 @@ if(! isset($_SESSION["mai"])){
                                     </div>
                                 </div>
                             </div>
-                            <a href="/includes/MusicAdmin/AsociaInterprete.php">
+                            <a href="#" id="asociainterprete3">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -15,7 +15,6 @@ if(! isset($_SESSION["mai"])){
 }
 
 ?>
-
 		<div id="page-wrapper">
 
             <div class="container-fluid">

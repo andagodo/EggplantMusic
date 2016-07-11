@@ -142,7 +142,7 @@ class ExistenciaAdmin
 
        return $resultados;
     }
-	
+/*	
 	public function buscaFLoginAdmin($param, $conex)
 	{
         $flogin= trim($param->getFech_Login_Usr_Sist());   
@@ -154,7 +154,7 @@ class ExistenciaAdmin
 
        return $resultados;
     }	
-	
+*/	
 	
 
 	public function consultaTodos($param, $conex)

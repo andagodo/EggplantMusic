@@ -45,9 +45,10 @@ if(! isset($_SESSION["mai"])){
 			
 			<p><b>NOTA: </b>Sólo se muestran canciones que tengan asociado un intérprete.</p>
 			<div class="row">
+			<form role="form" action='/logica/CancionAlbum.php' method="POST">
                 <div class="col-lg-6">
 					<h4>Canciones sin Álbum:</h4>
-					<form role="form" action='/logica/CancionAlbum.php' method="POST">
+					
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
 							<div class="form-group">
