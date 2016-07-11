@@ -99,7 +99,7 @@ display: inline-block;
 		#album .active a:hover {
 		color: #222; /* Color de la canción activa al pasar el cursor */
 		}
-		.btn2{
+		.btn-cancion{
 		  color: #FFF;
 		  cursor: pointer;
 		  display: inline-block;
