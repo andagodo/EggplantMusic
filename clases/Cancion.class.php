@@ -4,10 +4,10 @@ require_once  $_SERVER['DOCUMENT_ROOT'] . '/persistencia/ExistenciaCancion.class
 
 class Cancion
 {
-    private $Id_Cancion;
+  private $Id_Cancion;
 	private $Nom_Cancion;
-    private $Dur_Cancion;
-    private $Ruta_Arch_Cancion;
+  private $Dur_Cancion;
+  private $Ruta_Arch_Cancion;
 	private $Id_Genero;
 
     function __construct($idc='',$nom='', $dur='', $ruta='', $idg='')
@@ -121,6 +121,13 @@ class Cancion
       $datos= $pu->eliminaCancion($this, $conex);
       return $datos;
     }		
+  public function consCancionId($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->consCancionId($this, $conex);
+      return $datos;
+    }
+
 	
 	
 	public function consultaCancionSinInterprete($conex)
@@ -153,3 +160,4 @@ class Cancion
 	
 }
 ?>
+

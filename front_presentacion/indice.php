@@ -17,8 +17,12 @@
 <body>
 
 <div class="container">
+<<<<<<< HEAD:presentacion_front/indice.php
 	<h1 class="form-signin-heading" p align=center>EggplantMusic - Let's Rolling</h1>
 	<form action="../logica/ingresoSistemafront.php" method="POST" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin">
+=======
+<form action="../front_logica/ingresoSistema.php" method="POST" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin">
+>>>>>>> origin/master:front_presentacion/indice.php
 
 		<h2 class="form-signin-heading">Iniciar sesi&#243;n</h2>
 		<label name="NomUsuario" for="NomUsuario" class="sr-only">Email</label>
