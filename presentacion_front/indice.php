@@ -8,7 +8,7 @@
   <title>Eggplant Music</title>
   <link rel="stylesheet" type ="text/css" href="../estilos/css/bootstrap.css" />
   <script src="../estilos/js/bootstrap.js"></script>
-  <link href="../estilos/css/signinfront.css" rel="stylesheet">
+  <link href="../estilos/css/signin.css" rel="stylesheet">
  
   
 </head>
@@ -17,21 +17,20 @@
 <body>
 
 <div class="container">
-<form action="../logica/ingresoSistemafront.php" method="POST" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin">
+	<h1 class="form-signin-heading" p align=center>EggplantMusic - Let's Rolling</h1>
+	<form action="../logica/ingresoSistemafront.php" method="POST" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin">
 
-        <h2 class="form-signin-heading">Iniciar sesi&#243;n</h2>
-        <label name="NomUsuario" for="NomUsuario" class="sr-only">Email</label>
-        <input name="NomUsuario" id="NomUsuario" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
-        <label name="PassUsuario" for="PassUsuario" class="sr-only">Password</label>
-        <input name="PassUsuario" id="PassUsuario" class="form-control" placeholder="Password" required="" type="password">
+		<h2 class="form-signin-heading">Iniciar sesi&#243;n</h2>
+		<label name="NomUsuario" for="NomUsuario" class="sr-only">Email</label>
+		<input name="NomUsuario" id="NomUsuario" class="form-control" placeholder="Direcci&#243;n de Email" required="" autofocus="" type="email">
+		<label name="PassUsuario" for="PassUsuario" class="sr-only">Password</label>
+		<input name="PassUsuario" id="PassUsuario" class="form-control" placeholder="Contrase&ntilde;a" required="" type="password">
      
-		  <hr>
-        
-	
-         <input  class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar"  title="Ingresar a la aplicación" />         
-    </div>
- </form>
+		 <!-- <hr> -->
+		<input  class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar"  title="Ingresar a la aplicación" />         
 
+	</form>
+</div>
 </body>
 </html>
 

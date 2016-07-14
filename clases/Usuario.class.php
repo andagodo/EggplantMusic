@@ -11,11 +11,12 @@ class Usuario
 	private $Telefono;
     private $Mail;
     private $Password;
-    private $Tipo;
     private $Sexo;
 //	private $Fecha_Alta;
+	private $Nacionalidad;
+	private $Confirmo;
     
-    function __construct($idu='',$nom='', $ape='', $fnac='', $tel='', $mai='', $pass='',$tipo='',$sex='')
+    function __construct($idu='',$nom='', $ape='', $fnac='', $tel='', $mai='', $pass='',$sex='',$nac='',$conf='')
     {
         $this->Id_Usuario= $idu;
 		$this->Nombre= $nom;
@@ -24,9 +25,10 @@ class Usuario
         $this->Telefono= $tel;
         $this->Mail= $mai;
         $this->Password= $pass;
-        $this->Tipo= $tipo;
         $this->Sexo= $sex;
     //    $this->TipoPersona= $tpe;
+		$this->Nacionalidad= $nac;
+		$this->Confirmo= $conf;
     }
     
     //Métodos set
@@ -66,15 +68,23 @@ class Usuario
       $this->Password= $pass;
     }
 
-    public function setTipo($tipo)
-    {
-      $this->Tipo= $tipo;
-    }
 	
 	public function setSexo($sex)
     {
       $this->Sexo= $sex;
     }
+	
+	
+    public function setNacionalidad($nac)
+    {
+      $this->Nacionalidad= $nac;
+    }
+	
+	public function setConfirmo($conf)
+    {
+      $this->Confirmo= $conf;
+    }
+	
 /*
  	public function setTipoLogin($tlo)
     {
@@ -121,15 +131,23 @@ class Usuario
       return $this->Password;
     }
     
- 	public function getTipo()
-    {
-      return $this->Tipo;
-    }
     
 	public function getSexo()
     {
       return $this->Sexo;
     }
+	
+	
+ 	public function getNacionalidad()
+    {
+      return $this->Nacionalidad;
+    }
+    
+	public function getConfirmo()
+    {
+      return $this->Confirmo;
+    }	
+	
 /*	
 	
 	public function getIDrol()

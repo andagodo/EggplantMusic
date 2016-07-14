@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../estilos/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+
+
+<script type="text/javascript">
+jQuery(function($){
+	$.datepicker.regional['es'] = {
+		closeText: 'Cerrar',
+		prevText: '&#x3c;Ant',
+		nextText: 'Sig&#x3e;',
+		currentText: 'Hoy',
+		monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+		monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+		dayNames: ['Domingo','Lunes','Martes','Mi&eacute;rcoles','Jueves','Viernes','S&aacute;bado'],
+		dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
+		weekHeader: 'Sm',
+		dateFormat: 'dd/mm/yy',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''};
+	$.datepicker.setDefaults($.datepicker.regional['es']);
+});    
+ 
+$(document).ready(function() {
+   $("#datepicker").datepicker();
+ });
+</script>
+
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EggplantMusic - Let's rolling</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Eggplant Music</a> <!-- <img src="img/TEST2.jpg" class="img-responsive" alt=""> -->
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#pruebalo">Pruébalo</a>
+                    </li>
+					<li>
+                        <a class="page-scroll" href="#registro">Registro</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#caracteristicas">Características</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#musica">Música</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contacto">Contacto</a>
+                    </li>
+					<li>                  
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Acceder <b class="caret"></b></a>			
+					<ul class="dropdown-menu">
+						<form action="../logica/ingresoSistemafront.php" method="POST" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin">
+						<li>
+                            <i class="fa fa-fw fa-envelope"></i> Mail:
+                        </li>
+						<li>
+							<input name="NomUsuario" id="NomUsuario" class="form-control" placeholder="Direcci&#243;n de Email" required="" autofocus="" type="email">
+						</li>
+						</br>
+						<li>
+                            <i class="fa fa-fw fa-user"></i> Contraseña:
+                        </li>
+						<li>
+							<input name="PassUsuario" id="PassUsuario" class="form-control" placeholder="Contrase&ntilde;a" required="" type="password">
+                        </li>
+						<li class="divider"></li>
+                        <li>
+							<a><center><input class="btn" type="submit" value="Ingresar"  title="Ingresar a la aplicación" /></center></a>
+                        </li>
+						</form>
+					</ul>
+					</li>
+                
+				</ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+			<img src="img/LOGO.png" class="img-responsive" alt="">
+				<h1 id="homeHeading">Eggplant Music</h1>
+				<h2 id="homeHeading"><font color=#330000">Una nueva forma de escuchar música</font color></h2>
+                <hr>
+                <p><font color=#550022">Inicia sesión en <b>Eggplant Music</b> para disfrutar del catálogo mas grande de música online! Podrás disfrutar de música gratuitamente y utilizar el servicio donde quieras que estés!</font color></p>
+                <a href="#registro" class="btn btn-primary btn-xl page-scroll">Pruébalo!</a>
+
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="pruebalo">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Toda la música que puedas escuchar!</h2>
+                    <hr class="light">
+                    <p class="text-faded">Con Eggplant Music podrás escuchar una extensa biblioteca de música, con playlist pre-cargadas realizadas por exertos en música, además de poder crear tus propias playlist con tu cuenta gratuita!</p>
+                    <a href="#registro" class="page-scroll btn btn-default btn-xl sr-button">Regístrate!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="no-padding" id="registro">	
+		<aside class="bg-dark">
+			<div class="container text-center">
+				<div class="call-to-action">
+					<h2>Registro</h2>
+					
+<!-- /////////////////////COMIENZO FORMULARIOOOO///////////////////////////////// -->
+
+<div class="row">
+<div class="col-lg-8">
+
+<form class="form-horizontal" role="form" action='../logica/NuevaUsuario.php' method="POST">
+
+  <div class="form-group">
+    <label for="ejemplo_nombre_3" class="col-lg-2 control-label">Nombre</label>
+    <div class="col-lg-8">
+      <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+    </div>
+  </div>
+  
+   <div class="form-group">
+    <label for="ejemplo_apellido_3" class="col-lg-2 control-label">Apellido</label>
+    <div class="col-lg-8">
+      <input type="text" class="form-control" name="apellido" placeholder="Apellido">
+    </div>
+  </div>
+
+<!--
+<div class="form-group">
+	<label for="ejemplo_apellido_3" class="col-lg-2 control-label">Nacimiento</label>
+            <div class="col-lg-8">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" name="nacimiento"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+</div> 
+-->
+
+   <div class="form-group">
+    <label for="ejemplo_apellido_3" class="col-lg-2 control-label">Nacimiento</label>
+    <div class="col-lg-8">
+      <input type="text" name="datepicker" id="datepicker" readonly="readonly" size="12" />
+    </div>
+  </div>	
+ 
+  
+   <div class="form-group">
+    <label for="ejemplo_apellido_3" class="col-lg-2 control-label">Teléfono</label>
+    <div class="col-lg-8">
+      <input type="tel" class="form-control" name="tel" placeholder="Teléfono">
+    </div>
+  </div>  
+  
+  <div class="form-group">
+    <label for="ejemplo_email_3" class="col-lg-2 control-label">Email</label>
+    <div class="col-lg-8">
+      <input type="email" class="form-control" name="email" placeholder="Email">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="ejemplo_password_3" class="col-lg-2 control-label">Contraseña</label>
+    <div class="col-lg-8">
+      <input type="password" class="form-control" name="pass" placeholder="Contraseña">
+    </div>
+  </div>
+
+   <div class="form-group">
+		<label for="ejemplo_password_3" class="col-lg-2 control-label">Género</label>
+       <div class="col-xs-2">
+           <label class="radio-inline">
+               <input type="radio" name="genero" value="M"> Maculino
+           </label>
+       </div>
+       <div class="col-xs-2">
+           <label class="radio-inline">
+               <input type="radio" name="genero" value="F"> Femenino
+           </label>
+       </div>
+   </div>
+
+   <div class="form-group">
+    <label for="ejemplo_apellido_3" class="col-lg-2 control-label">Nacionalidad</label>
+    <div class="col-lg-8">
+      <input type="text" class="form-control" name="nacionalidad" placeholder="Nacionalidad">
+    </div>
+  </div>
+   
+   
+   
+    <button type="submit" class="btn btn-default btn-xl sr-button">Registrarse!</button>
+
+
+</form>
+</div>
+<div class="col-lg-4">
+<p> hola hola </p>
+</div>
+</div>
+
+<!-- /////////////////////TERMINO FORMULARIOOOO///////////////////////////////// -->
+
+				</div>
+			</div>
+		</aside>	
+	</section>
+	
+	
+    <section id="caracteristicas">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Características</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                        <h3>Tipos de Cuenta</h3>
+                        <p class="text-muted">Selecciona entre los diferentes tipos de cuenta disponibles, Free, Premium o VIP!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+                        <h3>Tickets de Soporte</h3>
+                        <p class="text-muted">Podrás enviarnos tu ticket de siporte si te encuentras con algún problema.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                        <h3>Siempre Actualizados</h3>
+                        <p class="text-muted">Mantenemos nuestra biblioteca de música siempre con las últimas tendencias mundiales.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
+                        <h3>Expertos en Música</h3>
+                        <p class="text-muted">Escucha las Playlist creadas por expertos en Música, o crea Playlist personales para escuchar cuando desees!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="no-padding" id="musica">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                </div>
+                                <div class="project-name">
+                                    Metal
+                                </div>
+                            </div>
+                        </div>
+					</a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                </div>
+                                <div class="project-name">
+                                    POP
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                </div>
+                                <div class="project-name">
+                                    Relax
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                </div>
+                                <div class="project-name">
+                                    Rock Alternativo
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                </div>
+                                <div class="project-name">
+                                    Electrónica
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                </div>
+                                <div class="project-name">
+                                    Soul
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Free Download at Start Bootstrap!</h2>
+                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Download Now!</a>
+            </div>
+        </div>
+    </aside>
+-->
+    <section id="contacto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Contáctenos!</h2>
+                    <hr class="primary">
+                    <p>Puedes comunicarte con nosotros por cualquier de los siguientes métodos. Ya sea por consultas, soporte de nuestro servicio o información, escríbenos y nos comunicaremos contigo a la brevedad!</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x sr-contact"></i>
+                    <p>+598 2480 1234</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    <p><a href="mailto:contacto@eggplantblue.com.uy">contacto@eggplantblue.com.uy</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/creative.min.js"></script>
+
+</body>
+
+</html>

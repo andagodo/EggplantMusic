@@ -6,9 +6,9 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
   <title>Eggplant Music</title>
-  <link rel="stylesheet" type ="text/css" href="/estilos/css/bootstrap.css" />
-  <script src="/estilos/js/bootstrap.js"></script>
-  <link href="/estilos/css/signin.css" rel="stylesheet">
+  <link rel="stylesheet" type ="text/css" href="../estilos/css/bootstrap.css" />
+  <script src="../estilos/js/bootstrap.js"></script>
+  <link href="../estilos/css/signin.css" rel="stylesheet">
  
   
 </head>
@@ -17,7 +17,6 @@
 <body>
 
 <div class="container">
-
 	<h1 class="form-signin-heading" p align=center>EggplantMusic - Administraci&#243;n</h1>
 	<form action="/logica/ingresoSistema.php" method="POST" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin">
 		

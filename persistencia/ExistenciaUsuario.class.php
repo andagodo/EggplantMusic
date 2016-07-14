@@ -16,8 +16,9 @@ class ExistenciaUsuario
         $tel=$param->getTelefono();
 		$mai=$param->getMail();
         $pass=$param->getPassword();
-		$tipo=$param->getTipo();
         $sex=$param->getSexo();
+		$nac=$param->getNacionalidad();
+        $conf=$param->getConfirmo();
 //        $tlo = $param->getTipoLogin();
 //        $tpe = $param->getTipoPersona();	
 		
@@ -28,11 +29,11 @@ class ExistenciaUsuario
         
         //Genera la sentencia a ejecutar
 		//La sql ES UN EJEMPLO LE FALTA todos los campos, depende de sus atributos
-        $sql = "INSERT INTO Usuario (Id_Usuario, Nombre, Apellido, Fecha_Nac, Telefono, Mail, Password, Tipo,Sexo) VALUES (:idusuario, :nombre, :apellido, :fnac, :tel, :mail, :password, :tipo, :sexo)";
+        $sql = "INSERT INTO Usuario (Nombre, Apellido, Fecha_Nac, Telefono, Mail, Password, Sexo, Nacionalidad, Confirmo) VALUES (:nombre, :apellido, :fnac, :tel, :mail, :password, :sexo, :nacional, :confirma)";
       
 
 		$result = $conex->prepare($sql);
-		$result->execute(array(":idusuario" => $idu, ":nombre" => $nom, ":apellido" => $ape, ":fnac" => $fnac, ":tel" => $tel, ":mail" => $mai, ":password" => $pass, ":tipo" => $tipo, ":sexo" => $sex));
+		$result->execute(array(":nombre" => $nom, ":apellido" => $ape, ":fnac" => $fnac, ":tel" => $tel, ":mail" => $mai, ":password" => $pass, ":sexo" => $sex, ":nacional" => $nac, ":confirma" => $conf));
         
         
         //Para saber si ocurrió un error
