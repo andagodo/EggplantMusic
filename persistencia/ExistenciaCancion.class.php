@@ -29,6 +29,7 @@ class ExistenciaCancion
     }
 
      
+
 /*
    //Devuelve true si el login coincide con la password
    public function coincideLoginPassword($param, $conex)
@@ -128,7 +129,17 @@ class ExistenciaCancion
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idc" => $idc));
 		return $result;
-	}			
+	}	
+
+	public function consCancionId($param, $conex)
+	{
+		$idc= trim($param->getId_Cancion());
+		$sql = "SELECT * FROM Cancion WHERE Id_Cancion =:idc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc));
+		$resultados=$result->fetchAll();
+		return $resultados;
+	}				
 	
 /*	
 	public function consultaPerteneceCancion($param, $conex)

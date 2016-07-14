@@ -37,7 +37,7 @@ if ($ok)
      
   <script language="javascript">
   
-   location.href="/presentacion_front/play.php";
+   location.href="/front_presentacion/play.php";
 
  </script>  
   <?php
@@ -49,7 +49,7 @@ else
  <script language="javascript">
  
    window.alert("El Usuario o Password no es correcto.");
-   location.href="/presentacion_front/indice.php";
+   location.href="/front_presentacion/indice.php";
  </script>
   <?php
   
