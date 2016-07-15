@@ -4,7 +4,7 @@ require_once('../persistencia/ExistenciaUsuario.class.php');
 
 class Usuario
 {
-    private $Id_Usuario;
+ //   private $Id_Usuario;
 	private $Nombre;
     private $Apellido;
     private $Fecha_Nac;
@@ -12,13 +12,14 @@ class Usuario
     private $Mail;
     private $Password;
     private $Sexo;
-//	private $Fecha_Alta;
 	private $Nacionalidad;
+	private $Fecha_Alta;
 	private $Confirmo;
+	private $Clave;
     
-    function __construct($idu='',$nom='', $ape='', $fnac='', $tel='', $mai='', $pass='',$sex='',$nac='',$conf='')
+    function __construct($nom='', $ape='', $fnac='', $tel='', $mai='', $pass='',$sex='',$nac='',$feal='',$conf='',$cla='')
     {
-        $this->Id_Usuario= $idu;
+     //   $this->Id_Usuario= $idu;
 		$this->Nombre= $nom;
         $this->Apellido= $ape;
         $this->Fecha_Nac= $fnac;
@@ -26,18 +27,19 @@ class Usuario
         $this->Mail= $mai;
         $this->Password= $pass;
         $this->Sexo= $sex;
-    //    $this->TipoPersona= $tpe;
 		$this->Nacionalidad= $nac;
+		$this->Fecha_Alta= $feal;
 		$this->Confirmo= $conf;
+		$this->Clave= $cla;
     }
     
     //Métodos set
-    
+/*  
     public function setId_Usuario($idu)
     {
       $this->Id_Usuario= $idu;
     }
-    
+*/    
     public function setNombre($nom)
     {
       $this->Nombre= $nom;
@@ -79,28 +81,32 @@ class Usuario
     {
       $this->Nacionalidad= $nac;
     }
+
+ 	public function setFecha_Alta($feal)
+    {
+      $this->Fecha_Alta= $feal;
+    }
 	
 	public function setConfirmo($conf)
     {
       $this->Confirmo= $conf;
     }
 	
-/*
- 	public function setTipoLogin($tlo)
+	public function setClave($cla)
     {
-      $this->TipoLogin= $tlo;
+      $this->Clave= $cla;
     }
-*/
+
 
     // la profesora habia puesto una funcion del tipo set que era "habilitado"
     
     //Métodos get
-    
+/*    
     public function getId_Usuario()
     {
       return $this->Id_Usuario;
     }
-    
+ */   
     public function getNombre()
     {
       return $this->Nombre;
@@ -142,19 +148,24 @@ class Usuario
     {
       return $this->Nacionalidad;
     }
-    
+ 
+	public function getFecha_Alta()
+    {
+      return $this->Fecha_Alta;
+    }
+ 
 	public function getConfirmo()
     {
       return $this->Confirmo;
     }	
+
 	
-/*	
-	
-	public function getIDrol()
+	public function getClave()
     {
-      return $this->IDrol;
-    }
- */   
+      return $this->Clave;
+    }	
+
+   
     //Otros Métodos
     
     //Devuelve true si el Login y el Password coinciden
@@ -199,6 +210,14 @@ class Usuario
       $pu= new ExistenciaUsuario;
       return $pu->consultaTipo($this, $conex);
     }	
+	
+	
+	public function ConfirmaMail($conex)
+	{
+      $pu= new ExistenciaUsuario;
+      return $pu->ConfirmaMail($this, $conex);
+    }	
+	
 	
 }
 

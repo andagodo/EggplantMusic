@@ -17,33 +17,37 @@ $gen=trim($_POST['genero']);
 $nac=trim($_POST['nacionalidad']);
 $feal=date("d/m/Y");
 $conf="N";
+$cla = GenerarClave(20,false); 
+
+$url = "http://localhost:8080/presentacion/Registro.php?id=" . $cla;
 
 $conex = conectar();
 //$u= new Persona ('',$login,md5($pass));
-$u= new Usuario ($nom,$ape,$fnac,$tel,$mail,$pass,$gen,$nac,$feal,$conf);
+$u= new Usuario ($nom,$ape,$fnac,$tel,$mail,$pass,$gen,$nac,$feal,$conf,$cla);
 
 $ok=$u->altaUsuario($conex);
 
 if ($ok)
 
 {
-    echo "<table  align='center' >";
-    echo "<tr height='400'>";
-        echo "<td class='leyenda'>";
-            echo "Se creo un nuevo Usuario: $nomu";
+	
+	ActivacionMail($mail, $nom, $ape, $url);
+	echo "<table  align='center' >";
+	echo "<tr height='400'>";
+       echo "<td class='leyenda'>";
+			echo "Se creo un nuevo Usuario: $nom $ape";
 			echo " </br><a href=\"\presentacion\Menu.php\" style='color: black'>Volver</a>";
-        echo "</td>";
-    echo "</tr>";
-    echo "</table>";
+       echo "</td>";
+	echo "</tr>";
+	echo "</table>";
+		?>
+	<!--  <script language="javascript">
+		location.href="../presentacion/cargaMenu.php";
 
-     ?>
-<!--  <script language="javascript">
-     location.href="../presentacion/cargaMenu.php";
- 
+			</script>  
+	-->
+	<?php	
 
- </script>  
--->
-  <?php
 }
 else
 {

@@ -9,7 +9,7 @@ class ExistenciaUsuario
         //Obtiene los datos del objeto $param
 //        $idp=$param->getIDpersona();
 
-		$idu=$param->getId_Usuario();
+//		$idu=$param->getId_Usuario();
         $nom=$param->getNombre();
         $ape=$param->getApellido();
         $fnac=$param->getFecha_Nac();
@@ -18,8 +18,9 @@ class ExistenciaUsuario
         $pass=$param->getPassword();
         $sex=$param->getSexo();
 		$nac=$param->getNacionalidad();
+		$feal=$param->getFecha_Alta();
         $conf=$param->getConfirmo();
-//        $tlo = $param->getTipoLogin();
+        $cla = $param->getClave();
 //        $tpe = $param->getTipoPersona();	
 		
 		//Encripto la password uso un salt y un hash
@@ -29,11 +30,11 @@ class ExistenciaUsuario
         
         //Genera la sentencia a ejecutar
 		//La sql ES UN EJEMPLO LE FALTA todos los campos, depende de sus atributos
-        $sql = "INSERT INTO Usuario (Nombre, Apellido, Fecha_Nac, Telefono, Mail, Password, Sexo, Nacionalidad, Confirmo) VALUES (:nombre, :apellido, :fnac, :tel, :mail, :password, :sexo, :nacional, :confirma)";
+        $sql = "INSERT INTO Usuario (Nombre, Apellido, Fecha_Nac, Telefono, Mail, Password, Sexo, Nacionalidad, Fecha_Alta, Confirmo, Clave) VALUES (:nombre, :apellido, :fnac, :tel, :mail, :password, :sexo, :nacional, :fealta, :confirma, :clave)";
       
 
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":apellido" => $ape, ":fnac" => $fnac, ":tel" => $tel, ":mail" => $mai, ":password" => $pass, ":sexo" => $sex, ":nacional" => $nac, ":confirma" => $conf));
+		$result->execute(array(":nombre" => $nom, ":apellido" => $ape, ":fnac" => $fnac, ":tel" => $tel, ":mail" => $mai, ":password" => $pass, ":sexo" => $sex, ":nacional" => $nac, ":fealta" => $feal, ":confirma" => $conf, ":clave" => $cla));
         
         
         //Para saber si ocurrió un error
@@ -141,5 +142,24 @@ class ExistenciaUsuario
 		$result->execute(array(":login" => $log));
 		return $result->fetchAll();
 	}
+	
+	public function ConfirmaMail($param, $conex)
+	{
+		$cla= trim($param->getClave());
+		$sql = "UPDATE Usuario SET Confirmo = 'S' WHERE Clave=:clave";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":clave" => $cla));
+		
+		if($result)
+        {
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+	}	
+	
+	
 }
 ?>

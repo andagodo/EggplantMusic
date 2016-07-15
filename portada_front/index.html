@@ -132,7 +132,7 @@ $(document).ready(function() {
         <div class="header-content">
             <div class="header-content-inner">
 			<img src="img/LOGO.png" class="img-responsive" alt="">
-				<h1 id="homeHeading">Eggplant Music</h1>
+<!--			<h1 id="homeHeading">Eggplant Music</h1> 	-->
 				<h2 id="homeHeading"><font color=#330000">Una nueva forma de escuchar música</font color></h2>
                 <hr>
                 <p><font color=#550022">Inicia sesión en <b>Eggplant Music</b> para disfrutar del catálogo mas grande de música online! Podrás disfrutar de música gratuitamente y utilizar el servicio donde quieras que estés!</font color></p>
@@ -160,7 +160,8 @@ $(document).ready(function() {
 			<div class="container text-center">
 				<div class="call-to-action">
 					<h2>Registro</h2>
-					
+					<hr class="light">
+					</br>
 <!-- /////////////////////COMIENZO FORMULARIOOOO///////////////////////////////// -->
 
 <div class="row">
@@ -182,24 +183,34 @@ $(document).ready(function() {
     </div>
   </div>
 
+  
+    <div class="form-group">
+	    <label for="ejemplo_apellido_3" class="col-lg-2 control-label">F. Nacimiento</label>
+		<div class="col-lg-8">
+			<input type="date" class="form-control" name="nacimiento" step="1" min="1900-01-01" max="2016-12-31" placeholder="Día(DD) / Mes(MM) / Año(AAA)">
+		</div>
+	</div>  
 <!--
 <div class="form-group">
-	<label for="ejemplo_apellido_3" class="col-lg-2 control-label">Nacimiento</label>
-            <div class="col-lg-8">
-                <div class='input-group date'>
-                    <input type='text' class="form-control" name="nacimiento"/>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-</div> 
--->
+        <label class="control-label col-xs-3">F. Nacimiento:</label>
+        <div class="col-xs-3">
+            <select class="form-control">
+                <option>Dia</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <select class="form-control">
+                <option>Mes</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <select class="form-control">
+                <option>Año</option>
+            </select>
+        </div>
+    </div>  
+  
+  
 
    <div class="form-group">
     <label for="ejemplo_apellido_3" class="col-lg-2 control-label">Nacimiento</label>
@@ -207,7 +218,7 @@ $(document).ready(function() {
       <input type="text" name="datepicker" id="datepicker" readonly="readonly" size="12" />
     </div>
   </div>	
- 
+ -->
   
    <div class="form-group">
     <label for="ejemplo_apellido_3" class="col-lg-2 control-label">Teléfono</label>
@@ -243,14 +254,23 @@ $(document).ready(function() {
            </label>
        </div>
    </div>
-
+   
+ 
    <div class="form-group">
     <label for="ejemplo_apellido_3" class="col-lg-2 control-label">Nacionalidad</label>
     <div class="col-lg-8">
       <input type="text" class="form-control" name="nacionalidad" placeholder="Nacionalidad">
     </div>
   </div>
-   
+ 
+    <div class="form-group">
+        <div class="col-lg-8">
+            <label class="checkbox-inline">
+                <input type="checkbox" value="agree" required>  Accepto <a href="#">Terminos y condiciones</a>.
+            </label>
+        </div>
+    </div>
+    <br>  
    
    
     <button type="submit" class="btn btn-default btn-xl sr-button">Registrarse!</button>
@@ -259,7 +279,9 @@ $(document).ready(function() {
 </form>
 </div>
 <div class="col-lg-4">
-<p> hola hola </p>
+<h2>Bienvenido al registro a Eggplant Music!</h2></br>
+<p>Regístrese para acceder a nuestra aplicación Web de Música en Streaming, su cuenta inicialmente será gratuira, pero luego podrá hacer un upgrade de su cuenta a la modalidad Premium, o VIP!.</p>
+<p>Con su cuenta gratuita podrá escuchar todo el catálogo de música y crear hasta tres Playlist personalizadas, si se actualiza a Premium podrá crear hasta 10 Playlist y no tendrá publicidad en su cuenta, y si desea cuenta VIP! podrá crear Playlists ilimitadas y sin publicidad!</p>
 </div>
 </div>
 
