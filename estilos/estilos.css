@@ -4,26 +4,6 @@ body {
 	background :#F3F3F3;
 }
 
-a:link {
-	color          :white;
-	text-decoration:none;
-}
-
-a:visited {
-	color          :#000080;
-	text-decoration:none;
-}
-
-
-a:hover {
-	color          :#408080;
-	text-decoration:underline;
-}
-
-a:active {
-    color:#008000;
-   
-}
 
 .derecha{
   text-align:right;

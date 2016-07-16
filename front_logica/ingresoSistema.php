@@ -49,7 +49,7 @@ else
  <script language="javascript">
  
    window.alert("El Usuario o Password no es correcto.");
-   location.href="/front_presentacion/indice.php";
+   location.href="/portada_front/index.html";
  </script>
   <?php
   

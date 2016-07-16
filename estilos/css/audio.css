@@ -59,6 +59,15 @@ display: inline-block;
 		#playlist .cancion.active:hover a {
 		color: #222; /* Color de la canción activa al pasar el cursor */
 		}
+		.addplaylist {
+		color: #CCC; /* Color de las canciones */
+		padding: 7px 5px;
+		display: inline-block;
+		padding-left: 10px;
+		text-decoration: none;
+		cursor: context-menu;
+		cursor: pointer;
+		}
 
 
 
@@ -131,10 +140,10 @@ display: inline-block;
 		}
 
 
-		#playerul li a:hover {
+		#playerul .cancionnow:hover {
 		background: #337ab7;
 		/* Color de las canciones */
-		display: inline-block;
+		display: block;
 		}
 
 		#playerul .active a {

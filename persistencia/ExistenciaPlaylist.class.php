@@ -29,7 +29,7 @@ class ExistenciaPlaylist
     
 	public function consultaPlaylist($param, $conex)
 	{  
-		$idp= trim($param->getLogin());
+		$idp= trim($param->getId_Playlist());
         $sql = "SELECT * FROM PlayList WHERE Id_PlayList=:idplay";
         $result = $conex->prepare($sql);
 	    $result->execute(array(":idplay" => $idp));

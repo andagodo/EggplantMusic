@@ -22,7 +22,6 @@ $(function(){
         $cancion.click(function(event) {
             event.preventDefault();
              $id_cancion = $( this ).attr('data-idc');
-                
                 var x=event.clientX;
                 var y=event.clientY;
                 //console.log(y);
@@ -38,6 +37,8 @@ $(function(){
         });
 
     });
+
+
 
 
 

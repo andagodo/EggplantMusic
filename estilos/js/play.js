@@ -23,7 +23,7 @@ $(function(){
 				.done(function( data, textStatus, jqXHR ) {
 					$div = $('<div class="cancionnow" ></div>')
 					$li = $('<li></li>');
-					$a = $('<a href="' + data.ruta + '">' + data.nombre + '</a>');
+					$a = $('<a href="' + data.ruta + '"data-idc="'+ data.id + '" >' + data.nombre + '</a>');
 					$li.append($a);
 					$div.append($li);
 					$("#playerul").append($div);
@@ -49,7 +49,7 @@ $(function(){
 		tracks=playlist.find('li a');
 		console.log(tracks);
 		audio[0].volume=1;
-		len = tracks.length-1;
+		len = tracks.length;
 		tracks.click(function(e){
 			e.preventDefault();
 			
@@ -58,7 +58,7 @@ $(function(){
 			link=$(this);
 			current=link.parents("div.cancionnow").index();
 			console.log("Canciones cantidad numero:", len);
-
+			console.log("Canciones current numero:", current);
 			runaudio($(link),source)
 		})
 		}
@@ -69,11 +69,11 @@ $(function(){
 		current++;
 				
 		if(current>len){
-			current=0;
-			link=playlist.find('a')[0];	
+			current=1;
+			link=playlist.find('li a')[current-1];	
 		}
 		else{
-			link=playlist.find('a')[current];
+			link=playlist.find('li a')[current-1];
 		}
 
 		runaudio($(link),source)
@@ -81,18 +81,55 @@ $(function(){
 	})
 
 
-	function runaudio(link,player){
+	function runaudio(link1,player){
 	audio.get(0).pause();
-	player.attr("src", link.attr('href'));
+	player.attr("src", link1.attr('href'));
 	console.log("hola entraste a runaudio");
-	par=link.parents('.cancionnow');
+	par=link1.parents('.cancionnow');
 	par.addClass('active').siblings().removeClass('active');
 	audio.get(0).load();
 	audio.get(0).play();
-
 	}
-$("#menu1").mouseleave(
-	function(e){
-   $(this).fadeOut('slow');
-}); 
+
+	$("#menu1").mouseleave(
+		function(e){
+	   $(this).fadeOut('slow');
+					}
+		); 
+
+        $(".addplaylist").click(function(event) {
+            event.preventDefault();
+
+            $.post( "../front_logica/consplaylist.php", { "idu" : IdUsr }, null, "json" )
+				.done(function( data, textStatus, jqXHR ) {
+					/*$div = $('<div class="cancionnow" ></div>')
+					$li = $('<li></li>');
+					$a = $('<a href="' + data.ruta + '"data-idc="'+ data.id + '" >' + data.nombre + '</a>');
+					$li.append($a);
+					$div.append($li);
+					$("#playerul").append($div);
+					initaudio2();*/
+					alert(data.id);
+					if ( console && console.log ) {
+				   	console.log( "La solicitud se ha completado correctamente." );
+													}
+				})
+				.fail(function( jqXHR, textStatus, errorThrown ) {
+				  	if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
+			});
+				
+
+
+
+            var x=event.clientX;
+            var y=event.clientY;
+            //console.log(y);
+            //console.log(x);
+            var menu2=document.getElementById('menu2');
+            menu1.style.top = y+"px";
+            menu1.style.left = x+"px";
+            menu1.style.display = "block";
+            // obtengo el id de la cancion
+        	});
+
 });

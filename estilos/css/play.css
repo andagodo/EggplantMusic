@@ -107,23 +107,36 @@
 .heading-menu > li a {background:black;color:black}
 
 /*menu1*/
-#menu1{
-  background-color: #FFF;
+#menu1, #menu2{
+  background-color: #3E3E40;
   min-width: 300px;
   position: fixed;
   top: 0;
   z-index: 8000;
   display: none;
+  text-decoration: none;
+  border-radius: 2px 2px 2px 2px;
 }
-#menu1 ul{
+#menu1 ul, #menu2 ul{
   list-style: none;
 }
-#menu1 ul li{
+#menu1 ul li, #menu2 ul li{
   width: 100%;
+  text-decoration: none;
+  color: #ADAEB3;
+
 }
-#menu1 ul li a{
+#menu1 ul li a, #menu2 ul li a{
   text-decoration: none;
   display: block;
   padding: 8px 16px;
   width: 100%;
+  color: #ADAEB3;
+
 }
+#menu1 ul li a:hover, #menu2 ul li a:hover{
+  background-color: #2E2F33;
+}
+
+
+

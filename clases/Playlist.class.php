@@ -5,14 +5,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/persistencia/ExistenciaPlaylist.class
 class Playlist
 {
 	private $Id_Playlist;
-    private $Nom_PlayList;
+  private $Nom_PlayList;
 	private $Fech_Creacion;
 
 
     function __construct($idp='',$nom='',$fech='')
     {
 		$this->Id_Playlist= $idp;
-        $this->Nom_PlayList= $nom;
+    $this->Nom_PlayList= $nom;
 		$this->Fech_Creacion= $fech;
 
     }
@@ -52,29 +52,30 @@ class Playlist
       return $this->Fech_Creacion;
     }
 
+
 	
     //Otros Métodos
     
 	
     public function altaPlaylist($conex)
     {
-        $pu=new ExistenciaAlbum;
+        $pu=new ExistenciaPlaylist;
         return ($pu->altaPlaylist($this, $conex));
     }    
     
-	public function consultaPlaylist($conex)
-    {
-      $pu= new ExistenciaAlbum;
-      $datos= $pu->consultaPlaylist($this, $conex);
-      return $datos;
-    }
-/*	
-	public function consultaTodosAlbum($conex)
-    {
-      $pu= new ExistenciaAlbum;
-      $datos= $pu->consultaTodosAlbum($conex);
-      return $datos;
-    }	
+  	public function consultaPlaylist($conex)
+      {
+        $pu= new ExistenciaPlaylist;
+        $datos= $pu->consultaPlaylist($this, $conex);
+        return $datos;
+      }
+     /*	
+  	 public function consultaTodosAlbum($conex)
+      {
+        $pu= new ExistenciaAlbum;
+        $datos= $pu->consultaTodosAlbum($conex);
+        return $datos;
+      }	
 	
 	
 	public function consultaEstado($conex)

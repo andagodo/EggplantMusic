@@ -8,9 +8,5 @@
 	$datos_r=$r->consCancionId($conex);
 
 	$arr = array('id' => $datos_r[0][0], 'nombre' => $datos_r[0][1], 'duracion' => $datos_r[0][2], 'ruta'=> $datos_r[0][3], 'genero' => $datos_r[0][4]);
- 	echo json_encode($arr);
-
-
-
-
+	echo json_encode($arr);
 ?>

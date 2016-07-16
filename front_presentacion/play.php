@@ -10,6 +10,9 @@
   $u= new Usuario ('','','','','',$_SESSION["mai"]);
   $Tipo=$u->consultaUno($conex);
   $nombre = $Tipo[0][1];
+  $_SESSION['IdUsr'] = $Tipo[0][0];
+
+  echo "<script type='text/javascript'> IdUsr = ".json_encode($_SESSION['IdUsr'])."</script>";
 
   if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
       session_unset();
@@ -22,8 +25,8 @@
     <?php
   }else{
     $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+   
 ?>
-
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -99,7 +102,7 @@
             EggPlantMusic
             <br></h2>
   		  <h3>
-           Profile 
+          <?php  echo $nombre; ?>
             </h3>
             </a>
          
@@ -137,22 +140,27 @@
         <div id="reproductor">
           <div class="col-sm-2 col-md-3 navbar-right">
                <audio controls='' id='audio' preload='auto' tabindex='0' type='audio/mpeg'>
-                  <source src='' type='audio/mp3'/>
+                  <source src='' type='audio/wav'/>
                   Hola, tu navegador no está actualizado y no puede mostrar este contenido.
               </audio>
          
             <div id='player'>
               <ul id='playerul'>
-                <li><div class="paybar"></div></li>
-              
+                <li><div class="addplaylist"><span class="glyphicon glyphicon-plus"></span></div></li>
               </ul>
             </div>
           </div>
         </div>
       <div id="menu1">
         <ul>
-          <li>Menu</li>
-          <li><a class="add-btn" href="#">Añadir playlist</a></li>
+          <li>Menu cancion</li>
+          <li><a class="add-btn" href="#">Añadir a cola de reproduccion</a></li>
+        </ul>
+      </div>
+      <div id="menu2">
+        <ul>
+          <li>Agregar cancion</li>
+          <li><a class="add-btn" href="#">Añadir a cola de reproduccion</a></li>
         </ul>
       </div>
 

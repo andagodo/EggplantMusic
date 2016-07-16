@@ -88,6 +88,7 @@ class Album
       $datos= $pu->consultaAlbum($this, $conex);
       return $datos;
     }
+    
 	
 	public function consultaTodosAlbum($conex)
     {

@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '../clases/Album.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '../logica/funciones.php';
+
 $conex = conectar();
 $r = new Album();
 $datos_r=$r->consultaTodosAlbum($conex);
