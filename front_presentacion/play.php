@@ -20,7 +20,7 @@
     ?>
     <script language="javascript">
       window.alert("Tiempo de espera excedido.");
-      location.href="/front_presentacion/indice.php";
+      location.href="/portada_front/index.html";
     </script>
     <?php
   }else{
@@ -109,25 +109,13 @@
           </li>
           <li>
             <a href="#" data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">
-            <span class="glyphicons glyphicons-albums"></span> Album
+            <span class="glyphicon glyphicon-music"></span> Album
             </a>
          
           </li>
-          <li class="">
-            <a href="#" data-toggle="collapse" data-target="#toggleDemo2" data-parent="#sidenav01" class="collapsed">
-            <span class="glyphicon glyphicon-inbox"></span> Submenu 2 <span class="caret pull-right"></span>
-            </a>
-            <div class="collapse" id="toggleDemo2" style="height: 0px;">
-              <ul class="nav nav-list">
-                <li><a href="#">Submenu2.1</a></li>
-                <li><a href="#">Submenu2.2</a></li>
-                <li><a href="#">Submenu2.3</a></li>
-              </ul>
-            </div>
-          </li>
-          <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Normalmenu</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> WithBadges <span class="badge pull-right">42</span></a></li>
-          <li><a href=""><span class="glyphicon glyphicon-cog"></span> PreferencesMenu</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-list"></span> Playlist</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Explorar </a></li>
+          <li><a href=""><span class="glyphicon glyphicon-cog"></span> Cuenta</a></li>
   	  </ul>
       </div><!--/.nav-collapse -->
       

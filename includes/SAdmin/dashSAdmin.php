@@ -45,7 +45,7 @@ if(! isset($_SESSION["mai"])){
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Te gusta la Música??</strong> Probalo! <a href="http://www.eggplantmusic.com" class="alert-link">EggplantMusic</a> Un Producto de Eggplant Blue
+                            <i class="fa fa-info-circle"></i>  <strong>Te gusta la Música??</strong> Probalo! <a href="/portada_front/index.html" class="alert-link">EggplantMusic</a> Un Producto de Eggplant Blue
                         </div>
                     </div>
                 </div>

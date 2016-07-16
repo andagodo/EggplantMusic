@@ -2,6 +2,6 @@
 
 session_start();
 session_destroy();
-header('Location: indice.php')
+header('Location: /portada_front/index.html')
 
 ?>
