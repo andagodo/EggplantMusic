@@ -4,7 +4,7 @@ require_once('../persistencia/ExistenciaUsuario.class.php');
 
 class Usuario
 {
- //   private $Id_Usuario;
+    private $Id_Usuario;
 	private $Nombre;
     private $Apellido;
     private $Fecha_Nac;
@@ -17,9 +17,9 @@ class Usuario
 	private $Confirmo;
 	private $Clave;
     
-    function __construct($nom='', $ape='', $fnac='', $tel='', $mai='', $pass='',$sex='',$nac='',$feal='',$conf='',$cla='')
+    function __construct($idu='',$nom='', $ape='', $fnac='', $tel='', $mai='', $pass='',$sex='',$nac='',$feal='',$conf='',$cla='')
     {
-     //   $this->Id_Usuario= $idu;
+        $this->Id_Usuario= $idu;
 		$this->Nombre= $nom;
         $this->Apellido= $ape;
         $this->Fecha_Nac= $fnac;
@@ -34,12 +34,12 @@ class Usuario
     }
     
     //Métodos set
-/*  
+  
     public function setId_Usuario($idu)
     {
       $this->Id_Usuario= $idu;
     }
-*/    
+    
     public function setNombre($nom)
     {
       $this->Nombre= $nom;
@@ -101,12 +101,12 @@ class Usuario
     // la profesora habia puesto una funcion del tipo set que era "habilitado"
     
     //Métodos get
-/*    
+   
     public function getId_Usuario()
     {
       return $this->Id_Usuario;
     }
- */   
+    
     public function getNombre()
     {
       return $this->Nombre;
@@ -216,6 +216,18 @@ class Usuario
 	{
       $pu= new ExistenciaUsuario;
       return $pu->ConfirmaMail($this, $conex);
+    }	
+
+	public function consultaIDUsuario($conex)
+	{
+      $pu= new ExistenciaUsuario;
+      return $pu->consultaIDUsuario($this, $conex);
+    }
+	
+	public function UsuarioGratuito($conex)
+	{
+      $pu= new ExistenciaUsuario;
+      return $pu->UsuarioGratuito($this, $conex);
     }	
 	
 	

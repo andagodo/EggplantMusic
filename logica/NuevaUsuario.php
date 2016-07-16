@@ -23,14 +23,21 @@ $url = "http://localhost:8080/presentacion/Registro.php?id=" . $cla;
 
 $conex = conectar();
 //$u= new Persona ('',$login,md5($pass));
-$u= new Usuario ($nom,$ape,$fnac,$tel,$mail,$pass,$gen,$nac,$feal,$conf,$cla);
+$u= new Usuario ('',$nom,$ape,$fnac,$tel,$mail,$pass,$gen,$nac,$feal,$conf,$cla);
 
 $ok=$u->altaUsuario($conex);
 
 if ($ok)
 
 {
+	$i= new Usuario('','','','','',$mail);
+	$ids=$i->consultaIDUsuario($conex);
+	$id = $ids[0][0];
 	
+	$c= new Usuario($id);
+	$okc=$c->UsuarioGratuito($conex);
+//	UsuarioGratuito()
+
 	ActivacionMail($mail, $nom, $ape, $url);
 	echo "<table  align='center' >";
 	echo "<tr height='400'>";

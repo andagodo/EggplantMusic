@@ -36,6 +36,8 @@ class ExistenciaUsuario
 		$result = $conex->prepare($sql);
 		$result->execute(array(":nombre" => $nom, ":apellido" => $ape, ":fnac" => $fnac, ":tel" => $tel, ":mail" => $mai, ":password" => $pass, ":sexo" => $sex, ":nacional" => $nac, ":fealta" => $feal, ":confirma" => $conf, ":clave" => $cla));
         
+		
+		
         
         //Para saber si ocurrió un error
         if($result)
@@ -159,7 +161,40 @@ class ExistenciaUsuario
           return(false);
         }
 	}	
+
 	
+	public function consultaIDUsuario($param, $conex)
+	{ 
+		$mail= trim($param->getMail());
+		$sql = "SELECT Id_Usuario FROM Usuario WHERE Mail=:mail";
+		
+		$result = $conex->prepare($sql);
+		$result->execute(array(":mail" => $mail));
+		$resultados= $result->fetchAll();
+		return $resultados;
+	}	
+	
+	
+	public function UsuarioGratuito($param, $conex)
+	{
+		$idu= trim($param->getId_Usuario());
+		$feini=date("d/m/Y");
+		$fefin = strtotime ( '+1 year' , strtotime ( $feini ) ) ;
+		$fefin = date ( "d/m/Y" , $fefin );
+		
+		$sql = "INSERT INTO Tiene_Cuenta (FK_Id_Usuario, FK_Id_Cuenta, Fecha_Ini_Cuenta, Fecha_Fin_Cuenta) VALUES (:idu, 1, :feini, :fefin)";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idu" => $idu,":feini" => $feini,":fefin" => $fefin));
+		
+		if($result)
+        {
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+	}	
 	
 }
 ?>

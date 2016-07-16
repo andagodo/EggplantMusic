@@ -29,17 +29,22 @@ function ActivacionMail($mail, $nom, $ape, $url){
 $destinatario = $mail;
 $asunto = "Eggplant Music - Activar Usuario";
 $cuerpo = '
-Eggplant Music - Activación usuario
+<img <img src="http://localhost:8080/img/LOGO.jpg" alt="Eggplant Music">';
+$cuerpo = '
+Eggplant Music - Activar usuario
 <h1>Hola ';
 $cuerpo .= $nom ;
 $cuerpo .= " ";
 $cuerpo .= $ape ;
 $cuerpo .= '</h1>
-<strong>Gracias por registrarte en Eggplant Music</strong>. Para completar el registro tienes que confirmar que has recibido este email haciendo click en el siguiente enlace:
+<strong>Gracias por registrarte en Eggplant Music</strong>.';
+$cuerpo .= 'Para completar el registro tienes que confirmar que has recibido este email haciendo click en el siguiente enlace:
 <p style="text-align: center;">';
 $cuerpo .= $url;
-$cuerpo .= '</p>
-';
+$cuerpo .= '</p>';
+$cuerpo .= '<p>Saluda atentamente, </p>';
+$cuerpo .= '<p><strong> Equipo Eggplant Blue. </strong></p>';
+ 
  
 //para el envío en formato HTML
 $headers = "MIME-Version: 1.0\r\n";
