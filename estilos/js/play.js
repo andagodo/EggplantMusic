@@ -94,6 +94,7 @@ $(function(){
 	$("#menu1").mouseleave(
 		function(e){
 	   $(this).fadeOut('slow');
+
 					}
 		); 
 
@@ -102,14 +103,19 @@ $(function(){
 
             $.post( "../front_logica/consplaylist.php", { "idu" : IdUsr }, null, "json" )
 				.done(function( data, textStatus, jqXHR ) {
-					/*$div = $('<div class="cancionnow" ></div>')
-					$li = $('<li></li>');
-					$a = $('<a href="' + data.ruta + '"data-idc="'+ data.id + '" >' + data.nombre + '</a>');
-					$li.append($a);
-					$div.append($li);
-					$("#playerul").append($div);
-					initaudio2();*/
-					alert(data.id);
+					
+					for (var i = 0; i < data.length; i++) {
+   						console.log(data[i].id);
+   						$li = $('<li></li>');
+   						$a = $('<a class="add-btn" href="#" data-idpl="'+ data[i].id + '" >' + data[i].nom + '</a>');
+   						$li.append($a);
+   						$('#menu2').find("ul").append($li);
+   						//hasta aca agrego los li con la info de las playlist del usuario
+					}
+				alert($('#menu2').find("li").length);
+				//con este alert muestro cuantas li tengo, tengo que controlar tener mas de dos (dos son las fijas) y 
+				//luego en el if si tiene mas borrar y recargar( o ver posible mejora.)
+					
 					if ( console && console.log ) {
 				   	console.log( "La solicitud se ha completado correctamente." );
 													}
@@ -126,10 +132,12 @@ $(function(){
             //console.log(y);
             //console.log(x);
             var menu2=document.getElementById('menu2');
-            menu1.style.top = y+"px";
-            menu1.style.left = x+"px";
-            menu1.style.display = "block";
+            menu2.style.top = y+"px";
+            menu2.style.left = x+"px";
+            menu2.style.display = "block";
             // obtengo el id de la cancion
         	});
+
+	$("#menu2").mouseleave(function(e){$(this).fadeOut('slow');}); 
 
 });

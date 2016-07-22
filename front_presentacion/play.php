@@ -148,7 +148,7 @@
       <div id="menu2">
         <ul>
           <li>Agregar cancion</li>
-          <li><a class="add-btn" href="#">Añadir a cola de reproduccion</a></li>
+          <li><a class="add-btn" href="#">Crear Playlist..</a></li>
         </ul>
       </div>
 
