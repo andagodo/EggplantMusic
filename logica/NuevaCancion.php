@@ -17,11 +17,13 @@ $nom=trim($_POST['nom']);
 $dur=trim($_POST['dur']);
 $ruta=trim($_POST['ruta']);
 $idg=trim($_POST['idg']);
+$activ="S";
+$feactivo=date("d/m/Y");
 
 
 try {
 $conex = conectar();
-$c= new Cancion ('',$nom,$dur,$ruta,$idg);
+$c= new Cancion ('',$nom,$dur,$ruta,$idg,$activ,$feactivo);
 $ok=$c->altaCancion($conex);
 
 if ($ok)

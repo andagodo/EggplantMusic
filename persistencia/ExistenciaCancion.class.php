@@ -11,11 +11,13 @@ class ExistenciaCancion
         $dur=$param->getDur_Cancion();
         $ruta = $param->getRuta_Arch_Cancion();
 		$idg = $param->getId_Genero();
+		$activ = $param->getActivo();
+		$feactivo = $param->getFech_Activo();
 
-        $sql = "INSERT INTO Cancion ( Nom_Cancion, Dur_Cancion, Ruta_Arch_Cancion, Id_Genero) VALUES ( :nombre, :duracancion, :rutaarch, :idgenero)";
+        $sql = "INSERT INTO Cancion ( Nom_Cancion, Dur_Cancion, Ruta_Arch_Cancion, Id_Genero, Activo, Fech_Activo) VALUES ( :nombre, :duracancion, :rutaarch, :idgenero, :activ, :feactivo)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":duracancion" => $dur, ":rutaarch" => $ruta, ":idgenero" => $idg));
+		$result->execute(array(":nombre" => $nom, ":duracancion" => $dur, ":rutaarch" => $ruta, ":idgenero" => $idg, ":activ" => $activ, ":feactivo" => $feactivo));
         
         
         if($result)
@@ -59,9 +61,7 @@ class ExistenciaCancion
           	return true;
         }
     }
-*/
-
-    
+   
 	public function consultaUno($param, $conex)
 	{
 //        $idp= trim($param->getIDpersona());   
@@ -75,12 +75,14 @@ class ExistenciaCancion
 
        return $resultados;
     }
+*/
+
 
 	public function consultaCancionGenero($param, $conex)
 	{
 //        $idp= trim($param->getIDpersona());   
 		$idg= trim($param->getId_Genero());
-        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g WHERE c.Id_Genero=:genero AND c.Id_Genero = g.Id_Genero";
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g WHERE c.Id_Genero=:genero AND c.Id_Genero = g.Id_Genero AND c.Activo = 'S'";
 
         $result = $conex->prepare($sql);
 	    $result->execute(array(":genero" => $idg));
@@ -93,7 +95,7 @@ class ExistenciaCancion
 	public function buscaNombreCancion($param, $conex)
 	{
         $nombre= trim($param->getNom_Cancion());   
-        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g WHERE Nom_Cancion LIKE :nom AND c.Id_Genero = g.Id_Genero";
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g WHERE Nom_Cancion LIKE :nom AND c.Id_Genero = g.Id_Genero AND c.Activo = 'S'";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -102,7 +104,7 @@ class ExistenciaCancion
        return $resultados;
     }	
 
-	
+/*	
 	public function consultaTodos($param, $conex)
    {
 //        $idp= trim($param->getIDpersona());   
@@ -117,15 +119,16 @@ class ExistenciaCancion
        return $resultados;
     }
 	
+*/
 	
 	public function eliminaCancion($param, $conex)
 	{
 		$idc= trim($param->getId_Cancion());
 		
-		$sql = "DELETE FROM Pertenece_Cancion WHERE Id_Cancion =:idc";
+		$sql = "UPDATE Pertenece_Cancion SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Cancion =:idc";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idc" => $idc));
-		$sql = "DELETE FROM Cancion WHERE Id_Cancion =:idc";
+		$sql = "UPDATE Cancion SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Cancion =:idc";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idc" => $idc));
 		return $result;
@@ -134,7 +137,7 @@ class ExistenciaCancion
 	public function consCancionId($param, $conex)
 	{
 		$idc= trim($param->getId_Cancion());
-		$sql = "SELECT * FROM Cancion WHERE Id_Cancion =:idc";
+		$sql = "SELECT * FROM Cancion WHERE Id_Cancion =:idc AND Activo = 'S'";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idc" => $idc));
 		$resultados=$result->fetchAll();
@@ -155,7 +158,7 @@ class ExistenciaCancion
 	public function consultaCancionSinInterprete($param,$conex)
 	{
 
-        $sql = "SELECT COUNT (Id_Cancion) FROM Cancion WHERE Id_Cancion NOT IN (SELECT Id_Cancion FROM Pertenece_Cancion)";
+        $sql = "SELECT COUNT (Id_Cancion) FROM Cancion WHERE Id_Cancion NOT IN (SELECT Id_Cancion FROM Pertenece_Cancion) AND Activo = 'S'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();
@@ -167,7 +170,7 @@ class ExistenciaCancion
 	public function consultaCancionSinAlbum($param,$conex)
 	{
 
-        $sql = "SELECT COUNT (Id_Cancion) FROM Cancion WHERE Id_Cancion IN (SELECT Id_Cancion FROM Pertenece_Cancion WHERE Id_Pertenece_Cancion NOT IN (SELECT Id_Pertenece_Cancion FROM Contiene_Album))";
+        $sql = "SELECT COUNT (Id_Cancion) FROM Cancion WHERE Id_Cancion IN (SELECT Id_Cancion FROM Pertenece_Cancion WHERE Id_Pertenece_Cancion NOT IN (SELECT Id_Pertenece_Cancion FROM Contiene_Album)) AND Activo = 'S'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();
@@ -178,7 +181,7 @@ class ExistenciaCancion
 	public function consultaAlbumSinCancion($param,$conex)
 	{
 
-        $sql = "SELECT count(Id_Album) FROM Album WHERE Id_Album NOT IN (SELECT Id_Album FROM Contiene_Album)";
+        $sql = "SELECT count(Id_Album) FROM Album WHERE Id_Album NOT IN (SELECT Id_Album FROM Contiene_Album) AND Activo = 'S'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();
@@ -189,7 +192,7 @@ class ExistenciaCancion
 	public function consultaInterpreteSinCancion($param,$conex)
 	{
 
-        $sql = "SELECT count(Id_Interprete) FROM Interprete WHERE Id_Interprete NOT IN (SELECT Id_Interprete FROM Pertenece_Cancion)";
+        $sql = "SELECT count(Id_Interprete) FROM Interprete WHERE Id_Interprete NOT IN (SELECT Id_Interprete FROM Pertenece_Cancion) AND Activo = 'S'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();

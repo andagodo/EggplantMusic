@@ -10,10 +10,12 @@ class ExistenciaInterprete
         $nom=$param->getNom_Interprete();
         $fot=$param->getLink_Foto_Inter();
         $pais = $param->getPais_Interprete();
-
-		$sql = "INSERT INTO Interprete (Nom_Interprete, Link_Foto_Inter, Pais_Interprete) VALUES (:nombre, :foto, :pais)";
+		$activ = $param->getActivo();
+		$feactivo = $param->getFech_Activo();
+		
+		$sql = "INSERT INTO Interprete (Nom_Interprete, Link_Foto_Inter, Pais_Interprete, Activo, Fech_Activo) VALUES (:nombre, :foto, :pais, :activ, :feactivo)";
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":foto" => $fot, ":pais" => $pais));
+		$result->execute(array(":nombre" => $nom, ":foto" => $fot, ":pais" => $pais, ":activ" => $activ, ":feactivo" => $feactivo));
         
         
         if($result)
@@ -26,49 +28,20 @@ class ExistenciaInterprete
         }
     }
 
-     
-
-   //Devuelve true si el login coincide con la password
-   public function coincideLoginPassword($param, $conex)
-   {
-        //Obtiene los datos del objeto $param
-        $log= trim($param->getLogin());
-        $pass= trim($param->getPassword());
-		//Vuelvo a encriptar la clave incluyendo el salt
-		
-		$salt = '34a@$#aA9823$';
-//		$pass= hash('sha512', $salt . $pass);
-		
-        $sql = "SELECT * FROM persona WHERE Login=:login AND Password=:password";
-		
-        $result = $conex->prepare($sql);
-		$result->execute(array(":login" => $log, ":password" => $pass));
-        //Obtiene el registro de la tabla Usuario 
-
-        if($result->rowCount()==0)
-        {
-       		
-			return false;
-        }
-        else
-        {
-        	
-          	return true;
-        }
-    }
 
 	public function eliminaInterprete($param, $conex)
 	{
 		$idi = trim($param->getId_Interprete());
-		$sql = "DELETE FROM Pertenece_Cancion WHERE Id_Interprete = :idi";
+		$sql = "UPDATE Pertenece_Cancion SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Interprete = :idi";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idi" => $idi));
-		$sql = "DELETE FROM Interprete WHERE Id_Interprete = :idi";
+		$sql = "UPDATE Interprete SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Interprete = :idi";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idi" => $idi));
 		return $result;
 	}
-    
+
+/*    
 	public function consultaUnoInterprete($param, $conex)
 	{
 //        $idp= trim($param->getIDpersona());   
@@ -83,10 +56,13 @@ class ExistenciaInterprete
        return $resultados;
     }
 
+*/	
+	
+	
 	public function consultaTodosInterprete($param, $conex)
    {
 
-        $sql = "SELECT * FROM Interprete";
+        $sql = "SELECT * FROM Interprete WHERE Activo = 'S'";
         $result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
@@ -106,7 +82,7 @@ class ExistenciaInterprete
 	public function buscaNombreInterprete($param, $conex)
 	{
         $nombre= trim($param->getNom_Interprete());   
-        $sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete WHERE Nom_Interprete LIKE :nom";
+        $sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete WHERE Nom_Interprete LIKE :nom AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -119,7 +95,7 @@ class ExistenciaInterprete
 	public function buscaPaisInterprete($param, $conex)
 	{
         $pais= trim($param->getPais_Interprete());   
-        $sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete WHERE Pais_Interprete LIKE :pais";
+        $sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete WHERE Pais_Interprete LIKE :pais AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$pais = "%".$pais."%";
 	    $result->execute(array(":pais" => $pais));

@@ -8,14 +8,17 @@ class Interprete
 	private $Nom_Interprete;
     private $Link_Foto_Inter;
     private $Pais_Interprete;
+	private $Activo;
+	private $Fech_Activo;
 
-
-    function __construct($idi='',$nom='', $fot='', $pais='')
+    function __construct($idi='',$nom='', $fot='', $pais='', $activ='', $feactivo='')
     {
         $this->Id_Interprete= $idi;
 		$this->Nom_Interprete= $nom;
         $this->Link_Foto_Inter= $fot;
         $this->Pais_Interprete= $pais;
+		$this->Activo=$activ;
+		$this->Fech_Activo=$feactivo;
 
     }
     
@@ -40,7 +43,18 @@ class Interprete
     {
       $this->Pais_Interprete= $pais;
     }
+ 
+	public function setActivo($activ)
+    {
+      $this->Activo= $activ;
+    }
     
+	
+    public function setFech_Activo($feactivo)
+    {
+      $this->Fech_Activo= $feactivo;
+    }	
+ 
     
     //Métodos get
     
@@ -64,6 +78,17 @@ class Interprete
       return $this->Pais_Interprete;
     }
  
+ 
+	public function getActivo()
+    {
+      return $this->Activo;
+    }
+    
+	
+    public function getFech_Activo()
+    {
+      return $this->Fech_Activo;
+    }    
 	
     //Otros Métodos
     

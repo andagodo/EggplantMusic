@@ -5,16 +5,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/persistencia/ExistenciaContieneAlbum.
 class ContieneAlbum
 {
 	private $Id_Contiene_Al;
-  private $Id_Album;
+	private $Id_Album;
 	private $Id_Pertenece_Cancion;
+	private $Activo;
+	private $Fech_Activo;
 
-
-    function __construct($idca='',$ida='',$idpc='')
+    function __construct($idca='',$ida='',$idpc='', $activ='', $feactivo='')
     {
 		$this->Id_Contiene_Al= $idca;
         $this->Id_Album= $ida;
 		$this->Id_Pertenece_Cancion= $idpc;
-
+		$this->Activo=$activ;
+		$this->Fech_Activo=$feactivo;
+		
     }
     
     //Métodos set
@@ -33,7 +36,18 @@ class ContieneAlbum
     {
       $this->Id_Pertenece_Cancion= $idpc;
     }
+ 
+	public function setActivo($activ)
+    {
+      $this->Activo= $activ;
+    }
     
+	
+    public function setFech_Activo($feactivo)
+    {
+      $this->Fech_Activo= $feactivo;
+    }	
+ 
     //Métodos get
 	
     public function getId_Contiene_Al()
@@ -50,7 +64,17 @@ class ContieneAlbum
     {
       return $this->Id_Pertenece_Cancion;
     }
+ 
+	public function getActivo()
+    {
+      return $this->Activo;
+    }
     
+	
+    public function getFech_Activo()
+    {
+      return $this->Fech_Activo;
+    }   
 	
     //Otros Métodos
     
