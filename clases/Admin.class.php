@@ -10,16 +10,18 @@ class Admin
 	private $Nombre_Usr_Sist;
     private $Mail_Usr_Sist;
     private $Pass_Usr_Sist;
-
+	private $Activo;
+	private $Fech_Activo;
     
-    function __construct($tus='', $nomu='', $mus='', $pus='', $feal='')
+    function __construct($tus='', $nomu='', $mus='', $pus='', $feal='', $activ='', $feactivo='')
     {
         $this->Tipo_Usr_Sist= $tus;
         $this->Nombre_Usr_Sist= $nomu;
         $this->Mail_Usr_Sist= $mus;
         $this->Pass_Usr_Sist= $pus;
 		$this->Fech_Alta_Usr_Sist= $feal;
-
+		$this->Activo=$activ;
+		$this->Fech_Activo=$feactivo;
     }
     
     //Métodos set
@@ -50,7 +52,18 @@ class Admin
       $this->Pass_Usr_Sist= $pus;
     }
 
-
+	public function setActivo($activ)
+    {
+      $this->Activo= $activ;
+    }
+    
+	
+    public function setFech_Activo($feactivo)
+    {
+      $this->Fech_Activo= $feactivo;
+    }	
+	
+	
     // la profesora habia puesto una funcion del tipo set que era "habilitado"
     
     //Métodos get
@@ -81,6 +94,17 @@ class Admin
       return $this->Pass_Usr_Sist;
     }
 
+	public function getActivo()
+    {
+      return $this->Activo;
+    }
+    
+	
+    public function getFech_Activo()
+    {
+      return $this->Fech_Activo;
+    }   	
+	
 /*	
 	
 	public function getIDrol()

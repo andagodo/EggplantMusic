@@ -14,7 +14,8 @@ class ExistenciaAdmin
         $nomu=$param->getNombre_Usr_Sist();
         $mus=$param->getMail_Usr_Sist();
         $pus=$param->getPass_Usr_Sist();
-	
+		$activ = $param->getActivo();
+		$feactivo = $param->getFech_Activo();	
 		
 		//Encripto la password uso un salt y un hash
 		
@@ -23,11 +24,11 @@ class ExistenciaAdmin
         
         //Genera la sentencia a ejecutar
 		//La sql ES UN EJEMPLO LE FALTA todos los campos, depende de sus atributos
-        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist) VALUES (:tipousr, :nombre, :mail, :pass, :fechaalta)";
+        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Fech_Activo) VALUES (:tipousr, :nombre, :mail, :pass, :fechaalta, :activ, :feactivo)";
       
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":tipousr" => $tus, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal));
+		$result->execute(array(":tipousr" => $tus, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal, ":activ" => $activ, ":feactivo" => $feactivo));
         
         //Para saber si ocurrió un error
         if($result)
@@ -40,7 +41,6 @@ class ExistenciaAdmin
         }
     }
 
-     
 
    //Devuelve true si el login coincide con la password
    public function coincideLoginAdmin($param, $conex)
@@ -54,7 +54,7 @@ class ExistenciaAdmin
 		$salt = '34a@$#aA9823$';
 //		$pass= hash('sha512', $salt . $pass);
 		
-        $sql = "SELECT * FROM Usr_Sistema WHERE Mail_Usr_Sist=:Mail_Usr_Sist AND Pass_Usr_Sist=:Pass_Usr_Sist";
+        $sql = "SELECT * FROM Usr_Sistema WHERE Mail_Usr_Sist=:Mail_Usr_Sist AND Pass_Usr_Sist=:Pass_Usr_Sist AND Activo = 'S'";
 
         $result = $conex->prepare($sql);
 		$result->execute(array(':Mail_Usr_Sist' => $mail, ':Pass_Usr_Sist' => $pass));
@@ -77,7 +77,7 @@ class ExistenciaAdmin
 	{
 //        $idp= trim($param->getIDpersona());   
 		$tus= trim($param->getTipo_Usr_Sist());
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo AND Activo = 'S'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute(array(":tipo" => $tus));
@@ -109,7 +109,7 @@ class ExistenciaAdmin
 	public function buscaNombreAdmin($param, $conex)
 	{
         $nombre= trim($param->getNombre_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -122,7 +122,7 @@ class ExistenciaAdmin
 	public function buscaMailAdmin($param, $conex)
 	{
         $mail= trim($param->getMail_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$mail = "%".$mail."%";
 	    $result->execute(array(":mai" => $mail));
@@ -134,7 +134,7 @@ class ExistenciaAdmin
 	public function buscaFAltaAdmin($param, $conex)
 	{
         $falta= trim($param->getFech_Alta_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$falta = "%".$falta."%";
 	    $result->execute(array(":fa" => $falta));
@@ -154,7 +154,7 @@ class ExistenciaAdmin
 
        return $resultados;
     }	
-*/	
+	
 	
 
 	public function consultaTodos($param, $conex)
@@ -182,11 +182,13 @@ class ExistenciaAdmin
 		$resultados= $result->fetchAll();
 		return $resultados;
 	}	
+*/
+
 	
 	public function consultaTipoAdmin($param, $conex)
 	{
 		$mai= trim($param->getMail_Usr_Sist());
-		$sql = "SELECT Tipo_Usr_Sist, Nombre_Usr_Sist  FROM Usr_Sistema WHERE Mail_Usr_Sist=:mail";
+		$sql = "SELECT Tipo_Usr_Sist, Nombre_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist=:mail AND Activo = 'S'";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":mail" => $mai));
 		return $result->fetchAll();
@@ -196,16 +198,14 @@ class ExistenciaAdmin
 	public function eliminaAdmin($param, $conex)
 	{
 		$mus= trim($param->getMail_Usr_Sist());
-		$sql = "DELETE FROM Usr_Sistema WHERE Mail_Usr_Sist =:mail";
+		$sql = "UPDATE Usr_Sistema SET Activo = 'N', Fech_Activo = getdate() WHERE Mail_Usr_Sist =:mail";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":mail" => $mus));
 		return $result;
 	}		
 	
 	
-	
-	
-	
+/*	
 	
 	public function consultaIDrol($param, $conex)
 	{
@@ -217,11 +217,13 @@ class ExistenciaAdmin
 		$result->execute(array(":login" => $log));
 		return $result->fetchAll();
 	}
+*/
+
 	
 	public function TotalAdmin($param,$conex)
 	{
 
-        $sql = "SELECT COUNT(Id_Usr_Sistema) FROM Usr_Sistema";
+        $sql = "SELECT COUNT(Id_Usr_Sistema) FROM Usr_Sistema WHERE Activo = 'S'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();
