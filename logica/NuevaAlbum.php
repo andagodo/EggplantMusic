@@ -13,10 +13,12 @@ $conex = conectar();
 $nom=trim($_POST['nom']);
 $anio=trim($_POST['anio']);
 $link=trim($_POST['link']);
+$activ="S";
+$feactivo=date("d/m/Y");
 
 
 $conex = conectar();
-$a= new Album ('',$nom,$anio,$link);
+$a= new Album ('',$nom,$anio,$link,$activ,$feactivo);
 $ok=$a->altaAlbum($conex);
 
 if ($ok)

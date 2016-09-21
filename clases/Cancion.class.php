@@ -4,19 +4,23 @@ require_once  $_SERVER['DOCUMENT_ROOT'] . '/persistencia/ExistenciaCancion.class
 
 class Cancion
 {
-  private $Id_Cancion;
+	private $Id_Cancion;
 	private $Nom_Cancion;
-  private $Dur_Cancion;
-  private $Ruta_Arch_Cancion;
+	private $Dur_Cancion;
+	private $Ruta_Arch_Cancion;
 	private $Id_Genero;
+	private $Activo;
+	private $Fech_Activo;
 
-    function __construct($idc='',$nom='', $dur='', $ruta='', $idg='')
+    function __construct($idc='',$nom='', $dur='', $ruta='', $idg='', $activ='', $feactivo='')
     {
         $this->Id_Cancion= $idc;
 		$this->Nom_Cancion= $nom;
         $this->Dur_Cancion= $dur;
         $this->Ruta_Arch_Cancion= $ruta;
 		$this->Id_Genero= $idg;
+		$this->Activo=$activ;
+		$this->Fech_Activo=$feactivo;
     }
     
     //Métodos set
@@ -47,6 +51,19 @@ class Cancion
       $this->Id_Genero= $idg;
     }	
     
+	
+	public function setActivo($activ)
+    {
+      $this->Activo= $activ;
+    }
+    
+	
+    public function setFech_Activo($feactivo)
+    {
+      $this->Fech_Activo= $feactivo;
+    }		
+	
+	
     //Métodos get
     
     public function getId_Cancion()
@@ -74,6 +91,18 @@ class Cancion
     {
       return $this->Id_Genero;
     }    
+
+
+	public function getActivo()
+    {
+      return $this->Activo;
+    }
+    
+	
+    public function getFech_Activo()
+    {
+      return $this->Fech_Activo;
+    }   
 
 	
     //Otros Métodos

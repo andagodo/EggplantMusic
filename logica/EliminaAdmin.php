@@ -10,7 +10,7 @@ $mus=trim($_POST['mus']);
 
 try {
 $conex = conectar();
-$u= new Admin ('','','',$mus);
+$u= new Admin ('','',$mus);
 $ok=$u->eliminaAdmin($conex);
 
 	if ($ok){

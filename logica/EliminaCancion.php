@@ -7,6 +7,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <?php
 $idc=trim($_POST['idc']);
 
+
 try {
 $conex = conectar();
 $u= new Cancion ($idc);

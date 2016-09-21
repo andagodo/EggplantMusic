@@ -12,10 +12,11 @@ $conex = conectar();
 
 $nomg=trim($_POST['nomg']);
 $desc=trim($_POST['desc']);
-
+$activ="S";
+$feactivo=date("d/m/Y");
 
 $conex = conectar();
-$a= new Genero ('',$nomg,$desc);
+$a= new Genero ('',$nomg,$desc,$activ,$feactivo);
 $ok=$a->altaGenero($conex);
 
 if ($ok)

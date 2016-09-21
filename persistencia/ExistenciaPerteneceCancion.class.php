@@ -9,11 +9,13 @@ class ExistenciaPerteneceCancion
 
         $idi=$param->getId_Interprete();
         $idc=$param->getId_Cancion();
-
-        $sql = "INSERT INTO Pertenece_Cancion (Id_Interprete, Id_Cancion) VALUES (:interprete, :cancion)";
+		$activ = $param->getActivo();
+		$feactivo = $param->getFech_Activo();
+		
+        $sql = "INSERT INTO Pertenece_Cancion (Id_Interprete, Id_Cancion, Activo, Fech_Activo) VALUES (:interprete, :cancion, :activ, :feactivo)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":interprete" => $idi, ":cancion" => $idc));
+		$result->execute(array(":interprete" => $idi, ":cancion" => $idc, ":activ" => $activ, ":feactivo" => $feactivo));
         
         
         if($result)
@@ -28,7 +30,7 @@ class ExistenciaPerteneceCancion
 	
 	public function consultaPCCancion($param, $conex)
 	{
-		$sql = "SELECT Id_Cancion, Nom_Cancion, Dur_Cancion FROM Cancion WHERE cancion.Id_Cancion NOT IN (SELECT Id_Cancion FROM Pertenece_Cancion)";
+		$sql = "SELECT Id_Cancion, Nom_Cancion, Dur_Cancion FROM Cancion WHERE cancion.Id_Cancion NOT IN (SELECT Id_Cancion FROM Pertenece_Cancion) AND cancion.Activo = 'S'";
         $result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
@@ -38,7 +40,7 @@ class ExistenciaPerteneceCancion
 	public function consultaPCAlbum($param, $conex)
 	{
 	//	$sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete WHERE Interprete.Id_Interprete NOT IN (SELECT Id_Interprete FROM Pertenece_Cancion)";
-        $sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete";
+        $sql = "SELECT Id_Interprete, Nom_Interprete, Pais_Interprete FROM Interprete WHERE Activo = 'S'";
 		$result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
@@ -48,7 +50,7 @@ class ExistenciaPerteneceCancion
 	public function buscaInterpreteCancion($param, $conex)
 	{
         $interprete= trim($param->getId_Interprete());   
-        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g, Pertenece_Cancion pc WHERE c.Id_Genero = g.Id_Genero AND c.Id_Cancion = pc.Id_Cancion AND pc.Id_Interprete = :int";
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g, Pertenece_Cancion pc WHERE c.Id_Genero = g.Id_Genero AND c.Id_Cancion = pc.Id_Cancion AND pc.Id_Interprete = :int AND c.Activo = 'S'";
         $result = $conex->prepare($sql);
 	    $result->execute(array(":int" => $interprete));
 		$resultados=$result->fetchAll();

@@ -10,12 +10,13 @@ class ExistenciaAlbum
         $nom=$param->getNom_Album();
         $anio=$param->getAnio_Album();
         $link = $param->getLink_Foto_Album();
+		$activ = $param->getActivo();
+		$feactivo = $param->getFech_Activo();
 
-
-        $sql = "INSERT INTO Album ( Nomb_Album, Anio_Album, Link_Foto_Album) VALUES ( :nombre, :anioalbum, :linkalbum)";
+        $sql = "INSERT INTO Album ( Nomb_Album, Anio_Album, Link_Foto_Album, Activo, Fech_Activo) VALUES ( :nombre, :anioalbum, :linkalbum, :activ, :feactivo)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":anioalbum" => $anio, ":linkalbum" => $link));
+		$result->execute(array(":nombre" => $nom, ":anioalbum" => $anio, ":linkalbum" => $link, ":activ" => $activ, ":feactivo" => $feactivo));
         
         
         if($result)
@@ -33,10 +34,10 @@ class ExistenciaAlbum
 	{
 		$ida= trim($param->getId_Album());
 		
-		$sql = "DELETE FROM Contiene_Album WHERE Id_Album = :ida";
+		$sql = "UPDATE Contiene_Album SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Album = :ida";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":ida" => $ida));
-		$sql = "DELETE FROM Album WHERE Id_Album = :ida";
+		$sql = "UPDATE Album SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Album = :ida";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":ida" => $ida));
 		return $result;
@@ -46,7 +47,7 @@ class ExistenciaAlbum
 	public function consultaAlbum($param, $conex)
 	{
 		$ida= trim($param->getId_Album());
-        $sql = "SELECT * FROM Album WHERE Id_Album=:idalbum";
+        $sql = "SELECT * FROM Album WHERE Id_Album=:idalbum AND Activo = 'S'";
         $result = $conex->prepare($sql);
 	    $result->execute(array(":idalbum" => $ida));
 		$resultados=$result->fetchAll();
@@ -57,7 +58,7 @@ class ExistenciaAlbum
 
 	public function consultaTodosAlbum($conex)
    {
-        $sql = "SELECT * FROM Album";
+        $sql = "SELECT * FROM Album AND Activo = 'S'";
         $result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
@@ -67,7 +68,7 @@ class ExistenciaAlbum
 	public function buscaNombreAlbum($param, $conex)
 	{
         $nombre= trim($param->getNom_Album());   
-        $sql = "SELECT Id_Album, Nomb_Album, Anio_Album FROM Album WHERE Nomb_Album LIKE :nom";
+        $sql = "SELECT Id_Album, Nomb_Album, Anio_Album FROM Album WHERE Nomb_Album LIKE :nom AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -80,7 +81,7 @@ class ExistenciaAlbum
 	public function buscaAnioAlbum($param, $conex)
 	{
         $anio= trim($param->getAnio_Album());
-        $sql = "SELECT Id_Album, Nomb_Album, Anio_Album FROM Album WHERE Anio_Album = :anio";
+        $sql = "SELECT Id_Album, Nomb_Album, Anio_Album FROM Album WHERE Anio_Album = :anio AND Activo = 'S'";
         $result = $conex->prepare($sql);
 	    $result->execute(array(":anio" => $anio));
 		$resultados=$result->fetchAll();

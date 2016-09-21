@@ -12,10 +12,12 @@ $nomu=trim($_POST['nomu']);
 $mus=trim($_POST['mus']);
 $pus=trim($_POST['pus']);
 $feal=date("d/m/Y");
+$activ="S";
+$feactivo=date("d/m/Y");
 
 $conex = conectar();
 //$u= new Persona ('',$login,md5($pass));
-$u= new Admin ($tus,$nomu,$mus,$pus,$feal);
+$u= new Admin ($tus,$nomu,$mus,$pus,$feal,$activ,$feactivo);
 
 $ok=$u->altaAdmin($conex);
 

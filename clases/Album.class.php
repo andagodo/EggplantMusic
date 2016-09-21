@@ -8,15 +8,18 @@ class Album
     private $Nom_Album;
 	private $Anio_Album;
     private $Link_Foto_Album;
+	private $Activo;
+	private $Fech_Activo;
 
 
-    function __construct($ida='',$nom='',$anio='', $link='')
+    function __construct($ida='',$nom='',$anio='', $link='', $activ='', $feactivo='')
     {
 		$this->Id_Album= $ida;
         $this->Nom_Album= $nom;
 		$this->Anio_Album= $anio;
         $this->Link_Foto_Album= $link;
-
+		$this->Activo=$activ;
+		$this->Fech_Activo=$feactivo;
     }
     
     //Métodos set
@@ -40,7 +43,19 @@ class Album
     {
       $this->Link_Foto_Album= $link;
     }
+  
+	public function setActivo($activ)
+    {
+      $this->Activo= $activ;
+    }
     
+	
+    public function setFech_Activo($feactivo)
+    {
+      $this->Fech_Activo= $feactivo;
+    }	
+
+  
     //Métodos get
 	
     public function getId_Album()
@@ -63,7 +78,19 @@ class Album
       return $this->Link_Foto_Album;
     }
  
+
+	public function getActivo()
+    {
+      return $this->Activo;
+    }
+    
 	
+    public function getFech_Activo()
+    {
+      return $this->Fech_Activo;
+    }   
+
+ 
     //Otros Métodos
     
 	

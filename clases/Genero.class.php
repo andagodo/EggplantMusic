@@ -7,13 +7,16 @@ class Genero
     private $Id_Genero;
 	private $Nom_Genero;
     private $Desc_Genero;
+	private $Activo;
+	private $Fech_Activo;
 
-
-    function __construct($idg='',$nomg='', $desc='')
+    function __construct($idg='',$nomg='', $desc='', $activ='', $feactivo='')
     {
         $this->Id_Genero= $idg;
 		$this->Nom_Genero= $nomg;
         $this->Desc_Genero= $desc;
+		$this->Activo=$activ;
+		$this->Fech_Activo=$feactivo;
     }
     
     //Métodos set
@@ -32,6 +35,18 @@ class Genero
     {
       $this->Desc_Genero= $desc;
     }
+	
+	public function setActivo($activ)
+    {
+      $this->Activo= $activ;
+    }
+    
+	
+    public function setFech_Activo($feactivo)
+    {
+      $this->Fech_Activo= $feactivo;
+    }		
+	
     
     //Métodos get
     
@@ -49,7 +64,19 @@ class Genero
     {
       return $this->Desc_Genero;
     }
+ 
+ 
+	public function getActivo()
+    {
+      return $this->Activo;
+    }
     
+	
+    public function getFech_Activo()
+    {
+      return $this->Fech_Activo;
+    }   
+ 
 	
     //Otros Métodos
     

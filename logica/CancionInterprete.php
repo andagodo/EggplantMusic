@@ -12,10 +12,11 @@ $conex = conectar();
 
 $idi=trim($_POST['idi']);
 $idc=trim($_POST['idc']);
-
+$activ="S";
+$feactivo=date("d/m/Y");
 
 $conex = conectar();
-$a= new PerteneceCancion ('',$idi,$idc);
+$a= new PerteneceCancion ('',$idi,$idc,$activ,$feactivo);
 $ok=$a->altaPerteneceCancion($conex);
 
 if ($ok)

@@ -8,7 +8,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 $idg=trim($_POST['idg']);
 
 try {
-	echo $idg;
 $conex = conectar();
 $u= new Genero ($idg);
 $ok=$u->eliminaGenero($conex);

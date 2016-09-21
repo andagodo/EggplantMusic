@@ -13,10 +13,11 @@ $conex = conectar();
 $nomi=trim($_POST['nomi']);
 $foto=trim($_POST['foto']);
 $pais=trim($_POST['pais']);
-
+$activ="S";
+$feactivo=date("d/m/Y");
 
 $conex = conectar();
-$a= new Interprete ('',$nomi,$foto,$pais);
+$a= new Interprete ('',$nomi,$foto,$pais,$activ,$feactivo);
 $ok=$a->altaInterprete($conex);
 
 if ($ok)

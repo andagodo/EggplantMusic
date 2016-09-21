@@ -7,14 +7,16 @@ class PerteneceCancion
 	private $Id_Pertenece_Cancion;
     private $Id_Interprete;
 	private $Id_Cancion;
+	private $Activo;
+	private $Fech_Activo;
 
-
-    function __construct($idpc='',$idi='',$idc='')
+    function __construct($idpc='',$idi='',$idc='', $activ='', $feactivo='')
     {
 		$this->Id_Pertenece_Cancion= $idpc;
         $this->Id_Interprete= $idi;
 		$this->Id_Cancion= $idc;
-
+		$this->Activo=$activ;
+		$this->Fech_Activo=$feactivo;
     }
     
     //Métodos set
@@ -33,7 +35,19 @@ class PerteneceCancion
     {
       $this->Id_Cancion= $idc;
     }
+  
+	public function setActivo($activ)
+    {
+      $this->Activo= $activ;
+    }
     
+	
+    public function setFech_Activo($feactivo)
+    {
+      $this->Fech_Activo= $feactivo;
+    }	
+
+  
     //Métodos get
 	
     public function getId_Pertenece_Cancion()
@@ -50,6 +64,17 @@ class PerteneceCancion
     {
       return $this->Id_Cancion;
     }
+
+	public function getActivo()
+    {
+      return $this->Activo;
+    }
+    
+	
+    public function getFech_Activo()
+    {
+      return $this->Fech_Activo;
+    }  
     
 	
     //Otros Métodos
