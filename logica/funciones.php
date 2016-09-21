@@ -3,23 +3,24 @@
 
 function conectar()
 {
+
     try {
-		
 		$sqlserver = "sqlsrv:Server=192.168.3.11;Database=eggplantmusic";
-		$conexion = new PDO($sqlserver, "eggplantmusic", "eggplantmusic");
-		$conexion->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-        return($conexion);
+
+		$con = new PDO($sqlserver, "eggplantmusic", "eggplantmusic");
+		$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        return($con);
+
 		
 	} catch (PDOException $e) {
-		
 		print "<p>Error: No puede conectarse con la base de datos.</p>\n";
 		exit();
     }
 }
 
-function desconectar($conexion)
+function desconectar($con)
 {
-   sqlsrv_close($conexion);
+   sqlsrv_close($con);
 }
 
 

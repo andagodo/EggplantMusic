@@ -109,7 +109,7 @@
 /*menu1*/
 #menu1, #menu2{
   background-color: #3E3E40;
-  min-width: 300px;
+  min-width: 250px;
   position: fixed;
   top: 0;
   z-index: 8000;
@@ -126,7 +126,7 @@
   color: #ADAEB3;
 
 }
-#menu1 ul li a, #menu2 ul li a{
+#menu1 ul li, #menu2 ul li{
   text-decoration: none;
   display: block;
   padding: 8px 16px;
@@ -134,9 +134,14 @@
   color: #ADAEB3;
 
 }
-#menu1 ul li a:hover, #menu2 ul li a:hover{
+
+#menu1 ul li:hover, #menu2 ul li:hover{
   background-color: #2E2F33;
 }
 
-
-
+#menu2 .divider {  
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #424242;
+}

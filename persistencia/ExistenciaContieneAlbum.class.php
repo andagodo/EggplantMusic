@@ -48,7 +48,7 @@ class ExistenciaContieneAlbum
 	public function consultaCancionA($param, $conex) /*Consultar cancion que pertenece a un album*/
 	{
 		$ida= trim($param->getId_Album());
-        $sql = "SELECT * FROM cancion WHERE id_cancion IN (SELECT id_cancion FROM pertenece_cancion WHERE id_pertenece_cancion IN (SELECT id_pertenece_cancion FROM contiene_album WHERE id_album =:idalbum))";
+        $sql = "SELECT cancion.Id_Cancion, cancion.Nom_Cancion, Contiene_Album.Id_Contiene_Al from cancion inner join pertenece_cancion on cancion.id_cancion = pertenece_cancion.id_cancion inner join contiene_album on pertenece_cancion.id_pertenece_cancion = contiene_album.id_pertenece_cancion where contiene_album.id_album = :idalbum and cancion.activo = 'S' ";
         $result = $conex->prepare($sql);
 	    $result->execute(array(":idalbum" => $ida));
 		$resultados=$result->fetchAll();

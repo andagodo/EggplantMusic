@@ -147,9 +147,11 @@
       </div>
       <div id="menu2">
         <ul>
-          <li>Agregar cancion</li>
-          <li><a class="add-btn" href="#">Crear Playlist..</a></li>
-        </ul>
+          <li>Agregar canciones</li>
+          <li class="divider"></li>
+          <li><a class="tonewpl" href="#">Crear Playlist..</a></li>
+          <div id="menu2pl"></div>
+          </ul>
       </div>
 
       <script src="../estilos/js/play.js"></script>
@@ -162,3 +164,5 @@
     </footer>
   </html>
 <?php } ?>
+
+

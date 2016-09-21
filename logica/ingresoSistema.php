@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '../clases/Admin.class.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '../logica/funciones.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 ?>
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php

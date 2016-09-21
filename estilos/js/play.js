@@ -18,12 +18,14 @@ $(function(){
      		$out = "";
      		//capturo ID de cancion
                $id_cancion = $( this ).attr('data-idc');
+               $idca_cancion = $(this).attr('data-idca');
             //le paso el id al php que trae la cancion de l BD por JSON
-				$.post( "../front_logica/add-now.php", { "idc" : $id_cancion }, null, "json" )
+				$.post( "../front_logica/add-now.php", {"idca": $idca_cancion, "idc": $id_cancion }, null, "json" )
+
 				.done(function( data, textStatus, jqXHR ) {
 					$div = $('<div class="cancionnow" ></div>')
 					$li = $('<li></li>');
-					$a = $('<a href="' + data.ruta + '"data-idc="'+ data.id + '" >' + data.nombre + '</a>');
+					$a = $('<a href="' + data.ruta + '"data-idc="'+ data.id + '" data-idca="' +data.idca+ '" >' + data.nombre + '</a>');
 					$li.append($a);
 					$div.append($li);
 					$("#playerul").append($div);
@@ -103,16 +105,17 @@ $(function(){
 
             $.post( "../front_logica/consplaylist.php", { "idu" : IdUsr }, null, "json" )
 				.done(function( data, textStatus, jqXHR ) {
-					
+					$('#menu2pl').empty();
 					for (var i = 0; i < data.length; i++) {
    						console.log(data[i].id);
    						$li = $('<li></li>');
    						$a = $('<a class="add-btn" href="#" data-idpl="'+ data[i].id + '" >' + data[i].nom + '</a>');
    						$li.append($a);
-   						$('#menu2').find("ul").append($li);
+   						
+   						$('#menu2pl').append($li);
    						//hasta aca agrego los li con la info de las playlist del usuario
 					}
-				alert($('#menu2').find("li").length);
+				//alert($('#menu2').find("li").length);
 				//con este alert muestro cuantas li tengo, tengo que controlar tener mas de dos (dos son las fijas) y 
 				//luego en el if si tiene mas borrar y recargar( o ver posible mejora.)
 					
@@ -139,5 +142,8 @@ $(function(){
         	});
 
 	$("#menu2").mouseleave(function(e){$(this).fadeOut('slow');}); 
+
+	var $add = $('.tonewpl');
+
 
 });
