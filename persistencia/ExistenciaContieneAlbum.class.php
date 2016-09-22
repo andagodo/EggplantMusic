@@ -5,16 +5,11 @@ class ExistenciaContieneAlbum
 
     public function altaContieneAlbum($param, $conex)
     {
-
-
         $ida=$param->getId_Album();
         $idpc=$param->getId_Pertenece_Cancion();
 		$activ = $param->getActivo();
 		$feactivo = $param->getFech_Activo();
-		
-		
         $sql = "INSERT INTO Contiene_Album (Id_Album, Id_Pertenece_Cancion, Activo, Fech_Activo) VALUES (:album, :cancion, :activ, :feactivo)";
-		
 		$result = $conex->prepare($sql);
 		$result->execute(array(":album" => $ida, ":cancion" => $idpc, ":activ" => $activ, ":feactivo" => $feactivo));
         
