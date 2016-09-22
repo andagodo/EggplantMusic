@@ -58,7 +58,7 @@ class ExistenciaAlbum
 
 	public function consultaTodosAlbum($conex)
    {
-        $sql = "SELECT * FROM Album AND Activo = 'S'";
+        $sql = "SELECT * FROM Album WHERE Activo = 'S'";
         $result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
