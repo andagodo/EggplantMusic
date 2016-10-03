@@ -185,7 +185,15 @@ class Cancion
       $pu= new ExistenciaCancion;
       $datos= $pu->consultaInterpreteSinCancion($this, $conex);
       return $datos;
-    }		
+    }
+
+
+	public function consultaGeneroCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->consultaGeneroCancion($this, $conex);
+      return $datos;
+    }	
 	
 }
 ?>

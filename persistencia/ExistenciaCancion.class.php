@@ -200,7 +200,16 @@ class ExistenciaCancion
        return $resultados;
     }	
 	
-		
-		
+
+	public function consultaGeneroCancion($param, $conex)
+	{
+		$idg= trim($param->getId_Genero());
+		$sql = "SELECT Nom_Genero FROM Genero WHERE Id_Genero =:idg  AND Activo = 'S'";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idg" => $idg));
+		$resultados=$result->fetchAll();
+		return $resultados;
+	}	
+
 }
 ?>

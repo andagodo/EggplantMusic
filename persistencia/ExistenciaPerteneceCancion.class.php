@@ -57,7 +57,18 @@ class ExistenciaPerteneceCancion
 
        return $resultados;
     }	
-	
+
+
+	public function ConsInterpreteCancion($param, $conex)
+	{
+        $cancion= trim($param->getId_Cancion());   
+        $sql = "SELECT i.Nom_Interprete FROM Cancion c, Pertenece_Cancion pc, Interprete i WHERE c.Id_Cancion = pc.Id_Cancion AND pc.Id_Interprete = i.Id_Interprete AND c.Id_Cancion =:idc";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idc" => $cancion));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
 	
 /*	
     

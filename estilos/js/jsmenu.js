@@ -155,6 +155,76 @@ function ConsultaNomMusica(){
 	)
 } 
 
+
+function ConsultaMusicaArtista(){
+	var i=document.getElementById("idi").value
+	var url="../includes/PlaylistAdmin/procesa/ProcesaAltaPlaylist.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{idi:i},
+		success:function(datos){
+			$("#ALTAPLAYLISTDIV").html(datos);
+		}
+	}
+	
+	)
+}
+
+function ConsultaMusicaGenero(){
+	var g=document.getElementById("idg").value
+	var url="../includes/PlaylistAdmin/procesa/ProcesaAltaPlaylist.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{idg:g},
+		success:function(datos){
+			$("#ALTAPLAYLISTDIV").html(datos);
+		}
+	}
+	
+	)
+} 
+
+function ConsultaNomMusica(){
+	var n=document.getElementById("nom").value
+	var url="../includes/PlaylistAdmin/procesa/ProcesaAltaPlaylist.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{nom:n},
+		success:function(datos){
+			$("#ALTAPLAYLISTDIV").html(datos);
+		}
+	}
+	
+	)
+}
+
+function AgregaCancionPlaylist(){
+	var i=document.getElementById("idc").value
+	var url="../includes/PlaylistAdmin/procesa/ProcesaCreacionPlaylist.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{idc:i},
+		success:function(datos){
+			$("#CREACIONPLAYLISTDIV").html(datos);
+		}
+	}
+	
+	)
+}
+
+
 function ConsultaNomAlbum(){
 	var n=document.getElementById("nom").value
 	var url="/includes/MusicAdmin/procesa/ProcesaBajaAlbum.php"

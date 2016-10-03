@@ -105,6 +105,14 @@ class PerteneceCancion
       return $datos;
     }	
 	
+	public function ConsInterpreteCancion($conex)
+    {
+      $pu= new ExistenciaPerteneceCancion;
+      $datos= $pu->ConsInterpreteCancion($this, $conex);
+      return $datos;
+    }		
+	
+	
  /*   
 	public function consultaAlbum($conex)
     {

@@ -1,9 +1,9 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Interprete.class.php';
+ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
+ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';
+ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Interprete.class.php';
 
 session_start();
 $conex = conectar();
@@ -29,14 +29,14 @@ if(! isset($_SESSION["mai"])){
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Baja de Canciones
+                            Alta de Playlist
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="/presentacion/Menu.php">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Baja de Canciones
+                                <i class="fa fa-edit"></i> Alta de Playlist
                             </li>
                         </ol>
                     </div>
@@ -46,6 +46,24 @@ if(! isset($_SESSION["mai"])){
 			
 			
 			<div class="row">
+				<div class="col-lg-4">
+                      <!--  <div class="form-group"> -->
+                            <label>Nombre de Playlist:</label>
+							<input class="form-control" id='nom' required/>
+               <!--         </div>			-->	
+										
+				</div>
+				<div class="col-lg-8">
+					<div id="CREACIONPLAYLISTDIV"></div>
+				</div>
+			</div>
+			
+            <h3 class="page-header">
+				Buscador de Canciones
+            </h3>			
+			
+			<div class="row">
+		
                 <div class="col-lg-3">
 				
 					<form role="form" action='/includes/MusicAdmin/BajaMusica.php' method="POST">
@@ -114,4 +132,4 @@ if(! isset($_SESSION["mai"])){
 					</form>
 				</div>				
 			</div>
-			<div id="BAJAMUSICADIV"></div>			
+			<div id="ALTAPLAYLISTDIV"></div>
