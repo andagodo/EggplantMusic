@@ -20,7 +20,8 @@ function conectar()
 
 function desconectar($con)
 {
-   sqlsrv_close($con);
+	$con = null;
+   //sqlsrv_close($con);
 }
 
 

@@ -21,7 +21,7 @@ $Cuenta=count($datos_r);
 	<div class="cancion">
 		<li><a href='#'><?php echo $datos_r[$i][1]?></a>
 			<div class="btn-cancion" data-idc="<?php echo $datos_r[$i][0]?>" data-idca="<?php echo $datos_r[$i][2]?>">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<span class="glyphicon glyphicon-option-horizontal"></span>
 			</div>
 		</li>
 	</div>

@@ -29,20 +29,27 @@
 ?>
   <!DOCTYPE html>
   <html lang="en">
-    <head>
+    
       <meta charset="UTF-8">
-      <title>EggPlantMusic</title>
-        
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-      <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+     
       
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
       <link rel="stylesheet" href="../estilos/css/play.css">
       <link rel="stylesheet" href="../estilos/css/audio.css">
       <link rel="stylesheet" type ="text/css" href="../estilos/estilos.css" />
       <link href="../estilos/css/sb-admin.css" rel="stylesheet">
       <link href="../estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <head>
+     <title>EggPlantMusic</title>
     </head>
 
     <body>
@@ -80,7 +87,7 @@
       			</div>
       			</div>
   			
-      
+        
         <div class="row affix-row">
         <div class="col-sm-4 col-md-3 affix-sidebar">
         <div class="sidebar-nav">
@@ -98,29 +105,23 @@
         <ul class="nav navbar-nav" id="sidenav01">
           <li class="active">
             <a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
-            <h2>
-            EggPlantMusic
-            <br></h2>
-  		  <h3>
-          <?php  echo $nombre; ?>
-            </h3>
+              <h2>EggPlantMusic<br></h2>
+      		    <h3><?php  echo $nombre; ?></h3>
             </a>
-         
           </li>
           <li>
             <a href="#" data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">
-            <span class="glyphicon glyphicon-music"></span> Album
+              <span class="glyphicon glyphicon-music"></span> Album
             </a>
-         
           </li>
           <li><a href="#"><span class="glyphicon glyphicon-list"></span> Playlist</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Explorar </a></li>
           <li><a href=""><span class="glyphicon glyphicon-cog"></span> Cuenta</a></li>
-  	  </ul>
-      </div><!--/.nav-collapse -->
-      
-      </div>
-      </div>
+    	  </ul>
+        </div><!--/.nav-collapse -->
+        
+        </div>
+        </div>
       </div>
       <?php include $_SERVER['DOCUMENT_ROOT'] . "/front_include/album.php"; ?>
 
@@ -149,18 +150,39 @@
         <ul>
           <li>Agregar canciones</li>
           <li class="divider"></li>
-          <li><a class="tonewpl" href="#">Crear Playlist..</a></li>
+          <li><a id="mventana1" data-toggle="modal" href="#ventana1">Crear Playlist..</a></li>
           <div id="menu2pl"></div>
-          </ul>
+        </ul>
       </div>
-
-      <script src="../estilos/js/play.js"></script>
-      <script src="../estilos/js/plugins/morris/raphael.min.js"></script>
-      <script src="../estilos/js/plugins/morris/morris.min.js"></script>
-      <script src="../estilos/js/plugins/morris/morris-data.js"></script>
-
+        <div class="modal fade" id="ventana1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Ingrese el nombre de la Playlist</h4>
+              </div>
+              <div class="modal-body">
+                <div class="input-group input-group">
+                  <input type="text" class="form-control" placeholder="Playlist" aria-describedby="sizing-addon2">
+                  <span class="help-block modal_red" style="display: none">Debe ingresar un nombre para la Playlist</span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button class="tonewpl btn btn-primary">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+        
+        <script src="../estilos/js/plugins/morris/raphael.min.js"></script>
+        <script src="../estilos/js/plugins/morris/morris.min.js"></script>
+        <script src="../estilos/js/plugins/morris/morris-data.js"></script>
+        <script src="../estilos/js/play.js"></script>
       </body>
     <footer>
+
     </footer>
   </html>
 <?php } ?>

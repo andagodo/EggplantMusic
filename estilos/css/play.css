@@ -145,3 +145,7 @@
   overflow: hidden;
   background-color: #424242;
 }
+
+.modal_red {
+  color: red;
+}

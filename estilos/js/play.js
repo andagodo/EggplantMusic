@@ -80,27 +80,26 @@ $(function(){
 
 		runaudio($(link),source)
 							
-	})
+	});
 
 
-	function runaudio(link1,player){
-	audio.get(0).pause();
-	player.attr("src", link1.attr('href'));
-	console.log("hola entraste a runaudio");
-	par=link1.parents('.cancionnow');
-	par.addClass('active').siblings().removeClass('active');
-	audio.get(0).load();
-	audio.get(0).play();
-	}
+		function runaudio(link1,player){
+		audio.get(0).pause();
+		player.attr("src", link1.attr('href'));
+		console.log("hola entraste a runaudio");
+		par=link1.parents('.cancionnow');
+		par.addClass('active').siblings().removeClass('active');
+		audio.get(0).load();
+		audio.get(0).play();
+		}
+	
+	
+	$("#menu1").mouseleave(function(e){
+		$(this).fadeOut('slow');
 
-	$("#menu1").mouseleave(
-		function(e){
-	   $(this).fadeOut('slow');
+	}); 
 
-					}
-		); 
-
-        $(".addplaylist").click(function(event) {
+    $(".addplaylist").click(function(event){
             event.preventDefault();
 
             $.post( "../front_logica/consplaylist.php", { "idu" : IdUsr }, null, "json" )
@@ -127,9 +126,6 @@ $(function(){
 				  	if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
 			});
 				
-
-
-
             var x=event.clientX;
             var y=event.clientY;
             //console.log(y);
@@ -141,9 +137,37 @@ $(function(){
             // obtengo el id de la cancion
         	});
 
-	$("#menu2").mouseleave(function(e){$(this).fadeOut('slow');}); 
+	$("#menu2").mouseleave(function(e){
+		$(this).fadeOut('slow');
+	}); 
 
-	var $add = $('.tonewpl');
+	// Click para crear playlist nueva no se utiliza este codigo por ahora
+	// $('#mventana1').click(function(){
+	 //	alert('hola');
+     //   $('#ventana1').modal('show');
+    //});
 
+	var $addpl = $('.tonewpl');
+	        $addpl.click(function(event){
+     		event.preventDefault();
+     		$out = "";
 
+            var $npl = $("#ventana1").find(".form-control").val();
+		            if ( $npl === '') {
+		            	//alert("pone algo");
+		            	$('.modal_red').show();
+		            	} 
+		            	else {
+
+		            		var $c = new Array();
+							$( "#playerul .cancionnow li a" ).each(function( index ) {
+							$c[index] = {idca: $(this).attr('data-idca')};
+							});
+							//var d = JSON.encode(c);
+							$.post( "../front_logica/playcanc.php", {$c, $npl}, "json" )
+							
+					}
+				});
+	$("#menu1").fadeOut("slow");
 });
+

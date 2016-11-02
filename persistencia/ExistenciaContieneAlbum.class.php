@@ -31,6 +31,7 @@ class ExistenciaContieneAlbum
 	    $result->execute();
 		$resultados=$result->fetchAll();
        return $resultados;
+
 	}	
 
 	public function consultaAlbum($param, $conex)
