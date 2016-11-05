@@ -12,9 +12,12 @@ if(! isset($_SESSION["mai"])){
    location.href="/presentacion/indice.php";
  </script>
  <?php
+ 
 }
 
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 		<div id="page-wrapper">
 
             <div class="container-fluid">
@@ -39,12 +42,12 @@ if(! isset($_SESSION["mai"])){
 			
 			<div class="row">
                 <div class="col-lg-6">
-					<form role="form" action='/logica/NuevaCancion.php' method="POST">
+					<div class="formaltacancion">
 
 					
 					    <div class="form-group">
                             <label>Nombre Canción:</label>
-                            <input class="form-control" placeholder="Ejemplo: Could You Be Loved." name='nom' required/>
+                            <input class="form-control nom" placeholder="Ejemplo: Could You Be Loved." required/>
                         </div>
 						
 						<?php
@@ -55,7 +58,7 @@ if(! isset($_SESSION["mai"])){
 
 						<div class="form-group">
                             <label>Seleccione Género</label>
-                            <select class="form-control" name='idg' required>
+                            <select class="form-control idg" required>
 								<option value="00">Géneros</option>
 									<?php
 									for ($i=0;$i<$Cuenta;$i++)
@@ -71,22 +74,64 @@ if(! isset($_SESSION["mai"])){
 						<div class="form-group">
 							<label>Duración:</label>
 								<div class="form-group input-group">
-								<input type="time" class="form-control" name='dur' required/>
+								<input type="time" class="form-control dur" required/>
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label>Ruta del Archivo:</label>
-								<input type="text" class="form-control" name='ruta' required/>
+								<input type="text" class="form-control ruta" required/>
 						</div>
 						</br>
-						<button type="submit" class="btn btn-default">Alta Canción</button>
+						<button class="claseboton btn btn-default">Alta Canción</button>
+						
+						
 						
 						</div>
-
-					</form>
-			
+					</div>
+					</div>
+					
 			</div>
 
-		</div>
-	</div>
+<!--		</div>
+	</div> -->
+	
+	
+
+		
+		<script language="javascript">
+
+		$(function(){
+			$variableboton = $(".claseboton");
+			$variableboton.click(function(event) {
+		event.preventDefault();
+     		$out = "";
+			alert("hola click");
+				var nom = $(".formaltacancion .nom").val();
+				var idg = $(".formaltacancion .idg").val();
+				var dur = $(".formaltacancion .dur").val();
+				var ruta = $(".formaltacancion .ruta").val();
+				
+				$.post( "/logica/NuevaCancion.php", {nom, idg, dur, ruta}, "json" )
+				
+				.done(function( data, textStatus, jqXHR ) {
+					window.alert("Se inserto la cancion: ");
+				})
+					/*if ($data){
+					
+						window.alert("Se inserto la cancion: ");
+						
+						}else{
+							window.alert("No encaró");
+						}
+		
+				});
+				
+				.fail(function( jqXHR, textStatus, errorThrown ) {
+				  	if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
+				});   */
+		
+			});
+		})(jQuery); 
+
+		</script>

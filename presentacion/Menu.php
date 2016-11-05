@@ -4,8 +4,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 $conex = conectar();
 ?>
+
 <script src="../estilos/js/jquery.js"></script>
 <script src="../estilos/js/jsmenu.js"></script>
+
+
 <?php
 if(! isset($_SESSION["mai"])){
 	?>

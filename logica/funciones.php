@@ -26,6 +26,17 @@ function desconectar($con)
 
 
 
+function BrunitoPesadito ($conex)
+	{ 
+		$sql = "SELECT scope_identity()";
+		
+		$result = $conex->prepare($sql);
+		$result->execute();
+		$resultados= $result->fetchAll();
+		return $resultados;
+	}
+	
+
 function ActivacionMail($mail, $nom, $ape, $url){
  
 $destinatario = $mail;

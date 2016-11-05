@@ -9,6 +9,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 
 $conex = conectar();
 
+
+$lastId = $conex->lastInsertId();
+
 // $usr= new Persona ('','','','',$_SESSION["login"]);
 // $IDPersona=$usr->consultaIDPersona($conex);
 
@@ -21,30 +24,13 @@ $activ="S";
 $feactivo=date("d/m/Y");
 
 
-try {
+
 $conex = conectar();
 $c= new Cancion ('',$nom,$dur,$ruta,$idg,$activ,$feactivo);
 $ok=$c->altaCancion($conex);
 
-if ($ok)
+echo json_encode($ok);
 
-{
-    echo "<table  align='center' >";
-    echo "<tr height='400'>";
-        echo "<td class='leyenda'>";
-            echo "Se inserto la cancion: $nom";
-			echo " </br><a href=\"\presentacion\Menu.php\" style='color: black'>Volver</a>";
-        echo "</td>";
-    echo "</tr>";
-    echo "</table>";
-
-}
-}
-catch (PDOException $e) {
-    print "Error en la base de datos!: " . "<br/>" . $e->getMessage() . "<br/>";
-	print " </br><a href=\"\presentacion\Menu.php\" style='color: black'>Volver</a>";
-
-}
 // desconectar($conex);
  
 ?>

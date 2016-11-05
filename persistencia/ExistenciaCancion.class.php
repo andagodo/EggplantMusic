@@ -19,10 +19,11 @@ class ExistenciaCancion
 		$result = $conex->prepare($sql);
 		$result->execute(array(":nombre" => $nom, ":duracancion" => $dur, ":rutaarch" => $ruta, ":idgenero" => $idg, ":activ" => $activ, ":feactivo" => $feactivo));
         
+		
         
         if($result)
         {
-          return(true);
+          return($lastId);
         }
         else
         {

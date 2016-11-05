@@ -50,7 +50,6 @@ class ExistenciaUsuario
         }
     }
 
-     
 
    //Devuelve true si el login coincide con la password
    public function coincideLoginPassword($param, $conex)
