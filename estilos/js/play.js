@@ -151,7 +151,7 @@ $(function(){
 	        $addpl.click(function(event){
      		event.preventDefault();
      		$out = "";
-
+     		var $vent = $("#ventana1");
             var $npl = $("#ventana1").find(".form-control").val();
 		            if ( $npl === '') {
 		            	//alert("pone algo");
@@ -164,10 +164,15 @@ $(function(){
 							$c[index] = {idca: $(this).attr('data-idca')};
 							});
 							//var d = JSON.encode(c);
-							$.post( "../front_logica/playcanc.php", {$c, $npl}, "json" )
-							
+							$.post( "../front_logica/playcanc.php", {$c, $npl}, "json" );
+							$vent.modal('hide');
+							$vent.find(".form-control").val("");
+							$('.modal_red').hide();
 					}
 				});
+	        
 	$("#menu1").fadeOut("slow");
+	
+	
 });
 
