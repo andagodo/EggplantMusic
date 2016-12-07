@@ -23,7 +23,7 @@ class ExistenciaCancion
         
         if($result)
         {
-          return($lastId);
+          return(true);
         }
         else
         {

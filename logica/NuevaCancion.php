@@ -29,6 +29,17 @@ $conex = conectar();
 $c= new Cancion ('',$nom,$dur,$ruta,$idg,$activ,$feactivo);
 $ok=$c->altaCancion($conex);
 
+?>
+
+<script language="javascript">
+
+window.alert("test");
+window.alert($ok);
+
+</script>
+
+<?php
+
 echo json_encode($ok);
 
 // desconectar($conex);

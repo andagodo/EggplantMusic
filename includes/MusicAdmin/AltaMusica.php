@@ -106,7 +106,6 @@ if(! isset($_SESSION["mai"])){
 			$variableboton.click(function(event) {
 		event.preventDefault();
      		$out = "";
-			alert("hola click");
 				var nom = $(".formaltacancion .nom").val();
 				var idg = $(".formaltacancion .idg").val();
 				var dur = $(".formaltacancion .dur").val();
@@ -115,18 +114,19 @@ if(! isset($_SESSION["mai"])){
 				$.post( "/logica/NuevaCancion.php", {nom, idg, dur, ruta}, "json" )
 				
 				.done(function( data, textStatus, jqXHR ) {
-					window.alert("Se inserto la cancion: ");
-				})
-					/*if ($data){
+					// window.alert("Se inserto la cancion: ");
+				
+					if ($data){
 					
 						window.alert("Se inserto la cancion: ");
 						
 						}else{
 							window.alert("No encaró");
 						}
+						})
 		
 				});
-				
+				/*
 				.fail(function( jqXHR, textStatus, errorThrown ) {
 				  	if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
 				});   */
