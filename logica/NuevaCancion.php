@@ -10,7 +10,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 $conex = conectar();
 
 
-$lastId = $conex->lastInsertId();
+
 
 // $usr= new Persona ('','','','',$_SESSION["login"]);
 // $IDPersona=$usr->consultaIDPersona($conex);

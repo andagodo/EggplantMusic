@@ -116,7 +116,7 @@ if(! isset($_SESSION["mai"])){
 				.done(function( data, textStatus, jqXHR ) {
 					// window.alert("Se inserto la cancion: ");
 				
-					if ($data){
+					if (data){
 					
 						window.alert("Se inserto la cancion: ");
 						
@@ -132,6 +132,6 @@ if(! isset($_SESSION["mai"])){
 				});   */
 		
 			});
-		})(jQuery); 
+	//	})(jQuery); 
 
 		</script>
