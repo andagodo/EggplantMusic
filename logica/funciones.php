@@ -14,7 +14,7 @@ function conectar()
 		//si no es windows uso otro driver de pdo
 		else
 		{
-			$conexion = new PDO("dblib:host=mssql;dbname=eggplantmusic", "eggplantmusic", "eggplantmusic");
+			$con = new PDO("dblib:host=mssql;dbname=eggplantmusic", "eggplantmusic", "eggplantmusic");
 		}
 		$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
         return($con);
