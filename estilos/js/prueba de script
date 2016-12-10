@@ -5,7 +5,7 @@
             $('#<?php echo $i;?>').click(function(){
              //  <?php $_SESSION['pl']= $i;?>//
                	$("#menu1").addClass('.<?php echo $i?>');
-              //  $("#central").load('../front_include/nowplay.php', { pl : "<?php echo $i;?>" 
+              //  $("#central").load('/front_include/nowplay.php', { pl : "<?php echo $i;?>" 
           });
 
             });

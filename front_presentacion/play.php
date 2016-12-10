@@ -43,11 +43,11 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-      <link rel="stylesheet" href="../estilos/css/play.css">
-      <link rel="stylesheet" href="../estilos/css/audio.css">
-      <link rel="stylesheet" type ="text/css" href="../estilos/estilos.css" />
-      <link href="../estilos/css/sb-admin.css" rel="stylesheet">
-      <link href="../estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="/estilos/css/play.css">
+      <link rel="stylesheet" href="/estilos/css/audio.css">
+      <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
+      <link href="/estilos/css/sb-admin.css" rel="stylesheet">
+      <link href="/estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <head>
      <title>EggPlantMusic</title>
     </head>
@@ -176,10 +176,10 @@
         </div>
         
         
-        <script src="../estilos/js/plugins/morris/raphael.min.js"></script>
-        <script src="../estilos/js/plugins/morris/morris.min.js"></script>
-        <script src="../estilos/js/plugins/morris/morris-data.js"></script>
-        <script src="../estilos/js/play.js"></script>
+        <script src="/estilos/js/plugins/morris/raphael.min.js"></script>
+        <script src="/estilos/js/plugins/morris/morris.min.js"></script>
+        <script src="/estilos/js/plugins/morris/morris-data.js"></script>
+        <script src="/estilos/js/play.js"></script>
       </body>
     <footer>
 

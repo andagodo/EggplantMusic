@@ -1,6 +1,6 @@
 <?php
 
-require_once('../persistencia/ExistenciaUsuario.class.php');
+require_once $_SERVER['DOCUMENT_ROOT'] . '/persistencia/ExistenciaUsuario.class.php';
 
 class Usuario
 {

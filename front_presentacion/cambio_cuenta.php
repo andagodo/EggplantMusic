@@ -33,11 +33,11 @@
       <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
       
-      <link rel="stylesheet" href="../estilos/css/play.css">
-      <link rel="stylesheet" href="../estilos/css/audio.css">
-      <link rel="stylesheet" type ="text/css" href="../estilos/estilos.css" />
-      <link href="../estilos/css/sb-admin.css" rel="stylesheet">
-      <link href="../estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="/estilos/css/play.css">
+      <link rel="stylesheet" href="/estilos/css/audio.css">
+      <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
+      <link href="/estilos/css/sb-admin.css" rel="stylesheet">
+      <link href="/estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -78,10 +78,10 @@
       
 
 
-      <script src="../estilos/js/play.js"></script>
-      <script src="../estilos/js/plugins/morris/raphael.min.js"></script>
-      <script src="../estilos/js/plugins/morris/morris.min.js"></script>
-      <script src="../estilos/js/plugins/morris/morris-data.js"></script>
+      <script src="/estilos/js/play.js"></script>
+      <script src="/estilos/js/plugins/morris/raphael.min.js"></script>
+      <script src="/estilos/js/plugins/morris/morris.min.js"></script>
+      <script src="/estilos/js/plugins/morris/morris-data.js"></script>
 
       </body>
     <footer>

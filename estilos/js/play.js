@@ -20,7 +20,7 @@ $(function(){
                $id_cancion = $( this ).attr('data-idc');
                $idca_cancion = $(this).attr('data-idca');
             //le paso el id al php que trae la cancion de l BD por JSON
-				$.post( "../front_logica/add-now.php", {"idca": $idca_cancion, "idc": $id_cancion }, null, "json" )
+				$.post( "/front_logica/add-now.php", {"idca": $idca_cancion, "idc": $id_cancion }, null, "json" )
 
 				.done(function( data, textStatus, jqXHR ) {
 					$div = $('<div class="cancionnow" ></div>')
@@ -102,7 +102,7 @@ $(function(){
     $(".addplaylist").click(function(event){
             event.preventDefault();
 
-            $.post( "../front_logica/consplaylist.php", { "idu" : IdUsr }, null, "json" )
+            $.post( "/front_logica/consplaylist.php", { "idu" : IdUsr }, null, "json" )
 				.done(function( data, textStatus, jqXHR ) {
 					$('#menu2pl').empty();
 					for (var i = 0; i < data.length; i++) {
@@ -164,7 +164,7 @@ $(function(){
 							$c[index] = {idca: $(this).attr('data-idca')};
 							});
 							//var d = JSON.encode(c);
-							$.post( "../front_logica/playcanc.php", {$c, $npl}, "json" );
+							$.post( "/front_logica/playcanc.php", {$c, $npl}, "json" );
 							$vent.modal('hide');
 							$vent.find(".form-control").val("");
 							$('.modal_red').hide();
