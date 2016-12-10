@@ -5,9 +5,17 @@ function conectar()
 {
 
     try {
-		$sqlserver = "sqlsrv:Server=192.168.3.11;Database=eggplantmusic";
-
-		$con = new PDO($sqlserver, "eggplantmusic", "eggplantmusic");
+    	//si es windows ejecuto un driver de pdo
+    	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+		{
+			$sqlserver = "sqlsrv:Server=192.168.3.11;Database=eggplantmusic";
+			$con = new PDO($sqlserver, "eggplantmusic", "eggplantmusic");
+		}
+		//si no es windows uso otro driver de pdo
+		else
+		{
+			$conexion = new PDO("dblib:host=mssql;dbname=eggplantmusic", "eggplantmusic", "eggplantmusic");
+		}
 		$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
         return($con);
 
