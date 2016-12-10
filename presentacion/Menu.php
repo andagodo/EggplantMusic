@@ -5,8 +5,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 $conex = conectar();
 ?>
 
-<script src="../estilos/js/jquery.js"></script>
-<script src="../estilos/js/jsmenu.js"></script>
+<script src="/estilos/js/jquery.js"></script>
+<script src="/estilos/js/jsmenu.js"></script>
 
 
 <?php
@@ -59,11 +59,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
     <meta name="author" content="EggplantMusic">
 
     <title>EggplantMusic - Admin</title>
-	<link rel="stylesheet" type ="text/css" href="../estilos/estilos.css" />
-    <link href="../estilos/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../estilos/css/sb-admin.css" rel="stylesheet">
-    <link href="../estilos/css/plugins/morris.css" rel="stylesheet">
-    <link href="../estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
+    <link href="/estilos/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/estilos/css/sb-admin.css" rel="stylesheet">
+    <link href="/estilos/css/plugins/morris.css" rel="stylesheet">
+    <link href="/estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -78,7 +78,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../presentacion/Menu.php">EggplantMusic // Administración</a>
+                <a class="navbar-brand" href="/presentacion/Menu.php">EggplantMusic // Administración</a>
             </div>
 			<ul class="nav navbar-right top-nav">
                 <li class="dropdown">
@@ -95,7 +95,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="../presentacion/logout.php"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                            <a href="/presentacion/logout.php"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
                         </li>
                     </ul>
                 </li>
@@ -250,10 +250,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 <div id="DASH">	
 </div>
 
-	<script src="../estilos/js/jsmenu.js"></script>
-    <script src="../estilos/js/bootstrap.min.js"></script>
-    <script src="../estilos/js/plugins/morris/raphael.min.js"></script>
-    <script src="../estilos/js/plugins/morris/morris.min.js"></script>
-    <script src="../estilos/js/plugins/morris/morris-data.js"></script>
+	<script src="/estilos/js/jsmenu.js"></script>
+    <script src="/estilos/js/bootstrap.min.js"></script>
+    <script src="/estilos/js/plugins/morris/raphael.min.js"></script>
+    <script src="/estilos/js/plugins/morris/morris.min.js"></script>
+    <script src="/estilos/js/plugins/morris/morris-data.js"></script>
 
 </body>

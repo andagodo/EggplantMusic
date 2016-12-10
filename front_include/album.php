@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '../clases/Album.class.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '../logica/funciones.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Album.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 
 $conex = conectar();
 $r = new Album();
@@ -14,7 +14,7 @@ $Cuenta=count($datos_r);
             <?php for ($i=0;$i<$Cuenta;$i++) { ?>
             $('#<?php echo $datos_r[$i][0];?>').click(function(){
                <?php $_SESSION['idalbum']= $datos_r[$i][0];?>
-                $("#central").load('../front_include/playlist.php', { idalbum : "<?php echo $datos_r[$i][0];?>" });
+                $("#central").load('/front_include/playlist.php', { idalbum : "<?php echo $datos_r[$i][0];?>" });
 
             });
             

@@ -35,7 +35,7 @@ if ($ok)
 
      ?>
 <!--  <script language="javascript">
-     location.href="../presentacion/cargaMenu.php";
+     location.href="/presentacion/cargaMenu.php";
  
 
  </script>  

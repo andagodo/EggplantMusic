@@ -98,4 +98,4 @@ if ( count($posision) == 4 ) {$pagina = $posision[3];}else{$pagina = $posision[2
         </nav>
 		
 
-<script src="../estilos/js/jssadmin.js"></script>	
+<script src="/estilos/js/jssadmin.js"></script>	

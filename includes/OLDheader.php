@@ -36,7 +36,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 ?>
 
 <head>
-	<script src="../estilos/js/jquery.js"></script>
+	<script src="/estilos/js/jquery.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,11 +44,11 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     <meta name="author" content="EggplantMusic">
 
     <title>EggplantMusic - Admin</title>
-	<link rel="stylesheet" type ="text/css" href="../estilos/estilos.css" />
-    <link href="../estilos/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../estilos/css/sb-admin.css" rel="stylesheet">
-    <link href="../estilos/css/plugins/morris.css" rel="stylesheet">
-    <link href="../estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
+    <link href="/estilos/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/estilos/css/sb-admin.css" rel="stylesheet">
+    <link href="/estilos/css/plugins/morris.css" rel="stylesheet">
+    <link href="/estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -63,7 +63,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../presentacion/Menu.php">EggplantMusic // Administración</a>
+                <a class="navbar-brand" href="/presentacion/Menu.php">EggplantMusic // Administración</a>
             </div>
 			<ul class="nav navbar-right top-nav">
                 <li class="dropdown">
@@ -80,7 +80,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="../presentacion/logout.php"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                            <a href="/presentacion/logout.php"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
                         </li>
                     </ul>
                 </li>

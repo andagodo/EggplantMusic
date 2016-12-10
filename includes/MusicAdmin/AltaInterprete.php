@@ -87,7 +87,7 @@ if(! isset($_SESSION["mai"])){
 						
 					    <div class="form-group">
                             <label>LInk Imágen:</label>
-                            <input class="form-control" placeholder="Ejemplo: ../images/Bob Marley." name='foto' required/>
+                            <input class="form-control" placeholder="Ejemplo: /images/Bob Marley." name='foto' required/>
                         </div>
 						
 						<div class="form-group">

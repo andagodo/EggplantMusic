@@ -24,7 +24,7 @@ if ($ok)
 	echo "</table>";
 		?>
 	<!--  <script language="javascript">
-		location.href="../presentacion/cargaMenu.php";
+		location.href="/presentacion/cargaMenu.php";
 
 			</script>  
 	-->

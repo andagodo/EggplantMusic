@@ -172,4 +172,4 @@ if ($rol == "SuperAdmin" ){
             </div>	
         </nav>
 		
-<script src="../estilos/js/jsmusicadmin.js"></script>	
+<script src="/estilos/js/jsmusicadmin.js"></script>	

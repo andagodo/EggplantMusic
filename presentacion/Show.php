@@ -16,7 +16,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuasocia').show();
 			$('#menuplaylist').show();
 			$('#menuticket').show();
-			$("#DASH").load('../includes/SAdmin/dashSAdmin.php');			
+			$("#DASH").load('/includes/SAdmin/dashSAdmin.php');			
 	});
 </script>
 <?php
@@ -38,7 +38,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuasocia').show();
 			$('#menuplaylist').hide();
 			$('#menuticket').hide();
-			$("#DASH").load('../includes/MusicAdmin/dashMusicAdmin.php');
+			$("#DASH").load('/includes/MusicAdmin/dashMusicAdmin.php');
 	});
 </script>
 <?php
@@ -60,7 +60,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuasocia').hide();
 			$('#menuplaylist').show();
 			$('#menuticket').hide();
-			$("#DASH").load('../includes/PlaylistAdmin/dashPlaylistAdmin.php');
+			$("#DASH").load('/includes/PlaylistAdmin/dashPlaylistAdmin.php');
 	});
 </script>
 <?php
@@ -82,7 +82,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuasocia').hide();
 			$('#menuplaylist').hide();
 			$('#menuticket').show();
-			$("#DASH").load('../includes/TicketAdmin/dashTicketAdmin.php');
+			$("#DASH").load('/includes/TicketAdmin/dashTicketAdmin.php');
 	});
 </script>
 <?php
