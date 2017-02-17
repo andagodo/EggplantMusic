@@ -1,16 +1,16 @@
 <?php
-session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
-$conex = conectar();
+session_start();	// Inicia una nueva sesión
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';		// Requiere la clase Admin
+require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php'; 		// Requiere la logica de funciones (Aquí conecta a la base)
+$conex = conectar(); // Almacela la función "conectar" que se encuentra en '/logica/funciones.php' en la variable $conex
 ?>
 
-<script src="/estilos/js/jquery.js"></script>
-<script src="/estilos/js/jsmenu.js"></script>
+<script src="/estilos/js/jquery.js"></script>	// Llama al archivo de JavaScript externo jquery.js que contiene información de Bootstrap
+<script src="/estilos/js/jsmenu.js"></script>	// Llama al archivo de JavaScript externo jsmenu.js que contiene funciones para la visualizacion de diferentes funcionalidades de los Administradores
 
 
 <?php
-if(! isset($_SESSION["mai"])){
+if(! isset($_SESSION["mai"])){	// Si no está presente el valor del mail almacenada en la sesión del sistema, se ejecuta un javascript que muestre alerta y te lleve al indice del BackEnd.
 	?>
  <script language="javascript">
    window.alert("Debes de estar logeado para ingresar a esta página.");
@@ -19,7 +19,7 @@ if(! isset($_SESSION["mai"])){
  <?php
 }
 
-$u= new Admin ('','',$_SESSION["mai"]);
+$u= new Admin ('','',$_SESSION["mai"]);		//Ejecuta 
 
 $Tipo=$u->consultaTipoAdmin($conex);
 $rol = $Tipo[0][0];
