@@ -3,52 +3,54 @@ session_start();	// Reanuda la sesión de /logica/ingresoSistema.php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';		// Requiere la clase Admin
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php'; 		// Requiere la logica de funciones (Aquí conecta a la base)
 $conex = conectar(); // Almacela la función "conectar" que se encuentra en '/logica/funciones.php' en la variable $conex
+
 ?>
 
 <script src="/estilos/js/jquery.js"></script>	<!-- Llama al archivo de JavaScript externo jquery.js que contiene información de Bootstrap -->
 <script src="/estilos/js/jsmenu.js"></script>	<!-- Llama al archivo de JavaScript externo jsmenu.js que contiene funciones para la visualizacion de diferentes funcionalidades de los Administradores -->
 
-
 <?php
 if(! isset($_SESSION["mai"])){	// Si no está presente el valor del mail almacenada en la sesión del sistema, se ejecuta un javascript que muestre alerta y te lleve al indice del BackEnd.
-	?>
- <script language="javascript">
-   window.alert("Debes de estar logeado para ingresar a esta página.");
-   location.href="/presentacion/indice.php";
- </script>
- <?php
-}
+?>
 
-$u= new Admin ('','',$_SESSION["mai"]);		//Ejecuta 
-
-$Tipo=$u->consultaTipoAdmin($conex);
-$rol = $Tipo[0][0];
-$nombre = $Tipo[0][1];
-
-
-
-if (isset($_SESSION["LAST_ACTIVITY"])) {
-    if (time() - $_SESSION["LAST_ACTIVITY"] > 50) {
-        // last request was more than 30 minutes ago
-        session_unset();     // unset $_SESSION variable for the run-time 
-        session_destroy();   // destroy session data in storage
-		?>
 	<script language="javascript">
-		window.alert("Tiempo de espera excedido.");
+		window.alert("Debes de estar logeado para ingresar a esta página.");
 		location.href="/presentacion/indice.php";
 	</script>
-	<?php
-    } else if (time() - $_SESSION["LAST_ACTIVITY"] > 1) {
-        $_SESSION["LAST_ACTIVITY"] = time(); // update last activity time stamp
-    }
+
+<?php
 }
 
-//////////SHOW y HIDE de los diferentes Menú//////////////////
+$u= new Admin ('','',$_SESSION["mai"]);		// Crea una nueva clase de tipo Admin con el valor de mail almacenado en la sesión actual, ésto lo almacena en $u
+$Tipo=$u->consultaTipoAdmin($conex);		// Ejecuta la función consultaTipoAdmin con los valores de $u y la conexión $conex, almacena el resultado en $Tipo
+$rol = $Tipo[0][0];			// Almacena en $rol el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][0]
+$nombre = $Tipo[0][1];		// Almacena en $nombre el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][1]
+
+
+////////////////////////////// ARREGLAR SECCIÓN DE TIMEOUT ///////////////////////////////
+$_SESSION['LAST_ACTIVITY'] = time();	// Almacena la última actividad del usuario
+if (isset($_SESSION['LAST_ACTIVITY'])) {
+
+  if ($_SESSION['LAST_ACTIVITY'] + 1 < time()) {
+
+     // session timed out
+     session_unset();     // unset $_SESSION variable for the run-time 
+     session_destroy();   // destroy session data in storage
+  } else {
+
+    // session ok
+ }
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////Incluye porción de código que contiene todos los SHOW y HIDE de los diferentes Menú////////////
 
 include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 
-?>
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+?>
 
 <head>
 	
@@ -71,7 +73,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 <body>
 	<div id="wrapper">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		    <div class="navbar-header">
+		
+		<!------------------------------------------- INICIO Barra superior -------------------------------------------->
+		
+		    <div class="navbar-header">				<!-- Barra superior izquierza -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -80,7 +85,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                 </button>
                 <a class="navbar-brand" href="/presentacion/Menu.php">EggplantMusic // Administración</a>
             </div>
-			<ul class="nav navbar-right top-nav">
+			
+			<ul class="nav navbar-right top-nav">		<!-- Barra superior derecha con nombre y menú de opciones de usuario. -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php  echo $nombre; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -100,8 +106,15 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                     </ul>
                 </li>
             </ul>
-
+			<!------------------------------------------- FIN Barra superior -------------------------------------------->
+			
 	        <div class="collapse navbar-collapse navbar-ex1-collapse">
+			<!-------------------------------------- 	INICIO Barra lateral izquierda -------------------------------------------->
+			<!-- Barra lateral izquierda con todas las posibilidades del BackEnd, se activan o desactivan según el rol del Administrador.
+				Se cargan referencias con el "#" e "id" para levantar el menú que corresponda, se ocultan o activan en /presentacion/Show.php.
+				Incialmente se carga la página Dashoard en el div #DASH, luego cambia según la funcionalidad que se haga click.
+				Aquí se encuentran los items con los dropdown de cada -->
+			
                 <ul class="nav navbar-nav side-nav">
                     <li id="menumusicadashboard">
                         <a href="#" id="musicdash"><i class="fa fa-fw fa-dashboard"></i> Music Dashboard</a>
@@ -244,12 +257,18 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 -->	
 	
                 </ul>
-            </div>	
+            </div>
+			<!-------------------------------------- 	FIN Barra lateral izquierda -------------------------------------------->			
         </nav>
 
-<div id="DASH">	
+<div id="DASH">
+<!-- El div #DASH es el utilizado para cargar la página cental del sistema, puede ser el dashboard del Administrador o algúna página de una funcionalidad.
+	Visualmente se carga en este punto, y se ejecuta cuando se hace click en uno de las funcionalidades.
+	El que ejecuta la acción es un archivo .js que contiene funciones javaScript, "/estilos/js/jsmenu.js". a este archivo se hace referencia al principio
+	y al final del archivo Menu.php-->
 </div>
 
+	<!-- Carga de archivos .js propios de bootstrap y del menú -->
 	<script src="/estilos/js/jsmenu.js"></script>
     <script src="/estilos/js/bootstrap.min.js"></script>
     <script src="/estilos/js/plugins/morris/raphael.min.js"></script>

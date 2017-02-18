@@ -1,4 +1,14 @@
 1- /presentacion/indice.php
 2- /logica/ingresoSistema.php
+	Requiere: /clases/Admin.class.php
+		  /logica/funciones.php
 3- /presentacion/Menu.php
+	Incluye: /presentacion/Show.php
+	Requiere: /clases/Admin.class.php
+		  /logica/funciones.php
 4- /
+
+
+///////////////RESOLVER/////////////////
+- Time Out en páginas /presentacion/Menu.php
+- 

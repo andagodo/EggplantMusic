@@ -5,6 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 session_start();
 $conex = conectar();
 
+/*
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 150)) {
@@ -18,6 +19,9 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 	<?php
 }
 
+
+*/
+
 if(! isset($_SESSION["mai"])){
 	?>
  <script language="javascript">
@@ -26,6 +30,7 @@ if(! isset($_SESSION["mai"])){
  </script>
  <?php
 }
+
 
 ?>
 

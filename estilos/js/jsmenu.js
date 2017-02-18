@@ -259,6 +259,12 @@ function ConsultaAnioAlbum(){
 	)
 }    
 
+////////////////////////////////////// INICIO DE FUNCIONES CLICK PARA MOSTRAR EN #DASH de Menu.php//////////////////////////////////////////
+
+// Cuando finalice de cargar la página ejecuta las funciones que correspondan al hacer click, Ejemplo: si en el menú se hace click en el item
+// "Alta Administrador" se ejecuta la función para que en #DASH de /presentacion/Menu.php se muestre /includes/SAdmin/AltaAdmin.php 
+
+
     $(document).ready(function() {
             $('#dashSAdmin').click(function(){
                 $("#DASH").load('/includes/SAdmin/dashSAdmin.php');
@@ -502,4 +508,6 @@ function ConsultaAnioAlbum(){
                 $("#DASH").load('/includes/TicketAdmin/BajaTicket.php');
 
             });
-        });		
+        });
+		
+////////////////////////////////////// FIN DE FUNCIONES CLICK PARA MOSTRAR EN #DASH de Menu.php //////////////////////////////////////////

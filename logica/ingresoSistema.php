@@ -16,42 +16,32 @@ $pass= hash('sha512', $salt . $pass);	// Encripta la contraseña de la variable 
 $conex = conectar();				// Almacela la función "conectar" que se encuentra en '/logica/funciones.php' en la variable $conex
 $u= new Admin ('','',$mai,$pass);	// Crea un nuevo objeto de tipo "Admin" con los datos de la variables $mai y $pass y lo almacena en la variable $u
 
-$ok=$u->coincideLoginAdmin($conex);
+$ok=$u->coincideLoginAdmin($conex); // Ejecuta la función coincideLoginAdmin con los valores de $u y la conexión $conex, almacena el resultado en $ok
 
 
-if ($ok)
+if ($ok) {	// Si $ok devuelve true, accede a esta condición y se ejecuta un comando JavaScript que nos lleva a /presentacion/Menu.php
 
-{
-    echo "<table  align='center' >";
-    echo "<tr height='400'>";
-        echo "<td class='leyenda'>";
-            echo " Bienvenid@ $mai";
-        echo "</td>";
-    echo "</tr>";
-    echo "</table>";
+?>
+
+	<script language="javascript">
+		location.href="/presentacion/Menu.php";
+	</script>  
+
+<?php
+
+}else{		// Si $ok nos devuelve false, nos muestra un mensaje de Usuario o Password incorrecto y nos devuelve a /presentacion/indice.php
+
+?>
+
+	<script language="javascript">
+		window.alert("El Usuario o Password no es correcto.");
+		location.href="/presentacion/indice.php";
+	</script>
 	
+<?php
 
-	?>
-     
-  <script language="javascript">
-  
-   location.href="/presentacion/Menu.php";
-
- </script>  
-  <?php
 }
 
-else
-{
-   ?>
- <script language="javascript">
- 
-   window.alert("El Usuario o Password no es correcto.");
-   location.href="/presentacion/indice.php";
- </script>
-  <?php
-  
-}
 desconectar($conex);
 
 ?>
