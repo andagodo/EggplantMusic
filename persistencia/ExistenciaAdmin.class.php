@@ -15,7 +15,8 @@ class ExistenciaAdmin
         $mus=$param->getMail_Usr_Sist();
         $pus=$param->getPass_Usr_Sist();
 		$activ = $param->getActivo();
-		$feactivo = $param->getFech_Activo();	
+		$feactivo = $param->getFech_Activo();
+		$apell = $param->getApellido_Usr_Sist();
 		
 		//Encripto la password uso un salt y un hash
 		
@@ -24,11 +25,11 @@ class ExistenciaAdmin
         
         //Genera la sentencia a ejecutar
 		//La sql ES UN EJEMPLO LE FALTA todos los campos, depende de sus atributos
-        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Fech_Activo) VALUES (:tipousr, :nombre, :mail, :pass, :fechaalta, :activ, :feactivo)";
+        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Fech_Activo, Apellido_Usr_Sist) VALUES (:tipousr, :nombre, :mail, :pass, :fechaalta, :activ, :feactivo, :apell)";
       
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":tipousr" => $tus, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal, ":activ" => $activ, ":feactivo" => $feactivo));
+		$result->execute(array(":tipousr" => $tus, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal, ":activ" => $activ, ":feactivo" => $feactivo, ":apell" => $apell));
         
         //Para saber si ocurrió un error
         if($result)
@@ -188,7 +189,7 @@ class ExistenciaAdmin
 	public function consultaTipoAdmin($param, $conex)
 	{
 		$mai= trim($param->getMail_Usr_Sist());
-		$sql = "SELECT Tipo_Usr_Sist, Nombre_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist=:mail AND Activo = 'S'";
+		$sql = "SELECT Tipo_Usr_Sist, Nombre_Usr_Sist, Apellido_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist=:mail AND Activo = 'S'";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":mail" => $mai));
 		return $result->fetchAll();

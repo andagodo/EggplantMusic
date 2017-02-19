@@ -1,5 +1,9 @@
 <?php
+
 //////////////////////// MENU DE SUPER ADMINISTRADOR////////////////////////
+
+// Si el rol del administrador es "SuperAdmin", carga las siguientes funcionalidades y en #DASH carga el Dashboard: /includes/SAdmin/dashSAdmin.php como página principal.
+
 if ($rol == "SuperAdmin" ){
 ?>
 <script language="javascript">
@@ -20,8 +24,13 @@ if ($rol == "SuperAdmin" ){
 	});
 </script>
 <?php
+//////////////////////////////////////////////////////////////////////////
+
 
 /////////////////////// MENU DE MUSIC ADMIN /////////////////////////////
+
+// Si el rol del administrador es "MusicAdmin", carga las siguientes funcionalidades y en #DASH carga el Dashboard: /includes/MusicAdmin/dashMusicAdmin.php como página principal.
+
 }elseif ($rol == "MusicAdmin" ){
 ?>
 <script language="javascript">
@@ -42,8 +51,13 @@ if ($rol == "SuperAdmin" ){
 	});
 </script>
 <?php
+//////////////////////////////////////////////////////////////////////////
+
 
 /////////////////////// MENU DE PLAYLIST ADMIN /////////////////////////////
+
+// Si el rol del administrador es "PlaylAdmin", carga las siguientes funcionalidades y en #DASH carga el Dashboard: /includes/PlaylistAdmin/dashPlaylistAdmin.php como página principal.
+
 }elseif ($rol == "PlaylAdmin" ){
 ?>
 <script language="javascript">
@@ -64,8 +78,13 @@ if ($rol == "SuperAdmin" ){
 	});
 </script>
 <?php
+//////////////////////////////////////////////////////////////////////////
+
 
 /////////////////////// MENU DE TICKET ADMIN /////////////////////////////
+
+// Si el rol del administrador es "TicketAdmin", carga las siguientes funcionalidades y en #DASH carga el Dashboard: /includes/TicketAdmin/dashTicketAdmin.php como página principal.
+
 }elseif ($rol == "TicketAdmin" ){
 ?>
 <script language="javascript">
@@ -86,8 +105,13 @@ if ($rol == "SuperAdmin" ){
 	});
 </script>
 <?php
+//////////////////////////////////////////////////////////////////////////
+
 
 /////////////////////// OCULTAR TODOS LOS LI /////////////////////////////
+
+// Como método de seguridad de ocultan todas las funcionalidades si no cumple con las condiciones de rol que arriba se describen.
+
 }else{
 ?>
 	<script language="javascript"> 
@@ -108,4 +132,5 @@ if ($rol == "SuperAdmin" ){
 	</script>
 <?php
 }
+//////////////////////////////////////////////////////////////////////////
 ?>

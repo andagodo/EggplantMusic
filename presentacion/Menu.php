@@ -7,7 +7,7 @@ $conex = conectar(); // Almacela la función "conectar" que se encuentra en '/lo
 ?>
 
 <script src="/estilos/js/jquery.js"></script>	<!-- Llama al archivo de JavaScript externo jquery.js que contiene información de Bootstrap -->
-<script src="/estilos/js/jsmenu.js"></script>	<!-- Llama al archivo de JavaScript externo jsmenu.js que contiene funciones para la visualizacion de diferentes funcionalidades de los Administradores -->
+<!-- <script src="/estilos/js/jsmenu.js"></script>	--> <!-- Llama al archivo de JavaScript externo jsmenu.js que contiene funciones para la visualizacion de diferentes funcionalidades de los Administradores -->
 
 <?php
 if(! isset($_SESSION["mai"])){	// Si no está presente el valor del mail almacenada en la sesión del sistema, se ejecuta un javascript que muestre alerta y te lleve al indice del BackEnd.
@@ -25,7 +25,7 @@ $u= new Admin ('','',$_SESSION["mai"]);		// Crea una nueva clase de tipo Admin c
 $Tipo=$u->consultaTipoAdmin($conex);		// Ejecuta la función consultaTipoAdmin con los valores de $u y la conexión $conex, almacena el resultado en $Tipo
 $rol = $Tipo[0][0];			// Almacena en $rol el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][0]
 $nombre = $Tipo[0][1];		// Almacena en $nombre el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][1]
-
+$apellido = $Tipo[0][2];
 
 ////////////////////////////// ARREGLAR SECCIÓN DE TIMEOUT ///////////////////////////////
 $_SESSION['LAST_ACTIVITY'] = time();	// Almacena la última actividad del usuario
@@ -88,7 +88,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 			
 			<ul class="nav navbar-right top-nav">		<!-- Barra superior derecha con nombre y menú de opciones de usuario. -->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php  echo $nombre; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php  echo $nombre; ?> <?php  echo $apellido; ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>

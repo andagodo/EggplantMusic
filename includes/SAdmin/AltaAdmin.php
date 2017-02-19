@@ -73,9 +73,14 @@ if(! isset($_SESSION["mai"])){
 
                     
                         <div class="form-group">
-                            <label>Nombre completo:</label>
+                            <label>Nombre:</label>
                             <input class="form-control" name='nomu' required/>
  <!--                           <p class="help-block">Example block-level help text here.</p>	-->
+                        </div>	
+						
+                        <div class="form-group">
+                            <label>Apellido:</label>
+                            <input class="form-control" name='apeu' required/>
                         </div>	
 						
 			            
