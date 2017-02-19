@@ -1,14 +1,22 @@
 1- /presentacion/indice.php
+
 2- /logica/ingresoSistema.php
 	Requiere: /clases/Admin.class.php
 		  /logica/funciones.php
+
 3- /presentacion/Menu.php
 	Incluye: /presentacion/Show.php
 	Requiere: /clases/Admin.class.php
 		  /logica/funciones.php
+
 4- /
 
 
-///////////////RESOLVER/////////////////
+///////////////RESOLVER/////////////////////////////
 - Time Out en páginas /presentacion/Menu.php
-- 
+- Cuando el cambio de clave del Admin no cumple con la complejidad, debería de volver a la página anterior y no al menú
+- Cuando cambio la clave del Admin y no coinciden, debería de volver a la página anterior y no al menú
+
+
+/////////////// CAMPOS NUEVOS EN BD ////////////////////
+- Usr_Sistema - Apellido_Usr_Sist

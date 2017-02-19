@@ -266,6 +266,13 @@ function ConsultaAnioAlbum(){
 
 
     $(document).ready(function() {
+            $('#ConfigAdmin').click(function(){
+                $("#DASH").load('/includes/ConfigAdmin.php');
+
+            });
+        });
+
+    $(document).ready(function() {
             $('#dashSAdmin').click(function(){
                 $("#DASH").load('/includes/SAdmin/dashSAdmin.php');
 

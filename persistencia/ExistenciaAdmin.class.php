@@ -204,7 +204,21 @@ class ExistenciaAdmin
 		$result->execute(array(":mail" => $mus));
 		return $result;
 	}		
+
 	
+	public function ActualizarPass($param, $conex)
+	{
+		$mus= trim($param->getMail_Usr_Sist());
+		$pus=$param->getPass_Usr_Sist();
+		
+		$salt = '34a@$#aA9823$';
+		$pass= hash('sha512', $salt . $pus);
+
+		$sql = "UPDATE Usr_Sistema SET Pass_Usr_Sist = :pass WHERE Mail_Usr_Sist = :mus";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":mus" => $mus, ":pass" => $pass));
+		return $result;
+	}	
 	
 /*	
 	

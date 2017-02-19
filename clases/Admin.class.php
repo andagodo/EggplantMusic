@@ -211,7 +211,7 @@ class Admin
       return $pu->consultaTipoAdmin($this, $conex);
     }	
 
-		public function eliminaAdmin($conex)
+	public function eliminaAdmin($conex)
 	{
       $pu= new ExistenciaAdmin;
       return $pu->eliminaAdmin($this, $conex);
@@ -223,7 +223,15 @@ class Admin
       $datos= $pu->TotalAdmin($this, $conex);
       return $datos;
     }	
+	
+	
+    public function ActualizarPass($conex)
+    {
 
+        $pu= new ExistenciaAdmin;
+		return $pu->ActualizarPass($this, $conex);
+        
+    }
 	
 }
 
