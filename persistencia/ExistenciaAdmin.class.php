@@ -62,13 +62,21 @@ class ExistenciaAdmin
         //Obtiene el registro de la tabla Usuario 
         if($result->rowCount()==0)
         {
-       		
-			return false;
+       		$sql2 = "SELECT * FROM Usr_Sistema WHERE Mail_Usr_Sist=:Mail_Usr_Sist AND Activo = 'N'";
+			$result2 = $conex->prepare($sql2);
+			$result2->execute(array(":Mail_Usr_Sist" => $mail));
+			
+			if($result2->rowCount()==0){
+				return 2;
+			}else{
+				return 3;
+			}
+			
         }
         else
         {
         	
-          	return true;
+          	return 1;
         }
     }
 
@@ -206,18 +214,43 @@ class ExistenciaAdmin
 	}		
 
 	
-	public function ActualizarPass($param, $conex)
+	public function ActualizarPass($param, $conex, $npass)
 	{
-		$mus= trim($param->getMail_Usr_Sist());
-		$pus=$param->getPass_Usr_Sist();
+		$mail= trim($param->getMail_Usr_Sist());
+        $pass= trim($param->getPass_Usr_Sist());
 		
 		$salt = '34a@$#aA9823$';
-		$pass= hash('sha512', $salt . $pus);
-
-		$sql = "UPDATE Usr_Sistema SET Pass_Usr_Sist = :pass WHERE Mail_Usr_Sist = :mus";
+		$pass= hash('sha512', $salt . $pass);
+		
+		$sql = "SELECT * FROM Usr_Sistema WHERE Mail_Usr_Sist=:Mail_Usr_Sist AND Pass_Usr_Sist=:Pass_Usr_Sist AND Activo = 'S'";
+		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":mus" => $mus, ":pass" => $pass));
-		return $result;
+		$result->execute(array(':Mail_Usr_Sist' => $mail, ':Pass_Usr_Sist' => $pass));
+        //Obtiene el registro de la tabla Usuario 
+        if($result->rowCount()==0)
+        {
+       		
+			return false;
+        }
+        else
+        {
+        	$npass= hash('sha512', $salt . $npass);
+			$sql = "UPDATE Usr_Sistema SET Pass_Usr_Sist = :npass WHERE Mail_Usr_Sist = :mus";
+			$result = $conex->prepare($sql);
+			$result->execute(array(":mus" => $mail, ":npass" => $npass));
+			return $result;
+        }
+
+	//	$mus= trim($param->getMail_Usr_Sist());
+	//	$pus=$param->getPass_Usr_Sist();
+	//	
+	//	$salt = '34a@$#aA9823$';
+	//	$pus= hash('sha512', $salt . $pus);
+
+	//	$sql = "UPDATE Usr_Sistema SET Pass_Usr_Sist = :pass WHERE Mail_Usr_Sist = :mus";
+	//	$result = $conex->prepare($sql);
+	//	$result->execute(array(":mus" => $mus, ":pass" => $pass));
+	//	return $result;
 	}	
 	
 /*	

@@ -225,11 +225,11 @@ class Admin
     }	
 	
 	
-    public function ActualizarPass($conex)
+    public function ActualizarPass($conex,$npass)
     {
 
         $pu= new ExistenciaAdmin;
-		return $pu->ActualizarPass($this, $conex);
+		return $pu->ActualizarPass($this, $conex,$npass);
         
     }
 	

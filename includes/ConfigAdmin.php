@@ -53,16 +53,16 @@ $apellido = $Tipo[0][2];
 
 		
 function CoincidePass(){ 
-   	pus = document.pass.pus.value 
-   	pus2 = document.pass.pus2.value 
+   	npass = document.pass.npass.value 
+   	npass2 = document.pass.npass2.value 
 
-   	if (pus == pus2)
+   	if (npass == npass2)
 		
 		document.getElementById('passid').action = "/logica/ProcesaConfigAdmin.php";
 		
    	else 
 		window.alert("Las claves ingresadas no coinciden. \nIntenta nuevamente.")
-
+		$("#DASH").load('/includes/ConfigAdmin.php');
 		
 }
 
@@ -72,27 +72,44 @@ function CoincidePass(){
 			    
                 <div class="col-lg-6">
 				<h3 class="page-header"> Bienvenido  <?php  echo $nombre; ?> <?php  echo $apellido; ?> </h3>
+				<h4 class="page-header"> Cambiar Password </h4>
 					<form role="form" name="pass" method="POST" id="passid">
 
 						<div class="form-group">
-							<label for="exampleInputPassword1">Password</label>
+							<label for="exampleInputPassword1">Password Actual</label>
 							<input type="password" class="form-control" name='pus' required/>
+						</div>					
+					
+						<div class="form-group">
+							<label for="exampleInputPassword1">Password Nueva</label>
+							<input type="password" class="form-control" name='npass' required/>
 						</div>	
 
 						<div class="form-group">
-							<label for="exampleInputPassword1">Repita Password</label>
-							<input type="password" class="form-control" name='pus2' required/>
+							<label for="exampleInputPassword1">Repita Password Nueva</label>
+							<input type="password" class="form-control" name='npass2' required/>
 						</div>							
 						<p> Requedra que tu clave deberá de contener como mínimo:</P>
 						<li>8 caracteres. </li>
 						<li>Una minúscula. </li>
 						<li>Una mayúscula. </li>
 						<li>Un número. </li>
-						
+						</br>
 					<button class="btn btn-default" id="ConfigAdmin" value="Comprobar si son iguales" onClick="CoincidePass()">Cambio de clave</button>
 			
-					</form>
-			
+					</form></br>
+					
+					<h4 class="page-header"> Eliminar Cuenta </h4>
+					<form role="form" name="eliminarcuenta" method="POST" Action='/logica/ProcesaConfigAdmin.php'>
+					
+						<div class="form-group">
+							<label for="exampleInputPassword1">Escriba su contraseña</label>
+							<input type="password" class="form-control" name='pusEC' required/>
+						</div>
+						
+						<button class="btn btn-default" id="ConfigAdminEliminaCuenta" value="Eliminar Cuenta" onClick="CoincidePass()">Eliminar Cuenta</button>
+						
+					</form></br>
 			</div>
 
 		</div>

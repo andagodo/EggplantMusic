@@ -19,7 +19,7 @@ $u= new Admin ('','',$mai,$pass);	// Crea un nuevo objeto de tipo "Admin" con lo
 $ok=$u->coincideLoginAdmin($conex); // Ejecuta la función coincideLoginAdmin con los valores de $u y la conexión $conex, almacena el resultado en $ok
 
 
-if ($ok) {	// Si $ok devuelve true, accede a esta condición y se ejecuta un comando JavaScript que nos lleva a /presentacion/Menu.php
+if ($ok == 1) {			// Si $ok devuelve 1, accede a esta condición y se ejecuta un comando JavaScript que nos lleva a /presentacion/Menu.php
 
 ?>
 
@@ -29,7 +29,7 @@ if ($ok) {	// Si $ok devuelve true, accede a esta condición y se ejecuta un com
 
 <?php
 
-}else{		// Si $ok nos devuelve false, nos muestra un mensaje de Usuario o Password incorrecto y nos devuelve a /presentacion/indice.php
+}elseif ($ok == 2){		// Si $ok nos devuelve 2, nos muestra un mensaje de Usuario o Password incorrecto y nos devuelve a /presentacion/indice.php
 
 ?>
 
@@ -40,6 +40,17 @@ if ($ok) {	// Si $ok devuelve true, accede a esta condición y se ejecuta un com
 	
 <?php
 
+}elseif ($ok == 3){		// Si $ok nos devuelve 3, nos muestra un mensaje de Usuario deshabilitado y nos devuelve a /presentacion/indice.php
+?>
+
+	<script language="javascript">
+		window.alert("Su usuario está deshabilitado, por favor contáctenos: \nadmin@eggplantblue.com.uy.");
+		location.href="/presentacion/indice.php";
+	</script>
+	
+<?php
+
+	
 }
 
 desconectar($conex);
