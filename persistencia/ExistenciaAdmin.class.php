@@ -251,7 +251,39 @@ class ExistenciaAdmin
 	//	$result = $conex->prepare($sql);
 	//	$result->execute(array(":mus" => $mus, ":pass" => $pass));
 	//	return $result;
+	}			
+		
+	
+		
+		
+		
+	public function eliminaAdminConPass($param, $conex)
+	{
+		$mail= trim($param->getMail_Usr_Sist());
+        $pass= trim($param->getPass_Usr_Sist());
+		
+		$salt = '34a@$#aA9823$';
+		$pass= hash('sha512', $salt . $pass);
+		
+		$sql = "SELECT * FROM Usr_Sistema WHERE Mail_Usr_Sist=:Mail_Usr_Sist AND Pass_Usr_Sist=:Pass_Usr_Sist AND Activo = 'S'";
+		
+		$result = $conex->prepare($sql);
+		$result->execute(array(':Mail_Usr_Sist' => $mail, ':Pass_Usr_Sist' => $pass));
+        //Obtiene el registro de la tabla Usuario 
+        if($result->rowCount()==0)
+        {
+       		
+			return false;
+        }
+        else
+        {		
+			$sql = "UPDATE Usr_Sistema SET Activo = 'N', Fech_Activo = getdate() WHERE Mail_Usr_Sist =:mail";
+			$result = $conex->prepare($sql);
+			$result->execute(array(":mail" => $mail));
+			return true;
+		}		
 	}	
+
 	
 /*	
 	

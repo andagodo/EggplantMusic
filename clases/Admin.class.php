@@ -233,6 +233,16 @@ class Admin
         
     }
 	
+    public function eliminaAdminConPass($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->eliminaAdminConPass($this, $conex);
+        
+    }	
+	
+	
+	
 }
 
 ?>
