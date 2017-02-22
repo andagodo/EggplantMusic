@@ -247,6 +247,14 @@ class Admin
         $pu= new ExistenciaAdmin;
 		return $pu->ActualizaNomApe($this, $conex);
         
+    }
+
+    public function ConsultoExisteAdmin($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->ConsultoExisteAdmin($this, $conex);
+        
     }		
 	
 }

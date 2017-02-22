@@ -1,5 +1,4 @@
 <?php
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 session_start();

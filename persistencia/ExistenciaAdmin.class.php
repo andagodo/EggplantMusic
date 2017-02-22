@@ -127,6 +127,20 @@ class ExistenciaAdmin
        return $resultados;
     }		
 
+	
+	public function ConsultoExisteAdmin($param, $conex)
+	{
+        $mail= trim($param->getMail_Usr_Sist());   
+        $sql = "SELECT Mail_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist = :mai";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":mai" => $mail));
+		
+		if($result->rowCount()==0){
+			return true;
+        }else{
+			return false;
+        }
+    }	
 
 	public function buscaMailAdmin($param, $conex)
 	{

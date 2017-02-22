@@ -11,7 +11,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 
 $mus=$_SESSION["mai"];	// Almacena en variable $mus el mail del usuario que está con la sesión iniciada.
 
-if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"])) {		// Si no se trae por POST a "pusEC" entra en la condición.
+if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"])) {		// Si no se trae por POST a "pusEC" y no "nomu" ni "apeu" entra en la condición.
 	
 	$pus=trim($_POST['pus']);		// Almacena en $pus la contraseña del usuario actual.
 	$npass=trim($_POST['npass']);	// Almacena en $npass la contraseña del usuario nueva.
@@ -58,7 +58,7 @@ if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"
 	<?php
 	}
 	
-} elseif(isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"])){		// Si trae por POST a "pusEC" entra en la condición.
+} elseif(isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"])){		// Si trae por POST a "pusEC" y no "nomu" ni "apeu" entra en la condición.
 	
 	$pusEC=trim($_POST['pusEC']);		// Almacena en $pusEC la contraseña del usuario para elimiar su cuenta.
 	
@@ -86,45 +86,43 @@ if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"
 		<?php
 		}
 
-} elseif(isset($_POST["nomu"]) || isset($_POST["apeu"]) && ! isset($_POST["pusEC"])){
+} elseif(isset($_POST["nomu"]) || isset($_POST["apeu"]) && ! isset($_POST["pusEC"])){ 	// Si trea por POST a "nomu" o "apeu" y no trae a "pusEC" entra en la condición.
 	
 	$conex = conectar();
-	$nombre=trim($_POST['nomu']);
-	$apellido=trim($_POST['apeu']);
+	$nombre=trim($_POST['nomu']);		// Almaceno en $nombre lo que traigo en "nomu"
+	$apellido=trim($_POST['apeu']);		//	Almaceno en $apellido lo que traigo en "apeu"
 	
-	if ( $nombre == ''){
+	if ( $nombre == ''){	// Si $nombre no contiene nada, ejecuto una función para obtener de la base de datos el nombre del usuario actual y guardarla en $nombre
 		$u= new Admin ('','',$_SESSION["mai"]);
 		$Tipo=$u->consultaTipoAdmin($conex);
 		$nombre = $Tipo[0][1];
 			
-	}elseif ( $apellido == ''){
+	}elseif ( $apellido == ''){	// Si $apellido no contiene nada, ejecuto una función para obtener de la base de datos el apellido del usuario actual y guardarla en $apellido
 		$u= new Admin ('','',$_SESSION["mai"]);
 		$Tipo=$u->consultaTipoAdmin($conex);
 		$apellido = $Tipo[0][2];
-
 	}
 	
-	$u= new Admin ('',$nombre,$mus,'','','','',$apellido);
-	$ok=$u->ActualizaNomApe($conex);
+	$u= new Admin ('',$nombre,$mus,'','','','',$apellido); // Crea un nuevo objeto de tipo Admin con los valores de nombre, mail y apellido, lo almacena en $u.
+	$ok=$u->ActualizaNomApe($conex);	// Ejecuta la función ActualizaNomApe con los datos de $u, para actualizar los datos en la base.
 	
-	if ($ok){
+	if ($ok){		// Si grabó los datos correctamente muestro mensaje de éxito y vuelvo al menú 
 		?>
-			<script language="javascript"> 
-				window.alert("Se actualizaron tus datos con éxito.")	
-				$("#DASH").load('/includes/ConfigAdmin.php');
-			</script>
+		<script language="javascript"> 
+			window.alert("Se actualizaron tus datos con éxito.")	
+			$("#DASH").load('/includes/ConfigAdmin.php');
+		</script>
 			
 		<?php
-		}else{
+	}else{			// Si no grabó los datos correctamentes muestro mensaje de error  y vuelvo a la configuración del Admin. 
 		?>
-	
-			<script language="javascript">
-				window.alert("Hubo un problema al actualizar los datos de tu usuario,\nIntenta nuevamente.")		
-				$("#DASH").load('/includes/ConfigAdmin.php');
-			</script>
+		<script language="javascript">
+			window.alert("Hubo un problema al actualizar los datos de tu usuario,\nIntenta nuevamente.")		
+			$("#DASH").load('/includes/ConfigAdmin.php');
+		</script>
 
 		<?php
-		}
+	}
 }
 
 ?>

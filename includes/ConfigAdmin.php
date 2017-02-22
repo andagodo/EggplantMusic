@@ -18,10 +18,11 @@ if(! isset($_SESSION["mai"])){
 $u= new Admin ('','',$_SESSION["mai"]);		// Crea una nueva clase de tipo Admin con el valor de mail almacenado en la sesión actual, ésto lo almacena en $u
 $Tipo=$u->consultaTipoAdmin($conex);		// Ejecuta la función consultaTipoAdmin con los valores de $u y la conexión $conex, almacena el resultado en $Tipo
 $nombre = $Tipo[0][1];		// Almacena en $nombre el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][1]
-$apellido = $Tipo[0][2];
+$apellido = $Tipo[0][2];	// Almacena en $apellido el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][2]
 
 ?>
 
+<!-- Barra superior de página actual -->
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
@@ -40,7 +41,10 @@ $apellido = $Tipo[0][2];
 				
 	</div>
 			
-<script> 
+<script>
+
+<!-- Función Javascript que verifica que las dos contraseñas sean iguales, si son iguales ejecuta la acción del formulario, en caso contrario da mensaje de error -->
+
 	function CoincidePass(){ 
 		npass = document.pass.npass.value 
 		npass2 = document.pass.npass2.value 
@@ -50,7 +54,10 @@ $apellido = $Tipo[0][2];
 			window.alert("Las claves ingresadas no coinciden. \nIntenta nuevamente.")
 			$("#DASH").load('/includes/ConfigAdmin.php');
 	}
-	
+
+<!-- Función Javascript que verifica si se escribió algo en por lo menos uno de los campos de Nombre y Apellido, si no se escribió nada da mensaje de error -->
+<!--	Si en uno de los campos se escribió algo, ejecuta la acción del formulario -->
+
 	function NombreApellido(){ 
 		nomu = document.nomape.nomu.value 
 		apeu = document.nomape.apeu.value 
@@ -65,6 +72,9 @@ $apellido = $Tipo[0][2];
 	<div class="row">
 		<div class="col-lg-6">
 			<h3 class="page-header"> Bienvenido  <?php  echo $nombre; ?> <?php  echo $apellido; ?> </h3>
+			
+			
+			<!-- Formulario para editar Nombre y Apellido -->
 			
 			<h4 class="page-header"> Editar Nombre / Apellido</h4>
 			<form role="form" name="nomape" method="POST" id="nomapeid">
@@ -82,6 +92,8 @@ $apellido = $Tipo[0][2];
 				<button class="btn btn-default" id="NomApe" value="Editar" onClick="NombreApellido()">Editar</button>
 			</form></br>
 
+			
+			<!-- Formulario para cambiar Password -->
 			
 			<h4 class="page-header"> Cambiar Password</h4>
 			<form role="form" name="pass" method="POST" id="passid">
@@ -110,6 +122,9 @@ $apellido = $Tipo[0][2];
 				<button class="btn btn-default" id="ConfigAdmin" value="Comprobar si son iguales" onClick="CoincidePass()">Cambio de clave</button>
 			
 			</form></br>
+			
+			
+			<!-- Formulario para deshabilitar cuenta -->
 			
 			<h4 class="page-header"> Eliminar Cuenta </h4>
 			<form role="form" name="eliminarcuenta" method="POST" Action='/logica/ProcesaConfigAdmin.php'>
