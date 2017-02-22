@@ -262,12 +262,14 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 			<!-------------------------------------- 	FIN Barra lateral izquierda -------------------------------------------->			
         </nav>
 
+		
 <div id="DASH">
 <!-- El div #DASH es el utilizado para cargar la página cental del sistema, puede ser el dashboard del Administrador o algúna página de una funcionalidad.
 	Visualmente se carga en este punto, y se ejecuta cuando se hace click en uno de las funcionalidades.
 	El que ejecuta la acción es un archivo .js que contiene funciones javaScript, "/estilos/js/jsmenu.js". a este archivo se hace referencia al principio
 	y al final del archivo Menu.php-->
 </div>
+
 
 	<!-- Carga de archivos .js propios de bootstrap y del menú -->
 	<script src="/estilos/js/jsmenu.js"></script>

@@ -214,6 +214,19 @@ class ExistenciaAdmin
 	}		
 
 	
+	public function ActualizaNomApe($param, $conex)
+	{
+		$mail= trim($param->getMail_Usr_Sist());
+		$nom= trim($param->getNombre_Usr_Sist());
+		$ape= trim($param->getApellido_Usr_Sist());
+		
+		$sql = "UPDATE Usr_Sistema SET Nombre_Usr_Sist =:nombre, Apellido_Usr_Sist =:apellido WHERE Mail_Usr_Sist =:mail";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":nombre" => $nom, ":apellido" => $ape, ":mail" => $mail));
+		return $result;
+	}
+	
+	
 	public function ActualizarPass($param, $conex, $npass)
 	{
 		$mail= trim($param->getMail_Usr_Sist());
