@@ -16,7 +16,10 @@
 - Time Out en páginas /presentacion/Menu.php
 - Cuando el cambio de clave del Admin no cumple con la complejidad, debería de volver a la página anterior y no al menú
 - Cuando cambio la clave del Admin y no coinciden, debería de volver a la página anterior y no al menú
+- Cuando se pone una clave equivocada al deshabilitar la cuenta de Admin, devería de volver a Configuración de Admin.
+- Migrar archivos Registro y RegistroBackEnd a la carpeta /logica
 
 
 /////////////// CAMPOS NUEVOS EN BD ////////////////////
 - Usr_Sistema - Apellido_Usr_Sist
+- Usr_Sistema - Clave

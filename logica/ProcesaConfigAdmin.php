@@ -7,9 +7,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <script src="/estilos/js/jsmenu.js"></script>
 
+
 <?php
 
 $mus=$_SESSION["mai"];	// Almacena en variable $mus el mail del usuario que está con la sesión iniciada.
+
+
 
 if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"])) {		// Si no se trae por POST a "pusEC" y no "nomu" ni "apeu" entra en la condición.
 	

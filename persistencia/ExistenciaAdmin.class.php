@@ -13,23 +13,25 @@ class ExistenciaAdmin
 		$feal=$param->getFech_Alta_Usr_Sist();
         $nomu=$param->getNombre_Usr_Sist();
         $mus=$param->getMail_Usr_Sist();
-        $pus=$param->getPass_Usr_Sist();
+        $pass=$param->getPass_Usr_Sist();
 		$activ = $param->getActivo();
 		$feactivo = $param->getFech_Activo();
 		$apell = $param->getApellido_Usr_Sist();
+		$cla = $param->getClave();
 		
+
 		//Encripto la password uso un salt y un hash
 		
-		$salt = '34a@$#aA9823$';
-		$pass= hash('sha512', $salt . $pus);
+//		$salt = '34a@$#aA9823$';
+//		$pass= hash('sha512', $salt . $pus);
         
         //Genera la sentencia a ejecutar
 		//La sql ES UN EJEMPLO LE FALTA todos los campos, depende de sus atributos
-        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Fech_Activo, Apellido_Usr_Sist) VALUES (:tipousr, :nombre, :mail, :pass, :fechaalta, :activ, :feactivo, :apell)";
+        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Fech_Activo, Apellido_Usr_Sist, Clave) VALUES (:tipousr, :nombre, :mail, :pass, :fechaalta, :activ, :feactivo, :apell, :cla)";
       
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":tipousr" => $tus, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal, ":activ" => $activ, ":feactivo" => $feactivo, ":apell" => $apell));
+		$result->execute(array(":tipousr" => $tus, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal, ":activ" => $activ, ":feactivo" => $feactivo, ":apell" => $apell, ":cla" => $cla));
         
         //Para saber si ocurrió un error
         if($result)
@@ -228,6 +230,17 @@ class ExistenciaAdmin
 	}		
 
 	
+	public function SetNullClave($param, $conex)
+	{
+		$clave= trim($param->getClave());
+		$sql = "UPDATE Usr_Sistema SET Clave = NULL WHERE Clave =:clave";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":clave" => $clave));
+		return $result;
+	}
+
+	
+	
 	public function ActualizaNomApe($param, $conex)
 	{
 		$mail= trim($param->getMail_Usr_Sist());
@@ -338,6 +351,63 @@ class ExistenciaAdmin
        return $resultados;
     }	
 	
+	
+	public function ConfirmaMail($param, $conex)
+	{
+		$cla= trim($param->getClave());
+		$sql = "UPDATE Usr_Sistema SET Activo = 'S' WHERE Clave=:clave";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":clave" => $cla));
+		
+		if($result)
+        {
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+	}
+	
+	
+	public function ConsultaClave($param, $conex)
+	{
+		$cla= trim($param->getClave());
+		$sql = "SELECT Clave FROM Usr_Sistema WHERE Clave=:clave";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":clave" => $cla));
+		
+		if($result->rowCount()==0)
+		{
+          return(false);
+        }
+        else
+        {
+          return(true);
+        }
+	}	
+	
+
+public function EstablecePass($param, $conex)
+	{
+		$clave= trim($param->getClave());
+        $pass= trim($param->getPass_Usr_Sist());
+		
+		$salt = '34a@$#aA9823$';
+		$pass= hash('sha512', $salt . $pass);
+		$sql = "UPDATE Usr_Sistema SET Pass_Usr_Sist = :pass WHERE Clave = :clave";
+		$result = $conex->prepare($sql);
+		$result->execute(array(':clave' => $clave, ':pass' => $pass));
+		
+		if($result)
+        {
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }	
+	}
 	
 }
 ?>

@@ -8,6 +8,7 @@ $conex = conectar();
 if(! isset($_SESSION["mai"])){
 ?>
 <script src="/estilos/js/jsmenu.js"></script>
+
 <script language="javascript">
 	window.alert("Debes de estar logeado para ingresar a esta página.");
 	location.href="/presentacion/indice.php";
@@ -40,23 +41,27 @@ $apellido = $Tipo[0][2];	// Almacena en $apellido el valor devuelto por la funci
 		</div>
 				
 	</div>
-			
+
+
+
+
 <script>
 
-<!-- Función Javascript que verifica que las dos contraseñas sean iguales, si son iguales ejecuta la acción del formulario, en caso contrario da mensaje de error -->
+ /* Función Javascript que verifica que las dos contraseñas sean iguales, si son iguales ejecuta la acción del formulario, en caso contrario da mensaje de error */
 
 	function CoincidePass(){ 
 		npass = document.pass.npass.value 
 		npass2 = document.pass.npass2.value 
 		if (npass == npass2)
+
 			document.getElementById('passid').action = "/logica/ProcesaConfigAdmin.php";
 		else 
 			window.alert("Las claves ingresadas no coinciden. \nIntenta nuevamente.")
 			$("#DASH").load('/includes/ConfigAdmin.php');
 	}
 
-<!-- Función Javascript que verifica si se escribió algo en por lo menos uno de los campos de Nombre y Apellido, si no se escribió nada da mensaje de error -->
-<!--	Si en uno de los campos se escribió algo, ejecuta la acción del formulario -->
+/* Función Javascript que verifica si se escribió algo en por lo menos uno de los campos de Nombre y Apellido, si no se escribió nada da mensaje de error */
+/*	Si en uno de los campos se escribió algo, ejecuta la acción del formulario */
 
 	function NombreApellido(){ 
 		nomu = document.nomape.nomu.value 

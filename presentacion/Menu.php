@@ -8,6 +8,7 @@ $conex = conectar(); // Almacela la función "conectar" que se encuentra en '/lo
 
 <script src="/estilos/js/jquery.js"></script>	<!-- Llama al archivo de JavaScript externo jquery.js que contiene información de Bootstrap -->
 <script src="/estilos/js/plugins/morris/morris.min.js"></script>
+
 <!-- <script src="/estilos/js/jsmenu.js"></script>	--> <!-- Llama al archivo de JavaScript externo jsmenu.js que contiene funciones para la visualizacion de diferentes funcionalidades de los Administradores -->
 
 <?php

@@ -13,8 +13,9 @@ class Admin
 	private $Activo;
 	private $Fech_Activo;
 	private $Apellido_Usr_Sist;
+	private $Clave;
     
-    function __construct($tus='', $nomu='', $mus='', $pus='', $feal='', $activ='', $feactivo='', $apell='')
+    function __construct($tus='', $nomu='', $mus='', $pus='', $feal='', $activ='', $feactivo='', $apell='', $cla='')
     {
         $this->Tipo_Usr_Sist= $tus;
         $this->Nombre_Usr_Sist= $nomu;
@@ -24,6 +25,7 @@ class Admin
 		$this->Activo=$activ;
 		$this->Fech_Activo=$feactivo;
 		$this->Apellido_Usr_Sist=$apell;
+		$this->Clave=$cla;
     }
     
     //Métodos set
@@ -71,6 +73,11 @@ class Admin
       $this->Apellido_Usr_Sist= $apell;
     }	
 
+    public function setClave($cla)
+    {
+      $this->Clave= $cla;
+    }		
+	
 	
     // la profesora habia puesto una funcion del tipo set que era "habilitado"
     
@@ -119,7 +126,12 @@ class Admin
       return $this->Apellido_Usr_Sist;
     }   	
 		
-	
+
+		
+    public function getClave()
+    {
+      return $this->Clave;
+    } 
 /*	
 	
 	public function getIDrol()
@@ -256,6 +268,42 @@ class Admin
 		return $pu->ConsultoExisteAdmin($this, $conex);
         
     }		
+
+    public function ConfirmaMail($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->ConfirmaMail($this, $conex);
+        
+    }	
+
+	
+    public function SetNullClave($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->SetNullClave($this, $conex);
+        
+    }	
+	
+	
+    public function ConsultaClave($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->ConsultaClave($this, $conex);
+        
+    }		
+
+
+    public function EstablecePass($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->EstablecePass($this, $conex);
+        
+    }	
+
 	
 }
 
