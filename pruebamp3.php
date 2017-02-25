@@ -36,7 +36,10 @@ if($mins > 60)
 }
 
 $play_time = sprintf("%02d:%02d:%02d" , $hours , $mins , $secs);
-
+echo "</br>";
 echo $play_time;
 
+$play_time_directo = $mixinfo['playtime_string'];
+echo "</br>";
+echo $play_time_directo;
 ?>
