@@ -64,9 +64,14 @@ if(isset($_POST['npass'])){
 	}else{
 		?>
 		<script language="javascript">
-			window.alert("Este contraseña no cumple con lo mínimo de seguridad.");
+			var clave= "<?php echo $clave;?>" ;
+			alert('Este contraseña no cumple con lo mínimo de seguridad');
+			window.location.href='/presentacion/indice.php?id='+clave;
 		</script>
+
 		<?php
+
+		
 	}
 	
 }else{

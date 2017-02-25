@@ -18,6 +18,8 @@
 - Cuando cambio la clave del Admin y no coinciden, debería de volver a la página anterior y no al menú
 - Cuando se pone una clave equivocada al deshabilitar la cuenta de Admin, devería de volver a Configuración de Admin.
 - Migrar archivos Registro y RegistroBackEnd a la carpeta /logica
+- Función ActivacionMail usada en el registro de admins backend y usaurios en front end se toma demaciado tiempo en ejecutar.
+- Indice.php - Mejorar visualmente el icono de información de condiciones de la contraseña.
 
 
 /////////////// CAMPOS NUEVOS EN BD ////////////////////
