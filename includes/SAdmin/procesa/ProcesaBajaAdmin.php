@@ -36,8 +36,21 @@ $conex = conectar();
 					$Cuenta = 0;
 					}
 				}
-			?>		
-					<form role="form" action='/logica/EliminaAdmin.php' method="POST">
+			?>	
+<script>			
+				function VerificaCampo(){ 
+		mus = document.bajaadmin.mus[].value 
+
+		if (document.fvalida.nombre.value.length==0)
+
+			document.getElementById('bajaadminid').action = "/logica/EliminaAdmin.php";
+		else 
+			window.alert("Debes de seleccional al menos un Administrador a dar de baja.")
+	}
+	</script>
+	
+	
+					<form role="form" method="POST" id="bajaadminid" name="bajaadmin">
                         <h4>Administradores:</h4>
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
@@ -58,9 +71,9 @@ $conex = conectar();
                                 <tbody>
                                     <tr>
 										<td>
-											<div class="radio">
+											<div class="checkbox">
 												<label>
-													<input type="radio" name="mus" id="optionsRadios1" value="<?php echo $datos_ba[$i][1]?>">
+													<input type="checkbox" name="mus[]" id="optionsRadios1" value="<?php echo $datos_ba[$i][1]?>">
 												</label>
 											</div>
 										</td>
@@ -74,7 +87,7 @@ $conex = conectar();
 								?>
 			
 								</tbody>
-								<button type="submit" class="btn btn-default">Eliminar</button>
+								<button class="btn btn-default" onClick="VerificaCampo()">Eliminar</button>
 								
 								</form>
 							</div>	

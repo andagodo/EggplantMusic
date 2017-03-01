@@ -6,14 +6,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
 
-$mus=trim($_POST['mus']);
+$mus=$_POST['mus'];
+
+echo $mus[0];
+echo $mus[1];
+
+$int = count ( $mus );
+echo $int;
 
 try {
 $conex = conectar();
 $u= new Admin ('','',$mus);
-$ok=$u->eliminaAdmin($conex);
+//$ok=$u->eliminaAdmin($conex);
 
-	if ($ok){
+//	if ($ok){
 		echo "<table  align='center' >";
 		echo "<tr height='400'>";
 			echo "<td class='leyenda'>";
@@ -23,7 +29,7 @@ $ok=$u->eliminaAdmin($conex);
 		echo "</tr>";
 		echo "</table>";
 
-	}
+//	}
 }
 catch (PDOException $e) {
     print "Error en la base de datos!: " . "<br/>" . $e->getMessage() . "<br/>";
