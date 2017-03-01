@@ -7,13 +7,17 @@ class Playlist
 	private $Id_Playlist;
   private $Nom_PlayList;
 	private $Fech_Creacion;
+  private $Activo;
+  private $Fech_Activo;
 
 
-    function __construct($idp='',$nom='',$fech='')
+    function __construct($idp='',$nom='',$fech='',$act='',$fecha='')
     {
 		$this->Id_Playlist= $idp;
     $this->Nom_PlayList= $nom;
 		$this->Fech_Creacion= $fech;
+    $this->Activo= $act;
+    $this->Fech_Activo= $fecha;
 
     }
     
@@ -34,6 +38,15 @@ class Playlist
       $this->Fech_Creacion= $fech;
     }
     
+    public function setActivo($act)
+    {
+      $this->Activo= $act;
+    }
+
+    public function setFech_Activo($fecha)
+    {
+      $this->Fech_Activo= $fecha;
+    }
 
     //Métodos get
 	
@@ -50,6 +63,16 @@ class Playlist
     public function getFech_Creacion()
     {
       return $this->Fech_Creacion;
+    }
+
+    public function getActivo()
+    {
+      return $this->Activo;
+    }
+
+    public function getFech_Activo()
+    {
+      return $this->Fech_Activo;
     }
 
 

@@ -1,16 +1,17 @@
 <?php 
 class ExistenciaCreaPlaylist
 {
-	public function altaPlaylist($param, $conex)
+	public function altaCreaPlaylist($param, $conex)
 	{
-		$idc=$param->getId_Crea_Playlist();
 		$idu=$param->getId_Usuario();
 		$idp=$param->getId_Playlist();
+		$act="S";
+        $fecha=date("d/m/Y H:i:s");
 
-		$sql = "INSERT INTO CreaPlayList ( Id_Usuario, Id_Playlist) VALUES ( :idusuario, :idplaylist)";
+		$sql = "INSERT INTO Crea_Playlist ( Id_Usuario, Id_Playlist, Activo, Fech_Activo) VALUES ( :idusuario, :idplaylist, :activo, :fechactivo)";
 
 		$result = $conex->prepare($sql);
-		$result->execute(array(":idusuario" => $idu, ":idplaylist" => $idp));
+		$result->execute(array(":idusuario" => $idu, ":idplaylist" => $idp, ":activo" => $act, ":fechactivo" => $fecha));
                
 
         if($result)

@@ -1,5 +1,4 @@
 <?php
-
 class ExistenciaPlaylist
 {
 
@@ -9,22 +8,26 @@ class ExistenciaPlaylist
 
         $nom=$param->getNom_PlayList();
         $fech=$param->getFech_Creacion();
+        $act="S";
+        $fecha="14/12/2016 10:00:00";
 
-
-        $sql = "INSERT INTO PlayList ( Nom_Playlist, Fech_Creacion) VALUES ( :nombre, :fechacreacion)";
+        $sql = "INSERT INTO PlayList ( Nom_Playlist, Fech_Creacion, Activo, Fech_Activo) VALUES ( :nombre, :fechacreacion, :activo, :fechactivo)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":fechacreacion" => $fech));
+		$result->execute(array(":nombre" => $nom, ":fechacreacion" => $fech, ":activo" => $act, ":fechactivo" => $fecha));
         
         
+      	$lastId = $conex->lastInsertId('PlayList');
+		
         if($result)
         {
-          return(true);
+          return($lastId);
         }
         else
         {
           return(false);
         }
+
     }
     
 	public function consultaPlaylist($param, $conex)

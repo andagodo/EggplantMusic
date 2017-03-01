@@ -7,12 +7,16 @@
 		private $Id_Crea_Playlist;
 	    private $Id_Usuario;
 		private $Id_Playlist;
+		private $Activo;
+  		private $Fech_Activo;
 
-	    function __construct($idc='',$idu='',$idp='')
+	    function __construct($idc='',$idu='',$idp='',$act='',$fecha='')
 	    {
 			$this->Id_Crea_Playlist= $idc;
 	        $this->Id_Usuario= $idu;
 			$this->Id_Playlist= $idp;
+			$this->Activo= $act;
+    		$this->Fech_Activo= $fecha;
 	    }		
 
 	    //Métodos set
@@ -32,6 +36,16 @@
 	      $this->Id_Playlist= $idp;
 	    }
 
+    	public function setActivo($act)
+    	{
+      	$this->Activo= $act;
+    	}
+
+    	public function setFech_Activo($fecha)
+    	{
+      	$this->Fech_Activo= $fecha;
+    	}	    
+
 	     //Métodos get
 
 	    public function getId_Crea_Playlist()
@@ -49,6 +63,15 @@
 	      return $this->Id_Playlist;
 	    }
 
+	    public function getActivo()
+	    {
+	      return $this->Activo;
+	    }
+
+	    public function getFech_Activo()
+	    {
+	      return $this->Fech_Activo;
+	    }
 	    //Otros Métodos
 
 	    public function consultaplayusr($conex)
@@ -56,5 +79,11 @@
         $pu=new ExistenciaCreaPlaylist;
         return ($pu->consultaplayusr($this, $conex));
     	}   
+
+    	public function altaCreaPlaylist($conex)
+    	{
+        $pu=new ExistenciaCreaPlaylist;
+        return ($pu->altaCreaPlaylist($this, $conex));
+    }    
 }
 ?>

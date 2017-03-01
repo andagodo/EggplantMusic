@@ -159,13 +159,14 @@ $(function(){
 		            	} 
 		            	else {
 
-		            		var $c = new Array();
+		            		var c = [];
 							$( "#playerul .cancionnow li a" ).each(function( index ) {
-							$c[index] = {idca: $(this).attr('data-idca')};
+							c.push($(this).attr('data-idca'));
 							});
+							var cJSON = JSON.stringify(c);
 							//var d = JSON.encode(c);
-							$.post( "/front_logica/playcanc.php", {$c, $npl}, "json" );
-							$vent.modal('hide');
+							$.post( "/front_logica/playcanc.php", { "idu" : IdUsr, c : cJSON, npl : $npl}, null , "json");
+							$vent.modal('hide'); 
 							$vent.find(".form-control").val("");
 							$('.modal_red').hide();
 					}
