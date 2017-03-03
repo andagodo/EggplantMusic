@@ -59,7 +59,7 @@ if(! isset($_SESSION["mai"])){
                             </select>
                         </div>				
 						
-						<button type="button" class="btn btn-default" onclick="ConsultaTipoAdmin();">Consultar</button>
+						<button type="button" class="btn btn-default" onclick="ConsultaTipoAdminModifica();">Consultar</button>
 					</form>
 				</div>
 
@@ -75,7 +75,7 @@ if(! isset($_SESSION["mai"])){
                                 <option value="Fech_Alta_Usr_Sist">Fecha Alta</option>
                             </select>
                     </div>
-					<button type="button" class="btn btn-default" onclick="ConsultaAdmin();">Buscar</button>
+					<button type="button" class="btn btn-default" onclick="ConsultaAdminModifica();">Buscar</button>
 				</div>
 				
 				<div class="col-lg-3">

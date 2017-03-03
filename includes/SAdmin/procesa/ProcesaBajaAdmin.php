@@ -43,7 +43,7 @@ $conex = conectar();
 	function VerificaCampo(){ 
 
 
-		if (document.bajaadminid.mus[].value != null)
+		if (document.bajaadminid.mus.value != null)
 			
 			document.getElementById('bajaadminid').action = "/logica/EliminaAdmin.php";
 

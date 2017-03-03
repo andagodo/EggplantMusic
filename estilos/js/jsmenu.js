@@ -1,4 +1,4 @@
-function ConsultaTipoAdmin(){
+function ConsultaTipoAdminBaja(){
 	var t=document.getElementById("tus").value
 	var url="/includes/SAdmin/procesa/ProcesaBajaAdmin.php"
 	
@@ -15,7 +15,7 @@ function ConsultaTipoAdmin(){
 	)
 }
 
-function ConsultaAdmin(){
+function ConsultaAdminBaja(){
 	var c=document.getElementById("campo").value
 	var t=document.getElementById("texto").value
 	var url="/includes/SAdmin/procesa/ProcesaBajaAdmin.php"
@@ -33,7 +33,7 @@ function ConsultaAdmin(){
 	)
 } 
 
-function ConsultaTipoAdmin(){
+function ConsultaTipoAdminModifica(){
 	var t=document.getElementById("tus").value
 	var url="/includes/SAdmin/procesa/ProcesaModificaAdmin.php"
 	
@@ -50,7 +50,7 @@ function ConsultaTipoAdmin(){
 	)
 }
 
-function ConsultaAdmin(){
+function ConsultaAdminModifica(){
 	var c=document.getElementById("campo").value
 	var t=document.getElementById("texto").value
 	var url="/includes/SAdmin/procesa/ProcesaModificaAdmin.php"
@@ -309,12 +309,12 @@ function ConsultaAnioAlbum(){
 	
 	)
 }    
-
+/*
 ////////////////////////////////////// INICIO DE FUNCIONES CLICK PARA MOSTRAR EN #DASH de Menu.php//////////////////////////////////////////
 
 // Cuando finalice de cargar la página ejecuta las funciones que correspondan al hacer click, Ejemplo: si en el menú se hace click en el item
 // "Alta Administrador" se ejecuta la función para que en #DASH de /presentacion/Menu.php se muestre /includes/SAdmin/AltaAdmin.php 
-
+*/
     $(document).ready(function() {
             $('#ConfigAdmin').click(function(){
                 $("#DASH").load('/includes/ConfigAdmin.php');
@@ -573,5 +573,6 @@ function ConsultaAnioAlbum(){
 
             });
         });
-		
+/*
 ////////////////////////////////////// FIN DE FUNCIONES CLICK PARA MOSTRAR EN #DASH de Menu.php //////////////////////////////////////////
+*/
