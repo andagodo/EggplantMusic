@@ -304,6 +304,47 @@ class Admin
         
     }	
 
+
+    public function ActivaAdmin($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->ActivaAdmin($this, $conex);
+        
+    }	
+
+    public function consultaAdminNoAct($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->consultaAdminNoAct($this, $conex);
+        
+    }	
+
+    public function buscaNombreAdminNoAct($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->buscaNombreAdminNoAct($this, $conex);
+        
+    }	
+
+    public function buscaMailAdminNoAct($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->buscaMailAdminNoAct($this, $conex);
+        
+    }
+	
+	
+    public function buscaFAltaAdminNoAct($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->buscaFAltaAdminNoAct($this, $conex);
+        
+    }
 	
 }
 

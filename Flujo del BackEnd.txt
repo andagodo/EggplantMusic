@@ -20,7 +20,10 @@
 - Migrar archivos Registro y RegistroBackEnd a la carpeta /logica
 - Función ActivacionMail usada en el registro de admins backend y usaurios en front end se toma demaciado tiempo en ejecutar.
 - Indice.php - Mejorar visualmente el icono de información de condiciones de la contraseña.
-
+- Si no hay conexión a la BD cuando quiero ingresar: Fatal error: Maximum execution time of 30 seconds exceeded in C:\Users\agomez\Documents\GitHub\EggplantMusic\logica\ingresoSistema.php on line 3
+- Al dar de baja un admin el botón ELIMINAR no se fija si hay uno seleccionado o no. Función de JavaScript para pilir
+- Al dar de baja administradores puedo seleccionar mas de uno pero siempre y cuando sean de la misma busqueda - arreglar para que se pueda dar de baja a mas de uno de varias busquedas.
+- Fecha al momento de buscar un Administrador por fecha de Alta y listado campo Fecha de Alta
 
 /////////////// CAMPOS NUEVOS EN BD ////////////////////
 - Usr_Sistema - Apellido_Usr_Sist

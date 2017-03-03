@@ -98,6 +98,20 @@ class ExistenciaAdmin
        return $resultados;
     }
 	
+	public function consultaAdminNoAct($param, $conex)
+	{
+//        $idp= trim($param->getIDpersona());   
+		$tus= trim($param->getTipo_Usr_Sist());
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":tipo" => $tus));
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }
+	
 	
 /*	
 	public function consultaTextoAdmin($texto, $campo, $conex)
@@ -121,6 +135,18 @@ class ExistenciaAdmin
 	{
         $nombre= trim($param->getNombre_Usr_Sist());   
         $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom AND Activo = 'S'";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }		
+
+	public function buscaNombreAdminNoAct($param, $conex)
+	{
+        $nombre= trim($param->getNombre_Usr_Sist());   
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -156,10 +182,34 @@ class ExistenciaAdmin
        return $resultados;
     }
 
+	public function buscaMailAdminNoAct($param, $conex)
+	{
+        $mail= trim($param->getMail_Usr_Sist());   
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai";
+        $result = $conex->prepare($sql);
+		$mail = "%".$mail."%";
+	    $result->execute(array(":mai" => $mail));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+
 	public function buscaFAltaAdmin($param, $conex)
 	{
         $falta= trim($param->getFech_Alta_Usr_Sist());   
         $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa AND Activo = 'S'";
+        $result = $conex->prepare($sql);
+		$falta = "%".$falta."%";
+	    $result->execute(array(":fa" => $falta));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+	
+	public function buscaFAltaAdminNoAct($param, $conex)
+	{
+        $falta= trim($param->getFech_Alta_Usr_Sist());   
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa";
         $result = $conex->prepare($sql);
 		$falta = "%".$falta."%";
 	    $result->execute(array(":fa" => $falta));
@@ -368,7 +418,23 @@ class ExistenciaAdmin
           return(false);
         }
 	}
-	
+
+	public function ActivaAdmin($param, $conex)
+	{
+		$mail= trim($param->getMail_Usr_Sist());
+		$sql = "UPDATE Usr_Sistema SET Activo = 'S' WHERE Mail_Usr_Sist=:mail";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":mail" => $mail));
+		
+		if($result)
+        {
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+	}	
 	
 	public function ConsultaClave($param, $conex)
 	{

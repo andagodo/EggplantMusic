@@ -21,7 +21,14 @@ function conectar()
 
 		
 	} catch (PDOException $e) {
-		print "<p>Error: No puede conectarse con la base de datos.</p>\n";
+		?>
+		
+		<script language="javascript">
+			window.alert("Hubo un error en la conexión con la base de datos\nIntente nuevamente.");
+			location.href="/presentacion/indice.php";
+		</script>
+		
+		<?php
 		exit();
     }
 }

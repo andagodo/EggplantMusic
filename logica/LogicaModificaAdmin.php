@@ -7,21 +7,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <?php
 
 $mus=$_POST['mus'];
-$Cuenta=count($mus);
-
-for ($i=0;$i<$Cuenta;$i++){
-	
 
 
 	try {
 		$conex = conectar();
-		$u= new Admin ('','',$mus[$i]);
-		$ok=$u->eliminaAdmin($conex);
+		$u= new Admin ('','',$mus);
+		$ok=$u->ActivaAdmin($conex);
 
 		if ($ok){
 			?>
 			<script language="javascript">
-				window.alert("Eliminaste Administrador/es exitosamente.");
+				window.alert("Activaste el Administrador exitosamente.");
 				location.href="/presentacion/Menu.php";
 			</script>
  <?php
@@ -32,8 +28,7 @@ for ($i=0;$i<$Cuenta;$i++){
 		print " </br><a href=\"\presentacion\Menu.php\" style='color: black'>Volver</a>";
 	}
 	
-}
-	
+
 
 // desconectar($conex);
  

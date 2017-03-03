@@ -12,7 +12,7 @@ $conex = conectar();
 				if (isset($_POST['tus'])){
 					$tus=trim($_POST['tus']);
 					$ba = new Admin($tus);
-					$datos_ba=$ba->consultaAdmin($conex);
+					$datos_ba=$ba->consultaAdminNoAct($conex);
 					$Cuenta=count($datos_ba);
 					
 				}elseif (isset($_POST['texto'])){
@@ -20,19 +20,19 @@ $conex = conectar();
 					if ($_POST['campo'] == "Nombre_Usr_Sist"){
 						$nomu=trim($_POST['texto']);
 						$ba = new Admin('',$nomu);
-						$datos_ba=$ba->buscaNombreAdmin($conex);
+						$datos_ba=$ba->buscaNombreAdminNoAct($conex);
 						$Cuenta=count($datos_ba);
 					}
 					elseif ($_POST['campo'] == "Mail_Usr_Sist"){
 						$mai=trim($_POST['texto']);
 						$ba = new Admin('','',$mai);
-						$datos_ba=$ba->buscaMailAdmin($conex);
+						$datos_ba=$ba->buscaMailAdminNoAct($conex);
 						$Cuenta=count($datos_ba);
 					}
 					elseif ($_POST['campo'] == "Fech_Alta_Usr_Sist"){
 						$fal=trim($_POST['texto']);
 						$ba = new Admin('','','','',$fal);
-						$datos_ba=$ba->buscaFAltaAdmin($conex);
+						$datos_ba=$ba->buscaFAltaAdminNoAct($conex);
 						$Cuenta=count($datos_ba);
 					}else{
 					$Cuenta = 0;
@@ -40,24 +40,24 @@ $conex = conectar();
 				}
 			?>	
 <script>			
-	function VerificaCampo(){ 
+	function VerificaCampo1(){ 
 
 
-		if (document.bajaadminid.mus[].value != null)
-			
-			document.getElementById('bajaadminid').action = "/logica/EliminaAdmin.php";
+			document.getElementById('modificaadminid').action = "/logica/LogicaModificaAdmin.php";			
 
-		else
-			
-			window.alert('Debes de seleccionar al menos un administrador para dar de baja.'  + document.bajaadminid.mus.value );
-<!--		$('body').jAlert('Welcome to jAlert Demo Page', "success"); -->
-
-			
 	}
+	
+	function VerificaCampo2(){ 
+
+
+			document.getElementById('modificaadminid').action = "/logica/LogicaModificaAdmin.php";			
+
+	}	
+
 	</script>
 	
 	
-					<form role="form" method="POST" id="bajaadminid" name="bajaadminid">
+					<form role="form" name="modificaadmin" method="POST" id="modificaadminid" >
                         <h4>Administradores:</h4>
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
@@ -68,6 +68,7 @@ $conex = conectar();
                                         <th>Nombre</th>
                                         <th>Mail</th>
                                         <th>Fecha Alta</th>
+										<th>Activo</th>
                                     </tr>
                                 </thead>
 								<?php
@@ -78,15 +79,16 @@ $conex = conectar();
                                 <tbody>
                                     <tr>
 										<td>
-											<div class="checkbox">
+											<div class="radio">
 												<label>
-													<input type="checkbox" id="mus" name="mus[]" value="<?php echo $datos_ba[$i][1]?>">
+													<input type="radio" name="mus" value="<?php echo $datos_ba[$i][1]?>">
 												</label>
 											</div>
 										</td>
                                         <td><?php echo $datos_ba[$i][0]?></td>
                                         <td><?php echo $datos_ba[$i][1]?></td>
                                         <td><?php echo $datos_ba[$i][2]?></td>
+										<td><?php echo $datos_ba[$i][3]?></td>
 									</tr>
 									
 								<?php
@@ -95,8 +97,8 @@ $conex = conectar();
 			
 								</tbody>
 
-								<td><button class="btn btn-default" onClick="VerificaCampo()">Eliminar Listado</button></td>
-								<td><button class="btn btn-default" onClick="EliminaVariosAdmin()">Agregar Selección</button></td>
+								<td><button class="btn btn-default" id="ModificaAdmin" Value="Habilitar Admin" onClick="VerificaCampo1()">Habilitar Admin</button></td>
+								<td><button class="btn btn-default" id="ModificaAdmin" Value="Habilitar Admin" onClick="VerificaCampo2()">Habilitar Admin</button></td>
 
 								</form>
 								

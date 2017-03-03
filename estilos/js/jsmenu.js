@@ -33,7 +33,58 @@ function ConsultaAdmin(){
 	)
 } 
 
+function ConsultaTipoAdmin(){
+	var t=document.getElementById("tus").value
+	var url="/includes/SAdmin/procesa/ProcesaModificaAdmin.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{tus:t},
+		success:function(datos){
+			$("#MODIFICAADMIN").html(datos);
+		}
+	}
+	
+	)
+}
 
+function ConsultaAdmin(){
+	var c=document.getElementById("campo").value
+	var t=document.getElementById("texto").value
+	var url="/includes/SAdmin/procesa/ProcesaModificaAdmin.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{campo:c,texto:t},
+		success:function(datos){
+			$("#MODIFICAADMIN").html(datos);
+		}
+	}
+	
+	)
+}
+
+
+function EliminaVariosAdmin(){
+	var t=document.getElementById("mus").value
+	var url="/includes/SAdmin/procesa/ProcesaBajaAdmin2.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{tus:t},
+		success:function(datos){
+			$("#BAJAADMIN2").html(datos);
+		}
+	}
+	
+	)
+}
 
 function ConsultaNomInterprete(){
 	var n=document.getElementById("nom").value
@@ -324,6 +375,13 @@ function ConsultaAnioAlbum(){
 
             });
         });
+		
+		$(document).ready(function() {
+            $('#modificaadmin').click(function(){
+                $("#DASH").load('/includes/SAdmin/ModificaAdmin.php');
+
+            });
+        });		
 
         $(document).ready(function() {
             $('#musicdash').click(function(){

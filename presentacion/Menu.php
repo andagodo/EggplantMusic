@@ -140,6 +140,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 							<li>
 								<a href="#" id="bajaadmin"><i class="fa fa-fw fa-edit"></i> Baja Admin</a>
 							</li>
+							<li>
+								<a href="#" id="modificaadmin"><i class="fa fa-fw fa-edit"></i> Mofificar Admin</a>
+							</li>
                         </ul>
                     </li>					
 					
