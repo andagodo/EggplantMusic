@@ -8,8 +8,7 @@ $r = new ContieneAlbum('',$alb,'');
 $datos_r=$r->consultaCancionA($conex);
 $Cuenta=count($datos_r);
 ?>
- <script src="/estilos/js/menu1.js"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="/estilos/js/menu1.js"></script>
 <div class="col-sm-2 col-md-3 affix-content">
 <div class="container">
 
