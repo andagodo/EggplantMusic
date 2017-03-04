@@ -56,7 +56,7 @@ function ActivacionMail($mail, $nom, $ape, $url){
  
 $destinatario = $mail;
 $asunto = "Eggplant Music - Activar Usuario";
-$cuerpo = '<img <img src="http://localhost:8080/img/LOGO.jpg" alt="Eggplant Music"></br>';
+$cuerpo = '<img <img src="http://i67.tinypic.com/21mu6tc.jpg" alt="Eggplant Music"></br>';
 $cuerpo .= 'Eggplant Music - Activar usuario
 <h1>Hola ';
 $cuerpo .= $nom ;
@@ -74,10 +74,9 @@ $cuerpo .= '<p><strong> Equipo Eggplant Blue. </strong></p>';
 //para el envío en formato HTML
 $headers = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
- 
-//dirección del remitente
-$headers .= "From: Admin Eggplant Music \r\n";
- 
+
+$headers .= "From: Admin Eggplant Music <admin@eggplantblue.com> \r\n";
+
 //dirección de respuesta, si queremos que sea distinta que la del remitente
 $headers .= "Reply-To: direccion_respuesta@dominio.com \r\n";
 
@@ -89,7 +88,7 @@ function MailReinicioPass($mail, $url){
  
 $destinatario = $mail;
 $asunto = "Eggplant Music - Reinicio de Password";
-$cuerpo = '<img <img src="http://localhost:8080/img/LOGO.jpg" alt="Eggplant Music">';
+$cuerpo = '<img src="http://i67.tinypic.com/21mu6tc.jpg" alt="Eggplant Music"/>';
 $cuerpo .= '<p><strong>Eggplant Music - Reiniciar Contrase&ntilde;a.</strong></p>';
 $cuerpo .= '</br>';
 $cuerpo .= '<p>Hola, un Administrador ha reiniciado tu contrase&ntilde;a.</p>';
@@ -103,10 +102,9 @@ $cuerpo .= '<p><strong> Equipo Eggplant Blue. </strong></p>';
 //para el envío en formato HTML
 $headers = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
- 
-//dirección del remitente
-$headers .= "From: Admin Eggplant Music \r\n";
- 
+
+$headers .= "From: Admin Eggplant Music <admin@eggplantblue.com> \r\n";
+
 //dirección de respuesta, si queremos que sea distinta que la del remitente
 $headers .= "Reply-To: direccion_respuesta@dominio.com \r\n";
 

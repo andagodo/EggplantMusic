@@ -96,7 +96,6 @@ $conex = conectar();
 								</tbody>
 
 								<td><button class="btn btn-default" onClick="VerificaCampo()">Eliminar Listado</button></td>
-								<td><button class="btn btn-default" onClick="EliminaVariosAdmin()">Agregar Selección</button></td>
 
 								</form>
 								

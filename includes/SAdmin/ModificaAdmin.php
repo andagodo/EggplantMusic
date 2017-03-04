@@ -70,6 +70,7 @@ if(! isset($_SESSION["mai"])){
                         <div class="form-group">
                             <label>Seleccione Tipo de Administrador:</label>
                             <select class="form-control" id='tus'>
+								<option value="todos">Todos</option>
                                 <option value="SuperAdmin">Super Administrador</option>
                                 <option value="PlaylAdmin">Administrador de Playlists</option>
                                 <option value="TicketAdmin">Administrador de Tickets</option>

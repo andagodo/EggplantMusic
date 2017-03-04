@@ -16,9 +16,13 @@ $conex = conectar();
 						$tus=trim($_POST['tus']);
 						$accion=trim($_POST['accion']);	
 						$ba = new Admin($tus);
-						$datos_ba=$ba->consultaAdminNoAct($conex);
-						$Cuenta=count($datos_ba);
-						
+						if ($tus == "todos"){
+							$datos_ba=$ba->consultaAdminTodosNoAct($conex);
+							$Cuenta=count($datos_ba);								
+						}else{
+							$datos_ba=$ba->consultaAdminNoAct($conex);
+							$Cuenta=count($datos_ba);
+						}
 					}elseif (isset($_POST['texto'])){
 					
 						if ($_POST['campo'] == "Nombre_Usr_Sist"){
@@ -48,9 +52,13 @@ $conex = conectar();
 						$tus=trim($_POST['tus']);
 						$accion=trim($_POST['accion']);	
 						$ba = new Admin($tus);
-						$datos_ba=$ba->consultaAdmin($conex);
-						$Cuenta=count($datos_ba);
-						
+						if ($tus == "todos"){
+							$datos_ba=$ba->consultaTodosAdmin($conex);
+							$Cuenta=count($datos_ba);								
+						}else{
+							$datos_ba=$ba->consultaAdmin($conex);
+							$Cuenta=count($datos_ba);
+						}
 					}elseif (isset($_POST['texto'])){
 					
 						if ($_POST['campo'] == "Nombre_Usr_Sist"){

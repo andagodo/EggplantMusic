@@ -71,23 +71,6 @@ function ConsultaAdminModifica(){
 }
 
 
-function EliminaVariosAdmin(){
-	var t=document.getElementById("mus").value
-	var url="/includes/SAdmin/procesa/ProcesaBajaAdmin2.php"
-	
-	$.ajax({
-		
-		type:"post",
-		url:url,
-		data:{tus:t},
-		success:function(datos){
-			$("#BAJAADMIN2").html(datos);
-		}
-	}
-	
-	)
-}
-
 function ConsultaNomInterprete(){
 	var n=document.getElementById("nom").value
 	var url="/includes/MusicAdmin/procesa/ProcesaBajaInterprete.php"

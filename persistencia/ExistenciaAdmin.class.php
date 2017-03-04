@@ -112,7 +112,30 @@ class ExistenciaAdmin
        return $resultados;
     }
 	
+	public function consultaTodosAdmin($param, $conex)
+	{
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Activo = 'S'";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }
 	
+	public function consultaAdminTodosNoAct($param, $conex)
+	{
+
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Activo = 'N'";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }	
 /*	
 	public function consultaTextoAdmin($texto, $campo, $conex)
 	{

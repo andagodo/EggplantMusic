@@ -361,6 +361,22 @@ class Admin
 		return $pu->CambiaTipo($this, $conex);
         
     }	
+
+    public function consultaTodosAdmin($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->consultaTodosAdmin($this, $conex);
+        
+    }
+	
+    public function consultaAdminTodosNoAct($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->consultaAdminTodosNoAct($this, $conex);
+        
+    }	
 	
 }
 
