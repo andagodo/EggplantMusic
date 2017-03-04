@@ -21,7 +21,6 @@ $url = "http://localhost:8080/presentacion/RegistroBackEnd.php?id=" . $cla;
 
 
 $conex = conectar();
-//$u= new Persona ('',$login,md5($pass));
 $u= new Admin ($tus,$nomu,$mus,$pus,$feal,$activ,$feactivo,$apell,$cla);
 $m= new Admin ('','',$mus,'','','','','');
 

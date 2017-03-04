@@ -345,6 +345,22 @@ class Admin
 		return $pu->buscaFAltaAdminNoAct($this, $conex);
         
     }
+
+    public function SetClaveNueva($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->SetClaveNueva($this, $conex);
+        
+    }
+	
+    public function CambiaTipo($conex)
+    {
+
+        $pu= new ExistenciaAdmin;
+		return $pu->CambiaTipo($this, $conex);
+        
+    }	
 	
 }
 

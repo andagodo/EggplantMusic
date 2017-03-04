@@ -56,23 +56,49 @@ function ActivacionMail($mail, $nom, $ape, $url){
  
 $destinatario = $mail;
 $asunto = "Eggplant Music - Activar Usuario";
-$cuerpo = '
-<img <img src="http://localhost:8080/img/LOGO.jpg" alt="Eggplant Music">';
-$cuerpo = '
-Eggplant Music - Activar usuario
+$cuerpo = '<img <img src="http://localhost:8080/img/LOGO.jpg" alt="Eggplant Music"></br>';
+$cuerpo .= 'Eggplant Music - Activar usuario
 <h1>Hola ';
 $cuerpo .= $nom ;
 $cuerpo .= " ";
 $cuerpo .= $ape ;
 $cuerpo .= '</h1>
-<strong>Gracias por registrarte en Eggplant Music</strong>.';
-$cuerpo .= 'Para completar el registro tienes que confirmar que has recibido este email haciendo click en el siguiente enlace:
-<p style="text-align: center;">';
+<strong>Gracias por registrarte en Eggplant Music</strong>.</br>';
+$cuerpo .= 'Para completar el registro tienes que confirmar que has recibido este email haciendo click en <a href="';
 $cuerpo .= $url;
-$cuerpo .= '</p>';
+$cuerpo .= '">&eacute;ste</a> enlace <p style="text-align: center;"></p>';
 $cuerpo .= '<p>Saluda atentamente, </p>';
 $cuerpo .= '<p><strong> Equipo Eggplant Blue. </strong></p>';
  
+ 
+//para el envío en formato HTML
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+ 
+//dirección del remitente
+$headers .= "From: Admin Eggplant Music \r\n";
+ 
+//dirección de respuesta, si queremos que sea distinta que la del remitente
+$headers .= "Reply-To: direccion_respuesta@dominio.com \r\n";
+
+mail($destinatario,$asunto,$cuerpo,$headers);
+ 
+}
+
+function MailReinicioPass($mail, $url){
+ 
+$destinatario = $mail;
+$asunto = "Eggplant Music - Reinicio de Password";
+$cuerpo = '<img <img src="http://localhost:8080/img/LOGO.jpg" alt="Eggplant Music">';
+$cuerpo .= '<p><strong>Eggplant Music - Reiniciar Contrase&ntilde;a.</strong></p>';
+$cuerpo .= '</br>';
+$cuerpo .= '<p>Hola, un Administrador ha reiniciado tu contrase&ntilde;a.</p>';
+$cuerpo .= '<p>Para poder establecer tu nueva contrase&ntilde;a, debes de hacer click en <a href="';
+$cuerpo .= $url;
+$cuerpo .= '">&eacute;ste</a> enlace <p style="text-align: center;"></p>';
+$cuerpo .= '</br>';
+$cuerpo .= '<p>Saluda atentamente, </p>';
+$cuerpo .= '<p><strong> Equipo Eggplant Blue. </strong></p>';
  
 //para el envío en formato HTML
 $headers = "MIME-Version: 1.0\r\n";

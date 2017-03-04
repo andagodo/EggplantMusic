@@ -44,10 +44,28 @@ if(! isset($_SESSION["mai"])){
             </div>
 			
 			
+			<h3>Que desea hacer?:</h3>
+			<div class="row">
+				<div class="col-lg-3">
+                    <select class="form-control" id='accion'>
+                        <option value="habilitar">Habilitar Administrador</option>
+                        <option value="reiniciar">Reiniciar Password a Administrador</option>
+						<option value="cambiatipo">Cambiar Tipo de Administrador</option>
+                    </select>
+
+				</div>
+			</div></br>
+<!--
+			<input type="radio" name='op' id="habilitar" value="habilitar" checked="checked"> Habilitar un Administrador Desactivado</input></br>
+			<input type="radio" name='op' id="reiniciar" value="reiniciar"> Reiniciar Contraseña a un Administrador</input></br></br>
+-->			
+
+			
+
 			<div class="row">
                 <div class="col-lg-3">
 				
-					<form role="form" action='/includes/SAdmin/BajaAdmin.php' method="POST">
+					<form role="form" action='/includes/SAdmin/ModificaAdmin.php' method="POST">
 
                         <div class="form-group">
                             <label>Seleccione Tipo de Administrador:</label>
@@ -64,7 +82,7 @@ if(! isset($_SESSION["mai"])){
 				</div>
 
 					
-				<form role="form" action='/includes/SAdmin/BajaAdmin.php' method="POST">
+				<form role="form" action='/includes/SAdmin/ModificaAdmin.php' method="POST">
 				<div class="col-lg-3">
 				
 					<div class="form-group">
@@ -85,6 +103,7 @@ if(! isset($_SESSION["mai"])){
                     </div>
 				</div>
 				</form>
+
 			</div>
-			
+
 			<div id="MODIFICAADMIN"></div>

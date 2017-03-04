@@ -35,13 +35,14 @@ function ConsultaAdminBaja(){
 
 function ConsultaTipoAdminModifica(){
 	var t=document.getElementById("tus").value
+	var a=document.getElementById("accion").value
 	var url="/includes/SAdmin/procesa/ProcesaModificaAdmin.php"
 	
 	$.ajax({
 		
 		type:"post",
 		url:url,
-		data:{tus:t},
+		data:{tus:t,accion:a},
 		success:function(datos){
 			$("#MODIFICAADMIN").html(datos);
 		}
@@ -53,13 +54,14 @@ function ConsultaTipoAdminModifica(){
 function ConsultaAdminModifica(){
 	var c=document.getElementById("campo").value
 	var t=document.getElementById("texto").value
+	var a=document.getElementById("accion").value
 	var url="/includes/SAdmin/procesa/ProcesaModificaAdmin.php"
 	
 	$.ajax({
 		
 		type:"post",
 		url:url,
-		data:{campo:c,texto:t},
+		data:{campo:c,texto:t,accion:a},
 		success:function(datos){
 			$("#MODIFICAADMIN").html(datos);
 		}

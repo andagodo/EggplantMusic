@@ -102,7 +102,7 @@ class ExistenciaAdmin
 	{
 //        $idp= trim($param->getIDpersona());   
 		$tus= trim($param->getTipo_Usr_Sist());
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo AND Activo = 'N'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute(array(":tipo" => $tus));
@@ -146,7 +146,7 @@ class ExistenciaAdmin
 	public function buscaNombreAdminNoAct($param, $conex)
 	{
         $nombre= trim($param->getNombre_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom AND Activo = 'N'";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -185,7 +185,7 @@ class ExistenciaAdmin
 	public function buscaMailAdminNoAct($param, $conex)
 	{
         $mail= trim($param->getMail_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai AND Activo = 'N'";
         $result = $conex->prepare($sql);
 		$mail = "%".$mail."%";
 	    $result->execute(array(":mai" => $mail));
@@ -209,7 +209,7 @@ class ExistenciaAdmin
 	public function buscaFAltaAdminNoAct($param, $conex)
 	{
         $falta= trim($param->getFech_Alta_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa AND Activo = 'N'";
         $result = $conex->prepare($sql);
 		$falta = "%".$falta."%";
 	    $result->execute(array(":fa" => $falta));
@@ -289,6 +289,17 @@ class ExistenciaAdmin
 		return $result;
 	}
 
+
+	public function SetClaveNueva($param, $conex)
+	{
+		$clave= trim($param->getClave());
+		$mail= trim($param->getMail_Usr_Sist());
+		
+		$sql = "UPDATE Usr_Sistema SET Clave = :clave WHERE Mail_Usr_Sist = :mus";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":clave" => $clave, ":mus" => $mail));
+		return $result;
+	}
 	
 	
 	public function ActualizaNomApe($param, $conex)
@@ -473,6 +484,24 @@ public function EstablecePass($param, $conex)
         {
           return(false);
         }	
+	}
+
+	public function CambiaTipo($param, $conex)
+	{
+		$mail= trim($param->getMail_Usr_Sist());
+		$tipo=trim($param->getTipo_Usr_Sist());
+		$sql = "UPDATE Usr_Sistema SET Tipo_Usr_Sist = :tipo WHERE Mail_Usr_Sist=:mai";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":mai" => $mail, ":tipo" => $tipo));
+		
+		if($result)
+        {
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
 	}
 	
 }
