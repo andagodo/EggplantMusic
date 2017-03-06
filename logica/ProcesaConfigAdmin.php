@@ -42,9 +42,10 @@ if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"
 	
 			<script language="javascript">
 				window.alert("Hubo un problema al cambiar tu clave \nIntenta nuevamente.")
-			<!--	location.href="/presentacion/Menu.php"; -->			
+			<!--	location.href="/presentacion/Menu.php"; -->
 				$("#DASH").load('/includes/ConfigAdmin.php');
 			</script>
+
 
 		<?php
 		}
@@ -82,10 +83,10 @@ if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"
 	
 			<script language="javascript">
 				window.alert("Hubo un problema al deshabilitar tu usuario, contraseña incorrecta \nIntenta nuevamente.")
-			<!--	location.href="/presentacion/Menu.php"; -->			
+			<!--	location.href="/presentacion/Menu.php"; -->		
 				$("#DASH").load('/includes/ConfigAdmin.php');
 			</script>
-
+			
 		<?php
 		}
 

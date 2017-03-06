@@ -25,14 +25,14 @@ if(! isset($_SESSION["mai"])){
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Alta de Canciones
+                            Alta de Canciones / Álbums
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="/presentacion/Menu.php">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Alta de Canciones
+                                <i class="fa fa-edit"></i> Alta de Canciones / Álbums
                             </li>
                         </ol>
                     </div>
