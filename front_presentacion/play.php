@@ -41,13 +41,13 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
       <link rel="stylesheet" href="/estilos/css/play.css">
       <link rel="stylesheet" href="/estilos/css/audio.css">
       <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
       <link href="/estilos/css/sb-admin.css" rel="stylesheet">
-      <link href="/estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <!--<link href="/estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
     <head>
      <title>EggPlantMusic</title>
     </head>
@@ -114,9 +114,9 @@
               <span class="glyphicon glyphicon-music"></span> Album
             </a>
           </li>
-          <li><a href="#"><span class="glyphicon glyphicon-list"></span> Playlist</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-list"></span> Playlist </a></li>
           <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Explorar </a></li>
-          <li><a href=""><span class="glyphicon glyphicon-cog"></span> Cuenta</a></li>
+          <li><a href=""><span class="glyphicon glyphicon-cog"></span> Cuenta </a></li>
     	  </ul>
         </div><!--/.nav-collapse -->
         
@@ -142,15 +142,16 @@
         </div>
       <div id="menu1">
         <ul>
-          <li>Menu cancion</li>
-          <li><a class="add-btn" href="#">Añadir a cola de reproduccion</a></li>
+          <li><div class="titmenu1">Menu cancion</div></li>
+          <li class="divider"></li>
+          <li><div class="contmenu1"><a class="add-btn" href="#">Añadir a cola de reproduccion</a></div></li>
         </ul>
       </div>
       <div id="menu2">
         <ul>
-          <li>Agregar canciones</li>
+          <li><div class="titmenu2">Agregar canciones</div></li>
           <li class="divider"></li>
-          <li><a id="mventana1" data-toggle="modal" href="#ventana1">Crear Playlist..</a></li>
+          <li><div class="menu2selector"><a id="mventana1" data-toggle="modal" href="#ventana1">Crear Playlist..</a></div></li>
           <div id="menu2pl"></div>
         </ul>
       </div>

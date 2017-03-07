@@ -25,7 +25,7 @@ $(function(){
 				.done(function( data, textStatus, jqXHR ) {
 					$div = $('<div class="cancionnow" ></div>')
 					$li = $('<li></li>');
-					$a = $('<a href="' + data.ruta + '"data-idc="'+ data.id + '" data-idca="' +data.idca+ '" >' + data.nombre + '</a>');
+					$a = $('<a href="' + data.ruta + '"data-idc="'+ data.id + '" data-idca="' +data.idca+ '" >' + data.nombre + '</a>	<div class="btn-cancion"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
 					$li.append($a);
 					$div.append($li);
 					$("#playerul").append($div);
@@ -108,7 +108,7 @@ $(function(){
 					for (var i = 0; i < data.length; i++) {
    						console.log(data[i].id);
    						$li = $('<li></li>');
-   						$a = $('<a class="add-btn" href="#" data-idpl="'+ data[i].id + '" >' + data[i].nom + '</a>');
+   						$a = $('<div class="menu2selector"><a class="add-btn" href="#" data-idpl="'+ data[i].id + '" >' + data[i].nom + '</a></div>');
    						$li.append($a);
    						
    						$('#menu2pl').append($li);
@@ -161,16 +161,18 @@ $(function(){
 
 		            		var c = [];
 							$( "#playerul .cancionnow li a" ).each(function( index ) {
-							c.push($(this).attr('data-idca'));
+								c.push($(this).attr('data-idca'));
 							});
 							var cJSON = JSON.stringify(c);
-							//var d = JSON.encode(c);
 							$.post( "/front_logica/playcanc.php", { "idu" : IdUsr, c : cJSON, npl : $npl}, null , "json");
-							$vent.modal('hide'); 
-							$vent.find(".form-control").val("");
-							$('.modal_red').hide();
+							$vent.modal('hide');
+							
 					}
 				});
+	$("#ventana1").on('hidden.bs.modal', function (e) {
+  	$("#ventana1").find(".form-control").val("");
+  	$('.modal_red').hide();
+	});
 	        
 	$("#menu1").fadeOut("slow");
 	

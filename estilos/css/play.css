@@ -3,7 +3,7 @@
 .nav a {color:white}
 .nav a:hover {color:black}
 .heading-menu{background:black;color:black}
-
+a{text-decoration:none;} 
 @media (min-width: 768px){
   .affix-content .container {
     width: 700px;
@@ -114,36 +114,52 @@
   top: 0;
   z-index: 8000;
   display: none;
-  text-decoration: none;
   border-radius: 2px 2px 2px 2px;
+  text-align: left;
+  font-size: 12px; /* Estilos de fuente */
+  font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif;
+  font-weight: normal;
 }
 #menu1 ul, #menu2 ul{
   list-style: none;
-}
-#menu1 ul li, #menu2 ul li{
-  width: 100%;
-  text-decoration: none;
-  color: #ADAEB3;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-color: #337ab7;
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+
 
 }
 #menu1 ul li, #menu2 ul li{
-  text-decoration: none;
+  width: 100%;
+  color: #ADAEB3;
   display: block;
-  padding: 8px 16px;
-  width: 100%;
-  color: #ADAEB3;
+
 
 }
+#menu1 .contmenu1 a, .titmenu1, #menu2 .menu2selector a, .titmenu2{
+    color: #CCC; /* Color de las canciones */
+    padding: 7px 5px;
+    display: block;
+    padding-left: 10px;
+    text-decoration: none;
+}
 
-#menu1 ul li:hover, #menu2 ul li:hover{
+#menu1 ul li .contmenu1:hover, #menu2 .menu2selector:hover{
   background-color: #2E2F33;
 }
-
-#menu2 .divider {  
+.titmenu1 , .titmenu2{
+  cursor: default;
+}
+#menu2 .divider, #menu1 .divider {  
   height: 1px;
-  margin: 9px 0;
+  margin: 2px 0;
   overflow: hidden;
-  background-color: #424242;
+  background-color: #8A8A8A;
 }
 
 .modal_red {
