@@ -1,3 +1,21 @@
+function CargaMusica(){
+	var c=document.getElementById("canciones").value
+	var url="/includes/MusicAdmin/procesa/ProcesaAltaMusica.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{canciones:c},
+		success:function(datos){
+			$("#ALTAMUSICA").html(datos);
+		}
+	}
+	
+	)
+}
+
+
 function ConsultaTipoAdminBaja(){
 	var t=document.getElementById("tus").value
 	var url="/includes/SAdmin/procesa/ProcesaBajaAdmin.php"
@@ -31,7 +49,7 @@ function ConsultaAdminBaja(){
 	}
 	
 	)
-} 
+}
 
 function ConsultaTipoAdminModifica(){
 	var t=document.getElementById("tus").value

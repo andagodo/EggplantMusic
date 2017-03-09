@@ -60,13 +60,13 @@ $nombre_archivo = "audio/test/".$NombreArchivo;
 
 	 
 	 $data = file_get_contents($_FILES['ArchivoSubido']['tmp_name']);
-	$data = base64_decode($data);
+//	$data = base64_decode($data);
 	
-	 $NombreArchivo = GenerarClave(20,false);
+//	 $NombreArchivo = GenerarClave(20,false);
 	 
-$nombre_archivo = "audio/test/".$NombreArchivo;
+// $nombre_archivo = "audio/test/".$data;
 
- $nombre_archivo = $nombre_archivo . ".mp3";
+// $nombre_archivo = $nombre_archivo . ".mp3";
  
     if(file_exists($nombre_archivo))
     {
@@ -82,32 +82,15 @@ $nombre_archivo = "audio/test/".$NombreArchivo;
         $mensaje = "El Archivo $nombre_archivo se ha creado";
     }
 */ 
-    if($archivo = fopen($nombre_archivo, "a"))
-    {
-        if(fwrite($archivo, $data))
-        {
-     	?>
-		<script language="javascript">
-			window.alert("Se guardo el archivo.");
-		</script>
-		<?php
-        }
-        else
-        {
-     	?>
-		<script language="javascript">
-			window.alert("NO se guardo el archivo.");
-		</script>
-		<?php
-        }
- 
-        fclose($archivo);
-    }	 
-	 
-	 
-	 
- }
 
+?>
+<audio controls="controls" autobuffer="autobuffer" autoplay="autoplay">
+    <source src="data:audio/mp3;base64,/audio/test/<?php echo $data; ?>" />
+</audio>	
+<?php
+
+
+ }
 
 
 

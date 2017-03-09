@@ -9,9 +9,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 
 $conex = conectar();
 
-
-
-
 // $usr= new Persona ('','','','',$_SESSION["login"]);
 // $IDPersona=$usr->consultaIDPersona($conex);
 
@@ -28,7 +25,7 @@ $feactivo=date("d/m/Y");
 $conex = conectar();
 $c= new Cancion ('',$nom,$dur,$ruta,$idg,$activ,$feactivo);
 $ok=$c->altaCancion($conex);
-
+echo $ok;
 ?>
 
 <script language="javascript">
