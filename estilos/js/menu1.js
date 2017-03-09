@@ -18,7 +18,7 @@ function mostrarMenu1(event){
 $(function(){
         var $cancion = $("div.btn-cancion");
 
-        // Esto abre el menu 1 de la cancion dentro del album
+        // CUANDO SE HACE CLICK EN EL BOTON DE "+" EN MI CASO EN LAS BARRAS DE MENU RECUPERO EL ID DE LA CANCION
         $cancion.click(function(event) {
             event.preventDefault();
             $id_cancion = $( this ).attr('data-idc');

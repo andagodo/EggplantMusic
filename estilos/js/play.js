@@ -9,7 +9,9 @@ $('#sidenav01').css('min-height', divHeight+'px');
 });
 
 $(function(){
+
 		var $add = $('.add-btn');
+
         //cuando hago en el boton con dicha clase agrego a la cola de reproduccion
         $add.click(function(event) {
      		event.preventDefault();
@@ -23,13 +25,11 @@ $(function(){
 				.done(function( data, textStatus, jqXHR ) {
 					$div = $('<div class="cancionnow" ></div>')
 					$li = $('<li></li>');
-					$a = $('<a href="data:audio/mp3;base64,' + data.ruta + '"data-idc="'+ data.id + '" data-idca="' +data.idca+ '" >' + data.nombre + '</a><div class="btn-cancioncola"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
+					$a = $('<a href="' + data.ruta + '"data-idc="'+ data.id + '" data-idca="' +data.idca+ '" >' + data.nombre + '</a>	<div class="btn-cancion"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
 					$li.append($a);
 					$div.append($li);
 					$("#playerul").append($div);
 					initaudio2();
-					menucola();
-
 					if ( console && console.log ) {
 				   	console.log( "La solicitud se ha completado correctamente." );
 				}
@@ -54,6 +54,8 @@ $(function(){
 		len = tracks.length;
 		tracks.click(function(e){
 			e.preventDefault();
+			
+
 			source = audio.find('source');
 			link=$(this);
 			current=link.parents("div.cancionnow").index();
@@ -85,44 +87,12 @@ $(function(){
 		audio.get(0).pause();
 		player.attr("src", link1.attr('href'));
 		console.log("hola entraste a runaudio");
-
-		//llamar php para devolver archivo completo BASE64
 		par=link1.parents('.cancionnow');
 		par.addClass('active').siblings().removeClass('active');
 		audio.get(0).load();
 		audio.get(0).play();
 		}
-
-			//probando menu3
-        // Intento de abrir el menu 3 en el boton de la cancion dentro de la cola de reproduccion 
-    
-        function menucola(){
-        	cancion1=$('.btn-cancioncola');
-        	cancion1.click(function(event) {
-            event.preventDefault();
-    		console.log("holaaaaaaaaaaaaaaaaaaaaaaa");
-            //
-            //$id_cancion = $( this ).attr('data-idc');
-            //$idca_cancion = $( this ).attr('data-idca');
-              //  var x=event.clientX;
-               // var y=event.clientY;
-                //console.log(y);
-                //console.log(x);
-                //var menu1=document.getElementById('menu3');
-                //menu1.style.top = y+"px";
-                //menu1.style.left = x-350;
-                //menu1.style.display = "block";
-                //$("#menu3").find("a").attr("data-idc", $id_cancion);
-                //$("#menu3").find("a").attr("data-idca", $idca_cancion);
-            // obtengo el id de la cancion
-        });
-		//probando menu3 fin 
 	
-
-
-
-        }
-    
 	
 	$("#menu1").mouseleave(function(e){
 		$(this).fadeOut('slow');
@@ -190,7 +160,7 @@ $(function(){
 		            	else {
 
 		            		var c = [];
-							$( "#playerul .cancionnow li a" ).each(function(index) {
+							$( "#playerul .cancionnow li a" ).each(function( index ) {
 								c.push($(this).attr('data-idca'));
 							});
 							var cJSON = JSON.stringify(c);
@@ -203,7 +173,9 @@ $(function(){
   	$("#ventana1").find(".form-control").val("");
   	$('.modal_red').hide();
 	});
+	        
 	$("#menu1").fadeOut("slow");
 	
 	
 });
+

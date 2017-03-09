@@ -1,1 +1,164 @@
+#player1{
+	float: right; 
+}
+#playlist, #player, #album {
+width: 100%; /* Ancho de todo el contenedor */
+padding: 0px;
+margin: 0 auto;
+display: block;
+text-align: center;
+
+}
+
+audio {
+width:100%; /* Ancho del reproductor */
+margin:0 auto;
+display: inline-block;
+}
+	#playlist, #album, #playerul {
+	display: block;
+	width: 100%;
+	background: #222; /* Fondo del segundo contenedor */
+	border-top: 5px solid #337ab7;
+	text-align: left;
+	font-size: 12px; /* Estilos de fuente */
+	font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif;
+	font-weight: normal;
+	}
+		#playlist li, #playlist ul li {
+		background-image: none;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		display: block;
+
+		}
+
+		#playlist .cancion li a {
+		color: #CCC; /* Color de las canciones */
+		padding: 7px 5px;
+		display: inline-block;
+		padding-left: 10px;
+		text-decoration: none;
+		cursor: context-menu;
+		}
+
+		#playlist .cancion.active a {
+		color: #337ab7; /* Color de la canción activa */
+		font-style: italic;
+		text-decoration: none;
+
+		}
+		#playlist .cancion.active a:before {
+		content: "\25B6";
+		color: #CCC;
+		font-style: normal;
+		padding-right: 8px;
+		}
+
+		#playlist .cancion.active:hover a {
+		color: #222; /* Color de la canción activa al pasar el cursor */
+		}
+		.addplaylist {
+		color: #CCC; /* Color de las canciones */
+		padding: 7px 5px;
+		display: inline-block;
+		padding-left: 10px;
+		text-decoration: none;
+		cursor: context-menu;
+		cursor: pointer;
+		}
+
+
+
+
+
+
+		#album li, #album ul li {
+		background-image: none;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		}
+		#album li a {
+		color: #CCC; /* Color de las canciones */
+		background: #222; /* Fondo de las canciones */
+		padding: 7px 5px;
+		display: block;
+		padding-left: 10px;
+		text-decoration: none;
+		}
+		#album li a:hover{
+		background: #337ab7; /* Color de fondo al pasar el cursor */
+		text-decoration: none;
+		}
+		#album .active a {
+		color: #337ab7; /* Color de la canción activa */
+		font-style: italic;
+		text-decoration: none;
+		}
+		#album .active a:before {
+		color: #CCC;
+		font-style: normal;
+		}
+
+		#album .active a:hover {
+		color: #222; /* Color de la canción activa al pasar el cursor */
+		}
+
+		.btn-cancion{
+		  color: #FFF;
+		  cursor: pointer;
+		  display: inline-block;
+		  float: right;
+		  padding: 7px 5px;
+		  color: #CCC;
+
+	} 
+
+	.cancion:hover {
+	background: #337ab7; /* Color de fondo al pasar el cursor */
+	text-decoration: none;
+	}
+
+	#playerul li, #playerul ul li {
+		background-image: none;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		display: block;
+
+		}
+
+
+		#playerul li a {
+		color: #CCC; /* Color de las canciones */
+		padding: 7px 5px;
+		display: inline-block;
+		padding-left: 10px;
+		text-decoration: none;
+		}
+
+
+		#playerul .cancionnow:hover {
+		background: #337ab7;
+		/* Color de las canciones */
+		display: block;
+		}
+
+		#playerul .active a {
+		color: #337ab7; /* Color de la canción activa */
+		font-style: italic;
+		text-decoration: none;
+		}
+		#playerul .active a:before {
+		content: "\25B6";
+		color: #CCC;
+		font-style: normal;
+		padding-right: 8px;
+		}
+
+		#playerul .active:hover a {
+		color: #222; /* Color de la canción activa al pasar el cursor */
+		}
 

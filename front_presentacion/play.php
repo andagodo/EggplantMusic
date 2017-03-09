@@ -44,6 +44,7 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
       <link rel="stylesheet" href="/estilos/css/play.css">
+      <link rel="stylesheet" href="/estilos/css/audio.css">
       <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
       <link href="/estilos/css/sb-admin.css" rel="stylesheet">
       <!--<link href="/estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
@@ -128,7 +129,7 @@
         <div id="reproductor">
           <div class="col-sm-2 col-md-3 navbar-right">
                <audio controls='' id='audio' preload='auto' tabindex='0' type='audio/mpeg'>
-                  <source src='' type='audio/mp3'/>
+                  <source src='' type='audio/wav'/>
                   Hola, tu navegador no está actualizado y no puede mostrar este contenido.
               </audio>
          
@@ -152,13 +153,6 @@
           <li class="divider"></li>
           <li><div class="menu2selector"><a id="mventana1" data-toggle="modal" href="#ventana1">Crear Playlist..</a></div></li>
           <div id="menu2pl"></div>
-        </ul>
-      </div>
-      <div id="menu3">
-        <ul>
-       <!--  <li><div class="titmenu3">Agregar canciones</div></li> 
-          <li class="divider"></li> -->
-          <li><div class="contmenu3"><a class="rm-btn" href="#"> Quitar </a></div></li>
         </ul>
       </div>
         <div class="modal fade" id="ventana1" role="dialog">
