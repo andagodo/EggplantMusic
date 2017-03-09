@@ -384,7 +384,28 @@ function ConsultaAnioAlbum(){
                 $("#DASH").load('/includes/SAdmin/ModificaAdmin.php');
 
             });
+        });	
+
+        $(document).ready(function() {
+            $('#altacuenta').click(function(){
+                $("#DASH").load('/includes/SAdmin/AltaCuenta.php');
+
+            });
         });		
+		
+		$(document).ready(function() {
+            $('#bajacuenta').click(function(){
+                $("#DASH").load('/includes/SAdmin/BajaCuenta.php');
+
+            });
+        });
+		
+		$(document).ready(function() {
+            $('#modificacuenta').click(function(){
+                $("#DASH").load('/includes/SAdmin/MantCuenta.php');
+
+            });
+        });			
 
         $(document).ready(function() {
             $('#musicdash').click(function(){
