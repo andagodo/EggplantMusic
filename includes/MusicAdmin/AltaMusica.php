@@ -16,6 +16,8 @@ if(! isset($_SESSION["mai"])){
 }
 
 ?>
+<script src="/estilos/js/jquery.js"></script>
+<script src="/estilos/js/jsmenu.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 		<div id="page-wrapper">
@@ -40,18 +42,30 @@ if(! isset($_SESSION["mai"])){
 				
             </div>
 			
+
+
+					<form role="form" action='/includes/MusicAdmin/AltaMusica.php' method="POST">
+						<div class="form-group">
+							<label>Cargar Canciones:</label>
+							<input type="file" multiple="true" name= "canciones[]" id="canciones[]" accept=".mp3" required/>
+						
+						<button type="button" class="btn btn-default" onclick="CargaMusica();">Cargar</button>
+						</div>
+					</form>						
+	
+
+<!--	
 			<div class="row">
                 <div class="col-lg-6">
 					<div class="formaltacancion">
-
 					
 					    <div class="form-group">
                             <label>Nombre Canción:</label>
                             <input class="form-control nom" placeholder="Ejemplo: Could You Be Loved." required/>
                         </div>
-						
+-->						
 						<?php
-							$g = new Genero();
+/*							$g = new Genero();
 							$datos_g=$g->consultaTodosGenero($conex);
 							$Cuenta=count($datos_g);
 						?>
@@ -83,7 +97,7 @@ if(! isset($_SESSION["mai"])){
 								<input type="text" class="form-control ruta" required/>
 						</div>
 						</br>
-						<button class="claseboton btn btn-default">Alta Canción</button>
+						<button class="claseboton">Alta Canción</button>
 						
 						
 						
@@ -116,12 +130,12 @@ if(! isset($_SESSION["mai"])){
 				.done(function( data, textStatus, jqXHR ) {
 					// window.alert("Se inserto la cancion: ");
 				
-					if (data){
+					if (data == false){
 					
-						window.alert("Se inserto la cancion: ");
+						window.alert("No encaró");
 						
 						}else{
-							window.alert("No encaró");
+							window.alert("Se inserto la cancion: "$ok);
 						}
 						})
 		
@@ -130,8 +144,11 @@ if(! isset($_SESSION["mai"])){
 				.fail(function( jqXHR, textStatus, errorThrown ) {
 				  	if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
 				});   */
-		
+/*		
 			});
 	//	})(jQuery); 
 
 		</script>
+*/
+?>		
+		<div id="ALTAMUSICA"></div>

@@ -145,6 +145,21 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 							</li>
                         </ul>
                     </li>					
+
+                    <li id="menucuenta">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#cuenta"><i class="fa fa-fw fa-arrows-v"></i> Cuentas FrontEnd <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="cuenta" class="collapse">
+							<li>
+								<a href="#" id="altacuenta"><i class="fa fa-fw fa-edit"></i> Alta Cuenta</a>
+							</li>
+							<li>
+								<a href="#" id="bajacuenta"><i class="fa fa-fw fa-edit"></i> Baja Cuenta</a>
+							</li>
+							<li>
+								<a href="#" id="modificacuenta"><i class="fa fa-fw fa-edit"></i> Mofificar Cuenta</a>
+							</li>
+                        </ul>
+                    </li>
 					
 					
                     <li id="menumusica">

@@ -1,3 +1,21 @@
+function CargaMusica(){
+	var c=document.getElementById("canciones").value
+	var url="/includes/MusicAdmin/procesa/ProcesaAltaMusica.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{canciones:c},
+		success:function(datos){
+			$("#ALTAMUSICA").html(datos);
+		}
+	}
+	
+	)
+}
+
+
 function ConsultaTipoAdminBaja(){
 	var t=document.getElementById("tus").value
 	var url="/includes/SAdmin/procesa/ProcesaBajaAdmin.php"
@@ -31,7 +49,7 @@ function ConsultaAdminBaja(){
 	}
 	
 	)
-} 
+}
 
 function ConsultaTipoAdminModifica(){
 	var t=document.getElementById("tus").value
@@ -366,7 +384,28 @@ function ConsultaAnioAlbum(){
                 $("#DASH").load('/includes/SAdmin/ModificaAdmin.php');
 
             });
+        });	
+
+        $(document).ready(function() {
+            $('#altacuenta').click(function(){
+                $("#DASH").load('/includes/SAdmin/AltaCuenta.php');
+
+            });
         });		
+		
+		$(document).ready(function() {
+            $('#bajacuenta').click(function(){
+                $("#DASH").load('/includes/SAdmin/BajaCuenta.php');
+
+            });
+        });
+		
+		$(document).ready(function() {
+            $('#modificacuenta').click(function(){
+                $("#DASH").load('/includes/SAdmin/MantCuenta.php');
+
+            });
+        });			
 
         $(document).ready(function() {
             $('#musicdash').click(function(){
