@@ -51,6 +51,27 @@ function ConsultaAdminBaja(){
 	)
 }
 
+
+function ConsultaCuenta(){
+	var c=document.getElementById("campo").value
+	var t=document.getElementById("texto").value
+	var a=document.getElementById("accion").value
+	var url="/includes/SAdmin/procesa/ProcesaModificaCuenta.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{campo:c,texto:t,accion:a},
+		success:function(datos){
+			$("#MODIFICACUENTA").html(datos);
+		}
+	}
+	
+	)
+}
+
+
 function ConsultaTipoAdminModifica(){
 	var t=document.getElementById("tus").value
 	var a=document.getElementById("accion").value
@@ -393,12 +414,6 @@ function ConsultaAnioAlbum(){
             });
         });		
 		
-		$(document).ready(function() {
-            $('#bajacuenta').click(function(){
-                $("#DASH").load('/includes/SAdmin/BajaCuenta.php');
-
-            });
-        });
 		
 		$(document).ready(function() {
             $('#modificacuenta').click(function(){

@@ -3,22 +3,22 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 
 $accion=trim($_POST['accion']);
 
-echo $accion; 
+echo $accion;
 
 if ($accion == "encode"){
-	
+
 // $target_path = "audio/test/";
-// $target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
+// $target_path = $target_path . basename( $_FILES['uploadedfile']['name']);
 
 $data = file_get_contents($_FILES['ArchivoSubido']['tmp_name']);
 $data = base64_encode($data);
 // echo $data;
 
 
-$NombreArchivo = GenerarClave(20,false); 
+$NombreArchivo = GenerarClave(20,false);
 
-$nombre_archivo = "audio/test/".$NombreArchivo; 
- 
+$nombre_archivo = "audio/test/".$NombreArchivo;
+ // cambiar el if file exist por un while para que sirmpre me guarde el archivo, con otro nombre
     if(file_exists($nombre_archivo))
     {
      	?>
@@ -27,12 +27,12 @@ $nombre_archivo = "audio/test/".$NombreArchivo;
 		</script>
 		<?php
     }
-/* 
+/*
     else
     {
         $mensaje = "El Archivo $nombre_archivo se ha creado";
     }
-*/ 
+*/
     if($archivo = fopen($nombre_archivo, "a"))
     {
         if(fwrite($archivo, $data))
@@ -51,23 +51,31 @@ $nombre_archivo = "audio/test/".$NombreArchivo;
 		</script>
 		<?php
         }
- 
+
         fclose($archivo);
     }
- 
+
  } elseif ($accion == "decode"){
-	 
 
-	 
+
+
 	 $data = file_get_contents($_FILES['ArchivoSubido']['tmp_name']);
-//	$data = base64_decode($data);
-	
-//	 $NombreArchivo = GenerarClave(20,false);
-	 
-// $nombre_archivo = "audio/test/".$data;
+	$data = base64_decode($data);
+     	?>
+<audio controls>
+  <source src="horse.ogg" type="audio/mp3">
+  <source src="horse.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+		<?php
 
-// $nombre_archivo = $nombre_archivo . ".mp3";
- 
+
+	 $NombreArchivo = GenerarClave(20,false);
+
+$nombre_archivo = "audio/test/".$NombreArchivo;
+
+ $nombre_archivo = $nombre_archivo . ".mp3";
+
     if(file_exists($nombre_archivo))
     {
      	?>
@@ -76,18 +84,34 @@ $nombre_archivo = "audio/test/".$NombreArchivo;
 		</script>
 		<?php
     }
-/* 
+/*
     else
     {
         $mensaje = "El Archivo $nombre_archivo se ha creado";
     }
-*/ 
+*/
+    if($archivo = fopen($nombre_archivo, "a"))
+    {
+        if(fwrite($archivo, $data))
+        {
+     	?>
+		<script language="javascript">
+			window.alert("Se guardo el archivo.");
+		</script>
+		<?php
+        }
+        else
+        {
+     	?>
+		<script language="javascript">
+			window.alert("NO se guardo el archivo.");
+		</script>
+		<?php
+        }
 
-?>
-<audio controls="controls" autobuffer="autobuffer" autoplay="autoplay">
-    <source src="data:audio/mp3;base64,/audio/test/<?php echo $data; ?>" />
-</audio>	
-<?php
+        fclose($archivo);
+    }
+
 
 
  }
@@ -97,11 +121,12 @@ $nombre_archivo = "audio/test/".$NombreArchivo;
 
 
 
-//if(move_uploaded_file($data, $target_path)){ 
+
+//if(move_uploaded_file($data, $target_path)){
 //	echo "El archivo ". basename( $_FILES['uploadedfile']['name']). " ha sido subido";
 //}else{
 //	echo "Ha ocurrido un error, trate de nuevo!";
-//} 
+//}
 
 
 

@@ -96,7 +96,96 @@ class Cuenta
         return ($pu->altaCuenta($this, $conex));
     }    
     
+    public function eliminaCuenta($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->eliminaCuenta($this, $conex));
+    } 
+	
+    public function HabilitaCuenta($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->HabilitaCuenta($this, $conex));
+    }  
+	
+    public function ActualizaCuenta($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->ActualizaCuenta($this, $conex));
+    }  
 
+	
+    public function consultaCuentas($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->consultaCuentas($this, $conex));
+    }  
+	
+    public function consultaCuentasHab($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->consultaCuentasHab($this, $conex));
+    }  
+	
+    public function consultaCuentasDeshab($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->consultaCuentasDeshab($this, $conex));
+    }
+	
+    public function buscaTipoCuentaNoAct($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->buscaTipoCuentaNoAct($this, $conex));
+    } 
+	
+    public function buscaTipoCuenta($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->buscaTipoCuenta($this, $conex));
+    } 
+	
+    public function buscaPlayCuentaNoAct($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->buscaTipoCuentaNoAct($this, $conex));
+    } 
+	
+    public function buscaPlayCuenta($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->buscaTipoCuenta($this, $conex));
+    } 
+	
+    public function buscaPrecioCuentaNoAct($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->buscaTipoCuentaNoAct($this, $conex));
+    } 
+	
+    public function buscaPrecioCuenta($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->buscaTipoCuenta($this, $conex));
+    }
+	
+    public function buscaTipoCuentaTodos($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->buscaTipoCuentaTodos($this, $conex));
+    }	
+
+    public function buscaPlayCuentaTodos($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->buscaTipoCuentaTodos($this, $conex));
+    }
+	
+    public function buscaPrecioCuentaTodos($conex)
+    {
+        $pu=new ExistenciaCuenta;
+        return ($pu->buscaTipoCuentaTodos($this, $conex));
+    }
 	
 }
 ?>

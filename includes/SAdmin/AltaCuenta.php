@@ -63,7 +63,6 @@ if(! isset($_SESSION["mai"])){
                         <div class="form-group">
                             <label>Nombre / Tipo:</label>
                             <input class="form-control" name='tipo' required/>
- <!--                           <p class="help-block">Example block-level help text here.</p>	-->
                         </div>	
 
                         <div class="form-group">
