@@ -23,7 +23,7 @@ $(function(){
 				.done(function( data, textStatus, jqXHR ) {
 					$div = $('<div class="cancionnow" ></div>')
 					$li = $('<li></li>');
-					$a = $('<a href="data:audio/mp3;base64,' + data.ruta + '"data-idc="'+ data.id + '" data-idca="' +data.idca+ '" >' + data.nombre + '</a><div class="btn-cancioncola"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
+					$a = $('<a class="play1" href="' + data.ruta + '"data-idc="'+ data.id + '" data-idca="' +data.idca+ '" >' + data.nombre + '</a><div class="btn-cancioncola"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
 					$li.append($a);
 					$div.append($li);
 					$("#playerul").append($div);
@@ -44,25 +44,30 @@ $(function(){
 
 	audio=$('audio');
 	current=0;
-
 	function initaudio2(){
-
+		console.log("Inicia initaudio2");
 		playlist=$('#playerul');
-		tracks=playlist.find('li a');
+		tracks=playlist.find('a');
 		console.log(tracks);
 		audio[0].volume=1;
 		len = tracks.length;
-		tracks.click(function(e){
+
+		
+		//$(".play1").on('click', function(e){
+
+
+		$(".play1").unbind("click").click(function (e){
+			//alert("click en una cancion");
 			e.preventDefault();
 			source = audio.find('source');
 			link=$(this);
 			current=link.parents("div.cancionnow").index();
-			console.log("Canciones cantidad numero:", len);
-			console.log("Canciones current numero:", current);
-			runaudio($(link),source)
-		})
-		}
+			runaudio(link,source);
+			//return false;
 
+		})
+	
+}
 	audio[0].addEventListener('ended',function(e){
 				console.log("largo", len);
 				console.log("current", current);	
@@ -81,19 +86,29 @@ $(function(){
 	});
 
 
-		function runaudio(link1,player){
-		audio.get(0).pause();
-		player.attr("src", link1.attr('href'));
-		console.log("hola entraste a runaudio");
+		function runaudio(link,player){
 
+		console.log("Inicia Runaudio");
+		//player.attr("src", link1.attr('href'));
+		$.post( "/front_logica/cargabase64.php", {"ruta": link.attr('href')}, null)
+
+		.done(function( data, textStatus, jqXHR ) {
+					audio.get(0).pause();
+					player.attr("src", 'data:audio/mp3;base64,'+data);	
+					//player.attr("src", link.attr('href'));
+					par=link.parents('.cancionnow');
+					par.addClass('active').siblings().removeClass('active');
+					audio.get(0).load();
+					audio.get(0).play();
+					//alert($data);
+				})
 		//llamar php para devolver archivo completo BASE64
-		par=link1.parents('.cancionnow');
-		par.addClass('active').siblings().removeClass('active');
-		audio.get(0).load();
-		audio.get(0).play();
-		}
+		
+
+		};
 
 			//probando menu3
+
         // Intento de abrir el menu 3 en el boton de la cancion dentro de la cola de reproduccion 
     
         function menucola(){
