@@ -61,61 +61,22 @@ $nombre_archivo = "audio/test/".$NombreArchivo;
 
 	 $data = file_get_contents($_FILES['ArchivoSubido']['tmp_name']);
 	$data = base64_decode($data);
-     	?>
-<audio controls>
-  <source src="horse.ogg" type="audio/mp3">
-  <source src="horse.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>
-		<?php
-
-
+  
 	 $NombreArchivo = GenerarClave(20,false);
 
 $nombre_archivo = "audio/test/".$NombreArchivo;
 
  $nombre_archivo = $nombre_archivo . ".mp3";
+echo $data;
 
-    if(file_exists($nombre_archivo))
-    {
-     	?>
-		<script language="javascript">
-			window.alert("Este archivo ya existe.");
-		</script>
-		<?php
-    }
-/*
-    else
-    {
-        $mensaje = "El Archivo $nombre_archivo se ha creado";
-    }
-*/
-    if($archivo = fopen($nombre_archivo, "a"))
-    {
-        if(fwrite($archivo, $data))
-        {
-     	?>
-		<script language="javascript">
-			window.alert("Se guardo el archivo.");
-		</script>
-		<?php
-        }
-        else
-        {
-     	?>
-		<script language="javascript">
-			window.alert("NO se guardo el archivo.");
-		</script>
-		<?php
-        }
-
-        fclose($archivo);
-    }
-
+?>
+<audio controls="controls" autobuffer="autobuffer" autoplay="autoplay">
+    <source src="data:audio/mp3;base64,/audio/test/<?php echo $data; ?>" />
+</audio>	
+<?php
 
 
  }
-
 
 
 

@@ -44,16 +44,54 @@ if(! isset($_SESSION["mai"])){
 			
 
 
-					<form role="form" action='/includes/MusicAdmin/AltaMusica.php' method="POST">
+					<form role="form" enctype="multipart/form-data" onclick="cargarLista() action='/includes/MusicAdmin/procesa/ProcesaAltaMusica.php' method="POST">
 						<div class="form-group">
 							<label>Cargar Canciones:</label>
-							<input type="file" multiple="true" name= "canciones[]" id="canciones[]" accept=".mp3" required/>
+							<input name="ArchivoSubido[]" multiple="true" type="file" accept=".mp3" required/>
 						
-						<button type="button" class="btn btn-default" onclick="CargaMusica();">Cargar</button>
+						<button type="submit" class="btn btn-default" >Cargar</button> <!--onclick="CargaMusica();" -->
 						</div>
-					</form>						
-	
+					</form>
+					
+<script>
 
+function cargarLista(){
+	
+	var xmlhttp;
+	
+	if( window.XMLHttpRequest ){
+		var xmlhttp = new XMLHttpRequest();
+	}else if(window.ActiveXObject) {
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}else{
+		return false;
+	}
+	
+	xmlhttp.open('POST', '/includes/MusicAdmin/procesa/ProcesaAltaMusica.php', true);
+	
+	xmlhttp.onreadystatechange = function(){
+		if( xmlhttp.readyState == 4 && xmlhttp.status == 200 ){
+			var r = xmlhttp.responseText,
+			//Convertimos la cadena a JSON
+			json = eval('(' + r + ')'),
+			ul = document.createElement( 'ul' );
+
+			if( json.length ){
+				for( var i in json ){
+					var li = document.createElement('li');
+					li.innerHTML = json[i];
+					ul.appendChild(li);
+				}
+				document.getElementById('response').appendChild(ul);
+			}
+		}
+	}
+	xmlhttp.send( null );
+}
+
+</script>
+
+<div id="response">
 <!--	
 			<div class="row">
                 <div class="col-lg-6">
@@ -151,4 +189,5 @@ if(! isset($_SESSION["mai"])){
 		</script>
 */
 ?>		
-		<div id="ALTAMUSICA"></div>
+<!--		<div id="ALTAMUSICA"></div>
+-->
