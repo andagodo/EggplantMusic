@@ -153,9 +153,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 								<a href="#" id="altacuenta"><i class="fa fa-fw fa-edit"></i> Alta Cuenta</a>
 							</li>
 							<li>
-								<a href="#" id="bajacuenta"><i class="fa fa-fw fa-edit"></i> Baja Cuenta</a>
-							</li>
-							<li>
 								<a href="#" id="modificacuenta"><i class="fa fa-fw fa-edit"></i> Mofificar Cuenta</a>
 							</li>
                         </ul>

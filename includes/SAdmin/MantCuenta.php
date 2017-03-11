@@ -40,10 +40,10 @@ if(! isset($_SESSION["mai"])){
                         </ol>
                     </div>
                 </div>
-				
+
             </div>
-			
-			
+
+
 			<h3>Que desea hacer?:</h3>
 			<div class="row">
 				<div class="col-lg-3">
@@ -55,48 +55,24 @@ if(! isset($_SESSION["mai"])){
 
 				</div>
 			</div></br>
-<!--
-			<input type="radio" name='op' id="habilitar" value="habilitar" checked="checked"> Habilitar un Administrador Desactivado</input></br>
-			<input type="radio" name='op' id="reiniciar" value="reiniciar"> Reiniciar Contraseña a un Administrador</input></br></br>
--->			
-
-			
 
 			<div class="row">
-                <div class="col-lg-3">
-				
-					<form role="form" action='/includes/SAdmin/ModificaAdmin.php' method="POST">
 
-                        <div class="form-group">
-                            <label>Seleccione Tipo de Administrador:</label>
-                            <select class="form-control" id='tus'>
-								<option value="todos">Todos</option>
-                                <option value="SuperAdmin">Super Administrador</option>
-                                <option value="PlaylAdmin">Administrador de Playlists</option>
-                                <option value="TicketAdmin">Administrador de Tickets</option>
-                                <option value="MusicAdmin">Administrador de Música</option>
-                            </select>
-                        </div>				
-						
-						<button type="button" class="btn btn-default" onclick="ConsultaTipoAdminModifica();">Consultar</button>
-					</form>
-				</div>
-
-					
-				<form role="form" action='/includes/SAdmin/ModificaAdmin.php' method="POST">
+				<form role="form" action='/includes/SAdmin/MantCuenta.php' method="POST">
 				<div class="col-lg-3">
-				
+
 					<div class="form-group">
                             <label>Buscador:</label>
                             <select class="form-control" id='campo'>
-                                <option value="Nombre_Usr_Sist">Nombre</option>
-                                <option value="Mail_Usr_Sist">Mail</option>
-                                <option value="Fech_Alta_Usr_Sist">Fecha Alta</option>
+								<option value="todos">Todos</option>
+                                <option value="Tipo">Nombre / Tipo</option>
+                                <option value="Cant_Playlist">Playlist</option>
+								<option value="Precio">Precio</option>
                             </select>
                     </div>
-					<button type="button" class="btn btn-default" onclick="ConsultaAdminModifica();">Buscar</button>
+					<button type="button" class="btn btn-default" onclick="ConsultaCuenta();">Buscar</button>
 				</div>
-				
+
 				<div class="col-lg-3">
 					<div class="form-group">
                             <label>Texto</label>
@@ -107,4 +83,4 @@ if(! isset($_SESSION["mai"])){
 
 			</div>
 
-			<div id="MODIFICAADMIN"></div>
+			<div id="MODIFICACUENTA"></div>
