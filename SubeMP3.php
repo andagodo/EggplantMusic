@@ -85,7 +85,7 @@ $nombre_archivo = "audio/test/".$NombreArchivo;
 
 ?>
 <audio controls="controls" autobuffer="autobuffer" autoplay="autoplay">
-    <source src="data:audio/mp3;base64,/audio/test/<?php echo $data; ?>" />
+    <source src="data:audio/mp3;base64,<?php echo $data; ?>" />
 </audio>	
 <?php
 

@@ -38,8 +38,7 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
     <!-- Latest compiled and minified JavaScript -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -127,8 +126,8 @@
       <div id="central"></div>
         <div id="reproductor">
           <div class="col-sm-2 col-md-3 navbar-right">
-               <audio controls='' id='audio' preload='auto' tabindex='0' type='audio/mpeg'>
-                  <source src='' type='audio/mp3'/>
+               <audio controls='' id='audio' preload='auto' tabindex='0' autobuffer="autobuffer" content-type='audio/mpeg'>
+                  <source src='' />
                   Hola, tu navegador no está actualizado y no puede mostrar este contenido.
               </audio>
          
