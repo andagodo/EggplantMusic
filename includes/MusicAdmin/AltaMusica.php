@@ -43,55 +43,46 @@ if(! isset($_SESSION["mai"])){
             </div>
 			
 
-
-					<form role="form" enctype="multipart/form-data" onclick="cargarLista() action='/includes/MusicAdmin/procesa/ProcesaAltaMusica.php' method="POST">
-						<div class="form-group">
-							<label>Cargar Canciones:</label>
-							<input name="ArchivoSubido[]" multiple="true" type="file" accept=".mp3" required/>
-						
-						<button type="submit" class="btn btn-default" >Cargar</button> <!--onclick="CargaMusica();" -->
-						</div>
-					</form>
-					
-<script>
-
-function cargarLista(){
 	
-	var xmlhttp;
-	
-	if( window.XMLHttpRequest ){
-		var xmlhttp = new XMLHttpRequest();
-	}else if(window.ActiveXObject) {
-		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}else{
-		return false;
-	}
-	
-	xmlhttp.open('POST', '/includes/MusicAdmin/procesa/ProcesaAltaMusica.php', true);
-	
-	xmlhttp.onreadystatechange = function(){
-		if( xmlhttp.readyState == 4 && xmlhttp.status == 200 ){
-			var r = xmlhttp.responseText,
-			//Convertimos la cadena a JSON
-			json = eval('(' + r + ')'),
-			ul = document.createElement( 'ul' );
+    <form enctype="multipart/form-data" id="formmusica" method="post">
+		<div class="form-group">
+			<label>Cargar Canciones:</label>
+			<input name="ArchivoSubido[]" multiple="true" type="file" accept=".mp3" required/></br>
+			<input type="submit" class="btn btn-default" value="Cargar archivos"/>
+		</div>
+    </form>
+    
+	<div id="respuesta"></div>
 
-			if( json.length ){
-				for( var i in json ){
-					var li = document.createElement('li');
-					li.innerHTML = json[i];
-					ul.appendChild(li);
-				}
-				document.getElementById('response').appendChild(ul);
-			}
-		}
-	}
-	xmlhttp.send( null );
-}
+    <script>
+    $(function(){
+        $("#formmusica").on("submit", function(e){
+            e.preventDefault();
+            var f = $(this);
+            var formData = new FormData(document.getElementById("formmusica"));
+            formData.append("dato", "valor");
+            //formData.append(f.attr("name"), $(this)[0].files[0]);
+            $.ajax({
+                url: "/includes/MusicAdmin/procesa/ProcesaAltaMusica.php",
+                type: "post",
+                dataType: "html",
+                data: formData,
+                cache: false,
+                contentType: false,
+				processData: false
+            })
+                .done(function(res){
+                    $("#respuesta").html(res);
+					if ( console && console.log ) {
+						console.log( "La solicitud se ha completado correctamente." );
+					}
+				});
+        });
+    });
+    </script>
 
-</script>
-
-<div id="response">
+	
+	
 <!--	
 			<div class="row">
                 <div class="col-lg-6">

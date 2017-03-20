@@ -116,6 +116,12 @@ class Album
       return $datos;
     }
     
+	public function buscaAlbum($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->buscaAlbum($this, $conex);
+      return $datos;
+    }
 	
 	public function consultaTodosAlbum($conex)
     {

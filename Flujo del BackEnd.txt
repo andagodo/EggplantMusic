@@ -53,6 +53,7 @@
 - Fecha al momento de buscar un Administrador por fecha de Alta y listado campo Fecha de Alta
 - Filtros por apellido de admin en el Baja y modificacion
 - Migrar todas las funciones JS a /estilos/js/jsmenu.js (Baja Admin / Modifica Admin)
+- Las Busquedas de Cuentas filtradas por Playlist o Precio devuelven todos los resultados y no filtrado por lo que escribí.
 
 /////////////// CAMPOS NUEVOS EN BD ////////////////////
 - Usr_Sistema - Apellido_Usr_Sist

@@ -55,6 +55,18 @@ class ExistenciaAlbum
 
        return $resultados;
     }
+	
+	public function buscaAlbum($param, $conex)
+	{
+		$nom= trim($param->getNom_Album());
+        $sql = "SELECT Id_Album, Nomb_Album FROM Album WHERE Nomb_Album=:noma AND Activo = 'S'";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":noma" => $nom));
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }
 
 	public function consultaTodosAlbum($conex)
    {

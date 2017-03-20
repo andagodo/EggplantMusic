@@ -125,7 +125,14 @@ class Genero
       $pu= new ExistenciaGenero;
       $datos= $pu->buscaDescGenero($this, $conex);
       return $datos;
-    }		
+    }
+	
+	public function buscaGenero($conex)
+    {
+      $pu= new ExistenciaGenero;
+      $datos= $pu->buscaGenero($this, $conex);
+      return $datos;
+    }	
 	
 }
 ?>

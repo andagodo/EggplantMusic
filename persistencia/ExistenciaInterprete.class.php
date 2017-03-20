@@ -41,6 +41,22 @@ class ExistenciaInterprete
 		return $result;
 	}
 
+	
+	public function buscaInterprete($param, $conex)
+	{
+  
+		$nom= trim($param->getNom_Interprete());
+        $sql = "SELECT Id_Interprete, Nom_Interprete FROM Interprete WHERE Nom_Interprete=:nom";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":nom" => $nom));
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }
+
+	
 /*    
 	public function consultaUnoInterprete($param, $conex)
 	{

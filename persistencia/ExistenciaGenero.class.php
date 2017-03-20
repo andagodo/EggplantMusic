@@ -79,6 +79,18 @@ class ExistenciaGenero
 		$resultados=$result->fetchAll();
 
        return $resultados;
+    }
+	
+	public function buscaGenero($param, $conex)
+	{
+        $nombre= trim($param->getNom_Genero());   
+        $sql = "SELECT Id_Genero, Nom_Genero FROM Genero WHERE Nom_Genero = :nom AND Activo = 'S'";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+		
+		return $resultados;
+		
     }		
 	
 	public function buscaDescGenero($param, $conex)

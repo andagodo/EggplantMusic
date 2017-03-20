@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Album.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Interprete.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/PerteneceCancion.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/getid3/getid3.php';
@@ -11,6 +12,8 @@ $conex = conectar();
 
 $i=0;
 
+echo "<b><u>NOTAS:</u></b></br></br>";
+	
 foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 
 	$archivo1 = file_get_contents($arch);
@@ -45,87 +48,185 @@ foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 	getid3_lib::CopyTagsToComments($mixinfo);
 	
 	$NomArch = $RutasCancion[$i];
-	$titulo = $mixinfo['tags']['id3v2']['title'][0];
-	$artista = $mixinfo['comments_html']['artist'][0];
-	$genero = $mixinfo['comments']['genre'][0];
-	$duracion = $mixinfo['playtime_string'];
-	$anio = $mixinfo['comments_html']['year'][0];
-	$track = $mixinfo['comments']['track'][0];		
+	
+	if (!isset ($mixinfo['tags']['id3v2']['title'][0])){
+		echo "- Una de las canciones del interprete '".$interprete;
+		echo "' no tiene asignado el título en los metadatos";
+		echo "</br>";
+		$titulo = "";
+	}else{
+		$titulo = $mixinfo['tags']['id3v2']['title'][0];
+	}
+
+	if (!isset ($mixinfo['comments_html']['artist'][0])){
+		echo "- La canción '".$titulo;
+		echo "' no tiene asignado el interprete en los metadatos";
+		echo "</br>";
+		$interprete = "";
+	}else{
+		$interprete = $mixinfo['comments_html']['artist'][0];
+	}
+	
+	if (!isset ($mixinfo['comments']['album'][0])){
+		echo "- La canción '".$titulo;
+		echo "' no tiene asignado el álbum en los metadatos";
+		echo "</br>";
+		$album = "";
+	}else{
+		$album = $mixinfo['comments']['album'][0];
+	}
+
+	if (!isset ($mixinfo['comments']['genre'][0])){
+		echo "- La canción '".$titulo;
+		echo "' no tiene asignado el género en los metadatos";
+		echo "</br>";
+		$genero = 0;
+	}else{
+		$genero = $mixinfo['comments']['genre'][0];
+	}	
+
+	if (!isset ($mixinfo['playtime_string'])){
+		echo "- La canción '".$titulo;
+		echo "' no tiene asignada la duración en los metadatos";
+		echo "</br>";
+		$duracion = 0;
+	}else{
+		$duracion = $mixinfo['playtime_string'];
+	}		
+	
+	if (!isset ($mixinfo['comments_html']['year'][0])){
+		echo "- La canción '".$titulo;
+		echo "' no tiene asignado el año en los metadatos";
+		echo "</br>";
+		$anio = "";
+	}else{
+		$anio = $mixinfo['comments_html']['year'][0];
+	}
+
+	if (!isset ($mixinfo['comments']['track'][0])){
+		echo "- La canción '".$titulo;
+		echo "' no tiene asignado el track en los metadatos";
+		echo "</br>";
+		$track = "";
+	}else{
+		$track = $mixinfo['comments']['track'][0];
+	}	
+	
+
+	$Canciones[$i] = ['nomarch' => $NomArch, 'titulo' => $titulo, 'interprete' => $interprete, 'album' => $album, 'genero'=> $genero, 'duracion' => $duracion, 'anio' => $anio, 'track' => $track ];		
+	
 	$i ++;
-	
-	$Canciones[] = array('nomarch' => $NomArch, 'titulo' => $titulo, 'artista' => $artista, 'genero'=> $genero, 'duracion' => $duracion, 'anio' => $anio, 'track' => $track);		
-	
 }
 
-echo json_encode($Canciones);
-		
 ?>
-			<div class="row">
+
+<div class="row">
                 <div class="col-lg-10">
-
-<?php			
-/*				if (isset($_POST['idi'])){
-					$idi=trim($_POST['idi']);
-					$ba = new PerteneceCancion('',$idi);
-					$datos_ba=$ba->buscaInterpreteCancion($conex);
-					$Cuenta=count($datos_ba);
-					
-				}elseif (isset($_POST['idg'])){
-					
-					$idg=trim($_POST['idg']);
-					$ba = new Cancion('','','','',$idg);
-					$datos_ba=$ba->consultaCancionGenero($conex);
-					$Cuenta=count($datos_ba);
-					
-				}elseif (isset($_POST['nom'])){
-					
-					$nom=trim($_POST['nom']);
-					$ba = new Cancion('',$nom);
-					$datos_ba=$ba->buscaNombreCancion($conex);
-					$Cuenta=count($datos_ba);
-
-				}else{
-					$Cuenta = 0;
-				}
-			?>		
-					<form role="form" action='/logica/EliminaCancion.php' method="POST">
-                        <h4>Canciones:</h4>
+				
+					<form role="form" action='/includes/MusicAdmin/procesa/ProcesaGrabaMusica.php' method="POST">
+                        <h4><u>Canciones:</u></h4>
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
 							<div class="form-group">
                                 <thead>
                                     <tr>
 										<th>Selección</th>
-                                        <th>Nombre</th>
-                                        <th>Duración</th>
+										<th>Título</th>
+                                        <th>Interprete</th>
+										<th>Álbum</th>
                                         <th>Género</th>
+                                        <th>Duración</th>
+										<th>Año</th>
+										<th>Track</th>
                                     </tr>
                                 </thead>
 								<?php
-									for ($i=0;$i<$Cuenta;$i++)
-									{
-								?>
+									$o = 0;
+									
 								
+									
+									foreach ($Canciones as $tema)
+									{
+										
+									$int = new Interprete('',$tema['interprete']);
+									$resultadoInt = $int->buscaInterprete($conex);
+									if ($resultadoInt){
+										echo "Existe Interprete en BD - ";
+										echo $resultadoInt[0][1]; //$o define la posisión de la canción, 0 es el ID de Interprete y 1 es nombre del Interprete
+										echo "</br>";		
+									}else{
+										echo "No Existe Interprete";
+										echo "</br>";	
+									}										
+									
+									$alb = new Album('',$tema['album']);
+									$resultadoAlb = $alb->buscaAlbum($conex);
+									if ($resultadoAlb){
+										echo "Existe Album en BD - ";
+										echo $resultadoAlb[0][1]; //$o define la posisión de la canción, 0 es el ID de álbum y 1 es nombre del álbum
+										echo "</br>";		
+									}else{
+										echo "No Existe Album";
+										echo "</br>";	
+									}
+									
+									$gen = new Genero('',$tema['genero']);
+									$resultadoGen = $gen->buscaGenero($conex);
+									if ($resultadoGen){
+										echo "Existe Genero en BD - ";
+										echo $resultadoGen[0][1]; //$o define la posisión de la canción, 0 es el ID de género y 1 es nombre del género
+										echo "</br>";		
+									}else{
+										echo "No Existe Genero";
+										echo "</br>";	
+									}
+									
+//	Generar un array con los datos de todos los temas
+										$GrabaMusica[$o]= ['nomarch' => $tema['nomarch'], 'titulo' => $tema['titulo'], 'interprete' => $resultadoInt[0][0], 'album'=> $resultadoAlb[0][0], 'genero'=> $resultadoGen[0][0], 'duracion' => $tema['duracion'], 'anio' => $tema['anio'], 'track' => $tema['track'] ];
+										?>
+										
                                 <tbody>
                                     <tr>
 										<td>
-											<div class="radio">
+											<div class="checkbox">
 												<label>
-													<input type="radio" name="idc" id="optionsRadios1" value="<?php echo $datos_ba[$i][0]?>">
+					<!--							<input type="checkbox" name="nombrearch[]" id="optionsRadios1" value="<?php// echo $tema['nomarch']?>"> -->
 												</label>
 											</div>
 										</td>
-                                        <td><?php echo $datos_ba[$i][1]?></td>
-                                        <td><?php echo $datos_ba[$i][2] ?></td>
-                                        <td><?php echo $datos_ba[$i][3]?></td>
+                                        <td><?php echo $tema['titulo']?></td>
+					<!--				<input type="hidden" name="titulo[]" value="<?php// echo $tema['titulo']?>" /> 	-->
+                                        <td><?php echo $tema['interprete'] ?></td>
+					<!--				<input type="hidden" name="interprete[]" value="<?php// echo $tema['interprete']?>" /> 	-->
+										<td><?php echo $tema['album']?></td>
+                                        <td><?php echo $tema['genero']?></td>
+					<!--				<input type="hidden" name="genero" value="<?php// echo $resultadoGen ?>" /> 	-->
+										<td><?php echo $tema['duracion']?></td>
+					<!--				<input type="hidden" name="duracion[]" value="<?php// echo $tema['duracion']?>" /> 	-->
+                                        <td><?php echo $tema['anio'] ?></td>
+					<!--				<input type="hidden" name="anio[]" value="<?php// echo $tema['anio']?>" /> 	-->
+                                        <td><?php echo $tema['track']?></td>
+					<!--				<input type="hidden" name="track[]" value="<?php// echo $tema['track']?>" /> -->
 									</tr>
 									
 								<?php
+								$o++;
 								}
+								
+								echo $GrabaMusica[0]['titulo'];
+								echo "</br>";
+								echo $GrabaMusica[1]['titulo'];
+								echo "</br>";
+								$serialized = serialize($GrabaMusica);
+								$serialized = ereg_replace("\"", "'", $serialized);  
+								var_dump($serialized);
+								echo "</br>";
 								?>
-			
+								<!-- Envia el array $grabamusica[] que contiene todos los datos de las cacnciones	-->
+								<input type="hidden" name="GrabaMusica" value="<?php echo $serialized;?>" />
+								
 								</tbody>
-								<button type="submit" class="btn btn-default">Eliminar</button>
+								<button type="submit" class="btn btn-default">Alta Canciones</button>
 								
 								</form>
 							</div>	
@@ -134,5 +235,4 @@ echo json_encode($Canciones);
                 </div>
 				
 			</div>
-*/
-?>
+	

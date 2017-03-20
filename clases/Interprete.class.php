@@ -97,7 +97,13 @@ class Interprete
     {
         $pu=new ExistenciaInterprete;
         return ($pu->altaInterprete($this, $conex));
-    }    
+    }   
+	
+    public function buscaInterprete($conex)
+    {
+        $pu=new ExistenciaInterprete;
+        return ($pu->buscaInterprete($this, $conex));
+    }  	
     
 	public function consultaTodosInterprete($conex)
     {
