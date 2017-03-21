@@ -109,6 +109,25 @@ function ConsultaAdminModifica(){
 	)
 }
 
+function HabilitaMusica(){
+	var c=document.getElementById("contenido").value
+	var a=document.getElementById("accion").value
+	var t=document.getElementById("texto").value
+	var url="/includes/MusicAdmin/procesa/ProcesaHabilitaMusica.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{contenido:c,accion:a,texto:t},
+		success:function(datos){
+			$("#HABILITAMUSICA").html(datos);
+		}
+	}
+	
+	)
+}
+
 
 function ConsultaNomInterprete(){
 	var n=document.getElementById("nom").value
@@ -463,6 +482,13 @@ function ConsultaAnioAlbum(){
 
             });
         });
+		
+		$(document).ready(function() {
+            $('#habilitamusica').click(function(){
+                $("#DASH").load('/includes/MusicAdmin/HabilitaMusica.php');
+
+            });
+        });		
 
 		$(document).ready(function() {
             $('#altaalbum').click(function(){

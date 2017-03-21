@@ -168,6 +168,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 							<li>
 								<a href="#" id="bajamusica"><i class="fa fa-fw fa-edit"></i> Baja Musica</a>
 							</li>
+							<li>
+								<a href="#" id="habilitamusica"><i class="fa fa-fw fa-edit"></i> Hab / Deshab Musica</a>
+							</li>
                         </ul>
                     </li>
 
