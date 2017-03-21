@@ -17,15 +17,18 @@ class ExistenciaPerteneceCancion
 		$result = $conex->prepare($sql);
 		$result->execute(array(":interprete" => $idi, ":cancion" => $idc, ":activ" => $activ, ":feactivo" => $feactivo));
         
-        
+		$lastId = $conex->lastInsertId('Pertenece_Cancion');
+		
         if($result)
         {
-          return(true);
+          return($lastId);
         }
         else
         {
           return(false);
         }
+
+		
     }
 	
 	public function consultaPCCancion($param, $conex)

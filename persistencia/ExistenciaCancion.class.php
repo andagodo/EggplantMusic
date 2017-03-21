@@ -106,6 +106,22 @@ class ExistenciaCancion
        return $resultados;
     }	
 
+	public function ExisteCancion($param, $conex)
+	{
+		$nomc= trim($param->getNom_Cancion());
+		$duracion= trim($param->getDur_Cancion());
+		$interprete = trim($param->getId_Genero());
+		$sql = "SELECT c.id_Cancion FROM Cancion c, Pertenece_Cancion pc  WHERE c.Nom_Cancion = :nom AND c.Dur_Cancion = :dur AND pc.Id_Interprete = :idi AND c.Id_Cancion = pc.Id_Cancion";
+	//	$sql = "SELECT id_Cancion FROM Cancion WHERE Nom_Cancion = :nom AND Dur_Cancion = :dur";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":nom" => $nomc, ":dur" => $duracion, ":idi" => $interprete));
+		if($result->rowCount()==0){
+       		return false;
+        }else{
+			return true;
+        }
+	}	
+	
 /*	
 	public function consultaTodos($param, $conex)
    {

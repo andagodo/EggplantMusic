@@ -13,7 +13,7 @@ class ContieneAlbum
     function __construct($idca='',$ida='',$idpc='', $activ='', $feactivo='')
     {
 		$this->Id_Contiene_Al= $idca;
-    $this->Id_Album= $ida;
+		$this->Id_Album= $ida;
 		$this->Id_Pertenece_Cancion= $idpc;
 		$this->Activo=$activ;
 		$this->Fech_Activo=$feactivo;

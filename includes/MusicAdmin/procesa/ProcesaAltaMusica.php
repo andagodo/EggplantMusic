@@ -12,8 +12,6 @@ $conex = conectar();
 
 $i=0;
 
-echo "<b><u>NOTAS:</u></b></br></br>";
-	
 foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 
 	$archivo1 = file_get_contents($arch);
@@ -48,6 +46,12 @@ foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 	getid3_lib::CopyTagsToComments($mixinfo);
 	
 	$NomArch = $RutasCancion[$i];
+	
+	if (!isset ($mixinfo['tags']['id3v2']['title'][0]) || !isset ($mixinfo['comments_html']['artist'][0]) || !isset ($mixinfo['comments']['album'][0]) || !isset ($mixinfo['comments']['genre'][0]) || !isset ($mixinfo['playtime_string']) || !isset ($mixinfo['comments_html']['year'][0]) || !isset ($mixinfo['comments']['track'][0])){
+		
+		echo "<b><u>ADVERTENCIA:</u></b></br></br>";
+		
+	}
 	
 	if (!isset ($mixinfo['tags']['id3v2']['title'][0])){
 		echo "- Una de las canciones del interprete '".$interprete;
@@ -194,7 +198,7 @@ foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 												</label>
 											</div>
 										</td>
-                                        <td><?php echo $tema['titulo']?></td>
+                                        <td><input value="<?php echo $tema['titulo']?>"/></td>
 					<!--				<input type="hidden" name="titulo[]" value="<?php// echo $tema['titulo']?>" /> 	-->
                                         <td><?php echo $tema['interprete'] ?></td>
 					<!--				<input type="hidden" name="interprete[]" value="<?php// echo $tema['interprete']?>" /> 	-->

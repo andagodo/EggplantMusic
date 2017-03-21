@@ -135,7 +135,12 @@ class Cancion
       return $datos;
     }	
 	
-
+	public function ExisteCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->ExisteCancion($this, $conex);
+      return $datos;
+    }	
 	
 	public function consultaEstado($conex)
 	{
