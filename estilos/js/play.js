@@ -23,7 +23,7 @@ $(function(){
 				.done(function( data, textStatus, jqXHR ) {
 					$div = $('<div class="cancionnow" ></div>')
 					$li = $('<li></li>');
-					$a = $('<a class="play1" href="' + data.ruta + '"data-idc="'+ data.id + '" data-idca="' +data.idca+ '" >' + data.nombre + '</a><div class="btn-cancioncola"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
+					$a = $('<a class="play1" href="' + data.ruta + '" >' + data.nombre + '</a><div class="btn-cancioncola" data-idc="' + data.id + '" data-idca="' +data.idca+'"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
 					$li.append($a);
 					$div.append($li);
 					$("#playerul").append($div);
@@ -115,20 +115,18 @@ $(function(){
         	cancion1=$('.btn-cancioncola');
         	cancion1.click(function(event) {
             event.preventDefault();
-    		console.log("holaaaaaaaaaaaaaaaaaaaaaaa");
-            //
-            //$id_cancion = $( this ).attr('data-idc');
-            //$idca_cancion = $( this ).attr('data-idca');
-              //  var x=event.clientX;
-               // var y=event.clientY;
-                //console.log(y);
-                //console.log(x);
-                //var menu1=document.getElementById('menu3');
-                //menu1.style.top = y+"px";
-                //menu1.style.left = x-350;
-                //menu1.style.display = "block";
-                //$("#menu3").find("a").attr("data-idc", $id_cancion);
-                //$("#menu3").find("a").attr("data-idca", $idca_cancion);
+    		//console.log("holaaaaaaaaaaaaaaaaaaaaaaa");
+        
+            $id_cancion = $( this ).attr('data-idc');
+            $idca_cancion = $( this ).attr('data-idca');
+                var x=event.clientX;
+                var y=event.clientY;
+                var menu3=document.getElementById('menu3');
+                menu3.style.top = y+"px";
+                menu3.style.left = x-250;
+                menu3.style.display = "block";
+                $("#menu3").find(".rm-btn").attr("data-idc", $id_cancion);
+                $("#menu3").find(".rm-btn").attr("data-idca", $idca_cancion);
             // obtengo el id de la cancion
         });
 		//probando menu3 fin 
@@ -143,6 +141,11 @@ $(function(){
 		$(this).fadeOut('slow');
 
 	}); 
+	$("#menu3").mouseleave(function(e){
+		$(this).fadeOut('slow');
+
+	}); 
+
 
     $(".addplaylist").click(function(event){
             event.preventDefault();
@@ -215,8 +218,8 @@ $(function(){
 					}
 				});
 	$("#ventana1").on('hidden.bs.modal', function (e) {
-  	$("#ventana1").find(".form-control").val("");
-  	$('.modal_red').hide();
+  		$("#ventana1").find(".form-control").val("");
+  		$('.modal_red').hide();
 	});
 	$("#menu1").fadeOut("slow");
 	
