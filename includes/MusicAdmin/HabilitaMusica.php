@@ -48,6 +48,7 @@ if(! isset($_SESSION["mai"])){
 			<div class="row">
 				<div class="col-lg-3">
                     <select class="form-control" id='accion'>
+						<option value="aprobar">Aprobar Musica</option>
                         <option value="habilitar">Habilitar Musica</option>
                         <option value="deshabilitar">Deshabilitar Musica</option>
 					</select>

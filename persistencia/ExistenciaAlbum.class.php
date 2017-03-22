@@ -88,7 +88,30 @@ class ExistenciaAlbum
 
        return $resultados;
     }	
+
+	public function buscaAlbumHabilitar($param, $conex)
+	{
+        $nombre= trim($param->getNom_Album());   
+        $sql = "SELECT Id_Album, Nomb_Album, Anio_Album FROM Album WHERE Nomb_Album LIKE :nom AND Activo = 'N'";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
 	
+	public function buscaAlbumAprobar($param, $conex)
+	{
+        $nombre= trim($param->getNom_Album());   
+        $sql = "SELECT Id_Album, Nomb_Album, Anio_Album FROM Album WHERE Nomb_Album LIKE :nom AND Activo = 'A'";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
 
 	public function buscaAnioAlbum($param, $conex)
 	{
@@ -99,8 +122,20 @@ class ExistenciaAlbum
 		$resultados=$result->fetchAll();
 
        return $resultados;
-    }	
+    }
 	
+	public function ActivaAlbum($param, $conex)
+	{
+		$ida= trim($param->getId_Album());
+		
+		$sql = "UPDATE Contiene_Album SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Album = :ida";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":ida" => $ida));
+		$sql = "UPDATE Album SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Album = :ida";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":ida" => $ida));
+		return $result;
+	}		
 
 }
 ?>

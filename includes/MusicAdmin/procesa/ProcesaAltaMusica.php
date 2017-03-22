@@ -49,7 +49,7 @@ foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 	
 	if (!isset ($mixinfo['tags']['id3v2']['title'][0]) || !isset ($mixinfo['comments_html']['artist'][0]) || !isset ($mixinfo['comments']['album'][0]) || !isset ($mixinfo['comments']['genre'][0]) || !isset ($mixinfo['playtime_string']) || !isset ($mixinfo['comments_html']['year'][0]) || !isset ($mixinfo['comments']['track'][0])){
 		
-		echo "<b><u>ADVERTENCIA:</u></b></br></br>";
+		echo "<b><u>ADVERTENCIA:</u></b></br>";
 		
 	}
 	
@@ -122,17 +122,68 @@ foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 	$i ++;
 }
 
-?>
+									$o = 0;
+									
+									echo "</br><b><u>NOTAS:</u></b></br>";
+									
+									foreach ($Canciones as $tema)
+									{
+										
+									$int = new Interprete('',$tema['interprete']);
+									$resultadoInt = $int->buscaInterprete($conex);
+									if ($resultadoInt){
+										echo "- Existe Interprete en BD - ";
+										echo $resultadoInt[0][1]; //$o define la posisión de la canción, 0 es el ID de Interprete y 1 es nombre del Interprete
+										echo "</br>";		
+									}else{
+										echo "- No existe Interprete en BD, será dado de Alta: ";
+										echo $tema['interprete'];
+										echo "</br>";	
+									}										
+									
+									$alb = new Album('',$tema['album']);
+									$resultadoAlb = $alb->buscaAlbum($conex);
+									if ($resultadoAlb){
+										echo "- Existe Álbum en BD - ";
+										echo $resultadoAlb[0][1]; //$o define la posisión de la canción, 0 es el ID de álbum y 1 es nombre del álbum
+										echo "</br>";		
+									}else{
+										echo "- No existe Álbum en BD, será dado de Alta: ";
+										echo $tema['album'];
+										echo "</br>";	
+									}
+									
+									$gen = new Genero('',$tema['genero']);
+									$resultadoGen = $gen->buscaGenero($conex);
+									if ($resultadoGen){
+										echo "- Existe Género en BD - ";
+										echo $resultadoGen[0][1]; //$o define la posisión de la canción, 0 es el ID de género y 1 es nombre del género
+										echo "</br>";		
+									}else{
+										echo "- No existe Género en BD, será dado de Alta: ";
+										echo $tema['genero'];
+										echo "</br>";	
+									}
+									
+//	Generar un array con los datos de todos los temas
+										$GrabaMusica[$o]= ['nomarch' => $tema['nomarch'], 'titulo' => $tema['titulo'], 'interprete' => $resultadoInt[0][0], 'album'=> $resultadoAlb[0][0], 'genero'=> $resultadoGen[0][0], 'duracion' => $tema['duracion'], 'anio' => $tema['anio'], 'track' => $tema['track'] ];
+										?>
+										
 
 <div class="row">
                 <div class="col-lg-10">
 				
 					<form role="form" action='/includes/MusicAdmin/procesa/ProcesaGrabaMusica.php' method="POST">
                         <h4><u>Canciones:</u></h4>
-                        <div class="table-responsive">
+						<div class="table-responsive">
+							
+                        
+
                             <table class="table table-hover table-striped">
 							<div class="form-group">
+								
                                 <thead>
+								
                                     <tr>
 										<th>Selección</th>
 										<th>Título</th>
@@ -144,51 +195,8 @@ foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 										<th>Track</th>
                                     </tr>
                                 </thead>
-								<?php
-									$o = 0;
-									
 								
-									
-									foreach ($Canciones as $tema)
-									{
-										
-									$int = new Interprete('',$tema['interprete']);
-									$resultadoInt = $int->buscaInterprete($conex);
-									if ($resultadoInt){
-										echo "Existe Interprete en BD - ";
-										echo $resultadoInt[0][1]; //$o define la posisión de la canción, 0 es el ID de Interprete y 1 es nombre del Interprete
-										echo "</br>";		
-									}else{
-										echo "No Existe Interprete";
-										echo "</br>";	
-									}										
-									
-									$alb = new Album('',$tema['album']);
-									$resultadoAlb = $alb->buscaAlbum($conex);
-									if ($resultadoAlb){
-										echo "Existe Album en BD - ";
-										echo $resultadoAlb[0][1]; //$o define la posisión de la canción, 0 es el ID de álbum y 1 es nombre del álbum
-										echo "</br>";		
-									}else{
-										echo "No Existe Album";
-										echo "</br>";	
-									}
-									
-									$gen = new Genero('',$tema['genero']);
-									$resultadoGen = $gen->buscaGenero($conex);
-									if ($resultadoGen){
-										echo "Existe Genero en BD - ";
-										echo $resultadoGen[0][1]; //$o define la posisión de la canción, 0 es el ID de género y 1 es nombre del género
-										echo "</br>";		
-									}else{
-										echo "No Existe Genero";
-										echo "</br>";	
-									}
-									
-//	Generar un array con los datos de todos los temas
-										$GrabaMusica[$o]= ['nomarch' => $tema['nomarch'], 'titulo' => $tema['titulo'], 'interprete' => $resultadoInt[0][0], 'album'=> $resultadoAlb[0][0], 'genero'=> $resultadoGen[0][0], 'duracion' => $tema['duracion'], 'anio' => $tema['anio'], 'track' => $tema['track'] ];
-										?>
-										
+						
                                 <tbody>
                                     <tr>
 										<td>
@@ -198,38 +206,46 @@ foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 												</label>
 											</div>
 										</td>
-                                        <td><input value="<?php echo $tema['titulo']?>"/></td>
+                                        <td><input size="15" value="<?php echo $tema['titulo']?>"/></td>
 					<!--				<input type="hidden" name="titulo[]" value="<?php// echo $tema['titulo']?>" /> 	-->
-                                        <td><?php echo $tema['interprete'] ?></td>
+                                        <td><input size="15" value="<?php echo $tema['interprete'] ?>"/></td>
 					<!--				<input type="hidden" name="interprete[]" value="<?php// echo $tema['interprete']?>" /> 	-->
-										<td><?php echo $tema['album']?></td>
-                                        <td><?php echo $tema['genero']?></td>
+										<td><input size="15" value="<?php echo $tema['album']?>"/></td>
+                                        <td><input size="7" value="<?php echo $tema['genero']?>"/></td>
 					<!--				<input type="hidden" name="genero" value="<?php// echo $resultadoGen ?>" /> 	-->
-										<td><?php echo $tema['duracion']?></td>
+										<td><input size="3" value="<?php echo $tema['duracion']?>"/></td>
 					<!--				<input type="hidden" name="duracion[]" value="<?php// echo $tema['duracion']?>" /> 	-->
-                                        <td><?php echo $tema['anio'] ?></td>
+                                        <td><input size="3" maxlength="4" value="<?php echo $tema['anio'] ?>"/></td>
 					<!--				<input type="hidden" name="anio[]" value="<?php// echo $tema['anio']?>" /> 	-->
-                                        <td><?php echo $tema['track']?></td>
+                                        <td><input size="3" value="<?php echo $tema['track']?>"/></td>
 					<!--				<input type="hidden" name="track[]" value="<?php// echo $tema['track']?>" /> -->
 									</tr>
 									
 								<?php
 								$o++;
 								}
-								
+								/*
 								echo $GrabaMusica[0]['titulo'];
 								echo "</br>";
 								echo $GrabaMusica[1]['titulo'];
 								echo "</br>";
-								$serialized = serialize($GrabaMusica);
-								$serialized = ereg_replace("\"", "'", $serialized);  
 								var_dump($serialized);
 								echo "</br>";
+								*/
+								
+								$serialized = serialize($GrabaMusica);
+								$serialized = ereg_replace("\"", "'", $serialized);  
 								?>
 								<!-- Envia el array $grabamusica[] que contiene todos los datos de las cacnciones	-->
 								<input type="hidden" name="GrabaMusica" value="<?php echo $serialized;?>" />
 								
 								</tbody>
+								<div class="col-lg-3">
+								<select class="form-control" name='accion'>
+									<option value="A">Para Aprobar</option>
+									<option value="S">Habilitada</option>
+								</select>
+							</div>
 								<button type="submit" class="btn btn-default">Alta Canciones</button>
 								
 								</form>

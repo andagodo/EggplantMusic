@@ -10,6 +10,7 @@ session_start();
 
 $conex = conectar();
 $serialized = $_POST['GrabaMusica'];
+$accion = $_POST['accion'];
 
 $serialized = ereg_replace("'", "\"", $serialized);
 $GrabaMusica = unserialize($serialized);
@@ -41,7 +42,7 @@ if ($ExisteCancion == false){
 
 		$activ="S";
 		$feactivo=date("d/m/Y");
-		$c= new Cancion ('',$GrabaMusica[$i]['titulo'],$GrabaMusica[$i]['duracion'],$GrabaMusica[$i]['nomarch'],$GrabaMusica[$i]['genero'],$activ,$feactivo);
+		$c= new Cancion ('',$GrabaMusica[$i]['titulo'],$GrabaMusica[$i]['duracion'],$GrabaMusica[$i]['nomarch'],$GrabaMusica[$i]['genero'],$accion,$feactivo);
 		$idCancion=$c->altaCancion($conex);
 		echo $idCancion;
 		echo "</br>";

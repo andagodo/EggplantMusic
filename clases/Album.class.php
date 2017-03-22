@@ -137,14 +137,33 @@ class Album
       return $datos;
     }		
 
+	public function buscaAlbumHabilitar($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->buscaAlbumHabilitar($this, $conex);
+      return $datos;
+    }	
 
+	public function buscaAlbumAprobar($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->buscaAlbumAprobar($this, $conex);
+      return $datos;
+    }	
+	
 	public function buscaAnioAlbum($conex)
     {
       $pu= new ExistenciaAlbum;
       $datos= $pu->buscaAnioAlbum($this, $conex);
       return $datos;
     }	
-	
+
+	public function ActivaAlbum($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->ActivaAlbum($this, $conex);
+      return $datos;
+    }		
 
 }
 ?>

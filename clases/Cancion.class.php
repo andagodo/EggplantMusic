@@ -135,6 +135,27 @@ class Cancion
       return $datos;
     }	
 	
+	public function buscaCancionHabilitar($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->buscaCancionHabilitar($this, $conex);
+      return $datos;
+    }
+	
+	public function buscaCancionAprobar($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->buscaCancionAprobar($this, $conex);
+      return $datos;
+    }
+	
+	public function buscaCancionDeshabilitar($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->buscaCancionDeshabilitar($this, $conex);
+      return $datos;
+    }
+	
 	public function ExisteCancion($conex)
     {
       $pu= new ExistenciaCancion;
@@ -197,6 +218,13 @@ class Cancion
     {
       $pu= new ExistenciaCancion;
       $datos= $pu->consultaGeneroCancion($this, $conex);
+      return $datos;
+    }	
+
+	public function ActivaCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->ActivaCancion($this, $conex);
       return $datos;
     }	
 	
