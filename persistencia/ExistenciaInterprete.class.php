@@ -119,6 +119,19 @@ class ExistenciaInterprete
 
        return $resultados;
     }
+
+
+	public function buscaExisteInterprete($param, $conex)
+	{
+        $nombre= trim($param->getNom_Interprete());   
+        $sql = "SELECT Id_Interprete, Nom_Interprete, Activo FROM Interprete WHERE Nom_Interprete LIKE :nom";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
 	
 }
 ?>

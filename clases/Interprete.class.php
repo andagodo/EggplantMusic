@@ -138,7 +138,14 @@ class Interprete
       $pu= new ExistenciaInterprete;
       $datos= $pu->eliminaInterprete($this, $conex);
       return $datos;
-    }	
+    }
+	
+	public function buscaExisteInterprete($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->buscaExisteInterprete($this, $conex);
+      return $datos;
+    }
 	
 }
 ?>
