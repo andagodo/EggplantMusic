@@ -100,23 +100,15 @@ $(function(){
 					par.addClass('active').siblings().removeClass('active');
 					audio.get(0).load();
 					audio.get(0).play();
-					//alert($data);
 				})
-		//llamar php para devolver archivo completo BASE64
-		
 
 		};
 
-			//probando menu3
 
-        // Intento de abrir el menu 3 en el boton de la cancion dentro de la cola de reproduccion 
-    
         function menucola(){
         	cancion1=$('.btn-cancioncola');
         	cancion1.click(function(event) {
             event.preventDefault();
-    		//console.log("holaaaaaaaaaaaaaaaaaaaaaaa");
-        
             $id_cancion = $( this ).attr('data-idc');
             $idca_cancion = $( this ).attr('data-idca');
                 var x=event.clientX;
@@ -127,15 +119,9 @@ $(function(){
                 menu3.style.display = "block";
                 $("#menu3").find(".rm-btn").attr("data-idc", $id_cancion);
                 $("#menu3").find(".rm-btn").attr("data-idca", $idca_cancion);
-            // obtengo el id de la cancion
         });
-		//probando menu3 fin 
-	
-
-
 
         }
-    
 	
 	$("#menu1").mouseleave(function(e){
 		$(this).fadeOut('slow');
@@ -163,7 +149,7 @@ $(function(){
    						//hasta aca agrego los li con la info de las playlist del usuario
 					}
 				//alert($('#menu2').find("li").length);
-				//con este alert muestro cuantas li tengo, tengo que controlar tener mas de dos (dos son las fijas) y 
+				//con este alert muestro cuantas li tengo, tengo que controlar tener gmas de dos (dos son las fijas) y 
 				//luego en el if si tiene mas borrar y recargar( o ver posible mejora.)
 					
 					if ( console && console.log ) {
@@ -217,6 +203,15 @@ $(function(){
 							
 					}
 				});
+
+	var rm_btn=$('.rm-btn');
+	rm_btn.click(function(event) {
+
+		$('playerul').find($(this).attr('data-idc')).remove();
+
+
+
+	});
 	$("#ventana1").on('hidden.bs.modal', function (e) {
   		$("#ventana1").find(".form-control").val("");
   		$('.modal_red').hide();
