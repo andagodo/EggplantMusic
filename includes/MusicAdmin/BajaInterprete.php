@@ -5,7 +5,7 @@ session_start();
 $conex = conectar();
 ?>
 <script src="/estilos/js/jquery.js"></script>
-<script src="/estilos/js/jsmenu.js"></script>
+<script src="/estilos/js/jsfunciones.js"></script>
  <?php
 if(! isset($_SESSION["mai"])){
 	?>

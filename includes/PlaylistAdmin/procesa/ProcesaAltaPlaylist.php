@@ -8,7 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/PerteneceCancion.class.php';
 session_start();
 $conex = conectar();
 ?>
-<script src="/estilos/js/jsmenu.js"></script>
+<script src="/estilos/js/jsfunciones.js"></script>
 
 			<div class="row">
                 <div class="col-lg-10">

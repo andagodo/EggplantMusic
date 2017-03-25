@@ -7,7 +7,7 @@ $conex = conectar();
 
 if(! isset($_SESSION["mai"])){
 ?>
-<script src="/estilos/js/jsmenu.js"></script>
+<script src="/estilos/js/jsfunciones.js"></script>
 
 <script language="javascript">
 	window.alert("Debes de estar logeado para ingresar a esta página.");

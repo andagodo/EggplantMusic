@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cuenta.class.php';
 $conex = conectar();
 ?>
 <script src="/estilos/js/jquery.js"></script>
-<script src="/estilos/js/jsmenu.js"></script>	
+<script src="/estilos/js/jsfunciones.js"></script>	
 			
 			<div class="row">
                 <div class="col-lg-10">

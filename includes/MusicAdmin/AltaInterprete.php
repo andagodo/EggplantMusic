@@ -67,7 +67,7 @@ if(! isset($_SESSION["mai"])){
 		</div>
 		<div class="col-lg-6">
 			<h4>Alta de Intérpretes:</h4></br>
-			<form role="form" action='/logica/NuevaInterprete.php' method="POST">
+			<form role="form" action='/logica/NuevaInterprete.php' enctype="multipart/form-data" method="POST">
 				<div class="form-group">
 					<label>Nombre:</label>
 					<input class="form-control" placeholder="Ejemplo: Bob Marley." name='nomi' required/>
