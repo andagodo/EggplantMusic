@@ -23,7 +23,7 @@ $(function(){
 				.done(function( data, textStatus, jqXHR ) {
 					$div = $('<div class="cancionnow" ></div>')
 					$li = $('<li></li>');
-					$a = $('<a class="play1" href="' + data.ruta + '"data-idc="'+ data.id + '" data-idca="' +data.idca+ '" >' + data.nombre + '</a><div class="btn-cancioncola"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
+					$a = $('<a class="play1" href="' + data.ruta + '" >' + data.nombre + '</a><div class="btn-cancioncola" data-idc="' + data.id + '" data-idca="' +data.idca+'"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
 					$li.append($a);
 					$div.append($li);
 					$("#playerul").append($div);
@@ -100,49 +100,38 @@ $(function(){
 					par.addClass('active').siblings().removeClass('active');
 					audio.get(0).load();
 					audio.get(0).play();
-					//alert($data);
 				})
-		//llamar php para devolver archivo completo BASE64
-		
 
 		};
 
-			//probando menu3
 
-        // Intento de abrir el menu 3 en el boton de la cancion dentro de la cola de reproduccion 
-    
         function menucola(){
         	cancion1=$('.btn-cancioncola');
         	cancion1.click(function(event) {
             event.preventDefault();
-    		console.log("holaaaaaaaaaaaaaaaaaaaaaaa");
-            //
-            //$id_cancion = $( this ).attr('data-idc');
-            //$idca_cancion = $( this ).attr('data-idca');
-              //  var x=event.clientX;
-               // var y=event.clientY;
-                //console.log(y);
-                //console.log(x);
-                //var menu1=document.getElementById('menu3');
-                //menu1.style.top = y+"px";
-                //menu1.style.left = x-350;
-                //menu1.style.display = "block";
-                //$("#menu3").find("a").attr("data-idc", $id_cancion);
-                //$("#menu3").find("a").attr("data-idca", $idca_cancion);
-            // obtengo el id de la cancion
+            $id_cancion = $( this ).attr('data-idc');
+            $idca_cancion = $( this ).attr('data-idca');
+                var x=event.clientX;
+                var y=event.clientY;
+                var menu3=document.getElementById('menu3');
+                menu3.style.top = y+"px";
+                menu3.style.left = x-250;
+                menu3.style.display = "block";
+                $("#menu3").find(".rm-btn").attr("data-idc", $id_cancion);
+                $("#menu3").find(".rm-btn").attr("data-idca", $idca_cancion);
         });
-		//probando menu3 fin 
-	
-
-
 
         }
-    
 	
 	$("#menu1").mouseleave(function(e){
 		$(this).fadeOut('slow');
 
 	}); 
+	$("#menu3").mouseleave(function(e){
+		$(this).fadeOut('slow');
+
+	}); 
+
 
     $(".addplaylist").click(function(event){
             event.preventDefault();
@@ -160,7 +149,7 @@ $(function(){
    						//hasta aca agrego los li con la info de las playlist del usuario
 					}
 				//alert($('#menu2').find("li").length);
-				//con este alert muestro cuantas li tengo, tengo que controlar tener mas de dos (dos son las fijas) y 
+				//con este alert muestro cuantas li tengo, tengo que controlar tener gmas de dos (dos son las fijas) y 
 				//luego en el if si tiene mas borrar y recargar( o ver posible mejora.)
 					
 					if ( console && console.log ) {
@@ -214,9 +203,18 @@ $(function(){
 							
 					}
 				});
+
+	var rm_btn=$('.rm-btn');
+	rm_btn.click(function(event) {
+
+		$('playerul').find($(this).attr('data-idc')).remove();
+
+
+
+	});
 	$("#ventana1").on('hidden.bs.modal', function (e) {
-  	$("#ventana1").find(".form-control").val("");
-  	$('.modal_red').hide();
+  		$("#ventana1").find(".form-control").val("");
+  		$('.modal_red').hide();
 	});
 	$("#menu1").fadeOut("slow");
 	
