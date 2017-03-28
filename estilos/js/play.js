@@ -21,7 +21,7 @@ $(function(){
 				$.post( "/front_logica/add-now.php", {"idca": $idca_cancion, "idc": $id_cancion }, null, "json" )
 
 				.done(function( data, textStatus, jqXHR ) {
-					$div = $('<div class="cancionnow" ></div>')
+					$div = $('<div class="cancionnow" data-idc='+data.id+' ></div>')
 					$li = $('<li></li>');
 					$a = $('<a class="play1" href="' + data.ruta + '" >' + data.nombre + '</a><div class="btn-cancioncola" data-idc="' + data.id + '" data-idca="' +data.idca+'"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
 					$li.append($a);
@@ -207,8 +207,14 @@ $(function(){
 	var rm_btn=$('.rm-btn');
 	rm_btn.click(function(event) {
 
-		$('playerul').find($(this).attr('data-idc')).remove();
-
+		//$aborrar = ('playerul').find($(this).attr('data-idc'));
+		$idcrm = $(this).attr('data-idc');
+		console.log($idcrm);
+		$('#playerul').find('[data-idc='+$idcrm+']').remove();
+		console.log($bt);
+		//$("#playlist").remove();
+		//console.log($ww);
+		//parents('.cancionnow').remove();
 
 
 	});
