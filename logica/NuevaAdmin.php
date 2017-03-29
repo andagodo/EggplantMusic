@@ -32,6 +32,7 @@ if ($ok == false){
 	?>
 	<script language="javascript">
 		window.alert("El correo que ingresó ya se encuentra registrado.\nPor favor ingrese otro.");
+		location.href="/presentacion/Menu.php";
 	</script>
 	<?php
 	
