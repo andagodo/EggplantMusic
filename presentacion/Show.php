@@ -15,7 +15,6 @@ if ($rol == "SuperAdmin" ){
 			$('#menusadmin').show();
 			$('#menucuenta').show();
 			$('#menumusica').show();
-			$('#menualbum').show();
 			$('#menugenero').show();
 			$('#menuinterprete').show();
 			$('#menuasocia').show();
@@ -43,7 +42,6 @@ if ($rol == "SuperAdmin" ){
 			$('#menusadmin').hide();
 			$('#menucuenta').hide();
 			$('#menumusica').show();
-			$('#menualbum').show();
 			$('#menugenero').show();
 			$('#menuinterprete').show();
 			$('#menuasocia').show();
@@ -71,7 +69,6 @@ if ($rol == "SuperAdmin" ){
 			$('#menusadmin').hide();
 			$('#menucuenta').hide();
 			$('#menumusica').hide();
-			$('#menualbum').hide();
 			$('#menugenero').hide();
 			$('#menuinterprete').hide();
 			$('#menuasocia').hide();
@@ -99,7 +96,6 @@ if ($rol == "SuperAdmin" ){
 			$('#menusadmin').hide();
 			$('#menucuenta').hide();
 			$('#menumusica').hide();
-			$('#menualbum').hide();
 			$('#menugenero').hide();
 			$('#menuinterprete').hide();
 			$('#menuasocia').hide();
@@ -127,7 +123,6 @@ if ($rol == "SuperAdmin" ){
 			$('#menusadmin').hide();
 			$('#menucuenta').hide();
 			$('#menumusica').hide();
-			$('#menualbum').hide();
 			$('#menugenero').hide();
 			$('#menuinterprete').hide();
 			$('#menuasocia').hide();

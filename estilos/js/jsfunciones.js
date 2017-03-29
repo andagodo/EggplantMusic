@@ -383,6 +383,8 @@ function AgregaCancionPlaylist(){
 	)
 }
 
+/*
+Lo usaba cuando hacía bajas de album mediante el formulario Baja Album
 
 function ConsultaNomAlbum(){
 	var n=document.getElementById("nom").value
@@ -401,6 +403,7 @@ function ConsultaNomAlbum(){
 	)
 }
 
+
 function ConsultaAnioAlbum(){
 	var a=document.getElementById("anio").value
 	var url="/includes/MusicAdmin/procesa/ProcesaBajaAlbum.php"
@@ -417,3 +420,4 @@ function ConsultaAnioAlbum(){
 	
 	)
 }
+*/

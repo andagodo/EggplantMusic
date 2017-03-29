@@ -142,6 +142,8 @@
             });
         });
 
+/*
+Lo usaba cuando tenia el formulario de baja Album en Menú
 
 		$(document).ready(function() {
             $('#bajaalbum').click(function(){
@@ -149,7 +151,7 @@
 
             });
         });
-		
+*/		
 		
 		$(document).ready(function() {
             $('#altagenero').click(function(){

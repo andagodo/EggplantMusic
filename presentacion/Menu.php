@@ -169,31 +169,23 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 					
 					
                     <li id="menumusica">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#musica"><i class="fa fa-fw fa-arrows-v"></i> Canciones <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#musica"><i class="fa fa-fw fa-arrows-v"></i> Música <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="musica" class="collapse">
 							<li>
-								<a href="#" id="altamusica"><i class="fa fa-fw fa-edit"></i> Alta Musica</a>
+								<a href="#" id="altamusica"><i class="fa fa-fw fa-edit"></i> Alta Música</a>
 							</li>
 							<li>
-								<a href="#" id="bajamusica"><i class="fa fa-fw fa-edit"></i> Baja Musica</a>
+								<a href="#" id="bajamusica"><i class="fa fa-fw fa-edit"></i> Baja Música</a>
 							</li>
 							<li>
-								<a href="#" id="habilitamusica"><i class="fa fa-fw fa-edit"></i> Hab / Deshab Musica</a>
+								<a href="#" id="altaalbum"><i class="fa fa-fw fa-table"></i> Alta Álbum s/ Música</a>
+							</li>
+							<li>
+								<a href="#" id="habilitamusica"><i class="fa fa-fw fa-edit"></i> Hab / Deshab Música</a>
 							</li>
                         </ul>
                     </li>
-
-                    <li id="menualbum">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#album"><i class="fa fa-fw fa-arrows-v"></i> Álbums <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="album" class="collapse">
-							<li>
-								<a href="#" id="altaalbum"><i class="fa fa-fw fa-table"></i> Alta Álbum</a>
-							</li>
-							<li>
-								<a href="#" id="bajaalbum"><i class="fa fa-fw fa-edit"></i> Baja Álbum</a>
-							</li>
-                        </ul>
-                    </li>					
+		
 
                     <li id="menugenero">
                         <a href="javascript:;" data-toggle="collapse" data-target="#genero"><i class="fa fa-fw fa-arrows-v"></i> Géneros <i class="fa fa-fw fa-caret-down"></i></a>

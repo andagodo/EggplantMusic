@@ -59,8 +59,9 @@ class ExistenciaAlbum
 	public function buscaAlbum($param, $conex)
 	{
 		$nom= trim($param->getNom_Album());
-        $sql = "SELECT Id_Album, Nomb_Album FROM Album WHERE Nomb_Album=:noma AND Activo = 'S'";
+        $sql = "SELECT Id_Album, Nomb_Album, Activo FROM Album WHERE Activo = 'S' AND Nomb_Album LIKE :noma COLLATE Modern_Spanish_CI_AI";
         $result = $conex->prepare($sql);
+		$nom = "%".$nom."%";
 	    $result->execute(array(":noma" => $nom));
 		$resultados=$result->fetchAll();
        
