@@ -144,13 +144,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         <a href="javascript:;" data-toggle="collapse" data-target="#sadmin"><i class="fa fa-fw fa-arrows-v"></i> Administradores <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="sadmin" class="collapse">
 							<li>
-								<a href="#" id="altaadmin"><i class="fa fa-fw fa-edit"></i> Alta Admin</a>
+								<a href="#" id="altaadmin"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Admin</a>
 							</li>
 							<li>
 								<a href="#" id="bajaadmin"><i class="fa fa-fw fa-edit"></i> Baja Admin</a>
 							</li>
 							<li>
-								<a href="#" id="modificaadmin"><i class="fa fa-fw fa-edit"></i> Mofificar Admin</a>
+								<a href="#" id="modificaadmin"><i class="fa fa-fw fa-gear"></i> Mofificar Admin</a>
 							</li>
                         </ul>
                     </li>					
@@ -159,10 +159,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         <a href="javascript:;" data-toggle="collapse" data-target="#cuenta"><i class="fa fa-fw fa-arrows-v"></i> Cuentas FrontEnd <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cuenta" class="collapse">
 							<li>
-								<a href="#" id="altacuenta"><i class="fa fa-fw fa-edit"></i> Alta Cuenta</a>
+								<a href="#" id="altacuenta"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Cuenta</a>
 							</li>
 							<li>
-								<a href="#" id="modificacuenta"><i class="fa fa-fw fa-edit"></i> Mofificar Cuenta</a>
+								<a href="#" id="modificacuenta"><i class="fa fa-fw fa-gear"></i> Mofificar Cuenta</a>
 							</li>
                         </ul>
                     </li>
@@ -172,16 +172,16 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         <a href="javascript:;" data-toggle="collapse" data-target="#musica"><i class="fa fa-fw fa-arrows-v"></i> Música <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="musica" class="collapse">
 							<li>
-								<a href="#" id="altamusica"><i class="fa fa-fw fa-edit"></i> Alta Música</a>
+								<a href="#" id="altamusica"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Música</a>
+							</li>
+							<li>
+								<a href="#" id="altaalbum"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Álbum s/ Música</a>
 							</li>
 							<li>
 								<a href="#" id="bajamusica"><i class="fa fa-fw fa-edit"></i> Baja Música</a>
 							</li>
 							<li>
-								<a href="#" id="altaalbum"><i class="fa fa-fw fa-table"></i> Alta Álbum s/ Música</a>
-							</li>
-							<li>
-								<a href="#" id="habilitamusica"><i class="fa fa-fw fa-edit"></i> Hab / Deshab Música</a>
+								<a href="#" id="habilitamusica"><i class="fa fa-fw fa-gear"></i> Hab / Deshab Música</a>
 							</li>
                         </ul>
                     </li>
@@ -197,7 +197,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 								<a href="#" id="bajagenero"><i class="fa fa-fw fa-edit"></i> Baja Género</a>
 							</li>
 							<li>
-								<a href="#" id="modgenero"><i class="fa fa-fw fa-edit"></i> Modificar Género</a>
+								<a href="#" id="modgenero"><i class="fa fa-fw fa-gear"></i> Modificar Género</a>
 							</li>
                         </ul>
                     </li>
@@ -212,10 +212,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 							<li>
 								<a href="#" id="bajainterprete"><i class="fa fa-fw fa-edit"></i> Baja Intérprete</a>
 							</li>
+							<li>
+								<a href="#" id="modinterprete"><i class="fa fa-fw fa-gear"></i> Modifica Intérprete</a>
+							</li>							
                         </ul>
                     </li>					
 					
-					
+<!--					
                     <li id="menuasocia">
                         <a href="javascript:;" data-toggle="collapse" data-target="#asocia"><i class="fa fa-fw fa-arrows-v"></i> Asociaciones <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="asocia" class="collapse">
@@ -227,7 +230,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 							</li>
                         </ul>
                     </li>
-					
+-->					
 					
                     <li id="menuplaylist">
                         <a href="javascript:;" data-toggle="collapse" data-target="#playlist"><i class="fa fa-fw fa-arrows-v"></i> Playlists <i class="fa fa-fw fa-caret-down"></i></a>
@@ -239,7 +242,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 								<a href="#" id="bajaplaylist"><i class="fa fa-fw fa-edit"></i>Baja Playlist</a>
 							</li>
 							<li>
-								<a href="#" id="modificaplaylist"><i class="fa fa-fw fa-bar-chart-o"></i>Modifica Playlist</a>
+								<a href="#" id="modificaplaylist"><i class="fa fa-fw fa-gear"></i>Modifica Playlist</a>
 							</li>
 							<li>
 								<a href="#" id="estadisticas"><i class="fa fa-fw fa-edit"></i>Estadisticas</a>
@@ -251,10 +254,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         <a href="javascript:;" data-toggle="collapse" data-target="#ticket"><i class="fa fa-fw fa-arrows-v"></i> Tickets <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="ticket" class="collapse">
 							<li>
-								<a href="#" id="respticket"><i class="fa fa-fw fa-bar-chart-o"></i>Responder Ticket</a>
+								<a href="#" id="respticket"><i class="fa fa-fw fa-edit"></i>Responder Ticket</a>
 							</li>
 							<li>
-								<a href="#" id="bajaticket"><i class="fa fa-fw fa-edit"></i>Eliminar Ticket</a>
+								<a href="#" id="bajaticket"><i class="fa fa-fw fa-gear"></i>Eliminar Ticket</a>
 							</li>
                         </ul>
                     </li>							

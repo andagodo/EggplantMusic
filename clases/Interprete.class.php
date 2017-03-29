@@ -139,6 +139,13 @@ class Interprete
       $datos= $pu->eliminaInterprete($this, $conex);
       return $datos;
     }
+
+	public function HabilitaInterprete($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->HabilitaInterprete($this, $conex);
+      return $datos;
+    }
 	
 	public function buscaExisteInterprete($conex)
     {
@@ -146,6 +153,63 @@ class Interprete
       $datos= $pu->buscaExisteInterprete($this, $conex);
       return $datos;
     }
+
+	public function CuentaCancionesAsociadas($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->CuentaCancionesAsociadas($this, $conex);
+      return $datos;
+    }
+	
+	public function NombreInterprete($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->NombreInterprete($this, $conex);
+      return $datos;
+    }
+	
+	public function consultaInterpreteNoAct($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->consultaInterpreteNoAct($this, $conex);
+      return $datos;
+    }
+	
+	public function buscaNombreInterpreteNoAct($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->buscaNombreInterpreteNoAct($this, $conex);
+      return $datos;
+    }
+	
+	public function buscaPaisInterpreteNoAct($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->buscaPaisInterpreteNoAct($this, $conex);
+      return $datos;
+    }
+	
+	public function ActualizaInterprete($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->ActualizaInterprete($this, $conex);
+      return $datos;
+    }
+	
+	public function buscaNomInterprete($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->buscaNomInterprete($this, $conex);
+      return $datos;
+    }
+
+	public function CuentaCancionesAsociadasTodas($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->CuentaCancionesAsociadasTodas($this, $conex);
+      return $datos;
+    }
+	
 	
 }
 ?>

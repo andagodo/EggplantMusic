@@ -180,13 +180,22 @@ Lo usaba cuando tenia el formulario de baja Album en Menú
 
             });
         });
+		
+		$(document).ready(function() {
+            $('#modinterprete').click(function(){
+                $("#DASH").load('/includes/MusicAdmin/ModInterprete.php');
 
+            });
+        });
+		
 		$(document).ready(function() {
             $('#bajainterprete').click(function(){
                 $("#DASH").load('/includes/MusicAdmin/BajaInterprete.php');
 
             });
         });
+/*
+Usaba las asociaciones antes de tener el manú de carga música
 
 		$(document).ready(function() {
             $('#asociainterprete').click(function(){
@@ -236,6 +245,7 @@ Lo usaba cuando tenia el formulario de baja Album en Menú
 
             });
         });			
+*/
 		
         $(document).ready(function() {
             $('#altaplaylist').click(function(){

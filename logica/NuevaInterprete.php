@@ -31,14 +31,14 @@ if ($cuenta != 0){
 	if ($ei[0][2] == 'S'){
 		?>
 		<script language="javascript">
-			window.alert("El Intérprete ya existe, y está habilitado.");
+			window.alert("El Intérprete: <?php echo $nomi?> ya existe, y está habilitado.");
 			location.href="/presentacion/Menu.php";
 		</script>
 		<?php
 	}else{
 		?>
 		<script language="javascript">
-			window.alert("El Intérprete está deshabilitado \nPuede activarlo en Intérpretes -> Modifica Intérprete.");
+			window.alert("El Intérprete: <?php echo $nomi?> está deshabilitado \nPuede activarlo en Intérpretes -> Modifica Intérprete.");
 			location.href="/presentacion/Menu.php";
 		</script>
 		<?php
@@ -52,7 +52,7 @@ if ($cuenta != 0){
 		
 		if(file_exists($NombreArchivo)){
 			$NombreArchivoClave = GenerarClave(20,false);
-			$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/audio/test/";
+			$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/test/";
 			$NombreArchivo = $NombreArchivo1 . $NombreArchivoClave . ".jpg";
 		}
 		
@@ -73,7 +73,7 @@ if ($cuenta != 0){
 		
 		?>
 		<script language="javascript">
-			window.alert("Alta de Intérprete exitosa.");
+			window.alert("Alta de Intérprete: <?php echo $nomi?> exitosa.");
 			location.href="/presentacion/Menu.php";
 		</script>
 		<?php

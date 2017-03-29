@@ -110,6 +110,24 @@ function ConsultaAdminModifica(){
 	)
 }
 
+function ModificaInterprete(){
+	var c=document.getElementById("campo").value
+	var t=document.getElementById("texto").value
+	var a=document.getElementById("accion").value
+	var url="/includes/MusicAdmin/procesa/ProcesaModInteprete.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{campo:c,texto:t,accion:a},
+		success:function(datos){
+			$("#MODINTERPRETE").html(datos);
+		}
+	}
+	
+	)
+}
 /*
 
 Lo usaba cuando cargaba los datos procesados de las cacniones en la misma página ProcesaAltaMusica
