@@ -110,6 +110,36 @@ function ConsultaAdminModifica(){
 	)
 }
 
+/*
+
+Lo usaba cuando cargaba los datos procesados de las cacniones en la misma página ProcesaAltaMusica
+
+function AltaMusica() {
+	var c=document.getElementById("accion").value
+	var t=document.getElementById("titulo[]").value
+	var i=document.getElementById("inter[]").value
+	var a=document.getElementById("alb[]").value
+	var g=document.getElementById("gen[]").value
+	var d=document.getElementById("duracion[]").value
+	var n=document.getElementById("anio[]").value
+	var k=document.getElementById("track[]").value
+	var h=document.getElementById("nomarch[]").value
+	var url="/includes/MusicAdmin/procesa/ProcesaAltaMusica.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{accion:c,titulo:t,inter:i,alb:a,gen:g,duracion:d,anio:n,track:k,nomarch:h},
+		success:function(datos){
+			$("#respuesta").html(datos);
+		}
+	}
+	
+	)
+}
+*/
+	
 function HabilitaMusica(){
 	var c=document.getElementById("contenido").value
 	var a=document.getElementById("accion").value
@@ -193,6 +223,40 @@ function ConsultaDescGenero(){
 		data:{desc:d},
 		success:function(datos){
 			$("#BAJAGENERO").html(datos);
+		}
+	}
+	
+	)
+} 
+
+function ModificaNomGenero(){
+	var n=document.getElementById("nom").value
+	var url="/includes/MusicAdmin/procesa/ProcesaModGenero.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{nom:n},
+		success:function(datos){
+			$("#MODGENERO").html(datos);
+		}
+	}
+	
+	)
+}
+
+function ModificaDescGenero(){
+	var d=document.getElementById("desc").value
+	var url="/includes/MusicAdmin/procesa/ProcesaModGenero.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{desc:d},
+		success:function(datos){
+			$("#MODGENERO").html(datos);
 		}
 	}
 	

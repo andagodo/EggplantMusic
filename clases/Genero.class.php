@@ -101,6 +101,13 @@ class Genero
       $pu= new ExistenciaGenero;
       $datos= $pu->eliminaGenero($this, $conex);
       return $datos;
+    }
+	
+	public function UpdateGenero($conex)
+    {
+      $pu= new ExistenciaGenero;
+      $datos= $pu->UpdateGenero($this, $conex);
+      return $datos;
     }		
 	
 /*	
@@ -120,6 +127,13 @@ class Genero
       return $datos;
     }		
 
+	public function ConsultaGenero($conex)
+    {
+      $pu= new ExistenciaGenero;
+      $datos= $pu->ConsultaGenero($this, $conex);
+      return $datos;
+    }			
+	
 	public function buscaDescGenero($conex)
     {
       $pu= new ExistenciaGenero;
@@ -133,6 +147,20 @@ class Genero
       $datos= $pu->buscaGenero($this, $conex);
       return $datos;
     }	
+
+	public function buscaLikeGenero($conex)
+    {
+      $pu= new ExistenciaGenero;
+      $datos= $pu->buscaLikeGenero($this, $conex);
+      return $datos;
+    }
+	
+	public function consultaGeneroSinUno($conex)
+    {
+      $pu= new ExistenciaGenero;
+      $datos= $pu->consultaGeneroSinUno($this, $conex);
+      return $datos;
+    }
 	
 }
 ?>

@@ -226,6 +226,20 @@ class Cancion
       $pu= new ExistenciaCancion;
       $datos= $pu->ActivaCancion($this, $conex);
       return $datos;
+    }
+	
+	public function CuentaCancionGenero($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->CuentaCancionGenero($this, $conex);
+      return $datos;
+    }	
+
+	public function ActualizaGenero($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->ActualizaGenero($this, $conex);
+      return $datos;
     }	
 	
 }

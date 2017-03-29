@@ -164,6 +164,13 @@
 
             });
         });
+		
+		$(document).ready(function() {
+            $('#modgenero').click(function(){
+                $("#DASH").load('/includes/MusicAdmin/ModificaGenero.php');
+
+            });
+        });
 
 		$(document).ready(function() {
             $('#altainterprete').click(function(){

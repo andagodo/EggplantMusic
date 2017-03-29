@@ -38,7 +38,17 @@ class ExistenciaGenero
 		$result->execute(array(":idg" => $idg));
 		return $result;
 	}			
-	
+
+	public function UpdateGenero($param, $conex)
+	{
+		$idg = trim($param->getId_Genero());
+		$nom = trim($param->getNom_Genero());
+		$desc = trim($param->getDesc_Genero());
+		$sql = "UPDATE Genero SET Nom_Genero = :nom, Desc_Genero = :desc WHERE Id_Genero = :idg";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idg" => $idg,":nom" => $nom, ":desc" => $desc));
+		return $result;
+	}	
 	
     /*
 	public function consultaUno($param, $conex)
@@ -57,7 +67,7 @@ class ExistenciaGenero
 
 	*/
 	
-		public function consultaTodosGenero($param,$conex)
+	public function consultaTodosGenero($param,$conex)
 	{
 
         $sql = "SELECT Id_Genero, Nom_Genero, Desc_Genero FROM Genero WHERE Activo = 'S'";
@@ -68,6 +78,27 @@ class ExistenciaGenero
        return $resultados;
     }
 	
+	public function consultaGeneroSinUno($param,$conex)
+	{
+		$idg= trim($param->getId_Genero()); 
+        $sql = "SELECT Id_Genero, Nom_Genero, Desc_Genero FROM Genero WHERE Activo = 'S' AND Id_Genero != :idg";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idg" => $idg));
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
+	
+	public function ConsultaGenero($param,$conex)
+	{
+		$idg= trim($param->getId_Genero()); 
+        $sql = "SELECT Nom_Genero, Desc_Genero FROM Genero WHERE Id_Genero = :idg";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idg" => $idg));
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
 	
 	public function buscaNombreGenero($param, $conex)
 	{
@@ -91,7 +122,19 @@ class ExistenciaGenero
 		
 		return $resultados;
 		
-    }		
+    }
+	
+	public function buscaLikeGenero($param, $conex)
+	{
+        $nombre= trim($param->getNom_Genero());   
+        $sql = "SELECT Id_Genero, Nom_Genero FROM Genero WHERE Nom_Genero LIKE :nom AND Activo = 'S'";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+		
+		return $resultados;
+		
+    }	
 	
 	public function buscaDescGenero($param, $conex)
 	{

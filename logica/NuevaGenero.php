@@ -15,34 +15,34 @@ $desc=trim($_POST['desc']);
 $activ="S";
 $feactivo=date("d/m/Y");
 
-$conex = conectar();
-$a= new Genero ('',$nomg,$desc,$activ,$feactivo);
-$ok=$a->altaGenero($conex);
+$g= new Genero ('',$nomg);
+$existeg=$g->buscaLikeGenero($conex);
 
-if ($ok)
+if ($existeg){
+	?>
+	<script language="javascript">
+		window.alert("Ya existe el género que intenta dar de alta.");
+		location.href="/presentacion/Menu.php";
+	</script>
+	<?php
+}else{
 
-{
-    echo "<table  align='center' >";
-    echo "<tr height='400'>";
-        echo "<td class='leyenda'>";
-            echo "Se inserto el Género: $nomg";
-			echo " </br><a href=\"\presentacion\Menu.php\" style='color: black'>Volver</a>";
-        echo "</td>";
-    echo "</tr>";
-    echo "</table>";
-
+	$a= new Genero ('',$nomg,$desc,$activ,$feactivo);
+	$ok=$a->altaGenero($conex);
+	if ($ok){
+		?>
+		<script language="javascript">
+			window.alert("Se creo un nuevo Género: <?php echo $nomg?>");
+			location.href="/presentacion/Menu.php";
+		</script>
+		<?php
+	}else{
+		?>
+		<script language="javascript">
+			window.alert("El Usuario o Password \n no es correcto.");
+			location.href="/presentacion/indice.php";
+		</script>
+		<?php
+	}
 }
-else
-{
-   ?>
- <script language="javascript">
- 
-   window.alert("El Usuario o Password \n no es correcto.");
-   location.href="/presentacion/indice.php";
- </script>
-  <?php
-  
-}
-// desconectar($conex);
- 
 ?>

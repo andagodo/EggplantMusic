@@ -242,7 +242,28 @@ class ExistenciaCancion
 		//$resultados=$result->fetchAll();
 		return $result;
 	}
+	
+	public function CuentaCancionGenero($param, $conex)
+	{
+		$idg= trim($param->getId_Genero());
+		$sql = "SELECT COUNT(*) FROM Cancion WHERE Id_Genero = :idg";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idg" => $idg));
+		$resultados=$result->fetchAll();
+		return $resultados;
+	}
 
+	
+	public function ActualizaGenero($param, $conex)
+	{
+		$idg= trim($param->getActivo());
+		$idgnu=trim($param->getId_Genero());
+		$sql = "UPDATE Cancion SET Id_Genero = :idgnu WHERE Id_Genero = :idg";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idg" => $idg, ":idgnu" => $idgnu));
+		//$resultados=$result->fetchAll();
+		return $result;
+	}
 	
 }
 ?>

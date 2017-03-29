@@ -1,34 +1,60 @@
 <?php
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 ?>
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
-$idg=trim($_POST['idg']);
 
-try {
 $conex = conectar();
-$u= new Genero ($idg);
-$ok=$u->eliminaGenero($conex);
+$idg=trim($_POST['idg']);
+$cg= new Cancion ('','','','',$idg);
+$canciones=$cg->CuentaCancionGenero($conex);
 
-	if ($ok){
-		echo "<table  align='center' >";
-		echo "<tr height='400'>";
-			echo "<td class='leyenda'>";
-				echo "Se eliminó el Género correctamente";
-				echo " </br><a href=\"\presentacion\Menu.php\" style='color: black'>Volver</a>";
-			echo "</td>";
-		echo "</tr>";
-		echo "</table>";
-
+if($canciones[0][0] != "0" ){
+	
+	if (!isset ($_POST['idgnu'])){
+		?>
+		<script language="javascript">
+			window.alert("El Género seleccionado tiene canciones asociadas,\npor favor seleccione un nuevo género al eliminar.");
+			location.href="/presentacion/Menu.php";
+		</script>
+		<?php	
+	}else{
+		
+		$idgnu=$_POST['idgnu'];
+		$g=new Cancion ('','','','',$idgnu,$idg);
+		$gnu=$g->ActualizaGenero($conex);
+		if ($gnu){
+			$u= new Genero ($idg);
+			$ok=$u->eliminaGenero($conex);
+			$nomgen=$u->ConsultaGenero($conex);
+			$nomg=$nomgen[0][0];
+			if ($ok){
+				?>
+				<script language="javascript">
+					window.alert("Se eliminó exitosamente el género: <?php echo $nomg?> .");
+					location.href="/presentacion/Menu.php";
+				</script>
+				<?php
+			}
+		}
 	}
-}
-catch (PDOException $e) {
-    print "Error en la base de datos!: " . "<br/>" . $e->getMessage() . "<br/>";
-	print " </br><a href=\"\presentacion\Menu.php\" style='color: black'>Volver</a>";
+}else{
+
+	$u= new Genero ($idg);
+	$ok=$u->eliminaGenero($conex);
+	$nomgen=$u->ConsultaGenero($conex);
+	$nomg=$nomgen[0][0];
+	if ($ok){
+		?>
+		<script language="javascript">
+			window.alert("Se eliminó exitosamente el género: <?php echo $nomg?> .");
+			location.href="/presentacion/Menu.php";
+		</script>
+		<?php
+	}
 
 }
-// desconectar($conex);
- 
 ?>

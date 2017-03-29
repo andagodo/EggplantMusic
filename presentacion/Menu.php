@@ -5,9 +5,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php'; 		// Requiere 
 $conex = conectar(); // Almacela la función "conectar" que se encuentra en '/logica/funciones.php' en la variable $conex
 
 ?>
+<!-- 
+<script src="http://malsup.github.com/jquery.form.js"></script>
 
-<script src="/estilos/js/jquery.js"></script>	<!-- Llama al archivo de JavaScript externo jquery.js que contiene información de Bootstrap -->
-<script src="/estilos/js/plugins/morris/morris.min.js"></script>
+-->
+<script src="/estilos/js/jquery.min.js"></script>
+<script src="/estilos/js/jquery.form.js"></script> 
+<!-- <script src="/estilos/js/jquery.js"></script>	 Llama al archivo de JavaScript externo jquery.js que contiene información de Bootstrap -->
+<!-- <script src="/estilos/js/plugins/morris/morris.min.js"></script> -->
 
 <!-- <script src="/estilos/js/jsmenu.js"></script>	--> <!-- Llama al archivo de JavaScript externo jsmenu.js que contiene funciones para la visualizacion de diferentes funcionalidades de los Administradores -->
 
@@ -30,19 +35,23 @@ $nombre = $Tipo[0][1];		// Almacena en $nombre el valor devuelto por la función
 $apellido = $Tipo[0][2];
 
 ////////////////////////////// ARREGLAR SECCIÓN DE TIMEOUT ///////////////////////////////
-$_SESSION['LAST_ACTIVITY'] = time();	// Almacena la última actividad del usuario
+	// Almacena la última actividad del usuario
+
 if (isset($_SESSION['LAST_ACTIVITY'])) {
 
-  if ($_SESSION['LAST_ACTIVITY'] + 1 < time()) {
+  if (time() - $_SESSION['LAST_ACTIVITY'] > 5) {
 
      // session timed out
      session_unset();     // unset $_SESSION variable for the run-time 
      session_destroy();   // destroy session data in storage
-  } else {
-
+  } elseif (time() - $_SESSION['LAST_ACTIVITY'] > 1) {
+	  
+	$_SESSION['LAST_ACTIVITY'] = time();
     // session ok
+
  }
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -195,6 +204,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 							<li>
 								<a href="#" id="bajagenero"><i class="fa fa-fw fa-edit"></i> Baja Género</a>
 							</li>
+							<li>
+								<a href="#" id="modgenero"><i class="fa fa-fw fa-edit"></i> Modificar Género</a>
+							</li>
                         </ul>
                     </li>
 
@@ -294,7 +306,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 	<script src="/estilos/js/jsmenu.js"></script>
     <script src="/estilos/js/bootstrap.min.js"></script>
     <script src="/estilos/js/plugins/morris/raphael.min.js"></script>
-    <script src="/estilos/js/plugins/morris/morris.min.js"></script>
-    <script src="/estilos/js/plugins/morris/morris-data.js"></script>
+   <!--  <script src="/estilos/js/plugins/morris/morris.min.js"></script> 
+    <script src="/estilos/js/plugins/morris/morris-data.js"></script>	-->
 
 </body>
