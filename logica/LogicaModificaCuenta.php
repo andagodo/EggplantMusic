@@ -6,14 +6,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
 
+$conex = conectar();
 $cuenta=$_POST['cuenta'];
 $accion=$_POST['accion'];
 $feactivo=date("d/m/Y");
 
 if ($accion == "habilitar"){
 
-
-		$conex = conectar();
 		$u= new Cuenta ($cuenta,'','','','',$feactivo);
 		$ok=$u->HabilitaCuenta($conex);
 
@@ -28,7 +27,7 @@ if ($accion == "habilitar"){
 		}else{
 			?>
 			<script language="javascript">
-				window.alert("Activaste la Cuenta exitosamente.");
+				window.alert("Ocurrio un error, Intente nuevamente.");
 				location.href="/presentacion/Menu.php";
 			</script>
 			<?php			
@@ -36,8 +35,6 @@ if ($accion == "habilitar"){
 	
 }elseif($accion == "deshabilitar"){
 
-		
-		$conex = conectar();
 		$u= new Cuenta($cuenta);
 		$ok=$u->eliminaCuenta($conex,'','','','',$feactivo);
 		
@@ -59,7 +56,6 @@ if ($accion == "habilitar"){
 		}
 	
 }elseif($accion == "modificar"){
-		$conex = conectar();
 		$tipo=$_POST['tipo'];
 		$play=$_POST['playlist'];
 		$precio=$_POST['precio'];
