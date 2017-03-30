@@ -51,7 +51,13 @@
     </head>
 
     <body>
-      <div id="wrapper">
+
+
+          <div id="wrapper">
+  <div class="alert alert-warning">
+    <strong>Warning!</strong> Esto esta sin terminar por si no lo notaron. Atte. Su desarrollador de FrontEnd
+  </div>  
+
       		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       		    <div class="navbar-header">
                       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">

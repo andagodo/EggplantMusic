@@ -13,32 +13,49 @@ $(function(){
         //cuando hago en el boton con dicha clase agrego a la cola de reproduccion
         $add.click(function(event) {
      		event.preventDefault();
-     		$out = "";
+			$out = "";
      		//capturo ID de cancion
                $id_cancion = $( this ).attr('data-idc');
                $idca_cancion = $(this).attr('data-idca');
+
+               num = $('#playerul > div').find('[data-idc='+$id_cancion+']').length;
+             //  alert(num);
+               if (num === 1) {
+               		alert("La cancion ya existe en la playlist o cola de reproduccion");
+
+               		}
+               		else
+               		{
+		               	$.post( "/front_logica/add-now.php", {"idca": $idca_cancion, "idc": $id_cancion }, null, "json" )
+						.done(function( data, textStatus, jqXHR ) {
+							$div = $('<div class="cancionnow" data-idc='+data.id+' ></div>')
+							$li = $('<li></li>');
+							$a = $('<a class="play1" href="' + data.ruta + '" >' + data.nombre + '</a><div class="btn-cancioncola" data-idc="' + data.id + '" data-idca="' +data.idca+'"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
+							$li.append($a);
+							$div.append($li);
+							$("#playerul").append($div);
+							initaudio2();
+							menucola();
+
+							if ( console && console.log ) {
+						   	console.log( "La solicitud se ha completado correctamente." );
+						}
+						})
+						.fail(function( jqXHR, textStatus, errorThrown ) {
+						  	if ( console && console.log ) {
+						    console.log( "La solicitud a fallado: " +  textStatus);
+						}
+						});
+
+
+
+
+
+               		
+
+               };
             //le paso el id al php que trae la cancion de l BD por JSON
-				$.post( "/front_logica/add-now.php", {"idca": $idca_cancion, "idc": $id_cancion }, null, "json" )
 
-				.done(function( data, textStatus, jqXHR ) {
-					$div = $('<div class="cancionnow" data-idc='+data.id+' ></div>')
-					$li = $('<li></li>');
-					$a = $('<a class="play1" href="' + data.ruta + '" >' + data.nombre + '</a><div class="btn-cancioncola" data-idc="' + data.id + '" data-idca="' +data.idca+'"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
-					$li.append($a);
-					$div.append($li);
-					$("#playerul").append($div);
-					initaudio2();
-					menucola();
-
-					if ( console && console.log ) {
-				   	console.log( "La solicitud se ha completado correctamente." );
-				}
-				})
-				.fail(function( jqXHR, textStatus, errorThrown ) {
-				  	if ( console && console.log ) {
-				    console.log( "La solicitud a fallado: " +  textStatus);
-				}
-				});
 				$("#menu1").fadeOut("slow");
 				});
 
@@ -211,10 +228,8 @@ $(function(){
 		$idcrm = $(this).attr('data-idc');
 		console.log($idcrm);
 		$('#playerul').find('[data-idc='+$idcrm+']').remove();
-		console.log($bt);
-		//$("#playlist").remove();
-		//console.log($ww);
-		//parents('.cancionnow').remove();
+		initaudio2();
+		$("#menu3").fadeOut('slow');
 
 
 	});
