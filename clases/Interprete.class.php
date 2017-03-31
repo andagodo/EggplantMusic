@@ -209,7 +209,13 @@ class Interprete
       $datos= $pu->CuentaCancionesAsociadasTodas($this, $conex);
       return $datos;
     }
-	
+
+	public function buscaIDInterpreteNoAct($conex)
+    {
+      $pu= new ExistenciaInterprete;
+      $datos= $pu->buscaIDInterpreteNoAct($this, $conex);
+      return $datos;
+    }	
 	
 }
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';

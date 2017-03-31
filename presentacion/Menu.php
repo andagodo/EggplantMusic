@@ -178,10 +178,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 								<a href="#" id="altaalbum"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Álbum s/ Música</a>
 							</li>
 							<li>
-								<a href="#" id="bajamusica"><i class="fa fa-fw fa-edit"></i> Baja Música</a>
+								<a href="#" id="habilitamusica"><i class="fa fa-fw fa-edit"></i> Hab / Deshab Música</a>
 							</li>
 							<li>
-								<a href="#" id="habilitamusica"><i class="fa fa-fw fa-gear"></i> Hab / Deshab Música</a>
+								<a href="#" id="modmusica"><i class="fa fa-fw fa-gear"></i> Modificar Música</a>
 							</li>
                         </ul>
                     </li>

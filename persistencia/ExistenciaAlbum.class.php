@@ -18,10 +18,11 @@ class ExistenciaAlbum
 		$result = $conex->prepare($sql);
 		$result->execute(array(":nombre" => $nom, ":anioalbum" => $anio, ":linkalbum" => $link, ":activ" => $activ, ":feactivo" => $feactivo));
         
-        
+        $lastId = $conex->lastInsertId('Album');
+		
         if($result)
         {
-          return(true);
+          return($lastId);
         }
         else
         {
@@ -59,7 +60,7 @@ class ExistenciaAlbum
 	public function buscaAlbum($param, $conex)
 	{
 		$nom= trim($param->getNom_Album());
-        $sql = "SELECT Id_Album, Nomb_Album, Activo FROM Album WHERE Activo = 'S' AND Nomb_Album LIKE :noma COLLATE Modern_Spanish_CI_AI";
+        $sql = "SELECT Id_Album, Nomb_Album, Activo FROM Album WHERE Nomb_Album LIKE :noma COLLATE Modern_Spanish_CI_AI";
         $result = $conex->prepare($sql);
 		$nom = "%".$nom."%";
 	    $result->execute(array(":noma" => $nom));
@@ -136,7 +137,18 @@ class ExistenciaAlbum
 		$result = $conex->prepare($sql);
 		$result->execute(array(":ida" => $ida));
 		return $result;
-	}		
+	}
 
+	public function buscaIdAlbumNoAct($param, $conex)
+	{
+        $ida= trim($param->getId_Album());   
+        $sql = "SELECT Id_Album FROM Album WHERE Id_Album = :ida AND Activo = 'N'";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":ida" => $ida));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
+	
 }
 ?>

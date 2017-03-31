@@ -7,178 +7,86 @@ $conex = conectar();
 
 if(! isset($_SESSION["mai"])){
 	?>
- <script language="javascript">
-   window.alert("Debes de estar logeado para ingresar a esta página.");
-   location.href="/presentacion/indice.php";
- </script>
- <?php
- 
+	<script language="javascript">
+		window.alert("Debes de estar logeado para ingresar a esta página.");
+		location.href="/presentacion/indice.php";
+	</script>
+	<?php
 }
-
 ?>
-<script src="/estilos/js/jquery.js"></script>
 <script src="/estilos/js/jsfunciones.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-		<div id="page-wrapper">
+<script>
+	(function() {
+		var barra = $('.barra');
+		var porcentaje = $('.porcentaje');
+		var respuesta = $('#respuesta');
+	$('form').ajaxForm({
+		beforeSend: function() {
+			respuesta.empty();
+			var ValorPorcentaje = 'Proceso de Archivos: 0%';
+			var porcentajeBarra = '0%';
+			barra.width(porcentajeBarra)
+			porcentaje.html(ValorPorcentaje);
+		},
+		uploadProgress: function(event, position, total, percentComplete) {
+			var ValorPorcentaje = 'Proceso de Archivos: ' + percentComplete + '%';
+			var porcentajeBarra = percentComplete + '%';
+			barra.width(porcentajeBarra)
+			porcentaje.html(ValorPorcentaje);
+		},
+		success: function() {
+			var ValorPorcentaje = 'Proceso de Archivos: 100%';
+			var porcentajeBarra = '100%';
+			barra.width(porcentajeBarra)
+			porcentaje.html(ValorPorcentaje);
+		},
+		complete: function(xhr) {
+			respuesta.html(xhr.responseText);
+		}
+	}); 
+	})();     
+</script>
 
-            <div class="container-fluid">
+<style>
+.progresocarga { background-color: white; position:relative; width:400px; border: 1px solid #ddd; padding: 6px; border-radius: 3px;}
+.porcentaje { position:absolute; display:inline-block; top:5px; left:25%; }
+.barra { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; } 
+</style>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Alta de Canciones / Álbums
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="/presentacion/Menu.php">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-edit"></i> Alta de Canciones / Álbums
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-				
-            </div>
-			
-
-	
-    <form enctype="multipart/form-data" id="formmusica" method="post">
-		<div class="form-group">
-			<label>Cargar Canciones:</label>
-			<input name="ArchivoSubido[]" multiple="true" type="file" accept=".mp3" required/></br>
-			<input type="submit" class="btn btn-default" value="Cargar archivos"/>
-		</div>
-    </form>
-    
-	<div id="respuesta"></div>
-
-    <script>
-    $(function(){
-        $("#formmusica").on("submit", function(e){
-            e.preventDefault();
-            var f = $(this);
-            var formData = new FormData(document.getElementById("formmusica"));
-            formData.append("dato", "valor");
-            //formData.append(f.attr("name"), $(this)[0].files[0]);
-            $.ajax({
-                url: "/includes/MusicAdmin/procesa/ProcesaAltaMusica.php",
-                type: "post",
-                dataType: "html",
-                data: formData,
-                cache: false,
-                contentType: false,
-				processData: false
-            })
-                .done(function(res){
-                    $("#respuesta").html(res);
-					if ( console && console.log ) {
-						console.log( "La solicitud se ha completado correctamente." );
-					}
-				});
-        });
-    });
-    </script>
-
-	
-	
-<!--	
-			<div class="row">
-                <div class="col-lg-6">
-					<div class="formaltacancion">
-					
-					    <div class="form-group">
-                            <label>Nombre Canción:</label>
-                            <input class="form-control nom" placeholder="Ejemplo: Could You Be Loved." required/>
-                        </div>
--->						
-						<?php
-/*							$g = new Genero();
-							$datos_g=$g->consultaTodosGenero($conex);
-							$Cuenta=count($datos_g);
-						?>
-
-						<div class="form-group">
-                            <label>Seleccione Género</label>
-                            <select class="form-control idg" required>
-								<option value="00">Géneros</option>
-									<?php
-									for ($i=0;$i<$Cuenta;$i++)
-									{
-									?>
-									<option value="<?php echo $datos_g[$i][0]?>"  ><?php echo $datos_g[$i][1]?> // <?php echo $datos_g[$i][2]?></option>
-								<?php
-								}
-						?>
-                            </select>
-                        </div>				
-			            
-						<div class="form-group">
-							<label>Duración:</label>
-								<div class="form-group input-group">
-								<input type="time" class="form-control dur" required/>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label>Ruta del Archivo:</label>
-								<input type="text" class="form-control ruta" required/>
-						</div>
-						</br>
-						<button class="claseboton">Alta Canción</button>
-						
-						
-						
-						</div>
-					</div>
-					</div>
-					
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">
+					Alta de Canciones / Álbums
+				</h1>
+				<ol class="breadcrumb">
+					<li>
+						<i class="fa fa-dashboard"></i>  <a href="/presentacion/Menu.php">Dashboard</a>
+					</li>
+					<li class="active">
+						<i class="fa fa-edit"></i> Alta de Canciones / Álbums
+					</li>
+				</ol>
 			</div>
-
-<!--		</div>
-	</div> -->
-	
-	
-
-		
-		<script language="javascript">
-
-		$(function(){
-			$variableboton = $(".claseboton");
-			$variableboton.click(function(event) {
-		event.preventDefault();
-     		$out = "";
-				var nom = $(".formaltacancion .nom").val();
-				var idg = $(".formaltacancion .idg").val();
-				var dur = $(".formaltacancion .dur").val();
-				var ruta = $(".formaltacancion .ruta").val();
-				
-				$.post( "/logica/NuevaCancion.php", {nom, idg, dur, ruta}, "json" )
-				
-				.done(function( data, textStatus, jqXHR ) {
-					// window.alert("Se inserto la cancion: ");
-				
-					if (data == false){
-					
-						window.alert("No encaró");
-						
-						}else{
-							window.alert("Se inserto la cancion: "$ok);
-						}
-						})
-		
-				});
-				/*
-				.fail(function( jqXHR, textStatus, errorThrown ) {
-				  	if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
-				});   */
-/*		
-			});
-	//	})(jQuery); 
-
-		</script>
-*/
-?>		
-<!--		<div id="ALTAMUSICA"></div>
--->
+		</div>
+	</div>
+	<form action="/includes/MusicAdmin/procesa/ProcesaAltaMusica.php" method="post" enctype="multipart/form-data" >
+		<label>Cargar Canciones:</label>
+		<input name="ArchivoSubido[]" multiple="true" type="file" accept=".mp3" required/></br>
+		<div class="form-group">
+			<div class="col-lg-2">
+				<input type="submit" class="btn btn-default" value="Cargar archivos"/>
+			</div>
+			<div class="col-lg-2">
+				<div class="progresocarga">
+					<div class="barra"></div >
+					<div class="porcentaje">Proceso de Archivos: 0%</div >
+				</div>		
+			</div>
+		</div>
+		</br>
+	</form>
+	<div id="respuesta"></div>
+</div>

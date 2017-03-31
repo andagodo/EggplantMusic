@@ -122,8 +122,8 @@
         });
 
 		$(document).ready(function() {
-            $('#bajamusica').click(function(){
-                $("#DASH").load('/includes/MusicAdmin/BajaMusica.php');
+            $('#modmusica').click(function(){
+                $("#DASH").load('/includes/MusicAdmin/ModMusica.php');
 
             });
         });

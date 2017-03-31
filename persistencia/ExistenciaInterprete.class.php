@@ -59,7 +59,7 @@ class ExistenciaInterprete
 	{
   
 		$nom= trim($param->getNom_Interprete());
-        $sql = "SELECT Id_Interprete, Nom_Interprete FROM Interprete WHERE Activo = 'S' AND Nom_Interprete LIKE :nom COLLATE Modern_Spanish_CI_AI";
+        $sql = "SELECT Id_Interprete, Nom_Interprete, Activo FROM Interprete WHERE Nom_Interprete LIKE :nom COLLATE Modern_Spanish_CI_AI";
 		
         $result = $conex->prepare($sql);
 		$nom = "%".$nom."%";
@@ -168,7 +168,17 @@ class ExistenciaInterprete
 
        return $resultados;
     }			
-	
+
+	public function buscaIDInterpreteNoAct($param, $conex)
+	{
+        $id= trim($param->getId_Interprete());   
+        $sql = "SELECT Id_Interprete FROM Interprete WHERE Id_Interprete = :id AND Activo = 'N'";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id" => $id));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }		
 
 	public function buscaPaisInterpreteNoAct($param, $conex)
 	{

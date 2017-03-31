@@ -11,25 +11,13 @@ $IDS=$_POST['ID'];
 $accion=$_POST['accion'];
 $contenido=$_POST['contenido'];
 $conex = conectar();
-
-/*
-$cuenta = count ($IDS);
-
-var_dump($IDS);
-echo "</br>";
-var_dump($accion);
-echo "</br>";
-var_dump($contenido);
-*/
-
-// aprobar / habilitar / deshabilitar
 $i=0;
 
 foreach ($IDS as $id){
 	
-if ($contenido == 'cancion'){
-
-	if ($accion == "habilitar" || $accion == "aprobar" ){
+	if ($contenido == 'cancion'){
+		
+		if ($accion == "habilitar" || $accion == "aprobar" ){
 			$u= new Cancion ($id);
 			$ok=$u->ActivaCancion($conex);
 			if ($ok){	
@@ -42,7 +30,8 @@ if ($contenido == 'cancion'){
 				</script>
 				<?php
 			}
-	}elseif($accion == "deshabilitar"){
+			
+		}elseif($accion == "deshabilitar"){
 			$u= new Cancion($id);
 			$ok=$u->eliminaCancion($conex);
 			if ($ok){
@@ -55,10 +44,11 @@ if ($contenido == 'cancion'){
 				</script>
 				<?php
 			}
-	}
-}elseif($contenido == 'album'){
-
-	if ($accion == "habilitar" || $accion == "aprobar" ){
+		}
+		
+	}elseif($contenido == 'album'){
+		
+		if ($accion == "habilitar" || $accion == "aprobar" ){
 			$u= new Album ($id);
 			$ok=$u->ActivaAlbum($conex);
 			if ($ok){	
@@ -71,7 +61,8 @@ if ($contenido == 'cancion'){
 				</script>
 				<?php
 			}
-	}elseif($accion == "deshabilitar"){
+			
+		}elseif($accion == "deshabilitar"){
 			$u= new Album($id);
 			$ok=$u->eliminaAlbum($conex);
 			if ($ok){
@@ -84,11 +75,8 @@ if ($contenido == 'cancion'){
 				</script>
 				<?php
 			}
-
+		}
 	}
-	
-
-}
 }
 
 if ($contenido == 'cancion'){
@@ -105,10 +93,5 @@ if ($contenido == 'cancion'){
 		location.href="/presentacion/Menu.php";
 	</script>
 	<?php
-	
-}				
-
-	
-// desconectar($conex);
-
+}
 ?>
