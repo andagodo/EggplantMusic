@@ -111,9 +111,11 @@ if ($accion == "habilitar"){
 									<td><?php echo $datos_ba[$i][3]?></td>
 									<?php
 								}elseif ($contenido == "album"){
+									$formatoanio = DateTime::createFromFormat('Y-m-d', $datos_ba[$i][2]);
+									$anio = $formatoanio->format('Y');									
 									?>
 									<td><?php echo $datos_ba[$i][1]?></td>
-									<td><?php echo $datos_ba[$i][2]?></td>
+									<td><?php echo $anio?></td>
 									<?php
 								}
 								?>										

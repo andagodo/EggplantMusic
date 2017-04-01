@@ -95,6 +95,10 @@ $track = $_POST['track'];
 $accion = $_POST['accion'];
 
 $cuenta=count($nomarch);
+$cuentaExisten=0;
+$cuentaOK=0;
+$salioOK="";
+$CancionesExistentes="";
 
 for ($i=0;$i<$cuenta;$i++){
 
@@ -144,7 +148,7 @@ for ($i=0;$i<$cuenta;$i++){
 	
 	$ec = new Cancion ('',$titulo[$i],$duracion[$i],'',$interprete[$i]);
 	$ExisteCancion = $ec->ExisteCancion($conex);
-
+	
 	if ($ExisteCancion == false){
 		$c= new Cancion ('',$titulo[$i],$duracion[$i],$nomarch[$i],$genero[$i],$accion,$feactivo);
 		$idCancion=$c->altaCancion($conex);
@@ -159,8 +163,9 @@ for ($i=0;$i<$cuenta;$i++){
 				
 				if($okContieneAlbum){
 					
-					echo "Di de alta OK";
-				
+					$salioOK .= $titulo[$i] . " / ";
+					$cuentaOK++;
+					
 				}else{
 					?>
 					<script language="javascript">
@@ -186,16 +191,37 @@ for ($i=0;$i<$cuenta;$i++){
 			<?php				
 		}
 	}else{
-		
 		// guardo las canciones que existen de a una para luego mostrar un window.alert con el listado de canciones que ya existen en la base de datos
-		$CancionesQueExisten[$i] = $titulo[$i];
+		$CancionesExistentes .= $titulo[$i] . " / ";
+		$cuentaExisten++;
 	}
 }
 
-echo "</br>";
-echo "</br>";
-echo "Canciones que existen en BD";
-var_dump($CancionesQueExisten);
+?>
+<script src="/estilos/js/jquery.min.js"></script>
+<?php
 
+if ($cuentaExisten == 0){
+	?>
+	<script language="javascript">
+		window.alert("Estas canciones se ingresaron exitosamente: <?php echo $salioOK?>");
+		location.href="/presentacion/Menu.php";
+	</script>
+	<?php
+}elseif($cuentaOK == 0){
+	?>
+	<script language="javascript">
+		window.alert("Estas canciones ya existen: <?php echo $CancionesExistentes?>\nIntente Nuevamente");
+		location.href="/presentacion/Menu.php";
+	</script>
+	<?php
+}else{
+	?>
+	<script language="javascript">
+		window.alert("Estas canciones se ingresaron exitosamente: <?php echo $salioOK?>\nEstas canciones ya existen: <?php echo $CancionesExistentes?>\nIntente Nuevamente");
+		location.href="/presentacion/Menu.php";
+	</script>
+	<?php
 
+}
 ?>

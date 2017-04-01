@@ -6,7 +6,6 @@ class ExistenciaAlbum
     public function altaAlbum($param, $conex)
     {
 
-
         $nom=$param->getNom_Album();
         $anio=$param->getAnio_Album();
         $link = $param->getLink_Foto_Album();
@@ -41,6 +40,32 @@ class ExistenciaAlbum
 		$sql = "UPDATE Album SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Album = :ida";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":ida" => $ida));
+		$sql = "SELECT Id_Pertenece_Cancion FROM Contiene_Album WHERE Id_Album = :ida";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":ida" => $ida));
+		$resultados=$result->fetchAll();
+		$Cuenta = count ($resultados);
+		
+		for ($i=0;$i<$Cuenta;$i++){	
+			$idpc=$resultados[$i][0];
+			$sql = "UPDATE Pertenece_Cancion SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Pertenece_Cancion = :idpc";
+			$result = $conex->prepare($sql);
+			$result->execute(array(":idpc" => $idpc));
+			$sql = "SELECT Id_Cancion FROM Pertenece_Cancion WHERE Id_Pertenece_Cancion = :idpc";
+			$result = $conex->prepare($sql);
+			$result->execute(array(":idpc" => $idpc));
+			$resultadosCanc=$result->fetchAll();
+			$CuentaCanc = count ($resultadosCanc);
+			
+			for ($c=0;$c<$CuentaCanc;$c++){
+				$idc=$resultadosCanc[$c][0];
+				$sql = "UPDATE Cancion SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Cancion = :idc";
+				$result = $conex->prepare($sql);
+				$result->execute(array(":idc" => $idc));				
+			}
+		}		
+		
+		
 		return $result;
 	}		
 	
@@ -60,7 +85,7 @@ class ExistenciaAlbum
 	public function buscaAlbum($param, $conex)
 	{
 		$nom= trim($param->getNom_Album());
-        $sql = "SELECT Id_Album, Nomb_Album, Activo FROM Album WHERE Nomb_Album LIKE :noma COLLATE Modern_Spanish_CI_AI";
+        $sql = "SELECT Id_Album, Nomb_Album, Activo, Anio_Album FROM Album WHERE Nomb_Album LIKE :noma COLLATE Modern_Spanish_CI_AI";
         $result = $conex->prepare($sql);
 		$nom = "%".$nom."%";
 	    $result->execute(array(":noma" => $nom));
@@ -72,7 +97,7 @@ class ExistenciaAlbum
 
 	public function consultaTodosAlbum($conex)
    {
-        $sql = "SELECT * FROM Album WHERE Activo = 'S'";
+        $sql = "SELECT Id_Album, Nomb_Album, Activo, Anio_Album FROM Album WHERE Activo = 'S'";
         $result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
@@ -136,6 +161,30 @@ class ExistenciaAlbum
 		$sql = "UPDATE Album SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Album = :ida";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":ida" => $ida));
+		$sql = "SELECT Id_Pertenece_Cancion FROM Contiene_Album WHERE Id_Album = :ida";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":ida" => $ida));
+		$resultados=$result->fetchAll();
+		$Cuenta = count ($resultados);
+		
+		for ($i=0;$i<$Cuenta;$i++){	
+			$idpc=$resultados[$i][0];
+			$sql = "UPDATE Pertenece_Cancion SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Pertenece_Cancion = :idpc";
+			$result = $conex->prepare($sql);
+			$result->execute(array(":idpc" => $idpc));
+			$sql = "SELECT Id_Cancion FROM Pertenece_Cancion WHERE Id_Pertenece_Cancion = :idpc";
+			$result = $conex->prepare($sql);
+			$result->execute(array(":idpc" => $idpc));
+			$resultadosCanc=$result->fetchAll();
+			$CuentaCanc = count ($resultadosCanc);
+			
+			for ($c=0;$c<$CuentaCanc;$c++){
+				$idc=$resultadosCanc[$c][0];
+				$sql = "UPDATE Cancion SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Cancion = :idc";
+				$result = $conex->prepare($sql);
+				$result->execute(array(":idc" => $idc));				
+			}
+		}
 		return $result;
 	}
 
@@ -148,6 +197,18 @@ class ExistenciaAlbum
 		$resultados=$result->fetchAll();
 
        return $resultados;
+    }	
+	
+	public function UpdateAlbum($param, $conex)
+	{
+        $ida= trim($param->getId_Album());
+		$nom= trim($param->getNom_Album());
+		$anio= trim($param->getAnio_Album());
+		$foto= trim($param->getLink_Foto_Album());
+        $sql = "UPDATE Album SET Nomb_Album = :nom,	Anio_Album = :anio,	Link_Foto_Album = :foto WHERE Id_Album = :ida";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":ida" => $ida,":nom" => $nom,":anio" => $anio,":foto" => $foto));
+		return $result;
     }	
 	
 }

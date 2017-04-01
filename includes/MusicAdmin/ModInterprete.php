@@ -28,7 +28,7 @@ if(! isset($_SESSION["mai"])){
 						<i class="fa fa-dashboard"></i>  <a href="/presentacion/Menu.php">Dashboard</a>
 					</li>
 					<li class="active">
-						<i class="fa fa-edit"></i> Modificación de Administradores
+						<i class="fa fa-edit"></i> Modificación de Intérpretes
 					</li>
 				</ol>
 			</div>
@@ -45,7 +45,6 @@ if(! isset($_SESSION["mai"])){
 		</div>
 	</div></br>
 	<div class="row">
-		
 			<div class="col-lg-3">
 				<div class="form-group">
 					<label>Buscador:</label>

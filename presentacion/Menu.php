@@ -9,13 +9,13 @@ $conex = conectar(); // Almacela la función "conectar" que se encuentra en '/lo
 <script src="http://malsup.github.com/jquery.form.js"></script>
 
 -->
-<script src="/estilos/js/jquery.min.js"></script>
-<script src="/estilos/js/jquery.form.js"></script> 
+
 <!-- <script src="/estilos/js/jquery.js"></script>	 Llama al archivo de JavaScript externo jquery.js que contiene información de Bootstrap -->
 <!-- <script src="/estilos/js/plugins/morris/morris.min.js"></script> -->
 
 <!-- <script src="/estilos/js/jsmenu.js"></script>	--> <!-- Llama al archivo de JavaScript externo jsmenu.js que contiene funciones para la visualizacion de diferentes funcionalidades de los Administradores -->
-
+	<script src="/estilos/js/jquery.min.js"></script>
+	<script src="/estilos/js/jquery.form.js"></script>
 <?php
 if(! isset($_SESSION["mai"])){	// Si no está presente el valor del mail almacenada en la sesión del sistema, se ejecuta un javascript que muestre alerta y te lleve al indice del BackEnd.
 ?>

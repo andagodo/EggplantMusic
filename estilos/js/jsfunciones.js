@@ -128,6 +128,25 @@ function ModificaInterprete(){
 	
 	)
 }
+
+function ModificaMusica(){
+	var i=document.getElementById("item").value
+	var t=document.getElementById("texto").value
+	var c=document.getElementById("campo").value
+	var url="/includes/MusicAdmin/procesa/ProcesaModMusica.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{item:i,texto:t,campo:c},
+		success:function(datos){
+			$("#MODMUSICA").html(datos);
+		}
+	}
+	
+	)
+}
 /*
 
 Lo usaba cuando cargaba los datos procesados de las cacniones en la misma página ProcesaAltaMusica
@@ -212,6 +231,22 @@ function ConsultaPaisInterprete(){
 	)
 } 
 
+function ConsultaNomInterpreteCancion(){
+	var n=document.getElementById("nomint").value
+	var url="/includes/MusicAdmin/procesa/ProcesaInterpreteCancion.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{nomint:n},
+		success:function(datos){
+			$("#NUEVOINTECANCION").html(datos);
+		}
+	}
+	
+	)
+}
 
 function ConsultaNomGenero(){
 	var n=document.getElementById("nom").value

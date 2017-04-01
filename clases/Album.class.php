@@ -170,7 +170,14 @@ class Album
       $pu= new ExistenciaAlbum;
       $datos= $pu->buscaIdAlbumNoAct($this, $conex);
       return $datos;
-    }		
+    }
+
+	public function UpdateAlbum($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->UpdateAlbum($this, $conex);
+      return $datos;
+    }	
 
 }
 ?>

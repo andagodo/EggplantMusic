@@ -35,7 +35,7 @@ class ExistenciaCancion
 	{
 //        $idp= trim($param->getIDpersona());   
 		$idg= trim($param->getId_Genero());
-        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g WHERE c.Id_Genero=:genero AND c.Id_Genero = g.Id_Genero AND c.Activo = 'S'";
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero, c.Id_Genero FROM Cancion c, Genero g WHERE c.Id_Genero=:genero AND c.Id_Genero = g.Id_Genero AND c.Activo = 'S'";
 
         $result = $conex->prepare($sql);
 	    $result->execute(array(":genero" => $idg));
@@ -48,7 +48,7 @@ class ExistenciaCancion
 	public function buscaNombreCancion($param, $conex)
 	{
         $nombre= trim($param->getNom_Cancion());   
-        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero FROM Cancion c, Genero g WHERE Nom_Cancion LIKE :nom AND c.Id_Genero = g.Id_Genero AND c.Activo = 'S'";
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero, i.Nom_Interprete, g.Id_Genero FROM Cancion c, Genero g, Interprete i, Pertenece_Cancion pc WHERE c.Nom_Cancion LIKE :nom AND c.Id_Genero = g.Id_Genero AND i.Id_Interprete = pc.Id_Interprete AND c.Id_Cancion = pc.Id_Cancion AND c.Activo = 'S'";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -136,7 +136,17 @@ class ExistenciaCancion
 		$sql = "UPDATE Cancion SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Cancion =:idc";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idc" => $idc));
+		$sql = "SELECT Id_Pertenece_Cancion FROM Pertenece_Cancion WHERE Id_Cancion = :idc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc));
+		$resultados=$result->fetchAll();
+		$idpc=$resultados[0][0];
+		$sql = "UPDATE Contiene_Album SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Pertenece_Cancion = :idpc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idpc" => $idpc));
+		
 		return $result;
+		
 	}	
 
 	public function consCancionId($param, $conex)
@@ -237,10 +247,19 @@ class ExistenciaCancion
 		$sql = "UPDATE Cancion SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Cancion = :idc";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idc" => $idc));
-		//$resultados=$result->fetchAll();
+		$sql = "SELECT Id_Pertenece_Cancion FROM Pertenece_Cancion WHERE Id_Cancion = :idc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc));
+		$resultados=$result->fetchAll();
+		$idpc=$resultados[0][0];
+		$sql = "UPDATE Contiene_Album SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Pertenece_Cancion = :idpc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idpc" => $idpc));
+		
 		return $result;
 	}
 	
+		
 	public function CuentaCancionGenero($param, $conex)
 	{
 		$idg= trim($param->getId_Genero());
@@ -263,5 +282,40 @@ class ExistenciaCancion
 		return $result;
 	}
 	
+	public function ListaCancionActivas( $conex)
+	{
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero, i.Nom_Interprete, g.Id_Genero FROM Cancion c, Genero g, Interprete i, Pertenece_Cancion pc WHERE c.Id_Genero = g.Id_Genero AND i.Id_Interprete = pc.Id_Interprete AND c.Id_Cancion = pc.Id_Cancion AND c.Activo = 'S'";
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+	
+	public function consCancionInterprete($param, $conex)
+	{
+		$idc= trim($param->getId_Cancion());
+		$sql = "SELECT pc.Id_Interprete FROM Pertenece_Cancion pc, Cancion c WHERE c.Id_Cancion = pc.Id_Cancion AND c.Activo = 'S' AND c.Id_Cancion = :idc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc));
+		$resultados=$result->fetchAll();
+		return $resultados;
+	}
+	
+	public function UpdateCancion($param, $conex)
+	{
+		$idc= trim($param->getId_Cancion());
+		$idg= trim($param->getId_Genero());
+		$nom= trim($param->getNom_Cancion());
+		$idi= trim($param->getActivo());
+		$sql = "UPDATE Cancion SET Nom_Cancion = :nom,Id_Genero = :idg WHERE Id_Cancion = :idc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc,":idg" => $idg, ":nom" => $nom));
+		$sql = "UPDATE Pertenece_Cancion SET Id_Interprete = :idi WHERE Id_Cancion = :idc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc,":idi" => $idi));
+
+		return $result;
+	}	
 }
 ?>
