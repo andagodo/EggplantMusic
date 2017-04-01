@@ -53,11 +53,18 @@
     <body>
 
 
-          <div id="wrapper">
-  <div class="alert alert-warning">
-    <strong>Warning!</strong> Esto esta sin terminar por si no lo notaron. Atte. Su desarrollador de FrontEnd
-  </div>  
 
+          <div id="wrapper">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+</div>
+             <!--       <div class="alert alert-warning alerta1">
+                     <button class='close' data-dismiss='alert'><span>&times;</span></button>
+                     <strong>Warning!</strong> Esto esta sin terminar por si no lo notaron. Atte. Su desarrollador de FrontEnd
+                     </div>  -->
       		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       		    <div class="navbar-header">
                       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">

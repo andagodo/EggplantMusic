@@ -22,7 +22,7 @@ $(function(){
              //  alert(num);
                if (num === 1) {
                		alert("La cancion ya existe en la playlist o cola de reproduccion");
-
+               		//$(".alert").alert();
                		}
                		else
                		{
