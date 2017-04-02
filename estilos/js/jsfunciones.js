@@ -367,6 +367,8 @@ function ConsultaNomMusica(){
 	)
 } 
 
+/*
+LAS USABA CUANDO TENIA EL VIEJO FORMULARIO DE PROCESO CARGA PLAYLIST 
 
 function ConsultaMusicaArtista(){
 	var i=document.getElementById("idi").value
@@ -419,22 +421,51 @@ function ConsultaNomMusica(){
 	)
 }
 
-function AgregaCancionPlaylist(){
-	var i=document.getElementById("idc").value
-	var url="/includes/PlaylistAdmin/procesa/ProcesaCreacionPlaylist.php"
+*/
+
+function AltaPlaylist(){
+	var n=document.getElementById("nompl").value
+	var t=document.getElementById("tags").value
+	var a=document.getElementById("activa").value	
+	var url="/logica/LogicaAltaPlaylist.php"
 	
 	$.ajax({
 		
 		type:"post",
 		url:url,
-		data:{idc:i},
+		data:{nompl:n,tags:t,activa:a},
 		success:function(datos){
-			$("#CREACIONPLAYLISTDIV").html(datos);
+			$("#DASH").html(datos);
 		}
 	}
 	
 	)
 }
+
+function ProcesaMusicaPlaylist(){
+	var c=document.getElementById("contenido").value
+	var t=document.getElementById("texto").value
+	var g=document.getElementById("idg").value
+	var url="/includes/PlaylistAdmin/procesa/ProcesaAltaPlaylist.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{contenido:c,texto:t,idg:g},
+		success:function(datos){
+			$("#ALTAPLAYLISTDIV").html(datos);
+		}
+	}
+	
+	)
+}
+
+$(document).ready(function() {
+	$('#descartaplaylistID').click(function(){
+		$("#DASH").load('/includes/PlaylistAdmin/procesa/DescartaPlaylist.php');
+    });
+});
 
 /*
 Lo usaba cuando hacía bajas de album mediante el formulario Baja Album

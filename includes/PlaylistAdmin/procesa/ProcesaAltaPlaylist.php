@@ -1,85 +1,124 @@
 <?php
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Interprete.class.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/PerteneceCancion.class.php';
 session_start();
 $conex = conectar();
 ?>
 <script src="/estilos/js/jsfunciones.js"></script>
+<?php
 
-			<div class="row">
-                <div class="col-lg-10">
-			<?php
-				if (isset($_POST['idi'])){
-					$idi=trim($_POST['idi']);
-					$ba = new PerteneceCancion('',$idi);
-					$datos_ba=$ba->buscaInterpreteCancion($conex);
-					$Cuenta=count($datos_ba);
-					
-				}elseif (isset($_POST['idg'])){
-					
-					$idg=trim($_POST['idg']);
-					$ba = new Cancion('','','','',$idg);
-					$datos_ba=$ba->consultaCancionGenero($conex);
-					$Cuenta=count($datos_ba);
-					
-				}elseif (isset($_POST['nom'])){
-					
-					$nom=trim($_POST['nom']);
-					$ba = new Cancion('',$nom);
-					$datos_ba=$ba->buscaNombreCancion($conex);
-					$Cuenta=count($datos_ba);
+$contenido=trim($_POST['contenido']);
+$idg=trim($_POST['idg']);
+$texto=trim($_POST['texto']);
 
-				}else{
-					$Cuenta = 0;
-				}
-			?>		
-				<!--	<form role="form" action='/logica/AltaPlaylist.php' method="POST">	-->
-                        <h4>Canciones:</h4>
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped">
-							<div class="form-group">
-                                <thead>
-                                    <tr>
-										<th>Selección</th>
-                                        <th>Nombre</th>
-                                        <th>Duración</th>
-                                        <th>Género</th>
-                                    </tr>
-                                </thead>
-								<?php
-									for ($i=0;$i<$Cuenta;$i++)
-									{
-								?>
-								
-                                <tbody>
-                                    <tr>
-										<td>
-											<div class="radio">
-												<label>
-													<input type="radio" name="idc" id="idc" value="<?php echo $datos_ba[$i][0]?>">
-												</label>
-											</div>
-										</td>
-                                        <td><?php echo $datos_ba[$i][1]?></td>
-                                        <td><?php echo $datos_ba[$i][2] ?></td>
-                                        <td><?php echo $datos_ba[$i][3]?></td>
-									</tr>
-									
-								<?php
-								}
-								?>
-			
-								</tbody>
-								<button type="button" class="btn btn-default" onclick="AgregaCancionPlaylist();">Seleccionar</button>
-								
-						<!--		</form>		-->
-							</div>	
-                            </table>
-                        </div>
-                </div>
-				
-			</div>
+if (empty ($_SESSION['playlist'])){
+	$_SESSION['playlist'] = "";
+	$playlist = "";
+}
+if (empty ($_SESSION['contador'])){
+	$_SESSION['contador'] = 0;
+}
+
+if ($contenido == "cancion"){
+	
+	if($idg == "0"){
+		$ba = new Cancion('',$texto);
+		$datos_ba=$ba->buscaNombreCancion($conex);
+		$Cuenta=count($datos_ba);
+	}else{
+		$ba = new Cancion('',$texto,'','',$idg);
+		$datos_ba=$ba->buscaNombreCancionGenero($conex);
+		$Cuenta=count($datos_ba);
+	}
+}elseif($contenido == "album"){
+	
+	if($idg == "0"){
+		$ba = new Cancion('',$texto);
+		$datos_ba=$ba->buscaAlbumCancion($conex);
+		$Cuenta=count($datos_ba);
+	}else{
+		$ba = new Cancion('',$texto,'','',$idg);
+		$datos_ba=$ba->buscaAlbumCancionGenero($conex);
+		$Cuenta=count($datos_ba);
+	}
+	
+}elseif($contenido == "interprete"){
+	
+	if($idg == "0"){
+		$ba = new Cancion('',$texto);
+		$datos_ba=$ba->buscaInterpreteCancion($conex);
+		$Cuenta=count($datos_ba);
+	}else{
+		$ba = new Cancion('',$texto,'','',$idg);
+		$datos_ba=$ba->buscaInterpreteCancionGenero($conex);
+		$Cuenta=count($datos_ba);
+	}
+	
+}else{
+	$Cuenta = 0;
+}	
+?>
+<script>
+	(function() {
+		var respuesta = $('#CREACIONPLAYLISTDIV');
+	$('form').ajaxForm({
+		beforeSend: function() {
+			respuesta.empty();
+		},
+		complete: function(xhr) {
+			respuesta.html(xhr.responseText);
+		}
+	}); 
+	})();
+</script>
+
+<div class="row">
+	<div class="col-lg-10">	
+	<form action='/includes/PlaylistAdmin/procesa/ProcesaCreacionPlaylist.php' method="POST" enctype="multipart/form-data">
+		<div class="table-responsive">
+			<table class="table table-hover table-striped">
+				<div class="form-group">
+					<thead>
+						<tr>
+							<th>Selección</th>
+							<th>Nombre</th>
+							<th>Duración</th>
+							<th>Intérprete</th>
+							<th>Género</th>
+						</tr>
+					</thead>
+					<?php
+					for ($i=0;$i<$Cuenta;$i++){
+					?>
+					<tbody>
+						<tr>
+							<td>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="idc[]" id="idc" value="<?php echo $datos_ba[$i][0]?>">
+									</label>
+								</div>
+							</td>
+							<td><?php echo $datos_ba[$i][1]?></td>
+							<?php
+							//$formatoDuracion = DateTime::createFromFormat('h:i:s', $datos_ba[$i][2]);
+							//$dur = $formatoDuracion->format('h:i:s');
+							//var_dump($datos_ba[$i][2]);
+							?>
+							<td><?php echo $datos_ba[$i][2]?></td>
+							<td><?php echo $datos_ba[0][4]?></td>								
+							<td><?php echo $datos_ba[$i][3]?></td>
+						</tr>
+						<?php
+						}
+						?>
+					</tbody>
+					<!--<button type="button" class="btn btn-default" onclick="AgregaCancionPlaylist();">Agregar a Playlist</button>-->
+					<input type="submit" class="btn btn-default" value="Agregar a Playlist"/>
+				</form>
+				</div>	
+			</table>
+		</div>
+	</div>
+</div>
+<?php

@@ -8,13 +8,15 @@ class ExistenciaPlaylist
 
         $nom=$param->getNom_PlayList();
         $fech=$param->getFech_Creacion();
-        $act="S";
-        $fecha="14/12/2016 10:00:00";
+		$pltags=$param->getPlaylist_Tags();
+       // $act="S";
+        $fecha=$param->getFech_Activo();
+		$act=$param->getActivo();
 
-        $sql = "INSERT INTO PlayList ( Nom_Playlist, Fech_Creacion, Activo, Fech_Activo) VALUES ( :nombre, :fechacreacion, :activo, :fechactivo)";
+        $sql = "INSERT INTO PlayList ( Nom_Playlist, Fech_Creacion, Activo, Fech_Activo, Playlist_Tags) VALUES ( :nombre, :fechacreacion, :activo, :fechactivo, :pltags)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":fechacreacion" => $fech, ":activo" => $act, ":fechactivo" => $fecha));
+		$result->execute(array(":nombre" => $nom, ":fechacreacion" => $fech, ":activo" => $act, ":fechactivo" => $fecha, ":pltags" => $pltags));
         
         
       	$lastId = $conex->lastInsertId('PlayList');

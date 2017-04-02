@@ -261,6 +261,48 @@ class Cancion
       $pu= new ExistenciaCancion;
       $datos= $pu->UpdateCancion($this,$conex);
       return $datos;
+    }
+
+	public function buscaNombreCancionGenero($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->buscaNombreCancionGenero($this,$conex);
+      return $datos;
+    }
+	
+	public function buscaInterpreteCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->buscaInterpreteCancion($this,$conex);
+      return $datos;
+    }
+
+	public function buscaInterpreteCancionGenero($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->buscaInterpreteCancionGenero($this,$conex);
+      return $datos;
+    }
+	
+	public function buscaAlbumCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->buscaAlbumCancion($this,$conex);
+      return $datos;
+    }
+
+	public function buscaAlbumCancionGenero($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->buscaAlbumCancionGenero($this,$conex);
+      return $datos;
+    }
+
+	public function ConsultoIDCA($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->ConsultoIDCA($this,$conex);
+      return $datos;
     }	
 	
 }

@@ -39,90 +39,77 @@ if(! isset($_SESSION["mai"])){
 	<div class="row">
 		<div class="col-lg-4">
 			<label>Nombre de Playlist:</label>
-			<input class="form-control" id='nom' required/>
+			<input class="form-control" id='nompl' required/>
 		</div>
 		<div class="col-lg-4">
 			<label>Tags de Playlist:</label>
-			<input class="form-control" id='nom' required/>
-		</div>			
+			<input class="form-control" id='tags' placeholder="Separados con un numeral Ej: Rock#PerlJam#Coldplay" required/>
+		</div>
+		<div class="col-lg-1">
+			<label>Playlist Activa?:</label>
+			<select class="form-control" id='activa'>
+				<option value="S" selected>Si</option>
+				<option value="N">No</option>
+			</select>			
+		</div>
 	</div>
-	</br>
+	<h3 class="page-header">
+		Canciones en Playlist
+	</h3>
 	<div class="row">
 		<div class="col-lg-8">
 			<div id="CREACIONPLAYLISTDIV"></div>
 		</div>
 	</div>
+	<div class="page-header"></div>
 	<h3 class="page-header">
 		Buscador de Canciones
 	</h3>
-<!--	
+	
 	<div class="row">
 		<div class="col-lg-3">
-				
-					<form role="form" action='/includes/MusicAdmin/BajaMusica.php' method="POST">
-						<?php
-						//$i = new Interprete();
-						//$datos_i=$i->consultaTodosInterprete($conex);
-						// $Cuenta=count($datos_i);
-						?>
-                        <div class="form-group">
-                            <label>Seleccione Artista:</label>
-                            <select class="form-control" id='idi'>
-								<option value="00">Artista</option>
-									<?php
-									// for ($i=0;$i<$Cuenta;$i++){
-									?>
-									<option value="<?php// echo $datos_i[$i][0]?>"  ><?php// echo $datos_i[$i][1]?></option>
-								<?php
-								//}
-						?>		
-							</select>							
-							
-                        </div>				
-						
-						<button type="button" class="btn btn-default" onclick="ConsultaMusicaArtista();">Consultar</button>
-					</form>
+			<div class="form-group">
+				<label>Filtrar por:</label>
+				<select class="form-control" id='contenido'>
+					<option value="cancion">Canciones</option>
+					<option value="album">Álbums</option>
+					<option value="interprete">Intérprete</option>
+				</select>
+			</div>
 		</div>
-				
-				<div class="col-lg-3">
-				
-					<form role="form" action='/includes/MusicAdmin/BajaMusica.php' method="POST">
-						<?php
-						// $g = new Genero();
-						// $datos_g=$g->consultaTodosGenero($conex);
-						// $Cuenta=count($datos_g);
-						?>
-                        <div class="form-group">
-                            <label>Seleccione Género:</label>
-                            <select class="form-control" id='idg'>
-								<option value="00">Géneros</option>
-									<?php
-									// for ($i=0;$i<$Cuenta;$i++){
-									?>
-									<option value="<?php// echo $datos_g[$i][0]?>"  ><?php// echo $datos_g[$i][1]?> // <?php// echo $datos_g[$i][2]?></option>
-								<?php
-								//}
-						?>		
-							</select>
-                        </div>				
-						
-						<button type="button" class="btn btn-default" onclick="ConsultaMusicaGenero();">Consultar</button>
-					</form>
-				</div>
-				
-				<div class="col-lg-3">
-				
-					<form role="form" action='/includes/MusicAdmin/BajaMusica.php' method="POST">
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>Nombre: </label>
+				<input class="form-control" id='texto' required/>
+			</div>
+		</div>
 
-                        <div class="form-group">
-                            <label>Nombre de Canción:</label>
-							<input class="form-control" id='nom' required/>
-                        </div>				
-						
-						<button type="button" class="btn btn-default" onclick="ConsultaNomMusica();">Consultar</button>
-					</form>
-				</div>				
+	<?php
+	$g = new Genero();
+	$datos_g=$g->consultaTodosGenero($conex);
+	$Cuenta=count($datos_g);
+	?>
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>Filtrar por Género:</label>
+				<select class="form-control" id='idg'>
+					<option value="0">Todos</option>
+					<?php
+					for ($i=0;$i<$Cuenta;$i++){
+					?>
+					<option value="<?php echo $datos_g[$i][0]?>"  ><?php echo $datos_g[$i][1]?>  // <?php echo $datos_g[$i][2]?></option>
+					<?php
+					}
+					?>		
+				</select>
+			</div>
+		</div>
 	</div>
--->
+	<div class="row">
+		<div class="col-lg-1">
+			<button type="button" class="btn btn-default" onclick="ProcesaMusicaPlaylist();">Buscar</button>
+		</div>
+	</div>
+
 	<div id="ALTAPLAYLISTDIV"></div>
 </div>

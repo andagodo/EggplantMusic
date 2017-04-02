@@ -316,6 +316,81 @@ class ExistenciaCancion
 		$result->execute(array(":idc" => $idc,":idi" => $idi));
 
 		return $result;
-	}	
+	}
+
+	public function buscaNombreCancionGenero($param, $conex)
+	{
+        $nombre= trim($param->getNom_Cancion());
+		$idg= trim($param->getId_Genero());
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero, i.Nom_Interprete, g.Id_Genero FROM Cancion c, Genero g, Interprete i, Pertenece_Cancion pc WHERE c.Nom_Cancion LIKE :nom AND c.Id_Genero = :idg AND c.Id_Genero = g.Id_Genero AND i.Id_Interprete = pc.Id_Interprete AND c.Id_Cancion = pc.Id_Cancion AND c.Activo = 'S'";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre,":idg" => $idg));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+	
+	public function buscaInterpreteCancion($param, $conex)
+	{
+        $nombre= trim($param->getNom_Cancion());
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero, i.Nom_Interprete, g.Id_Genero FROM Cancion c, Genero g, Interprete i, Pertenece_Cancion pc WHERE i.Nom_Interprete LIKE :nom AND c.Id_Genero = g.Id_Genero AND i.Id_Interprete = pc.Id_Interprete AND c.Id_Cancion = pc.Id_Cancion AND c.Activo = 'S'";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+	
+	public function buscaInterpreteCancionGenero($param, $conex)
+	{
+        $nombre= trim($param->getNom_Cancion());
+		$idg= trim($param->getId_Genero());
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero, i.Nom_Interprete, g.Id_Genero FROM Cancion c, Genero g, Interprete i, Pertenece_Cancion pc WHERE i.Nom_Interprete LIKE :nom AND c.Id_Genero = :idg AND c.Id_Genero = g.Id_Genero AND i.Id_Interprete = pc.Id_Interprete AND c.Id_Cancion = pc.Id_Cancion AND c.Activo = 'S'";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre,":idg" => $idg));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
+
+	public function buscaAlbumCancion($param, $conex)
+	{
+        $nombre= trim($param->getNom_Cancion());
+        $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero, i.Nom_Interprete, g.Id_Genero FROM Cancion c, Genero g, Interprete i, Pertenece_Cancion pc, Contiene_Album ca, Album a WHERE a.Nomb_Album LIKE :nom AND c.Id_Genero = g.Id_Genero AND i.Id_Interprete = pc.Id_Interprete AND ca.Id_Pertenece_Cancion = pc.Id_Pertenece_Cancion AND a.Id_Album = ca.Id_Album AND c.Id_Cancion = pc.Id_Cancion AND c.Activo = 'S'";
+        $result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+	
+	public function buscaAlbumCancionGenero($param, $conex)
+	{
+        $nombre= trim($param->getNom_Cancion());
+		$idg= trim($param->getId_Genero());
+		$sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero, i.Nom_Interprete, g.Id_Genero FROM Cancion c, Genero g, Interprete i, Pertenece_Cancion pc, Contiene_Album ca, Album a WHERE a.Nomb_Album LIKE :nom AND c.Id_Genero = :idg AND c.Id_Genero = g.Id_Genero AND i.Id_Interprete = pc.Id_Interprete AND ca.Id_Pertenece_Cancion = pc.Id_Pertenece_Cancion AND a.Id_Album = ca.Id_Album AND c.Id_Cancion = pc.Id_Cancion AND c.Activo = 'S'";
+		$result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre,":idg" => $idg));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+
+	public function ConsultoIDCA($param, $conex)
+	{
+        $idc= trim($param->getId_Cancion());
+        $sql = "SELECT ca.Id_Contiene_Al FROM Cancion c, Pertenece_Cancion pc, Contiene_Album ca WHERE c.Id_Cancion = :idc AND ca.Id_Pertenece_Cancion = pc.Id_Pertenece_Cancion AND c.Id_Cancion = pc.Id_Cancion AND c.Activo = 'S'";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idc" => $idc));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }	
+	
 }
 ?>

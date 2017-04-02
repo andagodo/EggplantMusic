@@ -5,19 +5,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/persistencia/ExistenciaPlaylist.class
 class Playlist
 {
 	private $Id_Playlist;
-  private $Nom_PlayList;
+	private $Nom_PlayList;
 	private $Fech_Creacion;
-  private $Activo;
-  private $Fech_Activo;
+	private $Activo;
+	private $Fech_Activo;
+	private $Playlist_Tags;
 
 
-    function __construct($idp='',$nom='',$fech='',$act='',$fecha='')
+    function __construct($idp='',$nom='',$fech='',$act='',$fecha='',$pltags='')
     {
 		$this->Id_Playlist= $idp;
-    $this->Nom_PlayList= $nom;
+		$this->Nom_PlayList= $nom;
 		$this->Fech_Creacion= $fech;
-    $this->Activo= $act;
-    $this->Fech_Activo= $fecha;
+		$this->Activo= $act;
+		$this->Fech_Activo= $fecha;
+		$this->Playlist_Tags=$pltags;
 
     }
     
@@ -47,7 +49,11 @@ class Playlist
     {
       $this->Fech_Activo= $fecha;
     }
-
+   
+   public function setPlaylist_Tags($pltags)
+    {
+      $this->Playlist_Tags= $pltags;
+    }
     //Métodos get
 	
     public function getId_Playlist()
@@ -74,7 +80,11 @@ class Playlist
     {
       return $this->Fech_Activo;
     }
-
+	
+    public function getPlaylist_Tags()
+    {
+      return $this->Playlist_Tags;
+    }
 
 	
     //Otros Métodos

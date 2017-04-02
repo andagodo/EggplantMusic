@@ -54,7 +54,7 @@ if(! isset($_SESSION["mai"])){
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-comments fa-5x"></i>
+                                        <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">
@@ -64,7 +64,7 @@ if(! isset($_SESSION["mai"])){
 												echo $datos1[0][0];
 											?>
 										</div>
-                                        <div>Canciones sin Intérprete!</div>
+                                        <div>Álbum activos!</div>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ if(! isset($_SESSION["mai"])){
 											?>										
 										
 										</div>
-                                        <div>Canciones sin Álbum!</div>
+                                        <div>Intérpretes registrados!</div>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@ if(! isset($_SESSION["mai"])){
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                        <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">
@@ -122,7 +122,7 @@ if(! isset($_SESSION["mai"])){
 											?>										
 										
 										</div>
-                                        <div>Álbum sin Canciones!</div>
+                                        <div>Canciones deshabilitadas!</div>
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@ if(! isset($_SESSION["mai"])){
 											?>											
 										
 										</div>
-                                        <div>Intérpretes sin Canciones!</div>
+                                        <div>Tickets de Soporte!</div>
                                     </div>
                                 </div>
                             </div>

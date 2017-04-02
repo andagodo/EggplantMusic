@@ -58,3 +58,4 @@
 /////////////// CAMPOS NUEVOS EN BD ////////////////////
 - Usr_Sistema - Apellido_Usr_Sist
 - Usr_Sistema - Clave
+- Playlist - Playlist_Tags
