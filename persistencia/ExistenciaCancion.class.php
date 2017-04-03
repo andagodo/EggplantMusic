@@ -390,7 +390,19 @@ class ExistenciaCancion
 		$resultados=$result->fetchAll();
 
        return $resultados;
-    }	
+    }
+	
+	public function BuscoCancionEnPL($param, $conex)
+	{
+        $nombre= trim($param->getNom_Cancion());
+		$sql = "SELECT pl.* FROM PlayList pl, Cancion c, Pertenece_Cancion pc, Contiene_Album ca, Tiene_PlayList tp WHERE pl.Id_PlayList = tp.Id_PlayList AND tp.Id_Contiene_Al = ca.Id_Contiene_Al AND ca.Id_Pertenece_Cancion = pc.Id_Pertenece_Cancion AND pc.Id_Cancion = c.Id_Cancion AND c.Nom_Cancion LIKE :nom";
+		$result = $conex->prepare($sql);
+		$nombre = "%".$nombre."%";
+	    $result->execute(array(":nom" => $nombre));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
 	
 }
 ?>

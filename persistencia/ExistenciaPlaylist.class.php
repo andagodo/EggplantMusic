@@ -79,6 +79,64 @@ class ExistenciaPlaylist
 		$resultados=$result->fetchAll();
        return $resultados;
     }	
+
+	public function BuscoNombrePlaylist($param, $conex)
+	{  
+		$nom= trim($param->getNom_PlayList());
+        $sql = "SELECT * FROM PlayList WHERE Nom_PlayList=:nom";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":nom" => $nom));
+		$resultados=$result->fetchAll();
+		return $resultados;
+    }
+	
+	public function BuscoLikeNombrePlaylist($param, $conex)
+	{  
+		$nom= trim($param->getNom_PlayList());
+        $sql = "SELECT * FROM PlayList WHERE Nom_PlayList LIKE :nom";
+        $result = $conex->prepare($sql);
+		$nom = "%".$nom."%";
+	    $result->execute(array(":nom" => $nom));
+		$resultados=$result->fetchAll();
+		return $resultados;
+    }
+
+	public function CuentaCancionesPlaylist($param,$conex)
+	{
+		$idpl= trim($param->getId_Playlist());
+        $sql = "SELECT COUNT(Id_Playlist) FROM Tiene_Playlist WHERE Id_Playlist = :idpl";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idpl" => $idpl));
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
+	
+	public function ConsultoNombrePL($param,$conex)
+	{
+		$idpl= trim($param->getId_Playlist());
+        $sql = "SELECT Nom_PlayList FROM PlayList WHERE Id_Playlist = :idpl";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idpl" => $idpl));
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
+	
+	
+	public function UpdatePlaylist($param,$conex)
+	{
+		$idpl= trim($param->getId_Playlist());
+		$nom= trim($param->getNom_PlayList());
+		$act=trim($param->getActivo());
+		$fecha=trim($param->getFech_Activo());
+		$pltags=trim($param->getPlaylist_Tags());
+        $sql = "UPDATE PlayList SET Nom_PlayList = :nom, Activo = :act, Fech_Activo = :fecha, Playlist_Tags = :pltags WHERE Id_PlayList = :idpl";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idpl" => $idpl, ":nom" => $nom, ":act" => $act, ":fecha" =>$fecha, ":pltags" =>$pltags));
+       return $result;
+    }	
+
 	
 }
 ?>

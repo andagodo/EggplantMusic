@@ -127,7 +127,14 @@ class PerteneceCancion
       $datos= $pu->consultaTodosAlbum($conex);
       return $datos;
     }	
-*/	
+*/
+
+	public function DatosCancionPC($conex)
+    {
+      $pu= new ExistenciaPerteneceCancion;
+      $datos= $pu->DatosCancionPC($this, $conex);
+      return $datos;
+    }		
 
 }
 ?>

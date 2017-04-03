@@ -79,7 +79,19 @@ class ExistenciaContieneAlbum
 		$resultados=$result->fetchAll();
 		return $resultados;
     }
-*/	
+*/
+
+	public function ConsultaIDPerteneceC($param, $conex)
+	{
+		$idca= trim($param->getId_Contiene_Al());
+        $sql = "SELECT Id_Pertenece_Cancion FROM Contiene_Album WHERE Id_Contiene_Al = :idca";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idca" => $idca));
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }	
 
 }
 ?>

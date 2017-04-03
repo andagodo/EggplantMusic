@@ -95,7 +95,18 @@ class ExistenciaPerteneceCancion
 		$resultados=$result->fetchAll();
 		return $resultados;
     }
-*/	
+*/
+
+	public function DatosCancionPC($param, $conex)
+	{
+        $idpc= trim($param->getId_Pertenece_Cancion());   
+        $sql = "SELECT c.Nom_Cancion, c.Dur_Cancion, i.Nom_Interprete, g.Nom_Genero FROM Cancion c, Interprete i, Genero g, Pertenece_Cancion pc WHERE pc.Id_Pertenece_Cancion = :idpc AND i.Id_Interprete = pc.Id_Interprete AND c.Id_Cancion = pc.Id_Cancion AND c.Id_Genero = g.Id_Genero";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idpc" => $idpc));
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
 
 }
 ?>

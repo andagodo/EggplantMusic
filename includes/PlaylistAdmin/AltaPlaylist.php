@@ -58,7 +58,22 @@ if(! isset($_SESSION["mai"])){
 	</h3>
 	<div class="row">
 		<div class="col-lg-8">
+		<?php
+		if (empty ($_SESSION['playlist'])){
+			?>
 			<div id="CREACIONPLAYLISTDIV"></div>
+			<?php
+		}else{
+			?>
+			<script>
+				$(document).ready(function() {
+					$("#CREACIONPLAYLISTDIV").load('/includes/PlaylistAdmin/procesa/ProcesaCreacionPlaylist.php');
+				});
+			</script>
+			<div id="CREACIONPLAYLISTDIV"></div>
+			<?php
+		}
+		?>
 		</div>
 	</div>
 	<div class="page-header"></div>

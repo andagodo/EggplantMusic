@@ -349,18 +349,22 @@
     <section id="contacto">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-9 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Contáctenos!</h2>
                     <hr class="primary">
                     <p>Puedes comunicarte con nosotros por cualquier de los siguientes métodos. Ya sea por consultas, soporte de nuestro servicio o información, escríbenos y nos comunicaremos contigo a la brevedad!</p>
                 </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
+                <div class="col-lg-3 col-lg-offset-2 text-center">
                     <i class="fa fa-phone fa-3x sr-contact"></i>
                     <p>+598 2480 1234</p>
                 </div>
-                <div class="col-lg-4 text-center">
+                <div class="col-lg-3 text-center">
                     <i class="fa fa-envelope-o fa-3x sr-contact"></i>
                     <p><a href="mailto:contacto@eggplantblue.com.uy">contacto@eggplantblue.com.uy</a></p>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <i class="fa fa-question fa-3x sr-contact"></i>
+                    <p><a href="/front_presentacion/ayudafaq.php">Ayuda / FAQ</a></p>
                 </div>
             </div>
         </div>

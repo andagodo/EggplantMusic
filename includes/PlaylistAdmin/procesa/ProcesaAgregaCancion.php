@@ -10,13 +10,14 @@ $conex = conectar();
 $contenido=trim($_POST['contenido']);
 $idg=trim($_POST['idg']);
 $texto=trim($_POST['texto']);
+$idpl=trim($_POST['idpl']);
 
-if (empty ($_SESSION['playlist'])){
-	$_SESSION['playlist'] = "";
+if (empty ($_SESSION['playlistAgregoC'])){
+	$_SESSION['playlistAgregoC'] = "";
 	$playlist = "";
 }
-if (empty ($_SESSION['contador'])){
-	$_SESSION['contador'] = 0;
+if (empty ($_SESSION['contadorAgregoC'])){
+	$_SESSION['contadorAgregoC'] = 0;
 }
 
 if ($contenido == "cancion"){
@@ -61,7 +62,7 @@ if ($contenido == "cancion"){
 <script src="/estilos/js/jquery.form.js"></script>
 <script>
 	(function() {
-		var respuesta = $('#CREACIONPLAYLISTDIV');
+		var respuesta = $('#CANCIONESNUEVASPLAYLIST');
 	$('form').ajaxForm({
 		beforeSend: function() {
 			respuesta.empty();
@@ -75,7 +76,7 @@ if ($contenido == "cancion"){
 
 <div class="row">
 	<div class="col-lg-10">	
-	<form action='/includes/PlaylistAdmin/procesa/ProcesaCreacionPlaylist.php' method="POST" enctype="multipart/form-data">
+	<form action='/includes/PlaylistAdmin/procesa/ProcesaAgregaCancionPlaylist.php' method="POST" enctype="multipart/form-data">
 		<div class="table-responsive">
 			<table class="table table-hover table-striped">
 				<div class="form-group">
@@ -110,11 +111,12 @@ if ($contenido == "cancion"){
 							<td><?php echo $datos_ba[0][4]?></td>								
 							<td><?php echo $datos_ba[$i][3]?></td>
 						</tr>
+						<input class="form-control" type="hidden" name='idpl' value="<?php echo $idpl;?>" />
 						<?php
 						}
 						?>
 					</tbody>
-					<input type="submit" class="btn btn-default" value="Agregar a Playlist"/>
+					<input type="submit" class="btn btn-default" value="Listar canciones para agregar"/>
 				</form>
 				</div>	
 			</table>

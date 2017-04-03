@@ -127,6 +127,40 @@ class Playlist
       return $datos;
     }
 	
+	public function BuscoNombrePlaylist($conex)
+    {
+      $pu= new ExistenciaPlaylist;
+      $datos= $pu->BuscoNombrePlaylist($this, $conex);
+      return $datos;
+    }
+
+	public function BuscoLikeNombrePlaylist($conex)
+    {
+      $pu= new ExistenciaPlaylist;
+      $datos= $pu->BuscoLikeNombrePlaylist($this, $conex);
+      return $datos;
+    }
+	
+	public function CuentaCancionesPlaylist($conex)
+    {
+      $pu= new ExistenciaPlaylist;
+      $datos= $pu->CuentaCancionesPlaylist($this, $conex);
+      return $datos;
+    }
+	
+	public function ConsultoNombrePL($conex)
+    {
+      $pu= new ExistenciaPlaylist;
+      $datos= $pu->ConsultoNombrePL($this, $conex);
+      return $datos;
+    }
+	
+	public function UpdatePlaylist($conex)
+    {
+      $pu= new ExistenciaPlaylist;
+      $datos= $pu->UpdatePlaylist($this, $conex);
+      return $datos;
+    }	
 	
 }
 ?>

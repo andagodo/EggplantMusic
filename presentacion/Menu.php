@@ -7,7 +7,6 @@ $conex = conectar(); // Almacela la función "conectar" que se encuentra en '/lo
 ?>
 <!-- 
 <script src="http://malsup.github.com/jquery.form.js"></script>
-
 -->
 
 <!-- <script src="/estilos/js/jquery.js"></script>	 Llama al archivo de JavaScript externo jquery.js que contiene información de Bootstrap -->
@@ -167,7 +166,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         </ul>
                     </li>
 					
-					
                     <li id="menumusica">
                         <a href="javascript:;" data-toggle="collapse" data-target="#musica"><i class="fa fa-fw fa-arrows-v"></i> Música <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="musica" class="collapse">
@@ -186,7 +184,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         </ul>
                     </li>
 		
-
                     <li id="menugenero">
                         <a href="javascript:;" data-toggle="collapse" data-target="#genero"><i class="fa fa-fw fa-arrows-v"></i> Géneros <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="genero" class="collapse">
@@ -202,7 +199,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         </ul>
                     </li>
 
-					
                     <li id="menuinterprete">
                         <a href="javascript:;" data-toggle="collapse" data-target="#interprete"><i class="fa fa-fw fa-arrows-v"></i> Intérpretes <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="interprete" class="collapse">
@@ -218,20 +214,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         </ul>
                     </li>					
 					
-<!--					
-                    <li id="menuasocia">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#asocia"><i class="fa fa-fw fa-arrows-v"></i> Asociaciones <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="asocia" class="collapse">
-							<li>
-								<a href="#" id="asociainterprete"><i class="fa fa-fw fa-bar-chart-o"></i> Canción - Interprete</a>
-							</li>
-							<li>
-								<a href="#" id="asociaalbum"><i class="fa fa-fw fa-edit"></i> Canción - Álbum</a>
-							</li>
-                        </ul>
-                    </li>
--->					
-					
                     <li id="menuplaylist">
                         <a href="javascript:;" data-toggle="collapse" data-target="#playlist"><i class="fa fa-fw fa-arrows-v"></i> Playlists <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="playlist" class="collapse">
@@ -239,13 +221,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 								<a href="#" id="altaplaylist"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Playlist</a>
 							</li>
 							<li>
-								<a href="#" id="bajaplaylist"><i class="fa fa-fw fa-edit"></i>Baja Playlist</a>
-							</li>
-							<li>
-								<a href="#" id="modificaplaylist"><i class="fa fa-fw fa-gear"></i>Modifica Playlist</a>
-							</li>
-							<li>
-								<a href="#" id="estadisticas"><i class="fa fa-fw fa-edit"></i>Estadisticas</a>
+								<a href="#" id="modificaplaylist"><i class="fa fa-fw fa-gear"></i>Modificar Playlist</a>
 							</li>
                         </ul>
                     </li>					
@@ -262,27 +238,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                         </ul>
                     </li>							
 					
+					<li id="menuestadisticas">
+                        <a href="#" id="estadisticas"><i class="fa fa-fw fa-bar-chart-o"></i>Estadisticas</a>
+                    </li>				
 					
-					
-					
- <!--                   <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-					
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-					
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
-					
--->	
-	
                 </ul>
             </div>
 			<!-------------------------------------- 	FIN Barra lateral izquierda -------------------------------------------->			

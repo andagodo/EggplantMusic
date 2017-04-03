@@ -117,7 +117,13 @@ class ContieneAlbum
       $datos= $pu->consultaTodosAlbum($conex);
       return $datos;
     }	
-*/	
+*/
+
+  public function ConsultaIDPerteneceC($conex)
+  {
+      $pu= new ExistenciaContieneAlbum;
+      return $pu->ConsultaIDPerteneceC($this, $conex);
+    } 
 
 }
 ?>

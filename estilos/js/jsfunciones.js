@@ -467,6 +467,107 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+	$('#descartaCancionPlaylistID').click(function(){
+		$("#DASH").load('/includes/PlaylistAdmin/procesa/DescartaAgregaCancionPlaylist.php');
+    });
+});
+
+
+
+function ConsultaModPlaylist(){
+	var n=document.getElementById("nompl").value
+	var c=document.getElementById("cancion").value	
+	var url="/includes/PlaylistAdmin/procesa/BuscaModPlaylist.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{nompl:n,cancion:c},
+		success:function(datos){
+			$("#PROCESAMODPLAYLIST").html(datos);
+		}
+	}
+	
+	)
+}
+
+
+function AgregarCancionesPlaylist(){
+	var i=document.getElementById("idpl").value
+	var url="/includes/PlaylistAdmin/procesa/AgregaCancionPlaylist.php"	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{idpl:i},
+		success:function(datos){
+			$("#AGREGACANCIONPLAYLIST").html(datos);
+		}
+	}
+	
+	)
+}
+
+
+function AgregaCancionPlaylist(){
+	var c=document.getElementById("contenido").value
+	var t=document.getElementById("texto").value
+	var g=document.getElementById("idg").value
+	var i=document.getElementById("idpl").value
+	var url="/includes/PlaylistAdmin/procesa/ProcesaAgregaCancion.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{contenido:c,texto:t,idg:g,idpl:i},
+		success:function(datos){
+			$("#AGREGACANCIONDIV").html(datos);
+		}
+	}
+	
+	)
+}
+
+function ModCancionPlaylist(){
+	var i=document.getElementById("idpl").value
+	var url="/logica/LogicaAgregaCPlaylist.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{idpl:i},
+		success:function(datos){
+			$("#DASH").html(datos);
+		}
+	}
+	
+	)
+}
+
+/*
+
+function ModPlaylist(){
+	var i=document.getElementById("idpl").value
+	var url="/includes/PlaylistAdmin/procesa/ProcesaModPlaylist.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{idpl:i},
+		success:function(datos){
+			$("#PROCESAMODPLAYLIST").html(datos);
+		}
+	}
+	
+	)
+}
+*/
+
 /*
 Lo usaba cuando hacía bajas de album mediante el formulario Baja Album
 

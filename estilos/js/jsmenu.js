@@ -261,12 +261,6 @@ Usaba las asociaciones antes de tener el manú de carga música
             });
         });		
 		
-		$(document).ready(function() {
-            $('#bajaplaylist').click(function(){
-                $("#DASH").load('/includes/PlaylistAdmin/BajaPlaylist.php');
-
-            });
-        });
 
         $(document).ready(function() {
             $('#modificaplaylist').click(function(){

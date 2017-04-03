@@ -72,7 +72,20 @@ class TienePlaylist
       $datos= $pu->consultaTodosAlbum($conex);
       return $datos;
     }	
-*/	
+*/
 
+	public function consultaIDContieneAl($conex)
+	{
+      $pu= new ExistenciaTienePlaylist;
+      return $pu->consultaIDContieneAl($this, $conex);
+    }
+	
+
+	public function EliminaCancionPL($conex)
+	{
+      $pu= new ExistenciaTienePlaylist;
+      return $pu->EliminaCancionPL($this, $conex);
+    }
+	
 }
 ?>

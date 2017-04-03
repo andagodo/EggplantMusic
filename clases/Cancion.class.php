@@ -303,6 +303,13 @@ class Cancion
       $pu= new ExistenciaCancion;
       $datos= $pu->ConsultoIDCA($this,$conex);
       return $datos;
+    }
+	
+	public function BuscoCancionEnPL($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->BuscoCancionEnPL($this,$conex);
+      return $datos;
     }	
 	
 }

@@ -39,9 +39,28 @@ class ExistenciaTienePlaylist
         $result->execute(array(":idpl" => $idpl));
         $resultados=$result->fetchAll();
        return $resultados;
+    }  
+	
+	
+    public function consultaIDContieneAl($param, $conex)
+    {
+        $idpl= trim($param->getId_Playlist());
+        $sql = "SELECT Id_Contiene_Al FROM Tiene_Playlist WHERE Id_Playlist = :idpl ";
+        $result = $conex->prepare($sql);
+        $result->execute(array(":idpl" => $idpl));
+        $resultados=$result->fetchAll();
+       return $resultados;
     }   
 
-
+    public function EliminaCancionPL($param, $conex)
+    {
+        $idpl= trim($param->getId_Playlist());
+		$idca= trim($param->getId_Contiene_Al());
+        $sql = "DELETE FROM Tiene_PlayList WHERE Id_PlayList = :idpl AND Id_Contiene_Al = :idca";
+        $result = $conex->prepare($sql);
+        $result->execute(array(":idpl" => $idpl, ":idca" => $idca));
+       return $result;
+    }   
 
 }
 ?>

@@ -10,8 +10,9 @@ $conex = conectar();
 <script src="/estilos/js/jsfunciones.js"></script>
 <?php
 $Cuenta = 0;
+$idpl=trim($_POST['idpl']);
 
-if (!isset($_POST['idc']) && empty ($_SESSION['playlist'])){
+if (!isset($_POST['idc']) && empty ($_SESSION['playlistAgregoC'])){
 	?>
 	<script language="javascript">
 		window.alert("No seleccionaste ninguna canción para agregar a la playlist.\nPor favor, selecciona canciones.");
@@ -27,15 +28,14 @@ if (!isset($_POST['idc']) && empty ($_SESSION['playlist'])){
 		$cuentoIDC = count ($Variosidc);
 	}
 	
-	$contador = $_SESSION['contador'];
+	$contador = $_SESSION['contadorAgregoC'];
 	for($c=0;$c<$cuentoIDC;$c++){
-		$_SESSION['playlist'][$contador] = $Variosidc[$c];
+		$_SESSION['playlistAgregoC'][$contador] = $Variosidc[$c];
 		$contador++;
 	}
-	$_SESSION['contador'] = $contador;
-	$IDCMostrar = $_SESSION['playlist'];
+	$_SESSION['contadorAgregoC'] = $contador;
+	$IDCMostrar = $_SESSION['playlistAgregoC'];
 ?>
-
 <div class="table-responsive">
 	<table class="table table-bordered table-hover table-striped">
 		<div class="form-group">
@@ -45,7 +45,6 @@ if (!isset($_POST['idc']) && empty ($_SESSION['playlist'])){
 					<th>Duración</th>
 					<th>Interprete</th>
 					<th>Género</th>
-					<th>Quitar canción</th>
 				</tr>
 			</thead>
 			<?php
@@ -76,20 +75,21 @@ if (!isset($_POST['idc']) && empty ($_SESSION['playlist'])){
 						<td><?php echo $dur?></td>
 						<td><?php echo $interprete[$i][0]?></td>
 						<td><?php echo $genero[$i][0]?></td>
-						<td><button id="" class="btn btn-xs btn-default" >Quitar</button></td>
 					</tr>
 					
 				<?php
 			}
 			$c++;
 			}
-			$_SESSION['playlistPronta']=$idca;
+			$_SESSION['playlistProntaAgregoC']=$idca;
 			?>
 				</tbody>
+			<input type="hidden" id="idpl" value="<?php echo $idpl?>">
 		</div>	
 	</table>
-	<button id="descartaplaylistID" class="btn btn-default" >Descartar Playlist</button>
-	<button type="button" class="btn btn-default" onclick="AltaPlaylist();"><b><u>Crear Playlist!</u></b></button>
+	<button id="descartaCancionPlaylistID" class="btn btn-default" >Descartar Acciones</button>
+	<button type="button" class="btn btn-default" onclick="ModCancionPlaylist();"><b><u>Agregar a Playlist!</u></b></button>
+	
 </div>
 <?php
 }
