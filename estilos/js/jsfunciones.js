@@ -548,6 +548,30 @@ function ModCancionPlaylist(){
 	)
 }
 
+
+function GeneraReporte(){
+	var o=document.getElementById("objeto").value
+	var a=document.getElementById("accion").value
+	var t=document.getElementById("texto").value
+	var c=document.getElementById("cantidad").value
+	var fi=document.getElementById("fechaini").value
+	var ff=document.getElementById("fechafin").value
+	var url="/includes/procesa/ProcesaReporte.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{objeto:o,accion:a,texto:t,cantidad:c,fechaini:fi,fechafin:ff},
+		success:function(datos){
+			$("#REPORTE").html(datos);
+		}
+	}
+	
+	)
+}
+
+
 /*
 
 function ModPlaylist(){

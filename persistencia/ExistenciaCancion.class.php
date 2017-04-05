@@ -157,7 +157,7 @@ class ExistenciaCancion
 		$result->execute(array(":idc" => $idc));
 		$resultados=$result->fetchAll();
 		return $resultados;
-	}				
+	}	
 	
 /*	
 	public function consultaPerteneceCancion($param, $conex)
@@ -403,6 +403,28 @@ class ExistenciaCancion
 
        return $resultados;
     }
+	
+	public function consCancion($param, $conex)
+	{
+		$idc= trim($param->getId_Cancion());
+		$sql = "SELECT * FROM Cancion WHERE Id_Cancion =:idc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc));
+		$resultados=$result->fetchAll();
+		return $resultados;
+	}
+/*	
+	public function ReporteCancion($param, $conex)
+	{
+		$idc= trim($param->getId_Cancion());
+		$sql = "SELECT c.Id_Cancion, c.Nom_Cancion, i.Nom_Interprete, c.Dur_Cancion, g.Nom_Genero, a.Nomb_Album, c.Activo FROM Cancion c, Genero g, Interprete i, Pertenece_Cancion pc, Contiene_Album ca, Album a WHERE c.Id_Cancion = :idc AND c.Id_Genero = g.Id_Genero AND i.Id_Interprete = pc.Id_Interprete AND ca.Id_Pertenece_Cancion = pc.Id_Pertenece_Cancion AND a.Id_Album = ca.Id_Album AND c.Id_Cancion = pc.Id_Cancion";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idc" => $idc));
+		$resultados=$result->fetchAll();
+		return $resultados;
+	}
+*/	
+	
 	
 }
 ?>

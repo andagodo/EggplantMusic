@@ -271,7 +271,7 @@ Usaba las asociaciones antes de tener el manú de carga música
 		
 		$(document).ready(function() {
             $('#estadisticas').click(function(){
-                $("#DASH").load('/includes/PlaylistAdmin/EstadisticaPlaylist.php');
+                $("#DASH").load('/includes/Estadistica.php');
 
             });
         });

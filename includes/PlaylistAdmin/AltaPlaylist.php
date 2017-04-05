@@ -45,7 +45,7 @@ if(! isset($_SESSION["mai"])){
 			<label>Tags de Playlist:</label>
 			<input class="form-control" id='tags' placeholder="Separados con un numeral Ej: Rock#PerlJam#Coldplay" required/>
 		</div>
-		<div class="col-lg-1">
+		<div class="col-lg-2">
 			<label>Playlist Activa?:</label>
 			<select class="form-control" id='activa'>
 				<option value="S" selected>Si</option>

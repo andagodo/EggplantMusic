@@ -310,8 +310,22 @@ class Cancion
       $pu= new ExistenciaCancion;
       $datos= $pu->BuscoCancionEnPL($this,$conex);
       return $datos;
-    }	
+    }
 	
+  public function consCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->consCancion($this, $conex);
+      return $datos;
+    }
+/*
+  public function ReporteCancion($conex)
+    {
+      $pu= new ExistenciaCancion;
+      $datos= $pu->ReporteCancion($this, $conex);
+      return $datos;
+    }
+*/	
 }
 ?>
 

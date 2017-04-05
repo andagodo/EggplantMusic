@@ -78,8 +78,6 @@ class Admin
       $this->Clave= $cla;
     }		
 	
-	
-    // la profesora habia puesto una funcion del tipo set que era "habilitado"
     
     //Métodos get
     
