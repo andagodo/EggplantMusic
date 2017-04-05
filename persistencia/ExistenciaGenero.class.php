@@ -12,11 +12,11 @@ class ExistenciaGenero
 		$activ = $param->getActivo();
 		$feactivo = $param->getFech_Activo();
 		
-        $sql = "INSERT INTO Genero (Nom_Genero,Desc_Genero, Activo, Fech_Activo) VALUES (:nombre, :descripcion, :activ, :feactivo)";
+        $sql = "INSERT INTO Genero (Nom_Genero,Desc_Genero, Activo, Fech_Activo, Usuario) VALUES (:nombre, :descripcion, :activ, :feactivo, :usu)";
       
 
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nomg, ":descripcion" => $desc, ":activ" => $activ, ":feactivo" => $feactivo));
+		$result->execute(array(":nombre" => $nomg, ":descripcion" => $desc, ":activ" => $activ, ":feactivo" => $feactivo, ":usu" => $_SESSION["mai"]));
         
         
         if($result)
@@ -33,9 +33,9 @@ class ExistenciaGenero
 	public function eliminaGenero($param, $conex)
 	{
 		$idg = trim($param->getId_Genero());
-		$sql = "UPDATE Genero SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Genero = :idg";
+		$sql = "UPDATE Genero SET Activo = 'N', Fech_Activo = getdate(), Usuario = :usu WHERE Id_Genero = :idg";
 		$result = $conex->prepare($sql);
-		$result->execute(array(":idg" => $idg));
+		$result->execute(array(":idg" => $idg, ":usu" => $_SESSION["mai"]));
 		return $result;
 	}			
 
@@ -44,9 +44,9 @@ class ExistenciaGenero
 		$idg = trim($param->getId_Genero());
 		$nom = trim($param->getNom_Genero());
 		$desc = trim($param->getDesc_Genero());
-		$sql = "UPDATE Genero SET Nom_Genero = :nom, Desc_Genero = :desc WHERE Id_Genero = :idg";
+		$sql = "UPDATE Genero SET Nom_Genero = :nom, Desc_Genero = :desc, Usuario = :usu WHERE Id_Genero = :idg";
 		$result = $conex->prepare($sql);
-		$result->execute(array(":idg" => $idg,":nom" => $nom, ":desc" => $desc));
+		$result->execute(array(":idg" => $idg,":nom" => $nom, ":desc" => $desc, ":usu" => $_SESSION["mai"]));
 		return $result;
 	}	
 	

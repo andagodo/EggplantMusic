@@ -240,7 +240,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 					
 					<li id="menuestadisticas">
                         <a href="#" id="estadisticas"><i class="fa fa-fw fa-bar-chart-o"></i>Estadisticas</a>
-                    </li>				
+                    </li>
+					
+					<li id="menuauditoria">
+                        <a href="#" id="auditoria"><i class="fa fa-fw fa-bar-chart-o"></i>Auditoría</a>
+                    </li>						
 					
                 </ul>
             </div>

@@ -276,6 +276,13 @@ Usaba las asociaciones antes de tener el manú de carga música
             });
         });
 		
+		$(document).ready(function() {
+            $('#auditoria').click(function(){
+                $("#DASH").load('/includes/SAdmin/Auditoria.php');
+
+            });
+        });
+		
         $(document).ready(function() {
             $('#respticket').click(function(){
                 $("#DASH").load('/includes/TicketAdmin/RespondeTicket.php');

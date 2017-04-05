@@ -571,6 +571,23 @@ function GeneraReporte(){
 	)
 }
 
+function GeneraAuditoria(){
+	var fi=document.getElementById("fechaini").value
+	var ff=document.getElementById("fechafin").value
+	var url="/includes/SAdmin/procesa/ProcesaAuditoria.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{fechaini:fi,fechafin:ff},
+		success:function(datos){
+			$("#GENERARAUDITORIA").html(datos);
+		}
+	}
+	
+	)
+}
 
 /*
 
