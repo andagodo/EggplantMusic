@@ -13,9 +13,9 @@ class ExistenciaInterprete
 		$activ = $param->getActivo();
 		$feactivo = $param->getFech_Activo();
 		
-		$sql = "INSERT INTO Interprete (Nom_Interprete, Link_Foto_Inter, Pais_Interprete, Activo, Fech_Activo) VALUES (:nombre, :foto, :pais, :activ, :feactivo)";
+		$sql = "INSERT INTO Interprete (Nom_Interprete, Link_Foto_Inter, Pais_Interprete, Activo, Fech_Activo, Usuario) VALUES (:nombre, :foto, :pais, :activ, :feactivo, :usu)";
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":foto" => $fot, ":pais" => $pais, ":activ" => $activ, ":feactivo" => $feactivo));
+		$result->execute(array(":nombre" => $nom, ":foto" => $fot, ":pais" => $pais, ":activ" => $activ, ":feactivo" => $feactivo, ":usu" => $_SESSION["mai"]));
         
         $lastId = $conex->lastInsertId('Interprete');
 		

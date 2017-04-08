@@ -27,11 +27,11 @@ class ExistenciaAdmin
         
         //Genera la sentencia a ejecutar
 		//La sql ES UN EJEMPLO LE FALTA todos los campos, depende de sus atributos
-        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Fech_Activo, Apellido_Usr_Sist, Clave) VALUES (:tipousr, :nombre, :mail, :pass, :fechaalta, :activ, :feactivo, :apell, :cla)";
+        $sql = "INSERT INTO Usr_Sistema (Tipo_Usr_Sist, Nombre_Usr_Sist, Mail_Usr_Sist, Pass_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Fech_Activo, Apellido_Usr_Sist, Clave, Usuario) VALUES (:tipousr, :nombre, :mail, :pass, :fechaalta, :activ, :feactivo, :apell, :cla, :usu)";
       
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":tipousr" => $tus, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal, ":activ" => $activ, ":feactivo" => $feactivo, ":apell" => $apell, ":cla" => $cla));
+		$result->execute(array(":tipousr" => $tus, ":nombre" => $nomu, ":mail" => $mus, ":pass" => $pass, ":fechaalta" => $feal, ":activ" => $activ, ":feactivo" => $feactivo, ":apell" => $apell, ":cla" => $cla, ":usu" => $_SESSION["mai"]));
         
         //Para saber si ocurrió un error
         if($result)
@@ -286,7 +286,7 @@ class ExistenciaAdmin
 	public function consultaTipoAdmin($param, $conex)
 	{
 		$mai= trim($param->getMail_Usr_Sist());
-		$sql = "SELECT Tipo_Usr_Sist, Nombre_Usr_Sist, Apellido_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist=:mail AND Activo = 'S'";
+		$sql = "SELECT Tipo_Usr_Sist, Nombre_Usr_Sist, Apellido_Usr_Sist, Id_Usr_Sistema FROM Usr_Sistema WHERE Mail_Usr_Sist=:mail AND Activo = 'S'";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":mail" => $mai));
 		return $result->fetchAll();

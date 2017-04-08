@@ -13,11 +13,11 @@ class ExistenciaCuenta
 		$activ = $param->getActivo();
 		$feactivo = $param->getFech_Activo();
 		
-        $sql = "INSERT INTO Cuenta (Tipo,Cant_Playlist, Precio, Activo, Fech_Activo) VALUES (:tipo, :playlist, :precio, :activo, :feactivo)";
+        $sql = "INSERT INTO Cuenta (Tipo,Cant_Playlist, Precio, Activo, Fech_Activo, Usuario) VALUES (:tipo, :playlist, :precio, :activo, :feactivo, :usu)";
       
 
 		$result = $conex->prepare($sql);
-		$result->execute(array(":tipo" => $tipo, ":playlist" => $play, ":precio" => $precio, ":activo" => $activ, ":feactivo" => $feactivo));
+		$result->execute(array(":tipo" => $tipo, ":playlist" => $play, ":precio" => $precio, ":activo" => $activ, ":feactivo" => $feactivo, ":usu" => $_SESSION["mai"]));
         
         
         if($result)

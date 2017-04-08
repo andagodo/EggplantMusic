@@ -1,5 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/logout.php';
+$_SESSION['LAST_ACTIVITY'] = time();
 session_start();
 $conex = conectar();
 ?>

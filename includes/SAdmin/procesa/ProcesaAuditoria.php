@@ -12,6 +12,14 @@ $feini = date_format($fechainicio, 'd/m/Y');
 $fechafin=date_create($_POST['fechafin']);
 $fefin = date_format($fechafin, 'd/m/Y');
 
+if ($fechainicio >= $fechafin ){
+	?>
+	<script language="javascript">
+		window.alert("La fecha de inicio debe de ser menor a la final.");
+	</script>
+	<?php
+}else{
+	
 $log = new Log_Transacciones ($feini,$fefin);
 $Reporte = $log->ConsultaAuditoria($conex);
 $Cuenta = count($Reporte);
@@ -65,3 +73,5 @@ $Cuenta = count($Reporte);
 		</form>
 	</div>
 </div>
+<?php
+}

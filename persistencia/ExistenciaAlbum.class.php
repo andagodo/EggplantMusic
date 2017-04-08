@@ -12,10 +12,10 @@ class ExistenciaAlbum
 		$activ = $param->getActivo();
 		$feactivo = $param->getFech_Activo();
 
-        $sql = "INSERT INTO Album ( Nomb_Album, Anio_Album, Link_Foto_Album, Activo, Fech_Activo) VALUES ( :nombre, :anioalbum, :linkalbum, :activ, :feactivo)";
+        $sql = "INSERT INTO Album ( Nomb_Album, Anio_Album, Link_Foto_Album, Activo, Fech_Activo, Usuario) VALUES ( :nombre, :anioalbum, :linkalbum, :activ, :feactivo, :usu)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":anioalbum" => $anio, ":linkalbum" => $link, ":activ" => $activ, ":feactivo" => $feactivo));
+		$result->execute(array(":nombre" => $nom, ":anioalbum" => $anio, ":linkalbum" => $link, ":activ" => $activ, ":feactivo" => $feactivo, ":usu" => $_SESSION["mai"]));
         
         $lastId = $conex->lastInsertId('Album');
 		

@@ -67,9 +67,18 @@ class ExistenciaLog_Musica
 		$accion= trim($param->getAccion_Log());
 		$feini= trim($param->getFecha_Ini());
 		$fefin= trim($param->getFecha_Fin());
-		$sql = "SELECT count(lm.Id_Item) AS Cuenta, i.Nom_Interprete, i.Pais_Interprete, i.Activo FROM Log_Musica lm, Interprete i
+		if ($accion == "busqueda"){
+			$sql = "SELECT count(lm.Id_Item) AS Cuenta, i.Nom_Interprete, i.Pais_Interprete, i.Activo FROM Log_Musica lm, Interprete i
 				WHERE lm.Item_Log = 'interprete' AND lm.Accion_Log = :accion AND i.Nom_Interprete LIKE :texto AND i.Id_Interprete = lm.Id_Item AND Fech_Log_Musica BETWEEN :feini AND :fefin 
 				GROUP BY lm.Id_Item, i.Nom_Interprete, i.Pais_Interprete, i.Activo ORDER BY count(lm.Id_Item) DESC";
+		}elseif($accion == "reproduccion"){
+			$sql = "SELECT count(i.Id_Interprete) AS Cuenta, i.Nom_Interprete, i.Pais_Interprete, i.Activo
+				FROM Cancion c, Interprete i, Pertenece_Cancion pc, Log_Musica lm 
+				WHERE lm.Item_Log = 'cancion' AND lm.Accion_Log = :accion AND i.Nom_Interprete LIKE :texto
+				AND i.Id_Interprete = pc.Id_Interprete AND c.Id_Cancion = pc.Id_Cancion AND lm.Id_Item = c.Id_Cancion AND Fech_Log_Musica BETWEEN :feini AND :fefin
+				GROUP BY i.Id_Interprete, i.Nom_Interprete, i.Pais_Interprete, i.Activo
+				ORDER BY count(i.Id_Interprete) DESC";
+		}
 		$texto = "%".$texto."%";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":texto" => $texto,":accion" => $accion, ":feini" => $feini, ":fefin" => $fefin));
@@ -84,9 +93,19 @@ class ExistenciaLog_Musica
 		$accion= trim($param->getAccion_Log());
 		$feini= trim($param->getFecha_Ini());
 		$fefin= trim($param->getFecha_Fin());
-		$sql = "SELECT count(lm.Id_Item) AS Cuenta, a.Nomb_Album, a.Anio_Album, a.Activo FROM Log_Musica lm, album a
-				WHERE lm.Item_Log = 'album' AND lm.Accion_Log = :accion AND a.Nomb_Album LIKE :texto AND a.Id_Album = lm.Id_Item AND Fech_Log_Musica BETWEEN :feini AND :fefin
-				GROUP BY lm.Id_Item, a.Nomb_Album, a.Anio_Album, a.Activo ORDER BY count(lm.Id_Item) DESC";
+		if ($accion == "busqueda"){
+			$sql = "SELECT count(lm.Id_Item) AS Cuenta, a.Nomb_Album, a.Anio_Album, a.Activo FROM Log_Musica lm, album a
+					WHERE lm.Item_Log = 'album' AND lm.Accion_Log = :accion AND a.Nomb_Album LIKE :texto AND a.Id_Album = lm.Id_Item AND Fech_Log_Musica BETWEEN :feini AND :fefin
+					GROUP BY lm.Id_Item, a.Nomb_Album, a.Anio_Album, a.Activo ORDER BY count(lm.Id_Item) DESC";
+		}elseif($accion == "reproduccion"){		
+			$sql = "SELECT count(a.Id_Album) AS Cuenta, a.Nomb_Album, a.Anio_Album, a.Activo
+					FROM Cancion c, Pertenece_Cancion pc, Contiene_Album ca, Log_Musica lm, Album a
+					WHERE lm.Item_Log = 'cancion' AND lm.Accion_Log = :accion AND a.Nomb_Album LIKE :texto
+					AND a.Id_Album = ca.Id_Album AND ca.Id_Pertenece_Cancion = pc.Id_Pertenece_Cancion AND pc.Id_Cancion = c.Id_Cancion
+					AND lm.Id_Item = c.Id_Cancion AND Fech_Log_Musica BETWEEN :feini AND :fefin
+					GROUP BY a.Id_Album, a.Nomb_Album, a.Anio_Album, a.Activo
+					ORDER BY count(a.Id_Album) DESC";
+		}
 		$texto = "%".$texto."%";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":texto" => $texto,":accion" => $accion, ":feini" => $feini, ":fefin" => $fefin));
@@ -183,20 +202,6 @@ class ExistenciaLog_Musica
 			return(false);
         }	
 	}
-
-	public function LogReproduceAlbum($param, $conex)
-	{
-		$idu=$param->getId_Usuario();
-        $item=$param->getId_Item();	
-		$sql = "INSERT INTO Log_Musica (Fech_Log_Musica, Id_Usuario, Id_Item, Item_Log, Accion_Log) VALUES (getdate(), :idu, :item, 'album', 'reproduccion')";
-		$result = $conex->prepare($sql);
-		$result->execute(array(":idu" => $idu, ":item" => $item));
-        if($result){
-			return(true);
-        }else{
-			return(false);
-        }
-	}
 	
 	public function LogBusquedaInterprete($param, $conex)
 	{
@@ -211,21 +216,6 @@ class ExistenciaLog_Musica
 			return(false);
         }	
 	}
-
-	public function LogReproduceInterprete($param, $conex)
-	{
-		$idu=$param->getId_Usuario();
-        $item=$param->getId_Item();	
-		$sql = "INSERT INTO Log_Musica (Fech_Log_Musica, Id_Usuario, Id_Item, Item_Log, Accion_Log) VALUES (getdate(), :idu, :item, 'interprete', 'reproduccion')";
-		$result = $conex->prepare($sql);
-		$result->execute(array(":idu" => $idu, ":item" => $item));
-        if($result){
-			return(true);
-        }else{
-			return(false);
-        }
-	}	
-
 
 }
 ?>

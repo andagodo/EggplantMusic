@@ -17,6 +17,14 @@ $feini = date_format($fechainicio, 'd/m/Y');
 $fechafin=date_create($_POST['fechafin']);
 $fefin = date_format($fechafin, 'd/m/Y');
 
+if ($fechainicio >= $fechafin){
+	?>
+	<script language="javascript">
+		window.alert("La fecha de inicio debe de ser menor a la final.");
+	</script>
+	<?php
+}else{
+
 $rep = new Log_Musica ('','','','','',$accion,'',$feini,$fefin,$texto);
 
 if($objeto == "cancion"){
@@ -141,3 +149,5 @@ if ($cantidad > $cuenta){
 		</form>
 	</div>
 </div>
+<?php
+}

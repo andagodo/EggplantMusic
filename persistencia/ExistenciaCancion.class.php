@@ -14,10 +14,10 @@ class ExistenciaCancion
 		$activ = $param->getActivo();
 		$feactivo = $param->getFech_Activo();
 
-        $sql = "INSERT INTO Cancion ( Nom_Cancion, Dur_Cancion, Ruta_Arch_Cancion, Id_Genero, Activo, Fech_Activo) VALUES ( :nombre, :duracancion, :rutaarch, :idgenero, :activ, :feactivo)";
+        $sql = "INSERT INTO Cancion ( Nom_Cancion, Dur_Cancion, Ruta_Arch_Cancion, Id_Genero, Activo, Fech_Activo, Usuario) VALUES ( :nombre, :duracancion, :rutaarch, :idgenero, :activ, :feactivo, :usu)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":nombre" => $nom, ":duracancion" => $dur, ":rutaarch" => $ruta, ":idgenero" => $idg, ":activ" => $activ, ":feactivo" => $feactivo));
+		$result->execute(array(":nombre" => $nom, ":duracancion" => $dur, ":rutaarch" => $ruta, ":idgenero" => $idg, ":activ" => $activ, ":feactivo" => $feactivo, ":usu" => $_SESSION["mai"]));
         $lastId = $conex->lastInsertId('Cancion');
 		
         if($result)

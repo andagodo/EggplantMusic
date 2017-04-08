@@ -9,9 +9,9 @@ class ExistenciaContieneAlbum
         $idpc=$param->getId_Pertenece_Cancion();
 		$activ = $param->getActivo();
 		$feactivo = $param->getFech_Activo();
-        $sql = "INSERT INTO Contiene_Album (Id_Album, Id_Pertenece_Cancion, Activo, Fech_Activo) VALUES (:album, :cancion, :activ, :feactivo)";
+        $sql = "INSERT INTO Contiene_Album (Id_Album, Id_Pertenece_Cancion, Activo, Fech_Activo, Usuario) VALUES (:album, :cancion, :activ, :feactivo, :usu)";
 		$result = $conex->prepare($sql);
-		$result->execute(array(":album" => $ida, ":cancion" => $idpc, ":activ" => $activ, ":feactivo" => $feactivo));
+		$result->execute(array(":album" => $ida, ":cancion" => $idpc, ":activ" => $activ, ":feactivo" => $feactivo, ":usu" => $_SESSION["mai"]));
         
         
         if($result)
