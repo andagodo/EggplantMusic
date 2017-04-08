@@ -72,7 +72,7 @@ class ExistenciaPlaylist
 	public function TotalPlaylist($param,$conex)
 	{
 
-        $sql = "SELECT COUNT(Id_Playlist) FROM Crea_Playlist WHERE Id_Usuario = '0'";
+        $sql = "SELECT COUNT(Id_Playlist) FROM Crea_Playlist WHERE Id_Usuario = '1'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();

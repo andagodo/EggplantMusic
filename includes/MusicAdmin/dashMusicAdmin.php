@@ -1,14 +1,11 @@
  <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
- 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Album.class.php';
 session_start();
 $conex = conectar();
 ?>
-<!--
-<script src="/estilos/js/jquery.js"></script>
 <script src="/estilos/js/jsmenu.js"></script>
--->
 <?php
 if(! isset($_SESSION["mai"])){
 	?>
@@ -20,7 +17,6 @@ if(! isset($_SESSION["mai"])){
 }
 
 ?>
-
         <div id="page-wrapper">
 		
             <div class="container-fluid">
@@ -59,9 +55,10 @@ if(! isset($_SESSION["mai"])){
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">
 											<?php
-												$cuenta1 = new Cancion();
-												$datos1=$cuenta1->consultaCancionSinInterprete($conex);
-												echo $datos1[0][0];
+												$cuenta1 = new Album();
+												$datos1=$cuenta1->consultaTodosAlbum($conex);
+												$datos1=count($datos1);
+												echo $datos1;
 											?>
 										</div>
                                         <div>Álbum activos!</div>

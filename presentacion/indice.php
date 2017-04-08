@@ -9,28 +9,23 @@
 		<link href="/estilos/css/signin.css" rel="stylesheet">	<!-- Levanta hoja de estilos CSS de bootstrap-->
 		
 
-		<STYLE type="text/css">
-#PunteroAqui:hover{ width:230px; height:40px; position:absolute;}
-#PunteroAqui{
-	width:20px; 
-	height:20px; 
-	overflow:hidden; 
-	position:absolute; 
-
-	}
- </STYLE>
- 
- 
+	<STYLE type="text/css">
+		#PunteroAqui:hover{ width:230px; height:40px; position:absolute;}
+		#PunteroAqui{
+			width:20px; 
+			height:20px; 
+			overflow:hidden; 
+			position:absolute;
+		}
+	</STYLE>
 	</head>
 
 	<body>
 		<center><img src="/img/backend.png" alt="Eggplant Music"> </center>
 		<div class="container">
-
 			<?php
 			if(! isset($_GET["id"])){
 			?>
-		
 				<h1 class="form-signin-heading" p align="center"><u>Administraci&#243;n</u></h1>
 				<form action="/logica/ingresoSistema.php" method="POST" id="FrmIngreso"enctype="application/x-www-form-urlencoded" class="form-signin"> <!-- Formulario de inicio de sesión apuntando a "/logica/ingresoSistema.php" -->
 					<h2 class="form-signin-heading">Iniciar sesi&#243;n</h2>
@@ -40,14 +35,11 @@
 					<input name="PassUsuario" id="PassUsuario" class="form-control" placeholder="Contrase&ntilde;a" required="" type="password"> </br>	<!-- Campo par escribir contrasela y almacenada en PassUsuario-->
 					<input  class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar"  title="Ingresar a la aplicación" />    <!-- Boton de ingresar, toma acción del formulario-->
 				</form>	
-
 			<?php
 			}else{
 				$clave = $_GET["id"];
 				?>
-				
 				<script>
-				
 					function CoincidePass(){ 
 						npass = document.pass.npass.value 
 						npass2 = document.pass.npass2.value 

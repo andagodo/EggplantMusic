@@ -4,14 +4,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Playlist.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Ticket.class.php';
- 
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/logout.php'; 
+$_SESSION['LAST_ACTIVITY'] = time();
 session_start();
 $conex = conectar();
+
 ?>
-<!--
-<script src="/estilos/js/jquery.js"></script>
+
 <script src="/estilos/js/jsmenu.js"></script>
--->
+
 <?php
 if(! isset($_SESSION["mai"])){
 	?>
@@ -74,7 +75,7 @@ if(! isset($_SESSION["mai"])){
                             </div>
                             <a href="#" id="altaadmin2">
                                 <div class="panel-footer">
-                                    <span class="pull-left">Ver Detalles</span>
+                                    <span class="pull-left">Alta Administradores</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -86,23 +87,23 @@ if(! isset($_SESSION["mai"])){
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-tasks fa-5x"></i>
+                                        <i class="fa fa-music fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">
 											<?php
 												$cuenta2 = new Cancion();
-												$datos2=$cuenta2->consultaCancionSinInterprete($conex);
+												$datos2=$cuenta2->ListaCancionActivas($conex);
 												echo $datos2[0][0];
 											?>										
 										</div>
-                                        <div>Canciones sin Intérprete!</div>
+                                        <div>Canciones Activas!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" id="asociainterprete4">
+                            <a href="#" id="altamusica2">
                                 <div class="panel-footer">
-                                    <span class="pull-left">Ver Detalles</span>
+                                    <span class="pull-left">Agregar más!</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -114,7 +115,7 @@ if(! isset($_SESSION["mai"])){
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                        <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">
@@ -130,7 +131,7 @@ if(! isset($_SESSION["mai"])){
                             </div>
                             <a href="#" id="altaplaylist2">
                                 <div class="panel-footer">
-                                    <span class="pull-left">Ver Detalles</span>
+                                    <span class="pull-left">Nueva Playlist!</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>

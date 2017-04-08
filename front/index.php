@@ -92,7 +92,7 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Toda la música que puedas escuchar!</h2>
                     <hr class="light">
-                    <p class="text-faded">Con Eggplant Music podrás escuchar una extensa biblioteca de música, con playlist pre-cargadas realizadas por exertos en música, además de poder crear tus propias playlist con tu cuenta gratuita!</p>
+                    <p class="text-faded">Con Eggplant Music podrás escuchar una extensa biblioteca de música con Playlist preparadas por nuestros expertos, además de crear las tuyas con una cuenta gratuita.</p>
                     <a href="#registro" class="page-scroll btn btn-default btn-xl sr-button">Regístrate!</a>
                 </div>
             </div>
