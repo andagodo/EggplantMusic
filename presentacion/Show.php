@@ -1,5 +1,14 @@
 <?php
+if(! isset($_SESSION["mai"])){	// Si no está presente el valor del mail almacenada en la sesión del sistema, se ejecuta un javascript que muestre alerta y te lleve al indice del BackEnd.
+?>
 
+	<script language="javascript">
+		window.alert("Debes de estar logeado para ingresar a esta página.");
+		location.href="/presentacion/indice.php";
+	</script>
+
+<?php
+}
 //////////////////////// MENU DE SUPER ADMINISTRADOR////////////////////////
 
 // Si el rol del administrador es "SuperAdmin", carga las siguientes funcionalidades y en #DASH carga el Dashboard: /includes/SAdmin/dashSAdmin.php como página principal.

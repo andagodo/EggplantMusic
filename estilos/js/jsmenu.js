@@ -48,14 +48,14 @@
 
             });
         });
-/*		
+	
         $(document).ready(function() {
             $('#altaadmin2').click(function(){
                 $("#DASH").load('/includes/SAdmin/AltaAdmin.php');
 
             });
         });		
-*/		
+	
 		$(document).ready(function() {
             $('#bajaadmin').click(function(){
                 $("#DASH").load('/includes/SAdmin/BajaAdmin.php');
@@ -120,7 +120,16 @@
 
             });
         });
+		
+		
+		$(document).ready(function() {
+            $('#altamusica2').click(function(){
+                $("#DASH").load('/includes/MusicAdmin/AltaMusica.php');
 
+            });
+        });
+		
+		
 		$(document).ready(function() {
             $('#modmusica').click(function(){
                 $("#DASH").load('/includes/MusicAdmin/ModMusica.php');
@@ -194,58 +203,6 @@ Lo usaba cuando tenia el formulario de baja Album en Menú
 
             });
         });
-/*
-Usaba las asociaciones antes de tener el manú de carga música
-
-		$(document).ready(function() {
-            $('#asociainterprete').click(function(){
-                $("#DASH").load('/includes/MusicAdmin/AsociaInterprete.php');
-
-            });
-        });
-		
-		$(document).ready(function() {
-            $('#asociainterprete2').click(function(){
-                $("#DASH").load('/includes/MusicAdmin/AsociaInterprete.php');
-
-            });
-        });
-
-		$(document).ready(function() {
-            $('#asociainterprete3').click(function(){
-                $("#DASH").load('/includes/MusicAdmin/AsociaInterprete.php');
-
-            });
-        });		
-
-		$(document).ready(function() {
-            $('#asociainterprete4').click(function(){
-                $("#DASH").load('/includes/MusicAdmin/AsociaInterprete.php');
-
-            });
-        });			
-
-		$(document).ready(function() {
-            $('#asociaalbum').click(function(){
-                $("#DASH").load('/includes/MusicAdmin/AsociaAlbum.php');
-
-            });
-        });	
-
-		$(document).ready(function() {
-            $('#asociaalbum2').click(function(){
-                $("#DASH").load('/includes/MusicAdmin/AsociaAlbum.php');
-
-            });
-        });	
-
-		$(document).ready(function() {
-            $('#asociaalbum3').click(function(){
-                $("#DASH").load('/includes/MusicAdmin/AsociaAlbum.php');
-
-            });
-        });			
-*/
 		
         $(document).ready(function() {
             $('#altaplaylist').click(function(){
@@ -284,25 +241,26 @@ Usaba las asociaciones antes de tener el manú de carga música
         });
 		
         $(document).ready(function() {
-            $('#respticket').click(function(){
-                $("#DASH").load('/includes/TicketAdmin/RespondeTicket.php');
+            $('#Tickets').click(function(){
+                $("#DASH").load('/includes/Tickets.php');
 
             });
         });
 		
+
+        $(document).ready(function() {
+            $('#respticket').click(function(){
+                $("#DASH").load('/includes/TicketAdmin/RespondeTickets.php');
+
+            });
+        });
+/*				
         $(document).ready(function() {
             $('#respticket2').click(function(){
                 $("#DASH").load('/includes/TicketAdmin/RespondeTicket.php');
 
             });
         });		
-		
-		$(document).ready(function() {
-            $('#bajaticket').click(function(){
-                $("#DASH").load('/includes/TicketAdmin/BajaTicket.php');
-
-            });
-        });
 
 /*
 ////////////////////////////////////// FIN DE FUNCIONES CLICK PARA MOSTRAR EN #DASH de Menu.php //////////////////////////////////////////

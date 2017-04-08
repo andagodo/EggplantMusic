@@ -589,6 +589,45 @@ function GeneraAuditoria(){
 	)
 }
 
+function BuscaTickets(){
+	var fi=document.getElementById("fechaini").value
+	var ff=document.getElementById("fechafin").value
+	var fa=document.getElementById("filtroasunto").value
+	var url="/includes/procesa/ProcesaTickets.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{fechaini:fi,fechafin:ff,filtroasunto:fa},
+		success:function(datos){
+			$("#TICKETS").html(datos);
+		}
+	}
+	
+	)
+}
+
+function RespTickets(){
+	var fi=document.getElementById("fechaini").value
+	var ff=document.getElementById("fechafin").value
+	var fa=document.getElementById("filtroasunto").value
+	var fu=document.getElementById("filtrousuario").value
+	var url="/includes/TicketAdmin/procesa/ProcesaRespTickets.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{fechaini:fi,fechafin:ff,filtroasunto:fa,filtrousuario:fu},
+		success:function(datos){
+			$("#RESPTICKETS").html(datos);
+		}
+	}
+	
+	)
+}
+
 /*
 
 function ModPlaylist(){

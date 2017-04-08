@@ -17,14 +17,12 @@ $conex = conectar(); // Almacela la función "conectar" que se encuentra en '/lo
 	<script src="/estilos/js/jquery.form.js"></script>
 <?php
 if(! isset($_SESSION["mai"])){	// Si no está presente el valor del mail almacenada en la sesión del sistema, se ejecuta un javascript que muestre alerta y te lleve al indice del BackEnd.
-?>
-
+	?>
 	<script language="javascript">
 		window.alert("Debes de estar logeado para ingresar a esta página.");
 		location.href="/presentacion/indice.php";
 	</script>
-
-<?php
+	<?php
 }
 
 $u= new Admin ('','',$_SESSION["mai"]);		// Crea una nueva clase de tipo Admin con el valor de mail almacenado en la sesión actual, ésto lo almacena en $u
@@ -32,27 +30,6 @@ $Tipo=$u->consultaTipoAdmin($conex);		// Ejecuta la función consultaTipoAdmin c
 $rol = $Tipo[0][0];			// Almacena en $rol el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][0]
 $nombre = $Tipo[0][1];		// Almacena en $nombre el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][1]
 $apellido = $Tipo[0][2];
-
-////////////////////////////// ARREGLAR SECCIÓN DE TIMEOUT ///////////////////////////////
-	// Almacena la última actividad del usuario
-
-if (isset($_SESSION['LAST_ACTIVITY'])) {
-
-  if (time() - $_SESSION['LAST_ACTIVITY'] > 5) {
-
-     // session timed out
-     session_unset();     // unset $_SESSION variable for the run-time 
-     session_destroy();   // destroy session data in storage
-  } elseif (time() - $_SESSION['LAST_ACTIVITY'] > 1) {
-	  
-	$_SESSION['LAST_ACTIVITY'] = time();
-    // session ok
-
- }
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
 
 //////////Incluye porción de código que contiene todos los SHOW y HIDE de los diferentes Menú////////////
 
@@ -100,11 +77,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php  echo $nombre; ?> <?php  echo $apellido; ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
+      <!--                  <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
-                        </li>
+                        </li>			-->
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Mensajes</a>
+                            <a href="#" id="Tickets"><i class="fa fa-fw fa-envelope"></i> Tickets</a>
                         </li>
                         <li>
                             <a href="#" id="ConfigAdmin"><i class="fa fa-fw fa-gear"></i> Configuración</a>
@@ -227,15 +204,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
                     </li>					
 					
                     <li id="menuticket">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#ticket"><i class="fa fa-fw fa-arrows-v"></i> Tickets <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="ticket" class="collapse">
-							<li>
-								<a href="#" id="respticket"><i class="fa fa-fw fa-edit"></i>Responder Ticket</a>
-							</li>
-							<li>
-								<a href="#" id="bajaticket"><i class="fa fa-fw fa-gear"></i>Eliminar Ticket</a>
-							</li>
-                        </ul>
+						<a href="#" id="respticket"><i class="fa fa-fw fa-edit"></i>Responder Tickets</a>
                     </li>							
 					
 					<li id="menuestadisticas">
