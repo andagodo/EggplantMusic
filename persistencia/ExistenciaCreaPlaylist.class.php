@@ -8,11 +8,11 @@ class ExistenciaCreaPlaylist
 		$act="S";
         $fecha=date("d/m/Y H:i:s");
 
-		$sql = "INSERT INTO Crea_Playlist ( Id_Usuario, Id_Playlist, Activo, Fech_Activo) VALUES ( :idusuario, :idplaylist, :activo, :fechactivo, :usu)";
-
+        $sql = "INSERT INTO Crea_Playlist (Id_Usuario, Id_Playlist, Activo, Fech_Activo) VALUES ( :idusuario, :idplaylist, :activo, :fechactivo)";
+#		$sql = "INSERT INTO Crea_Playlist ( Id_Usuario, Id_Playlist, Activo, Fech_Activo) VALUES ( :idusuario, :idplaylist, :activo, :fechactivo, :usu)";
+#Comento esta linea ya que con :usu parece no funcionar
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idusuario" => $idu, ":idplaylist" => $idp, ":activo" => $act, ":fechactivo" => $fecha));
-               
 
         if($result)
         {

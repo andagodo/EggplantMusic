@@ -9,14 +9,16 @@
 		private $Id_Playlist;
 		private $Activo;
   		private $Fech_Activo;
+  		private $Usuario;
 
-	    function __construct($idc='',$idu='',$idp='',$act='',$fecha='')
+	    function __construct($idc='',$idu='',$idp='',$act='',$fecha='',$usr='')
 	    {
 			$this->Id_Crea_Playlist= $idc;
 	        $this->Id_Usuario= $idu;
 			$this->Id_Playlist= $idp;
 			$this->Activo= $act;
     		$this->Fech_Activo= $fecha;
+    		$this->Usuario= $usr;
 	    }		
 
 	    //Métodos set
@@ -44,7 +46,12 @@
     	public function setFech_Activo($fecha)
     	{
       	$this->Fech_Activo= $fecha;
-    	}	    
+    	}
+    	
+    	public function setUsuario($usr)
+    	{
+      	$this->Usuario= $usr;
+    	}	 	    
 
 	     //Métodos get
 
@@ -71,6 +78,10 @@
 	    public function getFech_Activo()
 	    {
 	      return $this->Fech_Activo;
+	    }
+	    public function getUsuario()
+	    {
+	      return $this->Usuario;
 	    }
 	    //Otros Métodos
 

@@ -8,20 +8,21 @@
 	$c = json_decode($_POST['c']);
 	$nom = $_POST['npl'];
 	$idu = $_POST['idu'];
+	$act="S";
 	$conex = conectar();
 	
 	$fech = date("d/m/Y H:i:s");
 
-	$r = new Playlist ('',$nom,$fech,'','');
+	$r = new Playlist ('',$nom,$fech,$act,$fech,'');
 	$datos_r=$r->altaPlaylist($conex);
-
-	$u = new CreaPlaylist ('',$idu,$datos_r,'','');
-	$datos_u=$u->altaCreaPlaylist ($conex);
+	
+	$u = new CreaPlaylist ('',$idu,$datos_r);
+	$datos_u=$u->altaCreaPlaylist($conex);
 
 	foreach ($c as $key) {
 		$t = new TienePlaylist($datos_r,$key);
 		$datos_t=$t->altaTienePlaylist($conex);
-		# code...
+	
 	};
 	//$var_php = json_decode($data,true);
 	//echo $var_php[0]->idca;

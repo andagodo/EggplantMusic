@@ -20,7 +20,7 @@
     ?>
     <script language="javascript">
       window.alert("Tiempo de espera excedido.");
-      location.href="/portada_front/index.html";
+      location.href="/";
     </script>
     <?php
   }else{
@@ -55,19 +55,18 @@
 
 
           <div id="wrapper">
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-</div>
-             <!--       <div class="alert alert-warning alerta1">
-                     <button class='close' data-dismiss='alert'><span>&times;</span></button>
-                     <strong>Warning!</strong> Esto esta sin terminar por si no lo notaron. Atte. Su desarrollador de FrontEnd
+        <!--       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                      </div>
+                     <div class="alert alert-warning alerta1">
+                       <button class='close' data-dismiss='alert'><span>&times;</span></button>
+                       <strong>Warning!</strong> Esto esta sin terminar por si no lo notaron. Atte. Su desarrollador de FrontEnd
                      </div>  -->
       		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       		    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                           <span class="sr-only">Toggle navigation</span>
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
@@ -110,7 +109,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <span class="visible-xs navbar-brand">Sidebar menu</span>
+        <span class="visible-xs navbar-brand">Menu</span>
       </div>
       <div class="navbar-collapse collapse sidebar-navbar-collapse">
         <ul class="nav navbar-nav" id="sidenav01">
@@ -127,7 +126,7 @@
           </li>
           <li><a href="#"><span class="glyphicon glyphicon-list"></span> Playlist </a></li>
           <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Explorar </a></li>
-          <li><a href=""><span class="glyphicon glyphicon-cog"></span> Cuenta </a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Cuenta </a></li>
     	  </ul>
         </div><!--/.nav-collapse -->
         
@@ -151,21 +150,26 @@
             </div>
           </div>
         </div>
+
       <div id="menu1">
         <ul>
-          <li><div class="titmenu1">Menu cancion</div></li>
-          <li class="divider"></li>
           <li><div class="contmenu1"><a class="add-btn" href="#">Añadir a cola de reproduccion</a></div></li>
+          <li class="divider"></li>
+          <li><div class="titmenu1">Agregar a Playlist..</div></li>
+          <li class="divider"></li>
+          <div id="menu1pl"></div>
         </ul>
       </div>
+
       <div id="menu2">
         <ul>
           <li><div class="titmenu2">Agregar canciones</div></li>
           <li class="divider"></li>
           <li><div class="menu2selector"><a id="mventana1" data-toggle="modal" href="#ventana1">Crear Playlist..</a></div></li>
-          <div id="menu2pl"></div>
+          
         </ul>
       </div>
+
       <div id="menu3">
         <ul>
        <!--  <li><div class="titmenu3">Agregar canciones</div></li> 
@@ -173,6 +177,7 @@
           <li><div class="contmenu3"><a class="rm-btn" href="#"> Quitar </a></div></li>
         </ul>
       </div>
+
         <div class="modal fade" id="ventana1" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
