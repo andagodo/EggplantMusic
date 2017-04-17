@@ -86,6 +86,12 @@ class TienePlaylist
       $pu= new ExistenciaTienePlaylist;
       return $pu->EliminaCancionPL($this, $conex);
     }
+  public function ConsultacancionyPL($conex)
+  {
+      $pu= new ExistenciaTienePlaylist;
+      return $pu->ConsultacancionyPL($this, $conex);
+    }
+
 	
 }
 ?>

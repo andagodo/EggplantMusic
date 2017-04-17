@@ -62,5 +62,16 @@ class ExistenciaTienePlaylist
        return $result;
     }   
 
+    public function ConsultacancionyPL($param, $conex)
+    {
+        $idpl= trim($param->getId_Playlist());
+        $idca= trim($param->getId_Contiene_Al());
+        $sql = "SELECT * FROM Tiene_Playlist WHERE Id_Playlist = :idpl AND Id_Contiene_Al = :idca";
+        $result = $conex->prepare($sql);
+        $result->execute(array(":idpl" => $idpl, ":idca" => $idca));
+        $resultados=$result->fetchAll();
+        return $resultados;
+    }  
+
 }
 ?>

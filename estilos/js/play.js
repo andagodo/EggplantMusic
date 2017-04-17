@@ -269,7 +269,6 @@ $('.cancion > li > div').click(function(){
                 .done(function( data, textStatus, jqXHR ) {
                     $('#menu1pl').empty();
                     for (var i = 0; i < data.length; i++) {
-                        console.log(data[i].id);
                         $li = $('<li></li>');
                         $a = $('<div class="contmenu1"><a class="add-pl" href="#" data-idpl="'+ data[i].id + '" >' + data[i].nom + '</a></div>');
                         $li.append($a);
@@ -317,9 +316,13 @@ $('.cancion > li > div').click(function(){
                	$id_playlist = $(this).attr('data-idpl');
             //   	console.log("add-pl funcion");
               // 	alert("pinto empezar a mandar a la playlist"+$id_cancion+$idca_cancion+$id_playlist);
-                  $.post( "/front_logica/consplaylist.php", { "data-idc":$id_cancion, "data-idca":$idca_cancion, "data-idpl": $id_playlist }, null, "json" )
-                     .done(function( data, textStatus, jqXHR ) {
-                
+                  $.post( "/front_logica/addplaylist.php", { "idc":$id_cancion, "idca":$idca_cancion, "idpl": $id_playlist }, null, "json" )
+                     .done(function(data, textStatus, jqXHR) {
+                		if (data.ok == "True") {
+                				console.log('dentro del if');
+                		}else{
+                			alert("La canción ya existe en la playlist seleccionada.");
+                		}
 
 
                     if ( console && console.log ) {
