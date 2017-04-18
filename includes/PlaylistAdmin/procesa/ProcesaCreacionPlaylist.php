@@ -45,7 +45,6 @@ if (!isset($_POST['idc']) && empty ($_SESSION['playlist'])){
 					<th>Duración</th>
 					<th>Interprete</th>
 					<th>Género</th>
-					<th>Quitar canción</th>
 				</tr>
 			</thead>
 			<?php
@@ -76,7 +75,6 @@ if (!isset($_POST['idc']) && empty ($_SESSION['playlist'])){
 						<td><?php echo $dur?></td>
 						<td><?php echo $interprete[$i][0]?></td>
 						<td><?php echo $genero[$i][0]?></td>
-						<td><button id="" class="btn btn-xs btn-default" >Quitar</button></td>
 					</tr>
 					
 				<?php

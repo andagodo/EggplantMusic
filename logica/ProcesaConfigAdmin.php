@@ -1,7 +1,8 @@
 <?php
-session_start();
+//session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/presentacion/Menu.php';
 ?>
 
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
@@ -33,7 +34,6 @@ if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"
 			<script language="javascript">
 				window.alert("Has cambiado tu clave exitosamente.")
 				$("#DASH").load('/includes/ConfigAdmin.php');
-			<!--	location.href="/presentacion/Menu.php"; -->
 			</script>  
  
 		<?php
@@ -42,7 +42,6 @@ if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"
 	
 			<script language="javascript">
 				window.alert("Hubo un problema al cambiar tu clave \nIntenta nuevamente.")
-			<!--	location.href="/presentacion/Menu.php"; -->
 				$("#DASH").load('/includes/ConfigAdmin.php');
 			</script>
 
@@ -55,7 +54,6 @@ if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"
 
 		<script language="javascript">
 			window.alert("Tu clave no cumple con los mínimos requisitos de complejidad. \nIntenta nuevamente.")
-			<!--	location.href="/presentacion/Menu.php"; -->			
 			$("#DASH").load('/includes/ConfigAdmin.php');
 		</script>
 
@@ -83,7 +81,6 @@ if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"
 	
 			<script language="javascript">
 				window.alert("Hubo un problema al deshabilitar tu usuario, contraseña incorrecta \nIntenta nuevamente.")
-			<!--	location.href="/presentacion/Menu.php"; -->		
 				$("#DASH").load('/includes/ConfigAdmin.php');
 			</script>
 			

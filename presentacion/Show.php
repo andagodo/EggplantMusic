@@ -28,6 +28,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuinterprete').show();
 			$('#menuplaylist').show();
 			$('#menuticket').show();
+			$('#menulistticket').show();
 			$('#menuestadisticas').show();
 			$('#menuauditoria').show();			
 			$("#DASH").load('/includes/SAdmin/dashSAdmin.php');			
@@ -56,6 +57,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuinterprete').show();
 			$('#menuplaylist').hide();
 			$('#menuticket').hide();
+			$('#menulistticket').hide();
 			$('#menuestadisticas').show();
 			$('#menuauditoria').hide();
 			$("#DASH").load('/includes/MusicAdmin/dashMusicAdmin.php');
@@ -84,6 +86,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuinterprete').hide();
 			$('#menuplaylist').show();
 			$('#menuticket').hide();
+			$('#menulistticket').hide();
 			$('#menuestadisticas').hide();
 			$('#menuauditoria').hide();
 			$("#DASH").load('/includes/PlaylistAdmin/dashPlaylistAdmin.php');
@@ -112,6 +115,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuinterprete').hide();
 			$('#menuplaylist').hide();
 			$('#menuticket').show();
+			$('#menulistticket').show();
 			$('#menuestadisticas').hide();
 			$('#menuauditoria').hide();
 			$("#DASH").load('/includes/TicketAdmin/dashTicketAdmin.php');
@@ -140,6 +144,7 @@ if ($rol == "SuperAdmin" ){
 			$('#menuinterprete').hide();
 			$('#menuplaylist').hide();
 			$('#menuticket').hide();
+			$('#menulistticket').hide();
 			$('#menuestadisticas').hide();
 			$('#menuauditoria').hide();
 	});

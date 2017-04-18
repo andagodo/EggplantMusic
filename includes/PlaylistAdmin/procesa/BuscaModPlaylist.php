@@ -39,7 +39,7 @@ if ($cancion == ""){
 </script>
 
 <div class="row">
-	<div class="col-lg-4">		
+	<div class="col-lg-6">		
 		<form action='/includes/PlaylistAdmin/procesa/ProcesaModPlaylist.php' method="POST" enctype="multipart/form-data">
 			<h4><u>Playlists:</u></h4>
 			<div class="table-responsive">

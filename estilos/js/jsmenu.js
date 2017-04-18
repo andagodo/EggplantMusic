@@ -254,6 +254,14 @@ Lo usaba cuando tenia el formulario de baja Album en Menú
 
             });
         });
+		
+        $(document).ready(function() {
+            $('#listticket').click(function(){
+                $("#DASH").load('/includes/TicketAdmin/ListaTickets.php');
+
+            });
+        });
+		
 /*				
         $(document).ready(function() {
             $('#respticket2').click(function(){

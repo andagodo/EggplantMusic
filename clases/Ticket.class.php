@@ -168,5 +168,12 @@ class Ticket
       return $datos;
     }
 	
+	public function ListaTickets($conex)
+    {
+      $pu= new ExistenciaTicket;
+      $datos= $pu->ListaTickets($this, $conex);
+      return $datos;
+    }
+	
 }
 ?>

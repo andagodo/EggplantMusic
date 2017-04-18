@@ -40,7 +40,7 @@ for($c=0;$c<$CuentaidPC;$c++){
 		<label>Modificar Tags:</label>
 		<input class="form-control" name='tags' value="<?php echo $datos_ba[0][5]?>" required/>
 	</div>
-	<div class="col-lg-1">
+	<div class="col-lg-2">
 		<label>Playlist Activa?</label>
 		<select class="form-control" name='activo'>
 			<option value="S" selected>Si</option>

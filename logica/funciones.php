@@ -8,7 +8,7 @@ function conectar()
     	//si es windows ejecuto un driver de pdo
     	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
 		{
-			$sqlserver = "sqlsrv:Server=192.168.3.11;Database=eggplantmusic";
+			$sqlserver = "sqlsrv:Server=192.168.3.10;Database=eggplantmusic";
 			$con = new PDO($sqlserver, "eggplantmusic", "eggplantmusic");
 		}
 		//si no es windows uso otro driver de pdo

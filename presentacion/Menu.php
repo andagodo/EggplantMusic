@@ -198,21 +198,25 @@ include $_SERVER['DOCUMENT_ROOT'] . "/presentacion/Show.php";
 								<a href="#" id="altaplaylist"><i class="fa fa-fw fa-bar-chart-o"></i> Alta Playlist</a>
 							</li>
 							<li>
-								<a href="#" id="modificaplaylist"><i class="fa fa-fw fa-gear"></i>Modificar Playlist</a>
+								<a href="#" id="modificaplaylist"><i class="fa fa-fw fa-gear"></i> Modificar Playlist</a>
 							</li>
                         </ul>
                     </li>					
 					
                     <li id="menuticket">
-						<a href="#" id="respticket"><i class="fa fa-fw fa-edit"></i>Responder Tickets</a>
-                    </li>							
+						<a href="#" id="respticket"><i class="fa fa-fw fa-edit"></i> Responder Tickets</a>
+                    </li>
+					
+                    <li id="menulistticket">
+						<a href="#" id="listticket"><i class="fa fa-fw fa-edit"></i> Listados de Tickets</a>
+                    </li>						
 					
 					<li id="menuestadisticas">
-                        <a href="#" id="estadisticas"><i class="fa fa-fw fa-bar-chart-o"></i>Estadisticas</a>
+                        <a href="#" id="estadisticas"><i class="fa fa-fw fa-bar-chart-o"></i> Estadisticas</a>
                     </li>
 					
 					<li id="menuauditoria">
-                        <a href="#" id="auditoria"><i class="fa fa-fw fa-bar-chart-o"></i>Auditoría</a>
+                        <a href="#" id="auditoria"><i class="fa fa-fw fa-bar-chart-o"></i> Auditoría</a>
                     </li>						
 					
                 </ul>

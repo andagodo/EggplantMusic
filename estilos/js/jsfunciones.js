@@ -628,6 +628,27 @@ function RespTickets(){
 	)
 }
 
+function ListTickets(){
+	var fi=document.getElementById("fechaini").value
+	var ff=document.getElementById("fechafin").value
+	var fa=document.getElementById("filtroasunto").value
+	var fu=document.getElementById("filtrousuario").value
+	var e=document.getElementById("estado").value
+	var url="/includes/TicketAdmin/procesa/ProcesaListaTickets.php"
+	
+	$.ajax({
+		
+		type:"post",
+		url:url,
+		data:{fechaini:fi,fechafin:ff,filtroasunto:fa,filtrousuario:fu,estado:e},
+		success:function(datos){
+			$("#LISTTICKETS").html(datos);
+		}
+	}
+	
+	)
+}
+
 /*
 
 function ModPlaylist(){

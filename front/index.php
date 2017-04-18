@@ -117,14 +117,14 @@
   <div class="form-group">
     <label for="ejemplo_nombre_3" class="col-lg-2 control-label">Nombre</label>
     <div class="col-lg-8">
-      <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+      <input type="text" class="form-control" name="nombre" placeholder="Nombre" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ]{1,20}" required>
     </div>
   </div>
   
    <div class="form-group">
     <label for="ejemplo_apellido_3" class="col-lg-2 control-label">Apellido</label>
     <div class="col-lg-8">
-      <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
+      <input type="text" class="form-control" name="apellido" placeholder="Apellido" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ]{1,20}" required>
     </div>
   </div>
   
@@ -138,7 +138,7 @@
    <div class="form-group">
     <label for="ejemplo_apellido_3" class="col-lg-2 control-label">Teléfono</label>
     <div class="col-lg-8">
-      <input type="tel" class="form-control" name="tel" placeholder="Teléfono" required>
+      <input type="tel" class="form-control" name="tel" placeholder="Teléfono" pattern="[0-9]{1,20}" required>
     </div>
   </div>  
   
@@ -199,9 +199,9 @@
 </div>
 
 <div class="col-lg-4">
-<h2>Bienvenido al registro a Eggplant Music!</h2></br>
-<p>Regístrese para acceder a nuestra aplicación Web de Música en Streaming, su cuenta inicialmente será gratuira, pero luego podrá hacer un upgrade de su cuenta a la modalidad Premium, o VIP!.</p>
-<p>Con su cuenta gratuita podrá escuchar todo el catálogo de música y crear hasta tres Playlist personalizadas, si se actualiza a Premium podrá crear hasta 10 Playlist y no tendrá publicidad en su cuenta, y si desea cuenta VIP! podrá crear Playlists ilimitadas y sin publicidad!</p>
+<h2>Bienvenido al registro de Eggplant Music!</h2></br>
+<p>Regístrese para acceder a nuestra aplicación Web de música por Streaming. Podrá elegir entre crear una cuenta Free, Premium o Vip.</p>
+<p>Con su cuenta Free podrá acceder sin realizar ningún tipo de pago al catálogo de artistas y crear hasta 2 listas de reproducción. Si desea actualizarse a Premium la cuenta requiere un pago mensual y podrá crear hasta 5 listas de reproducción sin publicidad, y si actualiza a una cuenta Vip por un pago anual obtendrá 50% de bonificación con Playlists ilimitadas y sin publicidad.</p>
 </div>
 </div>
 
@@ -235,7 +235,7 @@
                     <div class="service-box">
                         <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
                         <h3>Tickets de Soporte</h3>
-                        <p class="text-muted">Podrás enviarnos tu ticket de siporte si te encuentras con algún problema.</p>
+                        <p class="text-muted">Podrás enviarnos tickets de soporte si te encuentras con algún problema.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
@@ -356,7 +356,7 @@
                 </div>
                 <div class="col-lg-3 col-lg-offset-2 text-center">
                     <i class="fa fa-phone fa-3x sr-contact"></i>
-                    <p>+598 2480 1234</p>
+                    <p>+00 0800 1234</p>
                 </div>
                 <div class="col-lg-3 text-center">
                     <i class="fa fa-envelope-o fa-3x sr-contact"></i>
