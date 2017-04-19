@@ -331,9 +331,17 @@ display: inline-block;
     #playerul .active:hover a {
     color: #222; /* Color de la canción activa al pasar el cursor */
     }
-
- /*   .alerta1 {
-        position: fixed;
-       
-    }*/
-
+    
+    .lupa {
+      color: #337ab7;
+      width: 7%;
+      height: 25px;
+      padding: 7px 5px;
+      display: inline-block;
+    }
+    #s_album{
+      padding-left: 5px;
+      width: 93%;
+      display: inline-block;
+      float: right;
+    }

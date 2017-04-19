@@ -11,6 +11,7 @@ $('#sidenav01').css('min-height', divHeight+'px');
 
 
 $(function(){
+		traer_album();
 		audio=$('audio');
 		current=0;
 
@@ -55,7 +56,7 @@ $(function(){
 
 			})
 		
-		}
+		};
 
 	//#### Funcion encargada de agregar cancion a lista de reproduccion 
 			var $add = $('.add-btn');
@@ -207,25 +208,27 @@ $(function(){
 		initaudio2();
 		$("#menu3").fadeOut('slow');
 
-
 	});
+
 	$("#ventana1").on('hidden.bs.modal', function (e) {
   		$("#ventana1").find(".form-control").val("");
   		$('.modal_red').hide();
 	});
 	$("#menu1").fadeOut("slow");
-$('.cancion > li > div').click(function(){
+	
+	$('.cancion > li > div').click(function(){
 
 			alert($(this).attr('data-idc'));
 		});
 	
 	
 
-	////////////////////////////////////////////////////////////////////////////////
-
-	$('#album > li > a').click(function(){
+	///////////
+	/////////////////////////////////////////////////////////////////////
+	function reload_album() {
+		$('#album > li > a').click(function(){
 		$ss = $(this).attr('data-id');
-		  $.post( "/front_include/playlist.php", { "idalbum" : $ss }, null, "json" )
+		  $.post( "/front_logica/playlist_album.php", { "idalbum" : $ss }, null, "json" )
                 .done(function( data, textStatus, jqXHR ) {
                     $('#central').empty();
                     $container = $('<div class="col-sm-2 col-md-3 affix-content"><div class="container"><ul id="playlist"></ul></div></div>');
@@ -255,7 +258,8 @@ $('.cancion > li > div').click(function(){
                 .fail(function( jqXHR, textStatus, errorThrown ) {
                     if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
             });
-});
+			});
+		}
 		
         // Esto abre el menu 1 de la cancion dentro del album
 	    function cargaplaylistjs(){
@@ -334,4 +338,35 @@ $('.cancion > li > div').click(function(){
             });
 		});
 		}
+		function buscador_a(){
+	    $('#s_album').keyup(function () {
+ 
+                    var rex = new RegExp($(this).val(), 'i');
+                    $('#album li').hide();
+                    $('#album li').filter(function () {
+                        return rex.test($(this).text());
+                    }).show();
+ 
+                })
+	    }
+
+	    function traer_album(){
+	    $.getJSON("/front_logica/album.php", function(result){
+   				$('#izquierda').empty();
+                $container = $('<div class="col-sm-2 col-md-3 affix-content"><div class="container"></div></div>');
+                $('#izquierda').append($container);
+                $buscador = $('<span class="glyphicon glyphicon-search lupa"></span><input id="s_album" class="search_album" type="text">');
+                $container.append($buscador);
+                $album = $('<ul id="album"></ul>');
+                $container.append($album);
+                for (var i = 0; i < result.length; i++) {
+                    $li = $('<li><a href="#" data-id='+ result[i].id +'>'+ result[i].nom +'</li>');
+                    $('#album').append($li);
+                    }
+                    reload_album();
+
+				 });
+		
+   		}
+
 });

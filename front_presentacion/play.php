@@ -14,18 +14,6 @@
 
   echo "<script type='text/javascript'> IdUsr = ".json_encode($_SESSION['IdUsr'])."</script>";
 
-  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
-      session_unset();
-      session_destroy();
-    ?>
-    <script language="javascript">
-      window.alert("Tiempo de espera excedido.");
-      location.href="/";
-    </script>
-    <?php
-  }else{
-    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
-   
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -133,8 +121,9 @@
         </div>
         </div>
       </div>
-      <?php include $_SERVER['DOCUMENT_ROOT'] . "/front_include/album.php"; ?>
 
+     
+      <div id="izquierda"></div>
       <div id="central"></div>
         <div id="reproductor">
           <div class="col-sm-2 col-md-3 navbar-right">
@@ -209,6 +198,6 @@
 
     </footer>
   </html>
-<?php } ?>
+
 
 
