@@ -201,7 +201,7 @@
 <div class="col-lg-4">
 <h2>Bienvenido al registro de Eggplant Music!</h2></br>
 <p>Regístrese para acceder a nuestra aplicación Web de música por Streaming. Podrá elegir entre crear una cuenta Free, Premium o Vip.</p>
-<p>Con su cuenta Free podrá acceder sin realizar ningún tipo de pago al catálogo de artistas y crear hasta 2 listas de reproducción. Si desea actualizarse a Premium la cuenta requiere un pago mensual y podrá crear hasta 5 listas de reproducción sin publicidad, y si actualiza a una cuenta Vip por un pago anual obtendrá 50% de bonificación con Playlists ilimitadas y sin publicidad.</p>
+<p>Con su cuenta Free podrá acceder sin realizar ningún tipo de pago al catálogo de artistas y crear hasta 2 listas de reproducción. Se incluye publicidad contratada por nuestros anunciantes. Si desea actualizarse a Premium la cuenta requiere un pago mensual y podrá crear hasta 5 listas de reproducción sin publicidad, y si actualiza a una cuenta Vip por un pago anual obtendrá 50% de bonificación con Playlists ilimitadas y sin publicidad.</p>
 </div>
 </div>
 
