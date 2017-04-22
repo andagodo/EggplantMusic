@@ -93,7 +93,7 @@ if ($item == "cancion"){
 		$arch= $_FILES['foto']['tmp_name'];
 		$img = file_get_contents($arch);
 		$NombreArchivoClave = GenerarClave(20,false);
-		$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/test/";
+		$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/";
 		$NombreArchivo = $NombreArchivo1 . $NombreArchivoClave . ".jpg";
 		$foto = $NombreArchivoClave . ".jpg";
 		

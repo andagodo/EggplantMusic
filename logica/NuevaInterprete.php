@@ -11,11 +11,11 @@ $nomi=trim($_POST['nomi']);
 $arch= $_FILES['foto']['tmp_name'];
 $pais=trim($_POST['pais']);
 $activ="S";
-$feactivo=date("d/m/Y");
+$feactivo=date("Y-m-d");
 $img = file_get_contents($arch);
 
 $NombreArchivoClave = GenerarClave(20,false);
-$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/test/";
+$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/";
 $NombreArchivo = $NombreArchivo1 . $NombreArchivoClave . ".jpg";
 $NombreArchivoBD = $NombreArchivoClave . ".jpg";
 
@@ -47,7 +47,7 @@ if ($cuenta != 0){
 		
 		if(file_exists($NombreArchivo)){
 			$NombreArchivoClave = GenerarClave(20,false);
-			$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/test/";
+			$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/";
 			$NombreArchivo = $NombreArchivo1 . $NombreArchivoClave . ".jpg";
 		}
 		if($archivo = fopen($NombreArchivo, "a")){

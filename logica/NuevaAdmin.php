@@ -6,17 +6,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
 
-//Obtiene los datos ingresados
 $tus=trim($_POST['tus']);
 $nomu=trim($_POST['nomu']);
 $mus=trim($_POST['mus']);
-// $pus=trim($_POST['pus']);
 $pus="0";
-//$feal=date("Y-m-d");
-$feal=date("d/m/Y");
+$feal=date("Y-m-d");
 $activ="N";
-//$feactivo=date("Y-m-d");
-$feactivo=date("d/m/Y");
+$feactivo=date("Y-m-d");
 $apell=trim($_POST['apeu']);
 $cla = GenerarClave(20,false); 
 $url = "http://eggplantblue.com/presentacion/RegistroBackEnd.php?id=" . $cla;

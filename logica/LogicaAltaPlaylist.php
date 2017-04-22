@@ -34,7 +34,7 @@ if ($nompl == ""){
  <?php
 }else{
 	
-	$fecha=date("d/m/Y H:i:s");
+	$fecha=date("Y-m-d H:i:s");
 	$activa=trim($_POST['activa']);
 	$idcaString=$_SESSION['playlistPronta'];
 	$idcaArray = $idcaString;

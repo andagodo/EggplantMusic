@@ -11,9 +11,9 @@ $conex = conectar();
 
 
 $fechainicio=date_create($_POST['fechaini']);
-$feini = date_format($fechainicio, 'd/m/Y');
+$feini = date_format($fechainicio, 'Y-m-d');
 $fechafin=date_create($_POST['fechafin']);
-$fefin = date_format($fechafin, 'd/m/Y');
+$fefin = date_format($fechafin, 'Y-m-d');
 $filtroasunto=trim($_POST['filtroasunto']);
 
 	

@@ -18,7 +18,7 @@ $dur=trim($_POST['dur']);
 $ruta=trim($_POST['ruta']);
 $idg=trim($_POST['idg']);
 $activ="S";
-$feactivo=date("d/m/Y");
+$feactivo=date("Y-m-d");
 
 
 

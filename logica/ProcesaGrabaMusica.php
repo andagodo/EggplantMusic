@@ -10,7 +10,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/getid3/getid3.php';
 session_start();
 $conex = conectar();
 $activ="S";
-$feactivo=date("d/m/Y");
+$feactivo=date("Y-m-d");
 
 // DOY DE ALTA LOS INTERPRETES QUE NO ESTABAN EN BASE DE DATOS Y GUARDO SU ID EN $IDI
 if (isset ($_POST['nombreinterprete'])){
@@ -22,7 +22,7 @@ if (isset ($_POST['nombreinterprete'])){
 	foreach($nombreinterprete as $AltaInterprete){
 		$img = file_get_contents($fotointerprete[$i]);
 		$NombreArchivoClave = GenerarClave(20,false);
-		$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/test/";
+		$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/";
 		$NombreArchivo = $NombreArchivo1 . $NombreArchivoClave . ".jpg";
 		$NombreArchivoBD = $NombreArchivoClave . ".jpg";
 		
@@ -56,7 +56,7 @@ if (isset ($_POST['nombrealbum'])){
 	foreach($nombrealbum as $AltaAlbum){
 		$imgAl = file_get_contents($fotoalbum[$a]);
 		$NombreArchivoClaveAl = GenerarClave(20,false);
-		$NombreArchivo1Al = $_SERVER['DOCUMENT_ROOT'] . "/img/test/";
+		$NombreArchivo1Al = $_SERVER['DOCUMENT_ROOT'] . "/img/";
 		$NombreArchivoAl = $NombreArchivo1Al . $NombreArchivoClaveAl . ".jpg";
 		$NombreArchivoBDAl = $NombreArchivoClaveAl . ".jpg";		
 

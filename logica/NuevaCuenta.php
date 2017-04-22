@@ -11,13 +11,13 @@ $tipo=trim($_POST['tipo']);
 $playlist=trim($_POST['playlist']);
 $precio=trim($_POST['precio']);
 $activo=trim($_POST['activo']);
-$feactivo=date("d/m/Y");
+$feactivo=date("Y-m-d");
 
 $conex = conectar();
 $u= new Cuenta ('',$tipo,$playlist,$precio,$activo,$feactivo);
 
 $ok=$u->altaCuenta($conex);
-	if ($ok){
+if ($ok){
 
 		?>
 		<script language="javascript">

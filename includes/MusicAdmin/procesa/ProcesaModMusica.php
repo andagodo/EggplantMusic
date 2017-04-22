@@ -153,7 +153,7 @@ if ($item == "cancion"){
 					<div class="form-group">
 						<label>Nombre del nuevo Intérprete:</label>
 						<div role="form" action='/includes/MusicAdmin/logica/ProcesaModMusica.php' method="POST">
-							<input class="form-control" id='nomint' placeholder="Escriba texto a buscar"/> <!--name='iditer' -->
+							<input class="form-control" id='nomint' placeholder="Escriba texto a buscar"/>
 							<button type="button" class="btn btn-default" onclick="ConsultaNomInterpreteCancion();">Buscar</button>
 						</div>
 					</div>

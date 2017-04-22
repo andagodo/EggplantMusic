@@ -9,13 +9,13 @@ $conex = conectar();
 <?php
 
 $objeto=trim($_POST['objeto']);
-$accion=trim($_POST['accion']);
+	$accion=trim($_POST['accion']);
 $texto=trim($_POST['texto']);
 $cantidad=trim($_POST['cantidad']);
 $fechainicio=date_create($_POST['fechaini']);
-$feini = date_format($fechainicio, 'd/m/Y');
+$feini = date_format($fechainicio, 'Y-m-d');
 $fechafin=date_create($_POST['fechafin']);
-$fefin = date_format($fechafin, 'd/m/Y');
+$fefin = date_format($fechafin, 'Y-m-d');
 
 if ($fechainicio >= $fechafin){
 	?>

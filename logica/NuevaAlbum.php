@@ -11,11 +11,11 @@ $nom=trim($_POST['nom']);
 $anio=trim($_POST['anio']);
 $arch= $_FILES['foto']['tmp_name'];
 $activ="S";
-$feactivo=date("d/m/Y");
+$feactivo=date("Y-m-d");
 $img = file_get_contents($arch);
 
 $NombreArchivoClave = GenerarClave(20,false);
-$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/test/";
+$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/img/";
 $NombreArchivo = $NombreArchivo1 . $NombreArchivoClave . ".jpg";
 $NombreArchivoBD = $NombreArchivoClave . ".jpg";
 

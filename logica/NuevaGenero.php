@@ -13,7 +13,7 @@ $conex = conectar();
 $nomg=trim($_POST['nomg']);
 $desc=trim($_POST['desc']);
 $activ="S";
-$feactivo=date("d/m/Y");
+$feactivo=date("Y-m-d");
 
 $g= new Genero ('',$nomg);
 $existeg=$g->buscaLikeGenero($conex);

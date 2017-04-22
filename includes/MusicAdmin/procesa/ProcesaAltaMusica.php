@@ -18,13 +18,13 @@ foreach ($_FILES['ArchivoSubido']['tmp_name'] as $arch ){
 	$archivo1 = file_get_contents($arch);
 	$archivoEncoded = base64_encode($archivo1);
 	$NombreArchivoClave = GenerarClave(20,false);
-	$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/audio/testBack/";
+	$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/audio/";
 	$NombreArchivo = $NombreArchivo1 . $NombreArchivoClave;
 
 	// Si el nombre del archivo ya existe, creo otro.
 	if(file_exists($NombreArchivo)){
 		$NombreArchivoClave = GenerarClave(20,false);
-		$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/audio/testBack/";
+		$NombreArchivo1 = $_SERVER['DOCUMENT_ROOT'] . "/audio/";
 		$NombreArchivo = $NombreArchivo1 . $NombreArchivoClave;
 	}
 

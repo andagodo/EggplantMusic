@@ -8,7 +8,7 @@ $conex = conectar();
 $nombre=trim($_POST['nombre']);
 $tags=trim($_POST['tags']);
 $activo=trim($_POST['activo']);
-$fecha=date("d/m/Y H:i:s");
+$fecha=date("Y-m-d H:i:s");
 $idpl=trim($_POST['idpl']);
 
 $PL= new Playlist ($idpl,$nombre,'',$activo,$fecha,$tags);
@@ -26,7 +26,7 @@ if ($nombre != $mismonombre[0][0]){
 		</script>
 		<?php
 		$AhoraNo="NO";
-	}else{
+		}else{
 		$AhoraNo="SI";
 	}
 	

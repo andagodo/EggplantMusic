@@ -9,7 +9,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 $conex = conectar();
 $cuenta=$_POST['cuenta'];
 $accion=$_POST['accion'];
-$feactivo=date("d/m/Y");
+$feactivo=date("Y-m-d");
 
 if ($accion == "habilitar"){
 
