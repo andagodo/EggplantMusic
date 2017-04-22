@@ -20,7 +20,7 @@ class ContieneAlbum
 		
     }
     
-    //Métodos set
+/*
 	
     public function setId_Contiene_Al($idca)
     {
@@ -48,7 +48,7 @@ class ContieneAlbum
       $this->Fech_Activo= $feactivo;
     }	
  
-    //Métodos get
+*/
 	
     public function getId_Contiene_Al()
     {
@@ -70,14 +70,11 @@ class ContieneAlbum
       return $this->Activo;
     }
     
-	
     public function getFech_Activo()
     {
       return $this->Fech_Activo;
     }   
 	
-    //Otros Métodos
-    
 	
     public function altaContieneAlbum($conex)
     {

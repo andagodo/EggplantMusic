@@ -19,7 +19,7 @@ class PerteneceCancion
 		$this->Fech_Activo=$feactivo;
     }
     
-    //Métodos set
+/*
 	
     public function setId_Pertenece_Cancion($idpc)
     {
@@ -47,8 +47,7 @@ class PerteneceCancion
       $this->Fech_Activo= $feactivo;
     }	
 
-  
-    //Métodos get
+*/
 	
     public function getId_Pertenece_Cancion()
     {
@@ -70,15 +69,12 @@ class PerteneceCancion
       return $this->Activo;
     }
     
-	
     public function getFech_Activo()
     {
       return $this->Fech_Activo;
     }  
     
-	
-    //Otros Métodos
-    
+
 	
     public function altaPerteneceCancion($conex)
     {

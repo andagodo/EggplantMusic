@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
 
-//Obtiene los datos ingresados
+
 $nom=trim($_POST['nombre']);
 $ape=trim($_POST['apellido']);
 $fnac=trim($_POST['nacimiento']);
@@ -15,58 +15,39 @@ $mail=trim($_POST['email']);
 $pass=trim($_POST['pass']);
 $gen=trim($_POST['genero']);
 $nac=trim($_POST['nacionalidad']);
-$feal=date("d/m/Y");
+$feal=date("Y-m-d");
 $conf="N";
 $cla = GenerarClave(20,false); 
 
 $url = "http://localhost:8080/presentacion/Registro.php?id=" . $cla;
 
 $conex = conectar();
-//$u= new Persona ('',$login,md5($pass));
 $u= new Usuario ('',$nom,$ape,$fnac,$tel,$mail,$pass,$gen,$nac,$feal,$conf,$cla);
-
 $ok=$u->altaUsuario($conex);
 
-if ($ok)
-
-{
+if ($ok){
+	
 	$i= new Usuario('','','','','',$mail);
 	$ids=$i->consultaIDUsuario($conex);
 	$id = $ids[0][0];
-	
+
 	$c= new Usuario($id);
 	$okc=$c->UsuarioGratuito($conex);
-//	UsuarioGratuito()
 
 	ActivacionMail($mail, $nom, $ape, $url);
-	echo "<table  align='center' >";
-	echo "<tr height='400'>";
-       echo "<td class='leyenda'>";
-			echo "Se creo un nuevo Usuario: $nom $ape";
-			echo " </br><a href=\"\presentacion\Menu.php\" style='color: black'>Volver</a>";
-       echo "</td>";
-	echo "</tr>";
-	echo "</table>";
-		?>
-	<!--  <script language="javascript">
-		location.href="/presentacion/cargaMenu.php";
-
-			</script>  
-	-->
-	<?php	
-
+	?>
+	<script language="javascript">
+		window.alert("Gracias por registrarte.\nPor favor, inicie sesión.");
+		location.href="/index.php";
+	</script>
+	<?php
+	
+}else{
+	?>
+	<script language="javascript">
+		window.alert("El Usuario o Password \n no es correcto.");
+		location.href="/presentacion/indice.php";
+	</script>
+	<?php
 }
-else
-{
-   ?>
- <script language="javascript">
- 
-   window.alert("El Usuario o Password \n no es correcto.");
-   location.href="/presentacion/indice.php";
- </script>
-  <?php
-  
-}
-// desconectar($conex);
- 
 ?>

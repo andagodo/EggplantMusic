@@ -22,7 +22,7 @@ class Interprete
 
     }
     
-    //Métodos set
+/*
     
     public function setId_Interprete($idi)
     {
@@ -54,9 +54,7 @@ class Interprete
     {
       $this->Fech_Activo= $feactivo;
     }	
- 
-    
-    //Métodos get
+*/
     
     public function getId_Interprete()
     {
@@ -78,20 +76,16 @@ class Interprete
       return $this->Pais_Interprete;
     }
  
- 
 	public function getActivo()
     {
       return $this->Activo;
     }
     
-	
     public function getFech_Activo()
     {
       return $this->Fech_Activo;
     }    
 	
-    //Otros Métodos
-    
 	
     public function altaInterprete($conex)
     {

@@ -19,7 +19,7 @@ class Genero
 		$this->Fech_Activo=$feactivo;
     }
     
-    //Métodos set
+/*
     
     public function setId_Genero($idg)
     {
@@ -46,9 +46,7 @@ class Genero
     {
       $this->Fech_Activo= $feactivo;
     }		
-	
-    
-    //Métodos get
+*/
     
     public function getId_Genero()
     {
@@ -65,20 +63,16 @@ class Genero
       return $this->Desc_Genero;
     }
  
- 
 	public function getActivo()
     {
       return $this->Activo;
     }
-    
 	
     public function getFech_Activo()
     {
       return $this->Fech_Activo;
     }   
  
-	
-    //Otros Métodos
     
 	public function consultaTodosGenero($conex)
     {
@@ -86,7 +80,6 @@ class Genero
       $datos= $pu->consultaTodosGenero($this, $conex);
       return $datos;
     }
-	
 	
 	
     public function altaGenero($conex)
@@ -118,7 +111,7 @@ class Genero
 	  
     }
 
-	*/
+*/
 	
 	public function buscaNombreGenero($conex)
     {

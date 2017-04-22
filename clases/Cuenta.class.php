@@ -21,7 +21,7 @@ class Cuenta
 		$this->Fech_Activo=$feactivo;
     }
     
-    //Métodos set
+/*
   
     public function setId_Cuenta($idcu)
     {
@@ -53,7 +53,7 @@ class Cuenta
       $this->Fech_Activo= $feactivo;
     }	
 	
-    //Métodos get
+*/
 	
     public function getId_Cuenta()
     {
@@ -75,7 +75,6 @@ class Cuenta
       return $this->Precio;
     }
  
- 
 	public function getActivo()
     {
       return $this->Activo;
@@ -86,10 +85,7 @@ class Cuenta
       return $this->Fech_Activo;
     }     
  
-	
-    //Otros Métodos
-    	
-	
+
     public function altaCuenta($conex)
     {
         $pu=new ExistenciaCuenta;
@@ -113,7 +109,6 @@ class Cuenta
         $pu=new ExistenciaCuenta;
         return ($pu->ActualizaCuenta($this, $conex));
     }  
-
 	
     public function consultaCuentas($conex)
     {

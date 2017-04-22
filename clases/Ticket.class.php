@@ -28,7 +28,7 @@ class Ticket
 		$this->Fecha_Ticket2= $feti2;
     }
     
-    //Métodos set
+/*
 	
     public function setId_Ticket($idt)
     {
@@ -75,7 +75,7 @@ class Ticket
       $this->Fecha_Ticket2= $feti2;
     } 
 
-    //Métodos get
+*/
 	
     public function getId_Ticket()
     {
@@ -91,7 +91,6 @@ class Ticket
     {
       return $this->Fecha_Ticket;
     }
-	
 
     public function getAsunto_Ticket()
     {
@@ -122,9 +121,7 @@ class Ticket
     {
       return $this->Fecha_Ticket2;
     }
-	
-    //Otros Métodos
-    
+	  
 
 	public function TotalTicket($conex)
     {

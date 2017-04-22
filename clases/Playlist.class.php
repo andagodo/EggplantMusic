@@ -23,7 +23,7 @@ class Playlist
 
     }
     
-    //Métodos set
+/*
 	
     public function setId_Playlist($idp)
     {
@@ -54,7 +54,7 @@ class Playlist
     {
       $this->Playlist_Tags= $pltags;
     }
-    //Métodos get
+*/
 	
     public function getId_Playlist()
     {
@@ -86,8 +86,6 @@ class Playlist
       return $this->Playlist_Tags;
     }
 
-	
-    //Otros Métodos
     
 	
     public function altaPlaylist($conex)

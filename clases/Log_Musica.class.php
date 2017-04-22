@@ -29,7 +29,7 @@ class Log_Musica
 		$this->Texto=$tex;
 	}
     
-    //Métodos set
+/*
     
     public function setId_Log_Musica($idlm)
     {
@@ -83,7 +83,7 @@ class Log_Musica
     }
 	
     
-    //Métodos get
+*/
     
     public function getId_Log_Musica()
     {
@@ -94,7 +94,6 @@ class Log_Musica
     {
       return $this->Fech_Log_Musica;
     }	
-    
     
     public function getId_Usuario()
     {
@@ -135,9 +134,7 @@ class Log_Musica
     {
       return $this->Texto;
     }
-    
-    //Otros Métodos
-    
+        
     
     public function altaLog_Musica($conex)
     {

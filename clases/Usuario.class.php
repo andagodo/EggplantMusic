@@ -33,7 +33,7 @@ class Usuario
 		$this->Clave= $cla;
     }
     
-    //Métodos set
+/*
   
     public function setId_Usuario($idu)
     {
@@ -97,10 +97,7 @@ class Usuario
       $this->Clave= $cla;
     }
 
-
-    // la profesora habia puesto una funcion del tipo set que era "habilitado"
-    
-    //Métodos get
+*/
    
     public function getId_Usuario()
     {
@@ -137,12 +134,10 @@ class Usuario
       return $this->Password;
     }
     
-    
 	public function getSexo()
     {
       return $this->Sexo;
     }
-	
 	
  	public function getNacionalidad()
     {
@@ -157,34 +152,26 @@ class Usuario
 	public function getConfirmo()
     {
       return $this->Confirmo;
-    }	
-
+    }
 	
 	public function getClave()
     {
       return $this->Clave;
     }	
 
-   
-    //Otros Métodos
-    
-    //Devuelve true si el Login y el Password coinciden
     
     public function coincideLoginPassword($conex)
     {
-
         $pu= new ExistenciaUsuario;
-		return $pu->coincideLoginPassword($this, $conex);
-        
+		return $pu->coincideLoginPassword($this, $conex);   
     }
-	    //Otros Métodos
+
     public function altaUsuario($conex)
     {
         $pu=new ExistenciaUsuario;
         return ($pu->altausuario($this, $conex));
     }    
     
-     
 	public function consultaUno($conex)
     {
       $pu= new ExistenciaUsuario;
@@ -209,8 +196,7 @@ class Usuario
 	{
       $pu= new ExistenciaUsuario;
       return $pu->consultaTipo($this, $conex);
-    }	
-	
+    }
 	
 	public function ConfirmaMail($conex)
 	{
@@ -230,7 +216,5 @@ class Usuario
       return $pu->UsuarioGratuito($this, $conex);
     }	
 	
-	
 }
-
 ?>

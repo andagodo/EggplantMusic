@@ -15,7 +15,7 @@ class Log_Transacciones
 		$this->Usuario=$usr;
 	}
     
-    //Métodos set
+/*
     
 	public function setFecha_Ini($feini)
     {
@@ -32,8 +32,7 @@ class Log_Transacciones
       $this->Usuario= $usr;
     }
 	
-    
-    //Métodos get
+*/
     
 
 	public function getFecha_Ini()
@@ -50,8 +49,6 @@ class Log_Transacciones
     {
       return $this->Usuario;
     }
-    
-    //Otros Métodos
     
     
     public function ConsultaAuditoria($conex)

@@ -22,8 +22,7 @@ class Album
 		$this->Fech_Activo=$feactivo;
     }
     
-    //Métodos set
-	
+/*
     public function setId_Album($ida)
     {
       $this->Id_Album= $ida;
@@ -49,14 +48,11 @@ class Album
       $this->Activo= $activ;
     }
     
-	
     public function setFech_Activo($feactivo)
     {
       $this->Fech_Activo= $feactivo;
     }	
-
-  
-    //Métodos get
+*/
 	
     public function getId_Album()
     {
@@ -78,21 +74,16 @@ class Album
       return $this->Link_Foto_Album;
     }
  
-
 	public function getActivo()
     {
       return $this->Activo;
     }
     
-	
     public function getFech_Activo()
     {
       return $this->Fech_Activo;
     }   
 
- 
-    //Otros Métodos
-    
 	
     public function altaAlbum($conex)
     {
@@ -106,8 +97,6 @@ class Album
       $datos= $pu->eliminaAlbum($this, $conex);
       return $datos;
     }	
-	
-	
 	
 	public function consultaAlbum($conex)
     {

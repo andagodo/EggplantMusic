@@ -21,7 +21,7 @@
     		$this->Usuario= $usr;
 	    }		
 
-	    //Métodos set
+/*
 
 	    public function setId_Crea_Playlist($idc)
 	    {
@@ -53,7 +53,7 @@
       	$this->Usuario= $usr;
     	}	 	    
 
-	     //Métodos get
+*/
 
 	    public function getId_Crea_Playlist()
 	    {
@@ -79,11 +79,12 @@
 	    {
 	      return $this->Fech_Activo;
 	    }
+		
 	    public function getUsuario()
 	    {
 	      return $this->Usuario;
 	    }
-	    //Otros Métodos
+		
 
 	    public function consultaplayusr($conex)
     	{

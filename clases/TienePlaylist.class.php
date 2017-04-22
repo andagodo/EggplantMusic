@@ -13,7 +13,7 @@ class TienePlaylist
 		$this->Id_Contiene_Al= $idca;
     }
     
-    //Métodos set
+/*
     public function Id_Playlist($idpl)
     {
       $this->Id_Playlist= $idpl;
@@ -24,7 +24,7 @@ class TienePlaylist
       $this->Id_Contiene_Al= $idca;
     }    
  
-    //Métodos get
+*/
 
     public function getId_Playlist()
     {
@@ -35,9 +35,7 @@ class TienePlaylist
     {
       return $this->Id_Contiene_Al;
     }	
-	
-    //Otros Métodos
-    
+	    
 	
     public function altaTienePlaylist($conex)
     {
@@ -80,18 +78,17 @@ class TienePlaylist
       return $pu->consultaIDContieneAl($this, $conex);
     }
 	
-
 	public function EliminaCancionPL($conex)
 	{
       $pu= new ExistenciaTienePlaylist;
       return $pu->EliminaCancionPL($this, $conex);
     }
-  public function ConsultacancionyPL($conex)
-  {
+	
+	public function ConsultacancionyPL($conex)
+	{
       $pu= new ExistenciaTienePlaylist;
       return $pu->ConsultacancionyPL($this, $conex);
     }
 
-	
 }
 ?>

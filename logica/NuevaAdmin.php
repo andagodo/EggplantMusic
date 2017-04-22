@@ -12,12 +12,14 @@ $nomu=trim($_POST['nomu']);
 $mus=trim($_POST['mus']);
 // $pus=trim($_POST['pus']);
 $pus="0";
-$feal=date("Y-m-d");
+//$feal=date("Y-m-d");
+$feal=date("d/m/Y");
 $activ="N";
+//$feactivo=date("Y-m-d");
 $feactivo=date("d/m/Y");
 $apell=trim($_POST['apeu']);
 $cla = GenerarClave(20,false); 
-$url = "http://localhost:8080/presentacion/RegistroBackEnd.php?id=" . $cla;
+$url = "http://eggplantblue.com/presentacion/RegistroBackEnd.php?id=" . $cla;
 
 
 $conex = conectar();

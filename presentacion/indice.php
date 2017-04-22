@@ -7,17 +7,6 @@
 		<link rel="stylesheet" type ="text/css" href="/estilos/css/bootstrap.css" />	<!-- Levanta hoja de estilos CSS de bootstrap-->
 		<script src="/estilos/js/bootstrap.js"></script> <!-- Levanta la hoja de JavaScript de bootstrap-->
 		<link href="/estilos/css/signin.css" rel="stylesheet">	<!-- Levanta hoja de estilos CSS de bootstrap-->
-		
-
-	<STYLE type="text/css">
-		#PunteroAqui:hover{ width:230px; height:40px; position:absolute;}
-		#PunteroAqui{
-			width:20px; 
-			height:20px; 
-			overflow:hidden; 
-			position:absolute;
-		}
-	</STYLE>
 	</head>
 
 	<body>
@@ -54,13 +43,12 @@
 				<form method="POST" name="pass" id="passid" enctype="application/x-www-form-urlencoded" class="form-signin">
 					<h2 class="form-signin-heading">Bienvenido!</h2>
 
-
-					<h3 class="form-signin-heading">Establezca su clave:   <span id="PunteroAqui">
-						<img src="/img/i.png">
-						- Texto de ayuda
-
-						</span> </h3>
-						
+					<h3 class="form-signin-heading">Establezca su clave: </h3>
+					<p><u>Deber&#225; contener como m&#237;nimo:</u></p>
+					<li>8 caracteres</li>
+					<li>Una may&#250;scula</li>
+					<li>Una min&#250;scula</li>
+					<li>Un n&#250;mero</li>
 					<input id="clave" name="clave" style="visibility:hidden" value="<?php echo $clave ?> "> </input>
 					<input id="npass" name="npass" class="form-control" placeholder="Contrase&ntilde;a" required="" autofocus="" type="password"></input>
 					<input id="npass2" name="npass2" class="form-control" placeholder="Repita Contrase&ntilde;a" required="" type="password"></input></br>

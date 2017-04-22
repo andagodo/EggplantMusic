@@ -177,9 +177,9 @@ class ExistenciaUsuario
 	public function UsuarioGratuito($param, $conex)
 	{
 		$idu= trim($param->getId_Usuario());
-		$feini=date("d/m/Y");
+		$feini=date("Y-m-d");
 		$fefin = strtotime ( '+1 year' , strtotime ( $feini ) ) ;
-		$fefin = date ( "d/m/Y" , $fefin );
+		$fefin = date ( "Y-m-d" , $fefin );
 		
 		$sql = "INSERT INTO Tiene_Cuenta (FK_Id_Usuario, FK_Id_Cuenta, Fecha_Ini_Cuenta, Fecha_Fin_Cuenta) VALUES (:idu, 1, :feini, :fefin)";
 		$result = $conex->prepare($sql);

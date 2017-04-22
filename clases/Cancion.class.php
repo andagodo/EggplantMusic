@@ -23,7 +23,7 @@ class Cancion
 		$this->Fech_Activo=$feactivo;
     }
     
-    //Métodos set
+/*
     
     public function setId_Cancion($idc)
     {
@@ -63,8 +63,7 @@ class Cancion
       $this->Fech_Activo= $feactivo;
     }		
 	
-	
-    //Métodos get
+*/
     
     public function getId_Cancion()
     {
@@ -86,27 +85,21 @@ class Cancion
       return $this->Ruta_Arch_Cancion;
     }
     
-	
     public function getId_Genero()
     {
       return $this->Id_Genero;
     }    
-
 
 	public function getActivo()
     {
       return $this->Activo;
     }
     
-	
     public function getFech_Activo()
     {
       return $this->Fech_Activo;
     }   
 
-	
-    //Otros Métodos
-    
 	
     public function altaCancion($conex)
     {
@@ -175,15 +168,14 @@ class Cancion
       $pu= new ExistenciaCancion;
       $datos= $pu->eliminaCancion($this, $conex);
       return $datos;
-    }		
+    }
+	
   public function consCancionId($conex)
     {
       $pu= new ExistenciaCancion;
       $datos= $pu->consCancionId($this, $conex);
       return $datos;
     }
-
-	
 	
 	public function consultaCancionSinInterprete($conex)
     {
@@ -212,7 +204,6 @@ class Cancion
       $datos= $pu->consultaInterpreteSinCancion($this, $conex);
       return $datos;
     }
-
 
 	public function consultaGeneroCancion($conex)
     {
@@ -328,4 +319,3 @@ class Cancion
 */	
 }
 ?>
-
