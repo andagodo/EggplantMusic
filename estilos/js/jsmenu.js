@@ -10,6 +10,13 @@
 
             });
         });
+		
+		$(document).ready(function() {
+            $('#ConfigAdmin2').click(function(){
+                $("#DASH").load('/includes/ConfigAdmin.php');
+
+            });
+        });
 
     $(document).ready(function() {
             $('#dashSAdmin').click(function(){
@@ -150,6 +157,13 @@
 
             });
         });
+		
+		$(document).ready(function() {
+            $('#altaalbum2').click(function(){
+                $("#DASH").load('/includes/MusicAdmin/AltaAlbum.php');
+
+            });
+        });
 
 /*
 Lo usaba cuando tenia el formulario de baja Album en Menú
@@ -189,6 +203,14 @@ Lo usaba cuando tenia el formulario de baja Album en Menú
 
             });
         });
+
+		$(document).ready(function() {
+            $('#altainterprete2').click(function(){
+                $("#DASH").load('/includes/MusicAdmin/AltaInterprete.php');
+
+            });
+        });
+		
 		
 		$(document).ready(function() {
             $('#modinterprete').click(function(){
@@ -218,6 +240,12 @@ Lo usaba cuando tenia el formulario de baja Album en Menú
             });
         });		
 		
+        $(document).ready(function() {
+            $('#altaplaylist3').click(function(){
+                $("#DASH").load('/includes/PlaylistAdmin/AltaPlaylist.php');
+
+            });
+        });	
 
         $(document).ready(function() {
             $('#modificaplaylist').click(function(){
@@ -226,6 +254,13 @@ Lo usaba cuando tenia el formulario de baja Album en Menú
             });
         });
 		
+        $(document).ready(function() {
+            $('#modificaplaylist2').click(function(){
+                $("#DASH").load('/includes/PlaylistAdmin/ModificaPlaylist.php');
+
+            });
+        });		
+
 		$(document).ready(function() {
             $('#estadisticas').click(function(){
                 $("#DASH").load('/includes/Estadistica.php');
@@ -247,7 +282,14 @@ Lo usaba cuando tenia el formulario de baja Album en Menú
             });
         });
 		
+        $(document).ready(function() {
+            $('#Tickets2').click(function(){
+                $("#DASH").load('/includes/Tickets.php');
 
+            });
+        });
+		
+		
         $(document).ready(function() {
             $('#respticket').click(function(){
                 $("#DASH").load('/includes/TicketAdmin/RespondeTickets.php');
@@ -262,10 +304,16 @@ Lo usaba cuando tenia el formulario de baja Album en Menú
             });
         });
 		
-/*				
+        $(document).ready(function() {
+            $('#listticket2').click(function(){
+                $("#DASH").load('/includes/TicketAdmin/ListaTickets.php');
+
+            });
+        });
+		
         $(document).ready(function() {
             $('#respticket2').click(function(){
-                $("#DASH").load('/includes/TicketAdmin/RespondeTicket.php');
+                $("#DASH").load('/includes/TicketAdmin/RespondeTickets.php');
 
             });
         });		

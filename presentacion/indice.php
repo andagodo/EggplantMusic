@@ -44,7 +44,7 @@
 					<h2 class="form-signin-heading">Bienvenido!</h2>
 
 					<h3 class="form-signin-heading">Establezca su clave: </h3>
-					<p><u>Deber&#225; contener como m&#237;nimo:</u></p>
+					<p><b><u>Deber&#225; contener como m&#237;nimo:</u></b></p>
 					<li>8 caracteres</li>
 					<li>Una may&#250;scula</li>
 					<li>Una min&#250;scula</li>

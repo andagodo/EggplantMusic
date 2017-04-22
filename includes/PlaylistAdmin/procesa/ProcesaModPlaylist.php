@@ -21,6 +21,7 @@ for ($i=0;$i<$CuentaidCA;$i++){
 	$CA = new ContieneAlbum($idCA[$i][0]);
 	$idPC[$i] = $CA->ConsultaIDPerteneceC($conex);
 }
+
 $CuentaidPC=count($idPC);
 
 for($c=0;$c<$CuentaidPC;$c++){

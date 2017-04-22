@@ -158,6 +158,13 @@ class Playlist
       $pu= new ExistenciaPlaylist;
       $datos= $pu->UpdatePlaylist($this, $conex);
       return $datos;
+    }
+
+	public function TotalPlaylistNoAct($conex)
+    {
+      $pu= new ExistenciaPlaylist;
+      $datos= $pu->TotalPlaylistNoAct($this, $conex);
+      return $datos;
     }	
 	
 }

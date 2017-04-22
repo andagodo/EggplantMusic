@@ -196,7 +196,7 @@ class ExistenciaAdmin
 	public function buscaMailAdmin($param, $conex)
 	{
         $mail= trim($param->getMail_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai AND Activo = 'S'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Id_Usr_Sistema FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$mail = "%".$mail."%";
 	    $result->execute(array(":mai" => $mail));

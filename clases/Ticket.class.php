@@ -172,5 +172,12 @@ class Ticket
       return $datos;
     }
 	
+	public function TotalTicketUsuario($conex)
+    {
+      $pu= new ExistenciaTicket;
+      $datos= $pu->TotalTicketUsuario($this, $conex);
+      return $datos;
+    }
+	
 }
 ?>

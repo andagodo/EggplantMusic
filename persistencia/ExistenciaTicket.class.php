@@ -46,7 +46,7 @@ class ExistenciaTicket
 	public function TotalTicket($param,$conex)
 	{
 
-        $sql = "SELECT COUNT(Id_Ticket) FROM Ticket WHERE Resuelto_Ticket = 'N'";
+        $sql = "SELECT COUNT(Id_Ticket) FROM Ticket WHERE Resuelto_Ticket != 'S'";
         $result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
@@ -122,6 +122,17 @@ class ExistenciaTicket
 		$resultados=$result->fetchAll();
        return $resultados;
     }
+
+	public function TotalTicketUsuario($param,$conex)
+	{
+		$usr= trim($param->getId_Usuario());
+        $sql = "SELECT COUNT(Id_Ticket) FROM Ticket WHERE Resuelto_Ticket != 'S' AND Id_Usuario = :usr";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":usr" => $usr));
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
+	
 	
 }
 ?>

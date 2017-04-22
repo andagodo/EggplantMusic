@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <script type="text/javascript" src="/estilos/portada/js/jquery.min.js"></script>
 <script type="text/javascript" src="/estilos/portada/js/jquery-ui.min.js"></script>
 

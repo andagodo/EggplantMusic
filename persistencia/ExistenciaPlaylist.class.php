@@ -72,7 +72,7 @@ class ExistenciaPlaylist
 	public function TotalPlaylist($param,$conex)
 	{
 
-        $sql = "SELECT COUNT(Id_Playlist) FROM Crea_Playlist WHERE Id_Usuario = '1'";
+        $sql = "SELECT COUNT(Id_Playlist) FROM Crea_Playlist WHERE Id_Usuario = '1' AND Activo = 'S'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();
@@ -137,6 +137,15 @@ class ExistenciaPlaylist
        return $result;
     }	
 
+	
+	public function TotalPlaylistNoAct($param,$conex)
+	{
+        $sql = "SELECT COUNT(Id_Playlist) FROM Crea_Playlist WHERE Id_Usuario = '1' AND Activo = 'N'";	
+        $result = $conex->prepare($sql);
+	    $result->execute();
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }	
 	
 }
 ?>
