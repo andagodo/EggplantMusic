@@ -176,7 +176,7 @@
     <div class="col-lg-8">
 		<select class="form-control" name='nacionalidad' required>
 			<?php
-			include $_SERVER['DOCUMENT_ROOT'] . '/includes/selectpais.php';
+			include $_SERVER['DOCUMENT_ROOT'] . '/front_logica/selectpais.php';
 			?>
 		</select>
 	</div>			
