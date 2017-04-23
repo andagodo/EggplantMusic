@@ -73,5 +73,15 @@ class ExistenciaTienePlaylist
         return $resultados;
     }  
 
+    public function EliminaplaylistInTP($param, $conex)
+    {
+        $idpl= trim($param->getId_Playlist());
+        $sql = "DELETE FROM Tiene_PlayList WHERE Id_PlayList = :idpl";
+        $result = $conex->prepare($sql);
+        $result->execute(array(":idpl" => $idpl));
+       return $result;
+    } 
+
+
 }
 ?>

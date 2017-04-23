@@ -147,5 +147,13 @@ class ExistenciaPlaylist
        return $resultados;
     }	
 	
+		public function EliminaPlaylistUsr($param,$conex)
+	{
+		$idpl= trim($param->getId_Playlist());
+        $sql = "DELETE FROM PlayList WHERE Id_PlayList = :idpl";	
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idpl" => $idpl));
+       	return $result;
+    }
 }
 ?>

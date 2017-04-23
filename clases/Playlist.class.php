@@ -166,6 +166,12 @@ class Playlist
       $datos= $pu->TotalPlaylistNoAct($this, $conex);
       return $datos;
     }	
+  public function EliminaPlaylistUsr($conex)
+    {
+      $pu= new ExistenciaPlaylist;
+      $datos= $pu->EliminaPlaylistUsr($this, $conex);
+      return $datos;
+    } 
 	
 }
 ?>

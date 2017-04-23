@@ -84,7 +84,12 @@
 	    {
 	      return $this->Usuario;
 	    }
-		
+	    
+	    public function ConsultaIdPlaylistSist($conex)
+    	{
+        $pu=new ExistenciaCreaPlaylist;
+        return ($pu->ConsultaIdPlaylistSist($this, $conex));
+    	}   		
 
 	    public function consultaplayusr($conex)
     	{
@@ -96,6 +101,11 @@
     	{
         $pu=new ExistenciaCreaPlaylist;
         return ($pu->altaCreaPlaylist($this, $conex));
-    }    
+    	}    
+    	public function EliminaplaylistInCP($conex)
+    	{
+        $pu=new ExistenciaCreaPlaylist;
+        return ($pu->EliminaplaylistInCP($this, $conex));
+    	}    
 }
 ?>

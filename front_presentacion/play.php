@@ -26,16 +26,20 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
     <!-- Latest compiled and minified JavaScript -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.js"></script>
 
       <link rel="stylesheet" href="/estilos/css/play.css">
       <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
+      
       <link href="/estilos/css/sb-admin.css" rel="stylesheet">
       <link rel="stylesheet" href="/estilos/css/plugins/morris.css">
       <link href="/estilos/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      
     <head>
      <title>EggPlantMusic</title>
     </head>
@@ -141,7 +145,6 @@
                 <li><div class="contmenu1"><a class="add-btn" href="#">Añadir a cola de reproduccion</a></div></li>
                 <li class="divider"></li>
                 <li><div class="titmenu1">Agregar a Playlist..</div></li>
-                <li class="divider"></li>
                 <div id="menu1pl"></div>
               </ul>
             </div>
@@ -151,7 +154,6 @@
                 <li><div class="titmenu2">Agregar canciones</div></li>
                 <li class="divider"></li>
                 <li><div class="menu2selector"><a id="mventana1" data-toggle="modal" href="#ventana1">Crear Playlist..</a></div></li>
-                
               </ul>
             </div>
 

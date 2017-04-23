@@ -68,10 +68,10 @@ a{text-decoration:none;}
 
   .affix-content .container {
     width: 95%;
-    background-color: #424242;
+    background-color: none;
   }
 .container {
-  background-color: #424242;
+  background-color: none;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0px; 
@@ -245,7 +245,7 @@ display: inline-block;
 
 
 
-    #album li, #album ul li, #playlist_usr li, #playlist_usr ul li{
+    #album li, #album ul li, #playlist_usr ul li{
     background-image: none;
     list-style-type: none;
     padding: 0;
@@ -262,6 +262,7 @@ display: inline-block;
     #playlist_usr li a {
       text-decoration: none;
       color: #CCC;
+      cursor: pointer;
 
     }
     #album li a:hover {
@@ -294,7 +295,6 @@ display: inline-block;
   #playlist_usr li:hover{
   background: #337ab7; /* Color de fondo al pasar el cursor */
   text-decoration: none;
-  cursor: pointer;
   }
   .cancion:hover {
   background: #337ab7; /* Color de fondo al pasar el cursor */
@@ -378,3 +378,12 @@ display: inline-block;
        padding: 0px 10px;
        color: #9C3334;
     }
+    #playlist_usr > .tit_playlist {
+      color: #CCC;
+      font-size: 18px;
+      padding-left: 6px;
+      border-bottom: 1px solid #ecf0f1; 
+      padding-bottom:3px;
+      padding-top: 5px;
+    }
+

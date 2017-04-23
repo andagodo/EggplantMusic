@@ -10,8 +10,9 @@
 	$idu = $_POST['idu'];
 	$act="S";
 	$conex = conectar();
-	
-	$fech = date("Y-m-d H:i:s");
+	$fech=date("d/m/Y H:i:s");
+	//Se cambia el formato para que funcione con el servidor de XAMPP
+	//$fech = date("Y-m-d H:i:s");
 
 	$r = new Playlist ('',$nom,$fech,$act,$fech,'');
 	$datos_r=$r->altaPlaylist($conex);
