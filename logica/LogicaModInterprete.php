@@ -2,6 +2,7 @@
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Interprete.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/PerteneceCancion.class.php';
 ?>
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
@@ -14,21 +15,29 @@ $nombre=$u->NombreInterprete($conex);
 
 if ($accion == "habilitar"){
 	$ok=$u->HabilitaInterprete($conex);
+	
 	if ($ok){
-		?>
-		<script language="javascript">
-			window.alert("Activaste el Intérprete: <?php echo $nombre[0][0] ?>.");
-			location.href="/presentacion/Menu.php";
-		</script>
-		<?php
-	}else{
-		?>
-		<script language="javascript">
-			window.alert("Ocurrió un error al activar el Intérprete: <?php echo $nombre[0][0]?>.");
-			location.href="/presentacion/Menu.php";
-		</script>
-		<?php			
+		$PC= new PerteneceCancion('',$idint);
+		$ok2=$PC->HabilitaInterpretePC($conex);
+	
+		if ($ok2){
+			
+			?>
+			<script language="javascript">
+				window.alert("Activaste el Intérprete: <?php echo $nombre[0][0] ?>.");
+				location.href="/presentacion/Menu.php";
+			</script>
+			<?php
+		}else{
+			?>
+			<script language="javascript">
+				window.alert("Ocurrió un error al activar el Intérprete: <?php echo $nombre[0][0]?>.");
+				location.href="/presentacion/Menu.php";
+			</script>
+			<?php			
+		}
 	}
+	
 }elseif($accion == "modificar"){
 	
 	$fotonueva = $_FILES['foto']['tmp_name'];

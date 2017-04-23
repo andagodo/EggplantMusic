@@ -166,6 +166,13 @@ class Album
       $pu= new ExistenciaAlbum;
       $datos= $pu->UpdateAlbum($this, $conex);
       return $datos;
+    }
+	
+	public function DeshabAlbumPorInterprete($conex)
+    {
+      $pu= new ExistenciaAlbum;
+      $datos= $pu->DeshabAlbumPorInterprete($this, $conex);
+      return $datos;
     }	
 
 }

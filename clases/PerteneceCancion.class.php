@@ -130,7 +130,21 @@ class PerteneceCancion
       $pu= new ExistenciaPerteneceCancion;
       $datos= $pu->DatosCancionPC($this, $conex);
       return $datos;
-    }		
+    }
+	
+	public function deshabilitaPCPorInterprete($conex)
+    {
+      $pu= new ExistenciaPerteneceCancion;
+      $datos= $pu->deshabilitaPCPorInterprete($this, $conex);
+      return $datos;
+    }
+	
+	public function HabilitaInterpretePC($conex)
+    {
+      $pu= new ExistenciaPerteneceCancion;
+      $datos= $pu->HabilitaInterpretePC($this, $conex);
+      return $datos;
+    }	
 
 }
 ?>

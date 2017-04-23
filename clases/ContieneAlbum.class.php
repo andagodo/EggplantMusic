@@ -117,9 +117,15 @@ class ContieneAlbum
 */
 
   public function ConsultaIDPerteneceC($conex)
-  {
+	{
       $pu= new ExistenciaContieneAlbum;
       return $pu->ConsultaIDPerteneceC($this, $conex);
+    }
+	
+  public function deshabilitaCAPorIDPC($conex)
+	{
+      $pu= new ExistenciaContieneAlbum;
+      return $pu->deshabilitaCAPorIDPC($this, $conex);
     } 
 
 }

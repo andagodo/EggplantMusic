@@ -121,6 +121,9 @@ for ($i=0;$i<$cuenta;$i++){
 	$CuentaInt=count($datos_int);
 	if ($CuentaInt != 0){
 		$inOK=$inte->HabilitaInterprete($conex);
+		$PCInt= new PerteneceCancion('',$interprete[$i]);
+		$PCInt->HabilitaInterpretePC($conex);
+		
 		if($inOK == false){
 			?>
 			<script language="javascript">

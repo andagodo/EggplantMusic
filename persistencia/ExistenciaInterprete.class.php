@@ -33,9 +33,6 @@ class ExistenciaInterprete
 	public function eliminaInterprete($param, $conex)
 	{
 		$idi = trim($param->getId_Interprete());
-		$sql = "UPDATE Pertenece_Cancion SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Interprete = :idi";
-		$result = $conex->prepare($sql);
-		$result->execute(array(":idi" => $idi));
 		$sql = "UPDATE Interprete SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Interprete = :idi";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idi" => $idi));
@@ -45,9 +42,6 @@ class ExistenciaInterprete
 	public function HabilitaInterprete($param, $conex)
 	{
 		$idi = trim($param->getId_Interprete());
-		$sql = "UPDATE Pertenece_Cancion SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Interprete = :idi";
-		$result = $conex->prepare($sql);
-		$result->execute(array(":idi" => $idi));
 		$sql = "UPDATE Interprete SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Interprete = :idi";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idi" => $idi));

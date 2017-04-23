@@ -56,7 +56,7 @@ if (isset($_POST['pais'])){
 						}
 						?>
 						</tbody>
-						<label>NOTA:</label><p> Se deshabilitarán las canciones asociadas al intérprete</p>
+						<label>NOTA:</label><p> Se deshabilitarán las canciones y álbums asociadas al intérprete</p>
 						<button type="submit" class="btn btn-default">Eliminar</button>
 					</div>	
 				</table>

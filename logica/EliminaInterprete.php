@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Interprete.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/PerteneceCancion.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/ContieneAlbum.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Album.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 ?>
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
@@ -11,6 +14,19 @@ $idi=trim($_POST['idi']);
 $u= new Interprete ($idi);
 $nom=$u->NombreInterprete($conex);
 $ok=$u->eliminaInterprete($conex);
+
+$pc= new PerteneceCancion ('',$idi);
+$IDPC=$pc->deshabilitaPCPorInterprete($conex);
+
+foreach ($IDPC as $PCs){
+	$ca= new ContieneAlbum ('','',$PCs[0]);
+	$IDA= $ca->deshabilitaCAPorIDPC($conex);
+	
+	foreach ($IDA as $As){
+		$a = new Album ($As[0]);
+		$ok2=$a->DeshabAlbumPorInterprete($conex);
+	}
+}
 
 if ($ok){
 	?>
@@ -27,4 +43,5 @@ if ($ok){
 	</script>	
 	<?php	
 }
+
 ?>

@@ -108,5 +108,30 @@ class ExistenciaPerteneceCancion
        return $resultados;
     }
 
+	public function deshabilitaPCPorInterprete($param, $conex)
+	{
+        $idi= trim($param->getId_Interprete());   
+        $sql = "UPDATE Pertenece_Cancion SET Activo = 'N', Fech_Activo = getdate() WHERE Id_Interprete = :idi";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idi" => $idi));
+		$sql = "SELECT Id_Pertenece_Cancion FROM Pertenece_Cancion WHERE Id_Interprete = :idi";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idi" => $idi));
+		
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
+
+	
+	public function HabilitaInterpretePC($param, $conex)
+	{
+		$idi = trim($param->getId_Interprete());
+		$sql = "UPDATE Pertenece_Cancion SET Activo = 'S', Fech_Activo = getdate() WHERE Id_Interprete = :idi";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idi" => $idi));
+		return $result;
+	}
+	
 }
 ?>

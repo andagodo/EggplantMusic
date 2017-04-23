@@ -91,7 +91,22 @@ class ExistenciaContieneAlbum
        
 
        return $resultados;
-    }	
+    }
+	
+	public function deshabilitaCAPorIDPC($param, $conex)
+	{
+        $idpc= trim($param->getId_Pertenece_Cancion());   
+        $sql = "UPDATE Contiene_Album SET Activo = 'N' WHERE Id_Pertenece_Cancion = :idpc";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":idpc" => $idpc));
+		$sql = "SELECT Id_Album FROM Contiene_Album WHERE Id_Pertenece_Cancion = :idpc";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idpc" => $idpc));
+		
+		$resultados=$result->fetchAll();
+
+       return $resultados;
+    }
 
 }
 ?>

@@ -209,6 +209,15 @@ class ExistenciaAlbum
         $result = $conex->prepare($sql);
 	    $result->execute(array(":ida" => $ida,":nom" => $nom,":anio" => $anio,":foto" => $foto));
 		return $result;
+    }
+	
+	public function DeshabAlbumPorInterprete($param, $conex)
+	{
+        $ida= trim($param->getId_Album());
+        $sql = "UPDATE Album SET Activo = 'N' WHERE Id_Album = :ida";
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":ida" => $ida));
+		return $result;
     }	
 	
 }
