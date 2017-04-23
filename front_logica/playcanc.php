@@ -11,7 +11,7 @@
 	$act="S";
 	$conex = conectar();
 	
-	$fech = date("d/m/Y H:i:s");
+	$fech = date("Y-m-d H:i:s");
 
 	$r = new Playlist ('',$nom,$fech,$act,$fech,'');
 	$datos_r=$r->altaPlaylist($conex);

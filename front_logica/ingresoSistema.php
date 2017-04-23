@@ -1,4 +1,5 @@
 <?php
+session_name('eggplantmusic');
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Usuario.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';

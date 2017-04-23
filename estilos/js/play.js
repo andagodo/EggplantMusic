@@ -11,6 +11,9 @@ $('#sidenav01').css('min-height', divHeight+'px');
 
 
 $(function(){
+
+
+
 		traer_album();
 		audio=$('audio');
 		current=0;
@@ -56,7 +59,7 @@ $(function(){
 
 			})
 		
-		};
+		}
 
 	//#### Funcion encargada de agregar cancion a lista de reproduccion 
 			var $add = $('.add-btn');
@@ -121,7 +124,7 @@ $(function(){
 					audio.get(0).play();
 				})
 
-		};
+		}
 
 
         function menucola(){
@@ -227,37 +230,28 @@ $(function(){
 	/////////////////////////////////////////////////////////////////////
 	function reload_album() {
 		$('#album > li > a').click(function(){
-		$ss = $(this).attr('data-id');
-		  $.post( "/front_logica/playlist_album.php", { "idalbum" : $ss }, null, "json" )
-                .done(function( data, textStatus, jqXHR ) {
-                    $('#central').empty();
-                    $container = $('<div class="col-sm-2 col-md-3 affix-content"><div class="container"><ul id="playlist"></ul></div></div>');
-                    $('#central').append($container);
-                    for (var i = 0; i < data.length; i++) {
-                        
-                    //    $a = $('<div class="contmenu1"><a class="add-btn" href="#" data-idpl="'+ data[i].id + '" >' + data[i].nom + '</a></div>');
-                    	$div = $('<div class="cancion"></div>');
-                       	$li = $('<li></li>');
-                        $a = $('<a href="#">'+data[i].nom+'</a><div class="btn-cancion" data-idc="'+data[i].id+'" data-idca="'+data[i].idca+'"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
-                        $li.append($a);
-                        $div.append($li);
-                        $('#playlist').append($div);
-             			
-                        
-                        //hasta aca agrego los li con la info de las playlist del usuario
-                    }
-                    cargaplaylistjs();
-                //alert($('#menu2').find("li").length);
-                //con este alert muestro cuantas li tengo, tengo que controlar tener gmas de dos (dos son las fijas) y 
-                //luego en el if si tiene mas borrar y recargar( o ver posible mejora.)
-                    
-                    if ( console && console.log ) {
-                    console.log( "La solicitud se ha completado correctamente." );
-                                                    }
-                })
-                .fail(function( jqXHR, textStatus, errorThrown ) {
-                    if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
-            });
+			$ss = $(this).attr('data-id');
+			  $.post( "/front_logica/playlist_album.php", { "idalbum" : $ss }, null, "json" )
+	                .done(function( data, textStatus, jqXHR ) {
+	                    $('#central').empty();
+	                    $container = $('<div class="col-sm-2 col-md-3 affix-content"><div class="container"><ul id="playlist"></ul></div></div>');
+	                    $('#central').append($container);
+	                    for (var i = 0; i < data.length; i++) {
+	                    	$div = $('<div class="cancion"></div>');
+	                       	$li = $('<li></li>');
+	                        $a = $('<a href="#">'+data[i].nom+'</a><div class="btn-cancion" data-idc="'+data[i].id+'" data-idca="'+data[i].idca+'"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
+	                        $li.append($a);
+	                        $div.append($li);
+	                        $('#playlist').append($div);
+	                    }
+	                    cargaplaylistjs();
+	                    if ( console && console.log ) {
+	                    console.log( "La solicitud se ha completado correctamente." );
+	                                                    }
+	                })
+	                .fail(function( jqXHR, textStatus, errorThrown ) {
+	                    if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
+	            });
 			});
 		}
 		
@@ -353,20 +347,98 @@ $(function(){
 	    function traer_album(){
 	    $.getJSON("/front_logica/album.php", function(result){
    				$('#izquierda').empty();
-                $container = $('<div class="col-sm-2 col-md-3 affix-content"><div class="container"></div></div>');
+   				$('#central').empty();
+                $container = $('<div class="col-sm-2 col-md-3 affix-content"><div class="container"><ul id="album"></ul></div></div>');
                 $('#izquierda').append($container);
-                $buscador = $('<span class="glyphicon glyphicon-search lupa"></span><input id="s_album" class="search_album" type="text">');
-                $container.append($buscador);
-                $album = $('<ul id="album"></ul>');
-                $container.append($album);
+                $buscador = $('<span class="glyphicon glyphicon-search lupa"></span><input id="s_album" type="text">');
+                $('#album').append($buscador);
                 for (var i = 0; i < result.length; i++) {
                     $li = $('<li><a href="#" data-id='+ result[i].id +'>'+ result[i].nom +'</li>');
                     $('#album').append($li);
                     }
                     reload_album();
+                    buscador_a();
 
 				 });
-		
-   		}
+		}
+		function traer_playlist(){
+			$.post( "/front_logica/playlist.php", { "idu" : IdUsr }, null, "json" )
+               			.done(function( data, textStatus, jqXHR ) {
+           					$('#izquierda').empty();
+			   				$('#central').empty();
+			                $container = $('<div class="col-sm-3 col-md-4 affix-content"><div class="container"><ul id="playlist_usr"> </ul></div></div>');
+			                $('#izquierda').append($container);
+			                $buscador = $('<span class="glyphicon glyphicon-search lupa"></span><input id="s_playlist"  type="text">');
+			                $('#playlist_usr').append($buscador);
+
+				                for (var i = 0; i < data.length; i++) {
+				                    $li = $('<li><a href="#" data-id='+ data[i].id +'>'+ data[i].nom +' </a><div class="btns pull-right"><span class="glyphicon glyphicon-play-circle"></span><span class="glyphicon glyphicon-minus"></span></div></li>');
+				                    $('#playlist_usr').append($li);
+	                   			}
+	                   			reload_playlist();
+
+                   			$( '#playlist_usr > li' )
+  								.mouseover(function() {
+    							$( this ).find( ".btns" ).css('display', 'inline-block');
+			  					})
+			  					.mouseout(function() {
+			  					$( this ).find( ".btns" ).css('display', 'none');
+							  	});
+
+     						if ( console && console.log ) {console.log( "La solicitud se ha completado correctamente." );}
+                		})
+                		.fail(function( jqXHR, textStatus, errorThrown ) {
+
+                    		if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
+         				});
+		}
+
+		$('#mmplaylist').click(function(){
+			traer_playlist()
+			});
+
+		$('#malbum').click(function(){
+			traer_album();
+          });
+		function reload_playlist(){
+		$( '#playlist_usr > li' ).click(function(){
+
+			$idp = $(this).find( "a" ).attr('data-id');
+		 	$.post( "/front_logica/playlist_cancion.php", { "idp" : $idp }, null, "json" )
+                .done(function( data, textStatus, jqXHR ) {
+
+                    $('#central').empty();
+                    $container = $('<div class="col-sm-2 col-md-3 affix-content"><div class="container"><ul id="playlist"></ul></div></div>');
+                    $('#central').append($container);
+                    for (var i = 0; i < data.length; i++) {
+                        
+                    
+                    	$div = $('<div class="cancion"></div>');
+                       	$li = $('<li></li>');
+                        $a = $('<a href="#">'+data[i].nom+'</a><div class="btn-cancion" data-idc="'+data[i].id+'" data-idca="'+data[i].idca+'"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
+                        $li.append($a);
+                        $div.append($li);
+                        $('#playlist').append($div);
+             			
+                        
+                        //hasta aca agrego los li con la info de las playlist del usuario
+                    }
+                    cargaplaylistjs();
+                //alert($('#menu2').find("li").length);
+                //con este alert muestro cuantas li tengo, tengo que controlar tener gmas de dos (dos son las fijas) y 
+                //luego en el if si tiene mas borrar y recargar( o ver posible mejora.)
+                    
+                    if ( console && console.log ) {
+                    console.log( "La solicitud se ha completado correctamente." );
+                                                    }
+                })
+                .fail(function( jqXHR, textStatus, errorThrown ) {
+                    if ( console && console.log ) {console.log( "La solicitud a fallado: " +  textStatus);}
+            });
+			});
+
+
+
+}
 
 });
