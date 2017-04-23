@@ -14,6 +14,20 @@ if(! isset($_SESSION["mai"])){
 	</script>
 	<?php
 }
+///////////////////////////////////////////TIMEOUT//////////////////////////////////////////////////
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
+      session_unset();
+      session_destroy();
+    ?>
+    <script language="javascript">
+      window.alert("Tiempo de espera excedido.");
+      location.href="/";
+    </script>
+    <?php
+  }else{
+    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+  }
+ ///////////////////////////////////////////TIMEOUT//////////////////////////////////////////////////
 ?>
 <div id="page-wrapper">
 	<div class="container-fluid">
@@ -21,7 +35,7 @@ if(! isset($_SESSION["mai"])){
 			<div class="col-lg-12">
 				<h1 class="page-header">
 					Estadísticas de Música
-				</h1>
+					</h1>
 				<ol class="breadcrumb">
 					<li>
 						<i class="fa fa-dashboard"></i>  <a href="/presentacion/Menu.php">Dashboard</a>

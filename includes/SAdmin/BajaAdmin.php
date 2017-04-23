@@ -4,6 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 session_start();
 $conex = conectar();
+
 ?>
 <script src="/estilos/js/jquery.js"></script>
 <script src="/estilos/js/jsfunciones.js"></script>
@@ -17,6 +18,20 @@ if(! isset($_SESSION["mai"])){
  </script>
  <?php
 }
+///////////////////////////////////////////TIMEOUT//////////////////////////////////////////////////
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
+      session_unset();
+      session_destroy();
+    ?>
+    <script language="javascript">
+      window.alert("Tiempo de espera excedido.");
+      location.href="/";
+    </script>
+    <?php
+  }else{
+    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+  }
+ ///////////////////////////////////////////TIMEOUT//////////////////////////////////////////////////
 
 ?>
 

@@ -21,6 +21,20 @@ $Tipo=$u->consultaTipoAdmin($conex);		// Ejecuta la función consultaTipoAdmin c
 $nombre = $Tipo[0][1];		// Almacena en $nombre el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][1]
 $apellido = $Tipo[0][2];	// Almacena en $apellido el valor devuelto por la función consultaTipoAdmin que se encuentra en la variable $Tipo posición [0][2]
 
+///////////////////////////////////////////TIMEOUT//////////////////////////////////////////////////
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
+      session_unset();
+      session_destroy();
+    ?>
+    <script language="javascript">
+      window.alert("Tiempo de espera excedido.");
+      location.href="/";
+    </script>
+    <?php
+  }else{
+    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+  }
+ ///////////////////////////////////////////TIMEOUT//////////////////////////////////////////////////
 ?>
 
 <!-- Barra superior de página actual -->

@@ -15,8 +15,22 @@ if(! isset($_SESSION["mai"])){
 		window.alert("Debes de estar logeado para ingresar a esta página.");
 		location.href="/presentacion/indice.php";
 	</script>
-<?php
+	<?php
 }
+///////////////////////////////////////////TIMEOUT//////////////////////////////////////////////////
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
+      session_unset();
+      session_destroy();
+    ?>
+    <script language="javascript">
+      window.alert("Tiempo de espera excedido.");
+      location.href="/";
+    </script>
+    <?php
+  }else{
+    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+  }
+ ///////////////////////////////////////////TIMEOUT//////////////////////////////////////////////////
 ?>
 <div id="page-wrapper">
 	<div class="container-fluid">
