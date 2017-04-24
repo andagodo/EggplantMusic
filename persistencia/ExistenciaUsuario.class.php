@@ -130,6 +130,17 @@ class ExistenciaUsuario
 		$result->execute(array(":mail" => $mai));
 		return $result->fetchAll();
 	}	
+
+		public function consultaTipoCuentaUsr($param, $conex)
+	{
+		$idu= trim($param->getId_Usuario());
+		$sql = "SELECT * FROM Cuenta WHERE	Id_Cuenta = (SELECT FK_Id_Cuenta FROM Tiene_Cuenta WHERE	FK_Id_Usuario =:idu)";
+		$result = $conex->prepare($sql);
+		$result->execute(array(":idu" => $idu));
+		return $result->fetchAll();
+	}	
+
+	
 	
 	
 	

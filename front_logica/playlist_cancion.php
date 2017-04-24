@@ -21,7 +21,7 @@
 				$y = new PerteneceCancion($idpc);
 				$datos_y=$y->DatosCancionPC($conex);
 
-				$arr[] = array('nom' => $datos_y[0][0],'ruta' => $datos_y[0][3], 'idca' => $datos_r[$i][0], 'id' => $datos_y[0][5]);
+				$arr[] = array('nom' => $datos_y[0][0],'ruta' => $datos_y[0][4], 'idca' => $datos_r[$i][0], 'id' => $datos_y[0][5]);
 
 	
 			

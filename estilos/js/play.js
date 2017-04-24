@@ -12,11 +12,29 @@ $('#sidenav01').css('min-height', divHeight+'px');
 
 $(function(){
 
+	function datos_usr(){
+				    $.post( "/front_logica/cuentaUsr.php", { "idu": IdUsr }, null, "json" )
+					.done(function( data, textStatus, jqXHR ) {
+						$cuenta_id = data[0].id;
+						$cuenta_Tipo = data[0].Tipo;
+						$cuenta_Cant_PlaylistxC = data[0].Cant_PlaylistxC;
+						$cuenta_Precio = data[0].Precio;
+							if ( console && console.log ) {
+							   	console.log( "La solicitud se ha completado correctamente." );
+							}
+					})
+					.fail(function( jqXHR, textStatus, errorThrown ) {
+							if ( console && console.log ) {
+							    console.log( "La solicitud a fallado: " +  textStatus);
+							}
+					});
+	}
 
+	datos_usr();
 
 		traer_album();
 		audio=$('audio');
-		current=0;
+		current=1;
 
 		audio[0].addEventListener('ended',function(e){
 				console.log("largo", len);
@@ -53,8 +71,10 @@ $(function(){
 				e.preventDefault();
 				source = audio.find('source');
 				link=$(this);
-				current=link.parents("div.cancionnow").index();
+				current=link.parents(".cancionnow").index();
+				console.log(current);
 				runaudio(link,source);
+
 				//return false;
 
 			})
@@ -115,6 +135,7 @@ $(function(){
 		$.post( "/front_logica/cargabase64.php", {"ruta": '../audio/'+link.attr('href')}, null)
 
 		.done(function( data, textStatus, jqXHR ) {
+			if (data) {
 					audio.get(0).pause();
 					player.attr("src", 'data:audio/mp3;base64,'+data);	
 					//player.attr("src", link.attr('href'));
@@ -122,6 +143,15 @@ $(function(){
 					par.addClass('active').siblings().removeClass('active');
 					audio.get(0).load();
 					audio.get(0).play();
+					$idc = par.attr('data-idc');
+					$.post( "/front_logica/logica_logs.php", {"consulta": 'RPC', "idc" :$idc, "idu":IdUsr }, null)
+
+				
+			}else{
+				alert('Error en reproducción');
+			}
+
+					
 				})
 
 		}
@@ -173,10 +203,42 @@ $(function(){
 	}); 
 
 	// Click para crear playlist nueva no se utiliza este codigo por ahora
-	// $('#mventana1').click(function(){
-	 //	alert('hola');
-     //   $('#ventana1').modal('show');
-    //});
+	 $('#mventana1').click(function(){
+	 	  $.post( "/front_logica/consplaylist.php", { "idu" : IdUsr }, null, "json" )
+          .done(function( data, textStatus, jqXHR ) {
+          	console.log(data.playlist.length);
+          	console.log($cuenta_Cant_PlaylistxC);
+          	cant_canc = $("#playerul .cancionnow li .btn-cancioncola").length;
+          	if ($cuenta_Tipo == 'Premium') {
+          		console.log('Premium');
+          		if (cant_canc == '0') {
+						$.alert('Agrega una o mas canción para poder crear la playlist ');
+
+					}else{
+						$('#ventana1').modal('show');
+					}
+
+          	}else{
+
+          	if (data.playlist.length<$cuenta_Cant_PlaylistxC){
+          		
+					if (cant_canc == '0') {
+						$.alert('Agrega una o mas canción para poder crear la playlist ');
+
+					}else{
+						$('#ventana1').modal('show');
+					}
+          	}else{
+          		$.alert('Llegaste al máximo de playlist que permite esta membresía.<br> Tipo de membresía: '+$cuenta_Tipo+'');
+          	}
+
+          	}
+
+	 })
+		
+	      
+
+    });
 
 	var $tonewpl = $('.tonewpl');
 	        $tonewpl.click(function(event){
@@ -187,8 +249,7 @@ $(function(){
 		            if ( $npl === '') {
 		            	//alert("pone algo");
 		            	$('.modal_red').show();
-		            	} 
-		            	else {
+		            	} else {
 
 		            		var c = [];
 							$( "#playerul .cancionnow li .btn-cancioncola" ).each(function(index) {
@@ -239,6 +300,8 @@ $(function(){
 	                        $li.append($a);
 	                        $div.append($li);
 	                        $('#playlist').append($div);
+
+	                        $.post( "/front_logica/logica_logs.php", {"consulta": 'LBA', "ida" :$ss, "idu":IdUsr }, null)
 	                    }
 	                    cargaplaylistjs();
 	                    if ( console && console.log ) {
@@ -266,10 +329,10 @@ $(function(){
                     		$('#menu1pl').empty();
                     		$('.titmenu1').show();
                     		$('#menu1pl').append('<li class="divider"></li>');
-                    	for (var i = 0; i < data.canciones.length; i++) {
+                    	for (var i = 0; i < data.playlist.length; i++) {
                     		$('#menu1 > ul').append('')
 	                        $li = $('<li></li>');
-	                        $a = $('<div class="contmenu1"><a class="add-pl" href="#" data-idpl="'+ data.canciones[i].id + '" >' + data.canciones[i].nom + '</a></div>');
+	                        $a = $('<div class="contmenu1"><a class="add-pl" href="#" data-idpl="'+ data.playlist[i].id + '" >' + data.playlist[i].nom + '</a></div>');
 	                        $li.append($a);
 	                        $('#menu1pl').append($li);
                     	}
@@ -341,7 +404,7 @@ $(function(){
 	    $.getJSON("/front_logica/album.php", function(result){
    				$('#izquierda').empty();
    				$('#central').empty();
-                $container = $('<div class="col-sm-2 col-md-3 affix-content"><div class="container"><ul id="album"></ul></div></div>');
+                $container = $('<div class="col-sm-3 col-md-4 affix-content"><div class="container"><ul id="album"></ul></div></div>');
                 $('#izquierda').append($container);
                 $buscador = $('<span class="glyphicon glyphicon-search lupa"></span><input id="s_album" type="text">');
                 $('#album').append($buscador);
@@ -369,33 +432,32 @@ $(function(){
                			.done(function( data, textStatus, jqXHR ) {
            					$('#izquierda').empty();
 			   				$('#central').empty();
-			   				if (data.confirmpu === "true") {
-			   					$container = $('<div class="col-sm-3 col-md-4 affix-content"><div class="container"><ul id="playlist_usr"> </ul></div></div>');
-				                $('#izquierda').append($container);
+				   				if (data.confirmpu === "true") {
 
-				                $buscador = $('<span class="glyphicon glyphicon-search lupa"></span><input id="s_playlist"  type="text">');
-				                $('#playlist_usr').append($buscador);
-				                $tit = $('<div class="tit_playlist"> Mis Playlist.. </div>')
-                   				$('#playlist_usr').append($tit);
-				                		for (var i = 0; i < data.playlistusr.length; i++) {
-					                    $li = $('<li><a href="#" data-id='+ data.playlistusr[i].id +'>'+ data.playlistusr[i].nom +' </a><div class="btns pull-right"><span class="glyphicon glyphicon-play-circle"></span><span class="glyphicon glyphicon-minus"></span></div></li>');
-					                    $('#playlist_usr').append($li);
-		                  			 	}
-		                   }else{
-		                   		$container = $('<div class="col-sm-3 col-md-4 affix-content"><div class="container"><ul id="playlist_usr"><div class="tit_playlist">No tienes playlist propias creadas...</div></ul></div></div>');
-		                   		$('#izquierda').append($container);
-                   			}
-                   			if (data.confirmps === "true") {
-                   				$tit = $('<div class="tit_playlist"> Playlist EggPlantMusic </div>')
-                   				$('#playlist_usr').append($tit);
-                   				for (var i = 0; i < data.playlistsys.length; i++) {
+				   					$container = $('<div class="col-sm-3 col-md-4 affix-content"><div class="container"><ul id="playlist_usr"> </ul></div></div>');
+					                $('#izquierda').append($container);
+					                $buscador = $('<span class="glyphicon glyphicon-search lupa"></span><input id="s_playlist"  type="text">');
+					                $('#playlist_usr').append($buscador);
+					                $tit = $('<div class="tit_playlist"> Mis Playlist.. </div>');
+	                   				$('#playlist_usr').append($tit);
 
-                   					
-                   					$li = $('<li><a href="#" data-id='+ data.playlistsys[i].id +'>'+ data.playlistsys[i].nom +' </a><div class="btns pull-right"><span class="glyphicon glyphicon-play-circle"></span></div></li>')
-                   				  	$('#playlist_usr').append($li);
-                   				}
+					                		for (var i = 0; i < data.playlistusr.length; i++) {
+						                    $li = $('<li><a href="#" data-id='+ data.playlistusr[i].id +'>'+ data.playlistusr[i].nom +' </a><div class="btns pull-right"><span class="glyphicon glyphicon-play-circle"></span><span class="glyphicon glyphicon-minus"></span></div></li>');
+						                    $('#playlist_usr').append($li);
+			                  			 	}
+			                   }else{
+			                   		$container = $('<div class="col-sm-3 col-md-4 affix-content"><div class="container"><ul id="playlist_usr"><div class="tit_playlist">No tienes playlist propias creadas...</div></ul></div></div>');
+			                   		$('#izquierda').append($container);
+	                   			}
+	                   			if (data.confirmps === "true") {
+	                   				$tit = $('<div class="tit_playlist"> Playlist EggPlantMusic <span class="glyphicon glyphicon-music"></span></div>')
+	                   				$('#playlist_usr').append($tit);
+	                   				for (var i = 0; i < data.playlistsys.length; i++) {
+	                   					$li = $('<li><a href="#" data-id='+ data.playlistsys[i].id +'>'+ data.playlistsys[i].nom +' </a><div class="btns pull-right"><span class="glyphicon glyphicon-play-circle"></span></div></li>')
+	                   				  	$('#playlist_usr').append($li);
+	                   				}
 
-                   			}
+	                   			}
 
      						if ( console && console.log ) {console.log( "La solicitud se ha completado correctamente." );}
      						reload_playlist();
@@ -414,6 +476,7 @@ $(function(){
 		$('#malbum').click(function(){
 			traer_album();
           });
+
 		function reload_playlist(){
 		$( '#playlist_usr > li > a' ).click(function(){
 
@@ -437,6 +500,7 @@ $(function(){
                         
                         //hasta aca agrego los li con la info de las playlist del usuario
                     }
+                    $.post( "/front_logica/logica_logs.php", {"consulta": 'LBP', "idp" :$idp, "idu":IdUsr }, null)
                     cargaplaylistjs();
                 //alert($('#menu2').find("li").length);
                 //con este alert muestro cuantas li tengo, tengo que controlar tener gmas de dos (dos son las fijas) y 
@@ -452,6 +516,8 @@ $(function(){
 			});
 
 		$( '#playlist_usr > li > .btns > .glyphicon-minus' ).click(function(){
+			$li = $(this).parents('li');
+			$idpl = $li.find('a').attr('data-id');
 			//codigo para boton de borrado de playlist (simbolo de menos rojo)
 			$.confirm({
 			    title: 'Cuidado!',
@@ -460,17 +526,15 @@ $(function(){
 			    	Confirmar: {
 			    	btnClass: 'btn-red',
 			        action: function () {
-			        		$idpl= $( '#playlist_usr > li > a' ).attr('data-id');
+			        	//	$idpl= $( '#playlist_usr > li > a' ).attr('data-id');
 							$.post( "/front_logica/elimina_playlist.php", { "idpl" : $idpl }, null, "json" )
 							.done(function(data, textStatus, jqXHR){
 								$.alert('La playlist fue borrada!');
 								traer_playlist();
 							})
-			            
 			        }
 			        },
 			        Cancelar: function () {
-			          
 			        },
 			    }
 			});
@@ -478,14 +542,41 @@ $(function(){
 
 		});
 
-		$( '#playlist_usr > li > .btns > .glyphicon-play-circle' ).click(function(event){
-			//codigo para boton de Play a playlist (simbolo de play con redondel) 
-			//carga toda la playlist a la cola de reproduccion
+		$( '#playlist_usr > li > .btns > .glyphicon-play-circle' ).click(
+
+			function(event){
+
 			event.preventDefault;
-			$.alert('boton gris');
+
+				$li = $(this).parents('li');
+				$idp = $li.find('a').attr('data-id');
+			 	$.post( "/front_logica/playlist_cancion.php", {"idp" : $idp }, null, "json")
+                .done(function( data, textStatus, jqXHR ) {                 
+                $("#playerul").empty();
+                    for (var i = 0; i < data.length; i++) {
+
+                    	$div = $('<div class="cancionnow" data-idc='+data[i].id+' ></div>')
+						$li = $('<li></li>');
+						$a = $('<a class="play1" href="' + data[i].ruta + '" >' + data[i].nom + '</a><div class="btn-cancioncola" data-idc="' + data[i].id + '" data-idca="' +data[i].idca+'"><span class="glyphicon glyphicon-option-horizontal"></span></div>');
+						$li.append($a);
+						$div.append($li);
+						$("#playerul").append($div);
+
+						
+                    }
+                    $.post( "/front_logica/logica_logs.php", {"consulta": 'LRP', "idp" :$idp, "idu":IdUsr }, null)
+                    initaudio2();
+					menucola();
+						link = $('.cancionnow:first a');
+						source = audio.find('source');
+						current=1;
+						runaudio(link,source);
+		
+					})
 
 		});
-
-		}
-
+}
 });
+
+
+

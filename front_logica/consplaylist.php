@@ -17,7 +17,7 @@
 			$t = new Playlist($idp,'','');
 			$datos_t=$t->consultaPlaylist($conex);
 			//recibo la informacion de playlist y las coloco en el $arr
-			$arr['canciones'][] =  array('id' => $datos_t[0][0],'nom' => $datos_t[0][1],'fech' => $datos_t[0][2]);
+			$arr['playlist'][] =  array('id' => $datos_t[0][0],'nom' => $datos_t[0][1],'fech' => $datos_t[0][2]);
 		}
 		$arr['confirm'] = 'true';
 		echo json_encode($arr);  

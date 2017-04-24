@@ -214,6 +214,12 @@ class Usuario
       $pu= new ExistenciaUsuario;
       return $pu->UsuarioGratuito($this, $conex);
     }	
+
+      public function consultaTipoCuentaUsr($conex)
+  {
+      $pu= new ExistenciaUsuario;
+      return $pu->consultaTipoCuentaUsr($this, $conex);
+    } 
 	
 }
 ?>

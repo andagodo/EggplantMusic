@@ -126,7 +126,7 @@ a{text-decoration:none;}
   border-bottom-style: solid;
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
-  border-color: #337ab7;
+  border-color: #6D1F6F;
   border-top-width: 2px;
   border-top-style: solid;
   border-top-right-radius: 2px;
@@ -176,20 +176,21 @@ width: 100%; /* Ancho de todo el contenedor */
 padding: 0px;
 margin: 0 auto;
 display: block;
-text-align: center;
+text-align: left;
 
 }
 
 audio {
 width:100%; /* Ancho del reproductor */
 margin:0 auto;
+
 display: inline-block;
 }
   #playlist, #album, #playerul, #playlist_usr {
   display: block;
   width: 100%;
   background: #222; /* Fondo del segundo contenedor */
-  border-top: 5px solid #337ab7;
+  border-top: 5px solid #6D1F6F;
   text-align: left;
   font-size: 12px; /* Estilos de fuente */
   font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif;
@@ -215,7 +216,7 @@ display: inline-block;
     }
 
     #playlist .cancion.active a {
-    color: #337ab7; /* Color de la canción activa */
+    color: #6D1F6F; /* Color de la canción activa */
     font-style: italic;
     text-decoration: none;
 
@@ -234,16 +235,10 @@ display: inline-block;
     color: #CCC; /* Color de las canciones */
     padding: 7px 5px;
     display: inline-block;
-    padding-left: 10px;
     text-decoration: none;
-    cursor: context-menu;
     cursor: pointer;
-    }
 
-
-
-
-
+    }www
 
     #album li, #album ul li, #playlist_usr ul li{
     background-image: none;
@@ -251,26 +246,30 @@ display: inline-block;
     padding: 0;
     margin: 0;
     }
+    #album> li{
+      border-bottom-style: solid;
+      border-bottom: 1px solid #6D1F6F;
+    }
     #album li a, #playlist_usr li {
     color: #CCC; /* Color de las canciones */
     background: #222; /* Fondo de las canciones */
-    padding: 7px 5px;
     display: block;
-    padding-left: 10px;
+    padding: 7px 5px;
     text-decoration: none;
     }
     #playlist_usr li a {
       text-decoration: none;
       color: #CCC;
+      padding: 7px 5px;
       cursor: pointer;
 
     }
     #album li a:hover {
-    background: #337ab7; /* Color de fondo al pasar el cursor */
+    background: #6D1F6F; /* Color de fondo al pasar el cursor */
     text-decoration: none;
     }
     #album .active a {
-    color: #337ab7; /* Color de la canción activa */
+    color: #6D1F6F; /* Color de la canción activa */
     font-style: italic;
     text-decoration: none;
     }
@@ -293,11 +292,11 @@ display: inline-block;
   } 
 
   #playlist_usr li:hover{
-  background: #337ab7; /* Color de fondo al pasar el cursor */
+  background: #6D1F6F; /* Color de fondo al pasar el cursor */
   text-decoration: none;
   }
   .cancion:hover {
-  background: #337ab7; /* Color de fondo al pasar el cursor */
+  background: #6D1F6F; /* Color de fondo al pasar el cursor */
   text-decoration: none;
   }
 
@@ -320,13 +319,13 @@ display: inline-block;
 
 
     #playerul .cancionnow:hover {
-    background: #337ab7;
+    background: #6D1F6F;
     /* Color de las canciones */
     display: block;
     }
 
     #playerul .active a {
-    color: #337ab7; /* Color de la canción activa */
+    color: #6D1F6F; /* Color de la canción activa */
     font-style: italic;
     text-decoration: none;
     }
@@ -342,7 +341,7 @@ display: inline-block;
     }
     
     .lupa {
-      color: #337ab7;
+      color: #6D1F6F;
       width: 7%;
       height: 25px;
       padding: 7px 5px;
@@ -379,11 +378,15 @@ display: inline-block;
        color: #9C3334;
     }
     #playlist_usr > .tit_playlist {
-      color: #CCC;
+      color: #6D1F6F;
       font-size: 18px;
       padding-left: 6px;
-      border-bottom: 1px solid #ecf0f1; 
+      border-bottom: 1px solid #6D1F6F;
       padding-bottom:3px;
       padding-top: 5px;
+    }
+    .botonespl{
+      align-items:  left; 
+      text-align: left;
     }
 

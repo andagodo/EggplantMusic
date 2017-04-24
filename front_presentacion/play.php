@@ -2,6 +2,14 @@
   session_name('eggplantmusic');
   session_start();
 
+  if(! isset($_SESSION["mai"])){
+    ?>
+    <script language="javascript">
+        window.alert("Debes de estar logeado para ingresar a esta página.");
+        location.href="/";
+    </script>
+    <?php
+}
 
   require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Usuario.class.php';
   require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
@@ -49,25 +57,19 @@
 
 
           <div id="wrapper">
-        <!--       <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                      </div>
-                     <div class="alert alert-warning alerta1">
-                       <button class='close' data-dismiss='alert'><span>&times;</span></button>
-                       <strong>Warning!</strong> Esto esta sin terminar por si no lo notaron. Atte. Su desarrollador de FrontEnd
-                     </div>  -->
+
+
       		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       		    <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
                           <span class="sr-only">Toggle navigation</span>
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
-                
+                </button>
                       <a class="navbar-brand" href="/front_presentacion/play.php">EggplantMusic</a>
                   </div>
+
       			<ul class="nav navbar-right top-nav">
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php  echo $nombre; ?> <b class="caret"></b></a>
@@ -88,55 +90,58 @@
                           </ul>
                       </li>
                   </ul>
-  			 </nav>
-             <div class="sidebar-nav">
-            <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        </button>
-        <span class="visible-xs navbar-brand">Menu</span>
-      </div>
-      <div class="navbar-collapse collapse sidebar-navbar-collapse">
-        <ul class="nav navbar-nav side-nav" id="sidenav01">
-          <li class="active">
-            <a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
-              <h2>EggPlantMusic<br></h2>
-              <h3><?php  echo $nombre; ?></h3>
-            </a>
-          </li>
-          <li>
-            <a href="#" id="malbum" data-toggle="collapse" data-parent="#sidenav01" class="collapsed">
-              <span class="glyphicon glyphicon-music"></span> Album
-            </a>
-          </li>
-          <li><a id="mmplaylist" href="#" ><span class="glyphicon glyphicon-list"></span> Playlist </a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Explorar </a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Cuenta </a></li>
-        </ul>
-        </div>
-        
-       
-        </div>
-        <div class="row affix-row">
+                      <!------------------------------------------- FIN Barra superior -------------------------------------------->
+  			
+
+
+        <div class="sidebar-nav">
+                
+          <div class="navbar-collapse collapse sidebar-navbar-collapse">
+
+            <ul class="nav navbar-nav side-nav" id="sidenav01">
+   <!--           <li class="active">
+                <a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
+                  <h2>EggPlantMusic<br></h2>
+                  <h3><?php  echo $nombre; ?></h3>
+                </a>
+              </li>
+-->
+              
+              <li>
+                <a href="#" id="malbum" data-toggle="collapse" data-parent="#sidenav01" class="collapsed">
+                  <span class="glyphicon glyphicon-music"></span> Album
+                </a>
+              </li>
+              <li><a id="mmplaylist" href="#" ><span class="glyphicon glyphicon-list"></span> Playlist </a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Explorar </a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Cuenta </a></li>
+            </ul>
+            </div>
+            
+            </div>
+         </nav>
+        <div class="page-wrapper">
+          <div class="row affix-row">
 
      
             <div id="izquierda"></div>
             <div id="central"></div>
               <div id="reproductor">
-                <div class="col-sm-2 col-md-3 navbar-right">
-                     <audio controls='' id='audio' preload='auto' tabindex='0' autobuffer="autobuffer" content-type='audio/mpeg'>
+                <div class="col-sm-2 col-md-3 navbar-right affix-content">
+                     <audio controls='' id='audio' preload='metadata' tabindex='0' autobuffer="autobuffer" content-type='audio/mpeg'>
                         <source src='' />
                         Hola, tu navegador no está actualizado y no puede mostrar este contenido.
                     </audio>
                
                   <div id='player'>
+                   <div class="botonespl">
+                  <div class="addplaylist"><span class="glyphicon glyphicon-plus"></span></div>
+                  </div>
                     <ul id='playerul'>
-                      <li><div class="addplaylist"><span class="glyphicon glyphicon-plus"></span></div></li>
+                     
                     </ul>
                   </div>
+
                 </div>
               </div>
 
@@ -153,7 +158,8 @@
               <ul>
                 <li><div class="titmenu2">Agregar canciones</div></li>
                 <li class="divider"></li>
-                <li><div class="menu2selector"><a id="mventana1" data-toggle="modal" href="#ventana1">Crear Playlist..</a></div></li>
+                <li><div class="menu2selector"><a id="mventana1" data-toggle="" >Crear Playlist..</a></div></li>
+                <!-- <li><div class="menu2selector"><a id="mventana1" data-toggle="modal" href="#ventana1">Crear Playlist..</a></div></li> -->
               </ul>
             </div>
 
@@ -184,18 +190,15 @@
             </div>
           </div>
           </div>
+          </div>
         </div>
-       </div>
-      
-        
+      </div> 
         <script src="/estilos/js/plugins/morris/raphael.min.js"></script>
         <script src="/estilos/js/plugins/morris/morris.min.js"></script>
         <script src="/estilos/js/plugins/morris/morris-data.js"></script>
         <script src="/estilos/js/play.js"></script>
       </body>
-    <footer>
 
-    </footer>
   </html>
 
 
