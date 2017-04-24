@@ -399,6 +399,17 @@ $(function(){
  
                 })
 	    }
+	    function buscador_p(){
+	    $('#s_playlist').keyup(function () {
+ 
+                    var rex = new RegExp($(this).val(), 'i');
+                    $('#playlist_usr li').hide();
+                    $('#playlist_usr li').filter(function () {
+                        return rex.test($(this).text());
+                    }).show();
+ 
+                })
+	    }
 
 	    function traer_album(){
 	    $.getJSON("/front_logica/album.php", function(result){
@@ -406,8 +417,9 @@ $(function(){
    				$('#central').empty();
                 $container = $('<div class="col-sm-3 col-md-4 affix-content"><div class="container"><ul id="album"></ul></div></div>');
                 $('#izquierda').append($container);
-                $buscador = $('<span class="glyphicon glyphicon-search lupa"></span><input id="s_album" type="text">');
+                $buscador = $('<div class="filtro"><span class="glyphicon glyphicon-search lupa"></span><input id="s_album" placeholder="Filtrar Album.." class="form-control" type="text"></div>');
                 $('#album').append($buscador);
+                $('#album').append('<div class="tit_album"> Album </div>')
                 for (var i = 0; i < result.length; i++) {
                     $li = $('<li><a href="#" data-id='+ result[i].id +'>'+ result[i].nom +'</li>');
                     $('#album').append($li);
@@ -436,7 +448,7 @@ $(function(){
 
 				   					$container = $('<div class="col-sm-3 col-md-4 affix-content"><div class="container"><ul id="playlist_usr"> </ul></div></div>');
 					                $('#izquierda').append($container);
-					                $buscador = $('<span class="glyphicon glyphicon-search lupa"></span><input id="s_playlist"  type="text">');
+					                $buscador = $('<div class="filtro"><span class="glyphicon glyphicon-search lupa"></span><input id="s_playlist" placeholder="Filtrar Playlist.." class="form-control" type="text"></div>');
 					                $('#playlist_usr').append($buscador);
 					                $tit = $('<div class="tit_playlist"> Mis Playlist.. </div>');
 	                   				$('#playlist_usr').append($tit);
@@ -460,6 +472,7 @@ $(function(){
 	                   			}
 
      						if ( console && console.log ) {console.log( "La solicitud se ha completado correctamente." );}
+     						buscador_p();
      						reload_playlist();
      						efecto_playlist();
                 		})
