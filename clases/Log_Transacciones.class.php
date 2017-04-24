@@ -1,5 +1,4 @@
 <?php
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/persistencia/ExistenciaLog_Transacciones.class.php';
 
 class Log_Transacciones

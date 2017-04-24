@@ -107,7 +107,7 @@ if ($contenido == "cancion"){
 							$dur = $d->format("H:i");
 							?>
 							<td><?php echo $dur?></td>
-							<td><?php echo $datos_ba[0][4]?></td>								
+							<td><?php echo $datos_ba[$i][4]?></td>								
 							<td><?php echo $datos_ba[$i][3]?></td>
 						</tr>
 						<?php

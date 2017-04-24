@@ -59,7 +59,37 @@ if(! isset($_SESSION["mai"])){
 			respuesta.html(xhr.responseText);
 		}
 	}); 
-	})();     
+	})();
+	
+$(function(){
+    $("input[type='submit']").click(function(){
+        var $fileUpload = $("input[type='file']");
+        if (parseInt($fileUpload.get(0).files.length)>20){
+			alert("Puedes subir como máximo 20 archivos.");
+			$("#DASH").load('/includes/MusicAdmin/AltaMusica.php');
+			return;
+        }
+		
+		var input = document.getElementById('ArchivoSubido');
+		var tamtotal = 0;
+		for (i=0; i < input.files.length ; i++){
+			var tamtotal = input.files[i].size + tamtotal;
+		}
+        if ( tamtotal > 209715200 ){
+			alert("Puedes subir como máximo 200MB en total.");
+			$("#DASH").load('/includes/MusicAdmin/AltaMusica.php');
+			return;
+        }		
+
+		for (g=0; g < input.files.length ; g++){
+			if ( input.files[g].size > 33554432 ){
+				alert("No se puede cargar un archivo de mas de 32MB.");
+				$("#DASH").load('/includes/MusicAdmin/AltaMusica.php');
+			}
+		}		
+		
+    });    
+});
 </script>
 
 <style>
@@ -88,7 +118,7 @@ if(! isset($_SESSION["mai"])){
 	</div>
 	<form action="/includes/MusicAdmin/procesa/ProcesaAltaMusica.php" method="post" enctype="multipart/form-data" >
 		<label>Cargar Canciones:</label>
-		<input name="ArchivoSubido[]" multiple="true" type="file" accept=".mp3" required/></br>
+		<input name="ArchivoSubido[]" multiple="true" type="file" id="ArchivoSubido" accept=".mp3" required/></br>
 		<div class="form-group">
 			<div class="col-lg-2">
 				<input type="submit" class="btn btn-default" value="Cargar archivos"/>
