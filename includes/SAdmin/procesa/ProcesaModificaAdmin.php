@@ -6,6 +6,7 @@ $conex = conectar();
 <script src="/estilos/js/jquery.js"></script>
 <script src="/estilos/js/jsfunciones.js"></script>	
 <?php
+$Usr_Sist=1;
 $accion=trim($_POST['accion']);
 if ($accion == "habilitar"){
 
@@ -14,6 +15,7 @@ if ($accion == "habilitar"){
 		$accion=trim($_POST['accion']);	
 		$ba = new Admin($tus);
 		if ($tus == "todos"){
+			
 			$datos_ba=$ba->consultaAdminTodosNoAct($conex);
 			$Cuenta=count($datos_ba);								
 		}else{
@@ -41,6 +43,7 @@ if ($accion == "habilitar"){
 			$Cuenta = 0;
 		}
 	}
+	$Usr_Sist=2;
 }elseif ($accion == "reiniciar" || $accion == "cambiatipo"){
 	
 	if (isset($_POST['tus'])){
@@ -61,9 +64,10 @@ if ($accion == "habilitar"){
 			$datos_ba=$ba->buscaNombreAdmin($conex);
 			$Cuenta=count($datos_ba);
 		}elseif ($_POST['campo'] == "Mail_Usr_Sist"){
+			$Usr_Sist=0;
 			$mai=trim($_POST['texto']);
 			$ba = new Admin('','',$mai);
-			$datos_ba=$ba->buscaMailAdmin($conex);
+			$datos_ba=$ba->buscaMailAdmin($conex); // para este tipo cambiarle la forma de ver
 			$Cuenta=count($datos_ba);
 		}elseif ($_POST['campo'] == "Fech_Alta_Usr_Sist"){
 			$fal=trim($_POST['texto']);
@@ -94,6 +98,7 @@ function VerificaCampo(){
 								<th>Nombre</th>
 								<th>Mail</th>
 								<th>Fecha Alta</th>
+								<th>Tipo</th>
 							</tr>
 						</thead>
 						<input class="form-control" name='accion' style="display:none;" value="<?php echo $accion?>">
@@ -116,6 +121,16 @@ function VerificaCampo(){
 								$fecha = $formatofecha->format('d-m-Y');
 								?>
 								<td><?php echo $fecha;?></td>
+								<td><?php 
+									if ($Usr_Sist == 0 ){
+										echo $datos_ba[$i][4];
+									}elseif($Usr_Sist == 1 ){
+										echo $datos_ba[$i][3];
+									}elseif($Usr_Sist == 2){
+										echo $datos_ba[$i][4];
+									}
+									
+								?></td>
 							</tr>
 						</tbody>	
 						<?php

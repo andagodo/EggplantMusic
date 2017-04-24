@@ -1,13 +1,25 @@
 <?php
-session_start();
+//session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Genero.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/presentacion/Menu.php';
+
 ?>
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
 $conex = conectar();
 
 $idg=trim($_POST['idg']);
+
+
+if ($_POST['nom'] == "" && $_POST['desc'] == ""){
+	?>
+	<script language="javascript">
+		window.alert("Debes de modificar por lo menos uno de los valores.");
+		location.href="/presentacion/Menu.php";
+	</script>
+	<?php
+}else{
 
 if (!isset ($_POST['nom'])){
 	$u= new Genero ($idg);
@@ -37,5 +49,5 @@ if ($ok){
 	</script>
 	<?php
 }
-	
+}
 ?>

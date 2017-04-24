@@ -1,8 +1,8 @@
 <?php
-session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Cancion.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Album.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/presentacion/Menu.php';
 ?>
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
@@ -20,10 +20,12 @@ if ($item == "cancion"){
 		?>
 		<script language="javascript">
 			window.alert("No modificaste ningún valor de la canción seleccionada.\nVuelva a intentarlo");
-			location.href="/presentacion/Menu.php";
+			$(document).ready(function() {
+				$("#DASH").load('/includes/MusicAdmin/ModMusica.php');
+			});
 		</script>
 		<?php
-	}
+	}else{
 	
 	$canc= new Cancion($ID);
 	$datoscanc = $canc->consCancionId($conex);
@@ -58,6 +60,7 @@ if ($item == "cancion"){
 		</script>
 		<?php			
 	}
+	}
 	
 }elseif($item == "album"){
 	
@@ -69,10 +72,10 @@ if ($item == "cancion"){
 		?>
 		<script language="javascript">
 			window.alert("No modificaste ningún valor del Álbum seleccionado.\nVuelva a intentarlo");
-			location.href="/presentacion/Menu.php";
+			$("#DASH").load('/includes/MusicAdmin/ModMusica.php');
 		</script>
 		<?php			
-	}
+	}else{
 	
 	$album= new Album($ID);
 	$datosalbum = $album->consultaAlbum($conex);	
@@ -127,6 +130,7 @@ if ($item == "cancion"){
 			location.href="/presentacion/Menu.php";
 		</script>
 		<?php			
-	}	
+	}
+	}
 }
 ?>

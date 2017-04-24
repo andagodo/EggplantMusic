@@ -44,7 +44,7 @@ if (isset($_POST['pais'])){
 								<td>
 									<div class="radio">
 										<label>
-											<input type="radio" name="idi" id="optionsRadios1" value="<?php echo $datos_ba[$i][0]?>">
+											<input type="radio" name="idi" id="optionsRadios1" value="<?php echo $datos_ba[$i][0]?>" required>
 										</label>
 									</div>
 								</td>

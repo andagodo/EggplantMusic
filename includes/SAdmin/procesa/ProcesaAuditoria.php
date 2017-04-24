@@ -57,7 +57,7 @@ $Cuenta = count($Reporte);
 								<td><?php echo $Reporte[$i][4]?></td>
 								<td><?php echo $Reporte[$i][5]?></td>
 								<?php
-								$formatofecha = DateTime::createFromFormat('Y-m-d H:i:s.u', $Reporte[$i][6]);
+								$formatofecha = DateTime::createFromFormat('Y-m-d H:i:s', $Reporte[$i][6]);
 								$fecha = $formatofecha->format('d/m/Y H:i:s');
 								?>								
 								<td><?php echo $fecha?></td>

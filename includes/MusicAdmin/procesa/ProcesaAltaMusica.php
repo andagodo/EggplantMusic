@@ -263,7 +263,7 @@ if ($AltaAlbum == "1"){
 		</div>	
 		<div class="col-lg-2">
 			<p>Año:</p>
-			<input class="form-control" value="<?php echo $tema['anio'];?>" maxlength="4" min="1900" max="2100" type="number" size="25" name='anioalbum[]' placeholder="Año Álbum" requiered></input>
+			<input class="form-control" value="<?php echo $tema['anio'];?>" maxlength="4" min="1900" max="2100" type="number" size="25" name='anioalbum[]' placeholder="Año Álbum" required></input>
 		</div>
 		<div class="col-lg-2">
 			<p>Foto Álbum:</p>

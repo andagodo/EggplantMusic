@@ -54,9 +54,11 @@ if (isset($_POST['desc'])){
 						</tbody>
 						<div class="col-lg-3">
 							<div class="form-group">
+								<p>Modificar Nombre: </p>
 								<input class="form-control" placeholder="Modificar Nombre" name='nom'/>
 							</div>
 							<div class="form-group">
+								<p>Modificar Descripcción: </p>
 								<input class="form-control" placeholder="Modificar Descripcción" name='desc'/>
 							</div>
 							<div class="form-group">

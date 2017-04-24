@@ -12,7 +12,7 @@ if (isset($_POST['nomint'])){
 	$Cuenta = 0;
 }
 ?>
-<label>Seleccione un ntérprete:</label>
+<label>Seleccione un Intérprete:</label>
 <div class="table-responsive">
 	<table class="table table-bordered table-hover">
 			<thead>

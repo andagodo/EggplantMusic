@@ -70,7 +70,7 @@ else
 									<td><?php echo $datos_ba[$i][0]?></td>
 									<td><?php echo $datos_ba[$i][1]?></td>
 								<?php
-								$formatofecha = DateTime::createFromFormat('Y-m-d H:i:s.u', $datos_ba[$i][2]);
+								$formatofecha = DateTime::createFromFormat('Y-m-d H:i:s', $datos_ba[$i][2]);
 								$fecha = $formatofecha->format('d-m-Y');
 								?>
 								<td><?php echo $fecha?></td>

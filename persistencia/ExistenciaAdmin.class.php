@@ -88,7 +88,7 @@ class ExistenciaAdmin
 	{
 //        $idp= trim($param->getIDpersona());   
 		$tus= trim($param->getTipo_Usr_Sist());
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo AND Activo = 'S'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Tipo_Usr_Sist FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo AND Activo = 'S'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute(array(":tipo" => $tus));
@@ -102,7 +102,7 @@ class ExistenciaAdmin
 	{
 //        $idp= trim($param->getIDpersona());   
 		$tus= trim($param->getTipo_Usr_Sist());
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo AND Activo = 'N'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Tipo_Usr_Sist FROM Usr_Sistema WHERE Tipo_Usr_Sist=:tipo AND Activo = 'N'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute(array(":tipo" => $tus));
@@ -114,7 +114,7 @@ class ExistenciaAdmin
 	
 	public function consultaTodosAdmin($param, $conex)
 	{
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Activo = 'S'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Tipo_Usr_Sist FROM Usr_Sistema WHERE Activo = 'S'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();
@@ -127,7 +127,7 @@ class ExistenciaAdmin
 	public function consultaAdminTodosNoAct($param, $conex)
 	{
 
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Activo = 'N'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Tipo_Usr_Sist FROM Usr_Sistema WHERE Activo = 'N'";
 		
         $result = $conex->prepare($sql);
 	    $result->execute();
@@ -157,7 +157,7 @@ class ExistenciaAdmin
 	public function buscaNombreAdmin($param, $conex)
 	{
         $nombre= trim($param->getNombre_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom AND Activo = 'S'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Tipo_Usr_Sist FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -169,7 +169,7 @@ class ExistenciaAdmin
 	public function buscaNombreAdminNoAct($param, $conex)
 	{
         $nombre= trim($param->getNombre_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom AND Activo = 'N'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Tipo_Usr_Sist FROM Usr_Sistema WHERE Nombre_Usr_Sist LIKE :nom AND Activo = 'N'";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -196,7 +196,7 @@ class ExistenciaAdmin
 	public function buscaMailAdmin($param, $conex)
 	{
         $mail= trim($param->getMail_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Id_Usr_Sistema FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai AND Activo = 'S'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Id_Usr_Sistema, Tipo_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$mail = "%".$mail."%";
 	    $result->execute(array(":mai" => $mail));
@@ -208,7 +208,7 @@ class ExistenciaAdmin
 	public function buscaMailAdminNoAct($param, $conex)
 	{
         $mail= trim($param->getMail_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai AND Activo = 'N'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Tipo_Usr_Sist FROM Usr_Sistema WHERE Mail_Usr_Sist LIKE :mai AND Activo = 'N'";
         $result = $conex->prepare($sql);
 		$mail = "%".$mail."%";
 	    $result->execute(array(":mai" => $mail));
@@ -220,7 +220,7 @@ class ExistenciaAdmin
 	public function buscaFAltaAdmin($param, $conex)
 	{
         $falta= trim($param->getFech_Alta_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa AND Activo = 'S'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Tipo_Usr_Sist FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa AND Activo = 'S'";
         $result = $conex->prepare($sql);
 		$falta = "%".$falta."%";
 	    $result->execute(array(":fa" => $falta));
@@ -232,7 +232,7 @@ class ExistenciaAdmin
 	public function buscaFAltaAdminNoAct($param, $conex)
 	{
         $falta= trim($param->getFech_Alta_Usr_Sist());   
-        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa AND Activo = 'N'";
+        $sql = "SELECT Nombre_Usr_Sist, Mail_Usr_Sist, Fech_Alta_Usr_Sist, Activo, Tipo_Usr_Sist FROM Usr_Sistema WHERE Fech_Alta_Usr_Sist LIKE :fa AND Activo = 'N'";
         $result = $conex->prepare($sql);
 		$falta = "%".$falta."%";
 	    $result->execute(array(":fa" => $falta));

@@ -99,7 +99,7 @@ $Cuenta = count($Tickets);
 					</div>	
 				</table>
 			</div>
-			
+			<?php if ($Cuenta != 0 ){?>
 			<h4><u>Respuesta de ticket seleccionado:</u></h4>
 
 			<div class="row">
@@ -120,6 +120,7 @@ $Cuenta = count($Tickets);
 			</div>
 			</br>
 			<button type="submit" class="btn btn-default" >Responder</button>
+			<?php }?>
 			</br></br>
 		</form>
 	</div>

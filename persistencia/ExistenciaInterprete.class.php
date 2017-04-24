@@ -98,7 +98,7 @@ class ExistenciaInterprete
 	public function consultaTodosInterprete($param, $conex)
    {
 
-        $sql = "SELECT * FROM Interprete WHERE Activo = 'S'";
+        $sql = "SELECT * FROM Interprete";
         $result = $conex->prepare($sql);
 	    $result->execute();
 		$resultados=$result->fetchAll();
@@ -129,7 +129,7 @@ class ExistenciaInterprete
 	public function buscaNombreInterprete($param, $conex)
 	{
         $nombre= trim($param->getNom_Interprete());   
-        $sql = "SELECT Id_Interprete, Nom_Interprete, Link_Foto_Inter, Pais_Interprete FROM Interprete WHERE Nom_Interprete LIKE :nom AND Activo = 'S'";
+        $sql = "SELECT Id_Interprete, Nom_Interprete, Link_Foto_Inter, Pais_Interprete, Activo FROM Interprete WHERE Nom_Interprete LIKE :nom";
         $result = $conex->prepare($sql);
 		$nombre = "%".$nombre."%";
 	    $result->execute(array(":nom" => $nombre));
@@ -142,7 +142,7 @@ class ExistenciaInterprete
 	public function buscaPaisInterprete($param, $conex)
 	{
         $pais= trim($param->getPais_Interprete());   
-        $sql = "SELECT Id_Interprete, Nom_Interprete, Link_Foto_Inter, Pais_Interprete FROM Interprete WHERE Pais_Interprete LIKE :pais AND Activo = 'S'";
+        $sql = "SELECT Id_Interprete, Nom_Interprete, Link_Foto_Inter, Pais_Interprete, Activo FROM Interprete WHERE Pais_Interprete LIKE :pais";
         $result = $conex->prepare($sql);
 		$pais = "%".$pais."%";
 	    $result->execute(array(":pais" => $pais));

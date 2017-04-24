@@ -142,7 +142,7 @@ $conex = conectar();
 										<td>
 											<div class="radio">
 												<label>
-													<input type="radio" name="cuenta" value="<?php echo $datos_ba[$i][0]?>">
+													<input type="radio" name="cuenta" value="<?php echo $datos_ba[$i][0]?>" required/>
 												</label>
 											</div>
 										</td>

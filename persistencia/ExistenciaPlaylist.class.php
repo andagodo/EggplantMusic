@@ -83,7 +83,7 @@ class ExistenciaPlaylist
 	public function BuscoNombrePlaylist($param, $conex)
 	{  
 		$nom= trim($param->getNom_PlayList());
-        $sql = "SELECT * FROM PlayList WHERE Nom_PlayList=:nom";
+        $sql = "SELECT p.* FROM PlayList p, Crea_Playlist cp WHERE p.Nom_PlayList=:nom AND cp.Id_Usuario = 1 AND p.Id_PlayList = cp.Id_PlayList";
         $result = $conex->prepare($sql);
 	    $result->execute(array(":nom" => $nom));
 		$resultados=$result->fetchAll();

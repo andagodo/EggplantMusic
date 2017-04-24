@@ -75,6 +75,13 @@ if ($accion == "habilitar"){
 								<th>Nombre</th>
 								<th>Pais</th>
 								<th>Canciones asociadas</th>
+								<?php
+								if($accion == "modificar"){
+								?>
+								<th>Habilitado</th>
+								<?php
+								}
+								?>								
 							</tr>
 						</thead>
 						<input class="form-control" name='accion' style="display:none;" value="<?php echo $accion?>">
@@ -99,6 +106,13 @@ if ($accion == "habilitar"){
 									<td><?php echo $datos_ba[$i][1]?></td>
 									<td><?php echo $datos_ba[$i][3]?></td>
 									<td><?php echo $datos_as[0][0]?></td>
+									<?php
+									if($accion == "modificar"){
+									?>
+									<td><?php echo $datos_ba[$i][4]?></td>
+									<?php
+									}
+									?>	
 								</tr>
 							</tbody>
 						<?php

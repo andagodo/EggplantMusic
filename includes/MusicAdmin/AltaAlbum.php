@@ -55,7 +55,7 @@ if(! isset($_SESSION["mai"])){
 				<div class="form-group">
 					<label>Año:</label>
 					<div class="form-group input-group">
-					<input class="form-control" maxlength="4" min="1900" max="2100" type="number" size="25" name='anio' requiered></input>
+					<input class="form-control" maxlength="4" min="1900" max="2100" type="number" size="25" name='anio' required></input>
 				</div>
 				</div>
 				<div class="form-group">

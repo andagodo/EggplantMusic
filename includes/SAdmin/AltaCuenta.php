@@ -50,7 +50,7 @@ if(! isset($_SESSION["mai"])){
 			<form role="form" action='/logica/NuevaCuenta.php' method="POST">
 				<div class="form-group">
 					<label>Nombre / Tipo:</label>
-					<input class="form-control" name='tipo' required/>
+					<input class="form-control" name='tipo' maxlength='10' required/>
 				</div>
 				<div class="form-group">
 					<label>Cantidad Playlist:</label>
@@ -58,10 +58,10 @@ if(! isset($_SESSION["mai"])){
 				</div>
 				<div class="form-group">
 					<label>Precio:</label>
-					<input class="form-control" name='precio' type="number" min="1" max="999" required/>
+					<input class="form-control" name='precio' type="number" min="0" max="999" required/>
 				</div>
 				<div class="form-group">
-					<label>Tipo de Administrador</label>
+					<label>Estado: </label>
 					<select class="form-control" name='activo'>
 						<option value="S">Habilitado</option>
 						<option value="N">Deshabilitado</option>
