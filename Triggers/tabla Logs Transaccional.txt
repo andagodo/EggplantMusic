@@ -1,9 +1,0 @@
-CREATE TABLE dbo.logTransacciones (
-  TipoTrn char(1), 
-  Tabla varchar(128), 
-  PK varchar(1000), 
-  Campo varchar(128), 
-  ValorOriginal varchar(1000), 
-  ValorNuevo varchar(1000), 
-  FechaTrn datetime, Usuario varchar(128))
-GO
