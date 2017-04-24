@@ -28,9 +28,7 @@ if(isset($_POST['npass'])){
 						window.alert("Gracias por registrarte.\nPor favor, inicie sesión.");
 						location.href="/presentacion/indice.php";
 					</script>
-					<?php						
-					
-					
+					<?php
 				}else{
 					?>
 					<script language="javascript">
@@ -68,10 +66,7 @@ if(isset($_POST['npass'])){
 			alert('Este contraseña no cumple con lo mínimo de seguridad');
 			window.location.href='/presentacion/indice.php?id='+clave;
 		</script>
-
 		<?php
-
-		
 	}
 	
 }else{

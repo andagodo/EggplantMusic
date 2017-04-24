@@ -1,5 +1,4 @@
 <?php
-//session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Playlist.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/CreaPlaylist.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/TienePlaylist.class.php';

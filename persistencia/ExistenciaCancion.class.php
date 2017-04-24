@@ -1,12 +1,9 @@
 <?php
-
 class ExistenciaCancion
 {
 
     public function altaCancion($param, $conex)
     {
-
-    //    $idc = $param->getId_Cancion();
         $nom=$param->getNom_Cancion();
         $dur=$param->getDur_Cancion();
         $ruta = $param->getRuta_Arch_Cancion();
@@ -32,15 +29,13 @@ class ExistenciaCancion
 
 
 	public function consultaCancionGenero($param, $conex)
-	{
-//        $idp= trim($param->getIDpersona());   
+	{ 
 		$idg= trim($param->getId_Genero());
         $sql = "SELECT c.Id_Cancion, c.Nom_Cancion, c.Dur_Cancion, g.Nom_Genero, c.Id_Genero FROM Cancion c, Genero g WHERE c.Id_Genero=:genero AND c.Id_Genero = g.Id_Genero AND c.Activo = 'S'";
 
         $result = $conex->prepare($sql);
 	    $result->execute(array(":genero" => $idg));
 		$resultados=$result->fetchAll();
-       
 
        return $resultados;
     }	
@@ -99,7 +94,6 @@ class ExistenciaCancion
 		$duracion= trim($param->getDur_Cancion());
 		$interprete = trim($param->getId_Genero());
 		$sql = "SELECT c.id_Cancion FROM Cancion c, Pertenece_Cancion pc  WHERE c.Nom_Cancion = :nom AND c.Dur_Cancion = :dur AND pc.Id_Interprete = :idi AND c.Id_Cancion = pc.Id_Cancion";
-	//	$sql = "SELECT id_Cancion FROM Cancion WHERE Nom_Cancion = :nom AND Dur_Cancion = :dur";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":nom" => $nomc, ":dur" => $duracion, ":idi" => $interprete));
 		if($result->rowCount()==0){
@@ -108,23 +102,7 @@ class ExistenciaCancion
 			return true;
         }
 	}	
-	
-/*	
-	public function consultaTodos($param, $conex)
-   {
-//        $idp= trim($param->getIDpersona());   
-		$log= trim($param->getLogin());
-        $sql = "SELECT Nombre, Apellido, Login, IDrol FROM persona";
-		
-        $result = $conex->prepare($sql);
-	    $result->execute(array(":login" => $log));
-		$resultados=$result->fetchAll();
-       
 
-       return $resultados;
-    }
-	
-*/
 	
 	public function eliminaCancion($param, $conex)
 	{
@@ -158,17 +136,6 @@ class ExistenciaCancion
 		$resultados=$result->fetchAll();
 		return $resultados;
 	}	
-	
-/*	
-	public function consultaPerteneceCancion($param, $conex)
-	{
-		$sql = "SELECT Id_Cancion, Nom_Cancion, Dur_Cancion FROM Cancion WHERE cancion.Id_Cancion NOT IN (SELECT Id_Cancion FROM Pertenece_Cancion)";
-        $result = $conex->prepare($sql);
-	    $result->execute();
-		$resultados=$result->fetchAll();
-       return $resultados;
-	}
-	*/
 	
 	public function consultaCancionSinInterprete($param,$conex)
 	{
@@ -226,17 +193,6 @@ class ExistenciaCancion
 		return $resultados;
 	}	
 
-/*	
-	public function ActivaCancion($param, $conex)
-	{
-		$idc= trim($param->getId_Cancion());
-		$sql = "UPDATE Cancion SET Activo = 'S' WHERE Id_Cancion = :idc";
-		$result = $conex->prepare($sql);
-		$result->execute(array(":idc" => $idc));
-		$resultados=$result->fetchAll();
-		return $resultados;
-	}
-*/
 	
 	public function ActivaCancion($param, $conex)
 	{
@@ -412,19 +368,7 @@ class ExistenciaCancion
 		$result->execute(array(":idc" => $idc));
 		$resultados=$result->fetchAll();
 		return $resultados;
-	}
-/*	
-	public function ReporteCancion($param, $conex)
-	{
-		$idc= trim($param->getId_Cancion());
-		$sql = "SELECT c.Id_Cancion, c.Nom_Cancion, i.Nom_Interprete, c.Dur_Cancion, g.Nom_Genero, a.Nomb_Album, c.Activo FROM Cancion c, Genero g, Interprete i, Pertenece_Cancion pc, Contiene_Album ca, Album a WHERE c.Id_Cancion = :idc AND c.Id_Genero = g.Id_Genero AND i.Id_Interprete = pc.Id_Interprete AND ca.Id_Pertenece_Cancion = pc.Id_Pertenece_Cancion AND a.Id_Album = ca.Id_Album AND c.Id_Cancion = pc.Id_Cancion";
-		$result = $conex->prepare($sql);
-		$result->execute(array(":idc" => $idc));
-		$resultados=$result->fetchAll();
-		return $resultados;
-	}
-*/	
-	
+	}	
 	
 }
 ?>

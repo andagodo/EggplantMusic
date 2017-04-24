@@ -10,7 +10,6 @@ class Album
 	private $Activo;
 	private $Fech_Activo;
 
-
     function __construct($ida='',$nom='',$anio='', $link='', $activ='', $feactivo='')
     {
 		$this->Id_Album= $ida;
@@ -20,38 +19,6 @@ class Album
 		$this->Activo=$activ;
 		$this->Fech_Activo=$feactivo;
     }
-    
-/*
-    public function setId_Album($ida)
-    {
-      $this->Id_Album= $ida;
-    }    
-	
-    public function setNom_Album($nom)
-    {
-      $this->Nom_Album= $nom;
-    }
-    
-    public function setAnio_Album($anio)
-    {
-      $this->Anio_Album= $anio;
-    }
-    
-    public function setLink_Foto_Album($link)
-    {
-      $this->Link_Foto_Album= $link;
-    }
-  
-	public function setActivo($activ)
-    {
-      $this->Activo= $activ;
-    }
-    
-    public function setFech_Activo($feactivo)
-    {
-      $this->Fech_Activo= $feactivo;
-    }	
-*/
 	
     public function getId_Album()
     {

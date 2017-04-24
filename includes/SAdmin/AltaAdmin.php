@@ -69,7 +69,6 @@ if(! isset($_SESSION["mai"])){
                         <div class="form-group">
                             <label>Nombre:</label>
                             <input class="form-control" name='nomu' required/>
- <!--                           <p class="help-block">Example block-level help text here.</p>	-->
                         </div>	
 						
                         <div class="form-group">
@@ -85,16 +84,7 @@ if(! isset($_SESSION["mai"])){
 								<input type="email" class="form-control" name='mus' required/>
 							</div>
 						</div>
-<!--						
-						<div class="form-group">
-							<label for="exampleInputPassword1">Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" name='pus' required/>
-						</div>		
--->						
-					<button type="submit" class="btn btn-default">Alta Admin</button>
-			
+					<button type="submit" class="btn btn-default">Alta Admin</button>			
 					</form>
-			
 			</div>
-
 		</div>

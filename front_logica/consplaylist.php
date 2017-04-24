@@ -26,9 +26,4 @@
 		echo json_encode($arr);  
 	}
 
-		//envio las playlist del usuario por Json
-		
-
-	//desconectar($conex);
-	
  ?>

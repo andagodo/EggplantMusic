@@ -13,7 +13,6 @@ $conex = conectar();
 $nompl=trim($_POST['nompl']);
 $tags=trim($_POST['tags']);
 
-
 if ($nompl == ""){
 	?>
 	<script language="javascript">

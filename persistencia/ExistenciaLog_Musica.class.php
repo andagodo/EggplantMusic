@@ -130,8 +130,6 @@ class ExistenciaLog_Musica
 		return $resultados;
     }
 	
-	
-	
 	public function LogBusquedaCancion($param, $conex)
 	{
 		$idu=$param->getId_Usuario();

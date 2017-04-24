@@ -2,7 +2,6 @@
 
 class ExistenciaGenero
 {
-
 	
     public function altaGenero($param, $conex)
     {
@@ -14,7 +13,6 @@ class ExistenciaGenero
 		
         $sql = "INSERT INTO Genero (Nom_Genero,Desc_Genero, Activo, Fech_Activo, Usuario) VALUES (:nombre, :descripcion, :activ, :feactivo, :usu)";
       
-
 		$result = $conex->prepare($sql);
 		$result->execute(array(":nombre" => $nomg, ":descripcion" => $desc, ":activ" => $activ, ":feactivo" => $feactivo, ":usu" => $_SESSION["mai"]));
         
@@ -29,7 +27,6 @@ class ExistenciaGenero
         }
     }
 
-	
 	public function eliminaGenero($param, $conex)
 	{
 		$idg = trim($param->getId_Genero());
@@ -49,23 +46,6 @@ class ExistenciaGenero
 		$result->execute(array(":idg" => $idg,":nom" => $nom, ":desc" => $desc, ":usu" => $_SESSION["mai"]));
 		return $result;
 	}	
-	
-    /*
-	public function consultaUno($param, $conex)
-	{
-//        $idp= trim($param->getIDpersona());   
-		$log= trim($param->getLogin());
-        $sql = "SELECT * FROM persona WHERE Login=:login";
-		
-        $result = $conex->prepare($sql);
-	    $result->execute(array(":login" => $log));
-		$resultados=$result->fetchAll();
-       
-
-       return $resultados;
-    }
-
-	*/
 	
 	public function consultaTodosGenero($param,$conex)
 	{

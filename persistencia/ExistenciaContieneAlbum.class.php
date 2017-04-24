@@ -56,30 +56,6 @@ class ExistenciaContieneAlbum
        return $resultados;
     }
 	
-	
-/*	
-    
-	public function consultaAlbum($param, $conex)
-	{
-		$ida= trim($param->getId_Album());
-        $sql = "SELECT * FROM Album WHERE Id_Album=:idalbum";
-        $result = $conex->prepare($sql);
-	    $result->execute(array(":idalbum" => $ida));
-		$resultados=$result->fetchAll();
-       
-
-       return $resultados;
-    }
-
-	public function consultaTodosAlbum($conex)
-   {
-        $sql = "SELECT * FROM Album";
-        $result = $conex->prepare($sql);
-	    $result->execute();
-		$resultados=$result->fetchAll();
-		return $resultados;
-    }
-*/
 
 	public function ConsultaIDPerteneceC($param, $conex)
 	{

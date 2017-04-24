@@ -6,10 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
 
-//Obtiene los datos ingresados
-
 $conex = conectar();
-
 $nomg=trim($_POST['nomg']);
 $desc=trim($_POST['desc']);
 $activ="S";

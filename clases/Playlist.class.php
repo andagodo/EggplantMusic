@@ -23,38 +23,6 @@ class Playlist
 
     }
     
-/*
-	
-    public function setId_Playlist($idp)
-    {
-      $this->Id_Playlist= $idp;
-    }    
-	
-    public function setNom_PlayList($nom)
-    {
-      $this->Nom_PlayList= $nom;
-    }
-    
-    public function setFech_Creacion($fech)
-    {
-      $this->Fech_Creacion= $fech;
-    }
-    
-    public function setActivo($act)
-    {
-      $this->Activo= $act;
-    }
-
-    public function setFech_Activo($fecha)
-    {
-      $this->Fech_Activo= $fecha;
-    }
-   
-   public function setPlaylist_Tags($pltags)
-    {
-      $this->Playlist_Tags= $pltags;
-    }
-*/
 	
     public function getId_Playlist()
     {
@@ -100,23 +68,6 @@ class Playlist
         $datos= $pu->consultaPlaylist($this, $conex);
         return $datos;
       }
-     /*	
-  	 public function consultaTodosAlbum($conex)
-      {
-        $pu= new ExistenciaAlbum;
-        $datos= $pu->consultaTodosAlbum($conex);
-        return $datos;
-      }	
-	
-	
-	public function consultaEstado($conex)
-	{
-      $pu= new ExistenciaEstado;
-      return $pu->consultaEstado($this, $conex);
-	  
-    }
-
-*/
 
 	public function TotalPlaylist($conex)
     {

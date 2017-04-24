@@ -2,11 +2,9 @@
 
 class ExistenciaCuenta
 {
-
 	
     public function altaCuenta($param, $conex)
     {
-
         $tipo=$param->getTipo();
         $play=$param->getCant_Playlist();
 		$precio = $param->getPrecio();
@@ -14,11 +12,9 @@ class ExistenciaCuenta
 		$feactivo = $param->getFech_Activo();
 		
         $sql = "INSERT INTO Cuenta (Tipo,Cant_Playlist, Precio, Activo, Fech_Activo, Usuario) VALUES (:tipo, :playlist, :precio, :activo, :feactivo, :usu)";
-      
 
 		$result = $conex->prepare($sql);
 		$result->execute(array(":tipo" => $tipo, ":playlist" => $play, ":precio" => $precio, ":activo" => $activ, ":feactivo" => $feactivo, ":usu" => $_SESSION["mai"]));
-        
         
         if($result)
         {
@@ -107,7 +103,7 @@ class ExistenciaCuenta
 		$resultados=$result->fetchAll();
 
        return $resultados;
-    }
+	   }
 	
 	public function buscaTipoCuenta($param, $conex)
 	{

@@ -21,40 +21,6 @@ class Interprete
 
     }
     
-/*
-    
-    public function setId_Interprete($idi)
-    {
-      $this->Id_Interprete= $idi;
-    }
-    
-    public function setNom_Interprete($nom)
-    {
-      $this->Nom_Interprete= $nom;
-    }
-    
-    public function setLink_Foto_Inter($fot)
-    {
-      $this->Link_Foto_Inter= $fot;
-    }
-    
-	public function setPais_Interprete($pais)
-    {
-      $this->Pais_Interprete= $pais;
-    }
- 
-	public function setActivo($activ)
-    {
-      $this->Activo= $activ;
-    }
-    
-	
-    public function setFech_Activo($feactivo)
-    {
-      $this->Fech_Activo= $feactivo;
-    }	
-*/
-    
     public function getId_Interprete()
     {
       return $this->Id_Interprete;
@@ -118,13 +84,6 @@ class Interprete
       $datos= $pu->buscaPaisInterprete($this, $conex);
       return $datos;
     }			
-	
-	// public function consultaEstado($conex)
-	// {
-      // $pu= new ExistenciaEstado;
-      // return $pu->consultaEstado($this, $conex);
-	  
-    // }
 	
 	public function eliminaInterprete($conex)
     {

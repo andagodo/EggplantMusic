@@ -6,14 +6,9 @@ class ExistenciaCreaPlaylist
 		$idu=$param->getId_Usuario();
 		$idp=$param->getId_Playlist();
 		$act="S";
-        //$fecha=date("Y-m-d H:i:s");
         $fecha=date("d/m/Y H:i:s");
-        //Se cambia el formato para que funcione con el servidor de XAMPP
-        //$fecha = date("Y-m-d H:i:s");
 
         $sql = "INSERT INTO Crea_Playlist (Id_Usuario, Id_Playlist, Activo, Fech_Activo) VALUES ( :idusuario, :idplaylist, :activo, :fechactivo)";
-#		$sql = "INSERT INTO Crea_Playlist ( Id_Usuario, Id_Playlist, Activo, Fech_Activo) VALUES ( :idusuario, :idplaylist, :activo, :fechactivo, :usu)";
-#Comento esta linea ya que con :usu parece no funcionar
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idusuario" => $idu, ":idplaylist" => $idp, ":activo" => $act, ":fechactivo" => $fecha));
 

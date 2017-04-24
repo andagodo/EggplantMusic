@@ -135,16 +135,7 @@ $(document).ready(function() {
 		$("#DASH").load('/includes/MusicAdmin/AltaAlbum.php');
 	});
 });
-/*
-	Lo usaba cuando tenia el formulario de baja Album en Menú
 	
-	$(document).ready(function() {
-	$('#bajaalbum').click(function(){
-	$("#DASH").load('/includes/MusicAdmin/BajaAlbum.php');
-	
-	});
-	});
-*/		
 $(document).ready(function() {
 	$('#altagenero').click(function(){
 		$("#DASH").load('/includes/MusicAdmin/AltaGenero.php');

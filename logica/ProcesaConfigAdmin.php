@@ -4,16 +4,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/presentacion/Menu.php';
 ?>
-
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <script src="/estilos/js/jsmenu.js"></script>
-
-
 <?php
 
 $mus=$_SESSION["mai"];	// Almacena en variable $mus el mail del usuario que está con la sesión iniciada.
-
-
 
 if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"])) {		// Si no se trae por POST a "pusEC" y no "nomu" ni "apeu" entra en la condición.
 	
@@ -39,27 +34,21 @@ if (! isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"
 		<?php
 		}else{		// Si ok es "false" cumple la condificón y muestra mensaje de inconveniente al cambiar la contraseña.
 		?>
-	
 			<script language="javascript">
 				window.alert("Hubo un problema al cambiar tu clave \nIntenta nuevamente.")
 				$("#DASH").load('/includes/ConfigAdmin.php');
 			</script>
-
-
 		<?php
 		}
 	
 	} else {	// Si no cumple con la condición de la contrasaña nueva muestra mensaje de que no cumple con los requisitos mínimos.
 	?>	
-
 		<script language="javascript">
 			window.alert("Tu clave no cumple con los mínimos requisitos de complejidad. \nIntenta nuevamente.")
 			$("#DASH").load('/includes/ConfigAdmin.php');
 		</script>
-
 	<?php
 	}
-	
 } elseif(isset($_POST["pusEC"]) && ! isset($_POST["nomu"]) && ! isset($_POST["apeu"])){		// Si trae por POST a "pusEC" y no "nomu" ni "apeu" entra en la condición.
 	
 	$pusEC=trim($_POST['pusEC']);		// Almacena en $pusEC la contraseña del usuario para elimiar su cuenta.

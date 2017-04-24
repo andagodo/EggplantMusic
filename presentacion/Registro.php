@@ -5,7 +5,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 $conex = conectar();
 
 $clave = $_GET["id"];
-
 $u= new Usuario ('','','','','','','','','','',$clave);
 
 $ok=$u->ConfirmaMail($conex);

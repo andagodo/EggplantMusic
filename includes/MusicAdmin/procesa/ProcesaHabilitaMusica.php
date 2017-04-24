@@ -35,7 +35,7 @@ if ($accion == "habilitar"){
 	}
 	
 }elseif ($accion == "deshabilitar"){
-	if ($contenido == "cancion"){
+if ($contenido == "cancion"){
 		$c= new Cancion ('',$texto);
 		$datos_ba=$c->buscaCancionDeshabilitar($conex);
 		$Cuenta = Count ($datos_ba);				

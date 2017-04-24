@@ -13,26 +13,7 @@ class Log_Transacciones
 		$this->Fecha_Fin=$fefin;
 		$this->Usuario=$usr;
 	}
-    
-/*
-    
-	public function setFecha_Ini($feini)
-    {
-      $this->Fecha_Ini= $feini;
-    }
-    
-	public function setFecha_Fin($fefin)
-    {
-      $this->Fecha_Fin= $fefin;
-    }
-	
-	public function setUsuario($usr)
-    {
-      $this->Usuario= $usr;
-    }
-	
-*/
-    
+      
 
 	public function getFecha_Ini()
     {

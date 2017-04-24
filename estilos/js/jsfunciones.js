@@ -111,35 +111,7 @@ function ModificaMusica(){
 		}
 	})
 }
-/*
 
-Lo usaba cuando cargaba los datos procesados de las cacniones en la misma página ProcesaAltaMusica
-
-function AltaMusica() {
-	var c=document.getElementById("accion").value
-	var t=document.getElementById("titulo[]").value
-	var i=document.getElementById("inter[]").value
-	var a=document.getElementById("alb[]").value
-	var g=document.getElementById("gen[]").value
-	var d=document.getElementById("duracion[]").value
-	var n=document.getElementById("anio[]").value
-	var k=document.getElementById("track[]").value
-	var h=document.getElementById("nomarch[]").value
-	var url="/includes/MusicAdmin/procesa/ProcesaAltaMusica.php"
-	
-	$.ajax({
-		
-		type:"post",
-		url:url,
-		data:{accion:c,titulo:t,inter:i,alb:a,gen:g,duracion:d,anio:n,track:k,nomarch:h},
-		success:function(datos){
-			$("#respuesta").html(datos);
-		}
-	}
-	
-	)
-}
-*/
 function HabilitaMusica(){
 	var c=document.getElementById("contenido").value
 	var a=document.getElementById("accion").value
@@ -284,61 +256,7 @@ function ConsultaNomMusica(){
 		}
 	})
 }
-/*
-LAS USABA CUANDO TENIA EL VIEJO FORMULARIO DE PROCESO CARGA PLAYLIST 
 
-function ConsultaMusicaArtista(){
-	var i=document.getElementById("idi").value
-	var url="/includes/PlaylistAdmin/procesa/ProcesaAltaPlaylist.php"
-	
-	$.ajax({
-		
-		type:"post",
-		url:url,
-		data:{idi:i},
-		success:function(datos){
-			$("#ALTAPLAYLISTDIV").html(datos);
-		}
-	}
-	
-	)
-}
-
-function ConsultaMusicaGenero(){
-	var g=document.getElementById("idg").value
-	var url="/includes/PlaylistAdmin/procesa/ProcesaAltaPlaylist.php"
-	
-	$.ajax({
-		
-		type:"post",
-		url:url,
-		data:{idg:g},
-		success:function(datos){
-			$("#ALTAPLAYLISTDIV").html(datos);
-		}
-	}
-	
-	)
-} 
-
-function ConsultaNomMusica(){
-	var n=document.getElementById("nom").value
-	var url="/includes/PlaylistAdmin/procesa/ProcesaAltaPlaylist.php"
-	
-	$.ajax({
-		
-		type:"post",
-		url:url,
-		data:{nom:n},
-		success:function(datos){
-			$("#ALTAPLAYLISTDIV").html(datos);
-		}
-	}
-	
-	)
-}
-
-*/
 function AltaPlaylist(){
 	var n=document.getElementById("nompl").value
 	var t=document.getElementById("tags").value
@@ -516,61 +434,3 @@ function ListTickets(){
 		}
 	})
 }
-/*
-
-function ModPlaylist(){
-	var i=document.getElementById("idpl").value
-	var url="/includes/PlaylistAdmin/procesa/ProcesaModPlaylist.php"
-	
-	$.ajax({
-		
-		type:"post",
-		url:url,
-		data:{idpl:i},
-		success:function(datos){
-			$("#PROCESAMODPLAYLIST").html(datos);
-		}
-	}
-	
-	)
-}
-*/
-
-/*
-Lo usaba cuando hacía bajas de album mediante el formulario Baja Album
-
-function ConsultaNomAlbum(){
-	var n=document.getElementById("nom").value
-	var url="/includes/MusicAdmin/procesa/ProcesaBajaAlbum.php"
-	
-	$.ajax({
-		
-		type:"post",
-		url:url,
-		data:{nom:n},
-		success:function(datos){
-			$("#BAJAALBUM").html(datos);
-		}
-	}
-	
-	)
-}
-
-
-function ConsultaAnioAlbum(){
-	var a=document.getElementById("anio").value
-	var url="/includes/MusicAdmin/procesa/ProcesaBajaAlbum.php"
-	
-	$.ajax({
-		
-		type:"post",
-		url:url,
-		data:{anio:a},
-		success:function(datos){
-			$("#BAJAALBUM").html(datos);
-		}
-	}
-	
-	)
-}
-*/

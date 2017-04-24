@@ -22,48 +22,7 @@ class Cancion
 		$this->Fech_Activo=$feactivo;
     }
     
-/*
-    
-    public function setId_Cancion($idc)
-    {
-      $this->Id_Cancion= $idc;
-    }
-    
-    public function setNom_Cancion($nom)
-    {
-      $this->Nom_Cancion= $nom;
-    }
-    
-    public function setDur_Cancion($dur)
-    {
-      $this->Dur_Cancion= $dur;
-    }
-    
-	public function setRuta_Arch_Cancion($ruta)
-    {
-      $this->Ruta_Arch_Cancion= $ruta;
-    }
-    
-	
-    public function setId_Genero($idg)
-    {
-      $this->Id_Genero= $idg;
-    }	
-    
-	
-	public function setActivo($activ)
-    {
-      $this->Activo= $activ;
-    }
-    
-	
-    public function setFech_Activo($feactivo)
-    {
-      $this->Fech_Activo= $feactivo;
-    }		
-	
-*/
-    
+  
     public function getId_Cancion()
     {
       return $this->Id_Cancion;
@@ -308,13 +267,6 @@ class Cancion
       $datos= $pu->consCancion($this, $conex);
       return $datos;
     }
-/*
-  public function ReporteCancion($conex)
-    {
-      $pu= new ExistenciaCancion;
-      $datos= $pu->ReporteCancion($this, $conex);
-      return $datos;
-    }
-*/	
+
 }
 ?>

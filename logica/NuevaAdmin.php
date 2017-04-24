@@ -17,11 +17,9 @@ $apell=trim($_POST['apeu']);
 $cla = GenerarClave(20,false); 
 $url = "http://eggplantblue.com/presentacion/RegistroBackEnd.php?id=" . $cla;
 
-
 $conex = conectar();
 $u= new Admin ($tus,$nomu,$mus,$pus,$feal,$activ,$feactivo,$apell,$cla);
 $m= new Admin ('','',$mus,'','','','','');
-
 
 $ok=$m->ConsultoExisteAdmin($conex);
 
@@ -55,6 +53,5 @@ if ($ok == false){
 		</script>
 		<?php
 	}
-// desconectar($conex);
 }
 ?>

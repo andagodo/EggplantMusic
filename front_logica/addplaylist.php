@@ -9,8 +9,6 @@
 	$c = new TienePlaylist($idpl,$idca);
 	$datos_c=$c->ConsultacancionyPL($conex);
 
-	
-
 	if ($datos_c){
 		#echo("Existe en la playlist");		
 		$arr = array('ok' => "False");

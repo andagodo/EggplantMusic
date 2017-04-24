@@ -78,6 +78,4 @@ if ($accion == "habilitar"){
 			
 		}
 }
-// desconectar($conex);
- 
 ?>

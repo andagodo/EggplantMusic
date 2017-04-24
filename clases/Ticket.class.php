@@ -27,54 +27,6 @@ class Ticket
 		$this->Fecha_Ticket2= $feti2;
     }
     
-/*
-	
-    public function setId_Ticket($idt)
-    {
-      $this->Id_Ticket= $idt;
-    }    
-	
-    public function setId_Usuario($idu)
-    {
-      $this->Id_Usuario= $idu;
-    }
-    
-    public function setFecha_Ticket($feti)
-    {
-      $this->Fecha_Ticket= $feti;
-    }
-	
-    public function setAsunto_Ticket($asu)
-    {
-      $this->Asunto_Ticket= $asu;
-    }    
-	
-    public function setTexto_Ticket($text)
-    {
-      $this->Texto_Ticket= $text;
-    }
-    
-    public function setRespuesta_Ticket($resp)
-    {
-      $this->Respuesta_Ticket= $resp;
-    }
- 
-    public function setResuelto_Ticket($resu)
-    {
-      $this->Resuelto_Ticket= $resu;
-    } 
-	
-    public function setOrigen_Ticket($orig)
-    {
-      $this->Origen_Ticket= $orig;
-    } 
-	
-    public function setFecha_Ticket2($feti2)
-    {
-      $this->Fecha_Ticket2= $feti2;
-    } 
-
-*/
 	
     public function getId_Ticket()
     {

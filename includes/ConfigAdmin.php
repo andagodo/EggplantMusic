@@ -1,5 +1,4 @@
 <?php
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Admin.class.php';
 session_start();
@@ -55,10 +54,6 @@ $apellido = $Tipo[0][2];	// Almacena en $apellido el valor devuelto por la funci
 		</div>
 				
 	</div>
-
-
-
-
 <script>
 
  /* Función Javascript que verifica que las dos contraseñas sean iguales, si son iguales ejecuta la acción del formulario, en caso contrario da mensaje de error */

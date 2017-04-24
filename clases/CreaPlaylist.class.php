@@ -21,40 +21,6 @@
     		$this->Usuario= $usr;
 	    }		
 
-/*
-
-	    public function setId_Crea_Playlist($idc)
-	    {
-	      $this->Id_Crea_Playlist= $idc;
-	    }    
-		
-	    public function setId_Usuario($idu)
-	    {
-	      $this->Id_Usuario= $idu;
-	    }
-	    
-	    public function setId_Playlist($idp)
-	    {
-	      $this->Id_Playlist= $idp;
-	    }
-
-    	public function setActivo($act)
-    	{
-      	$this->Activo= $act;
-    	}
-
-    	public function setFech_Activo($fecha)
-    	{
-      	$this->Fech_Activo= $fecha;
-    	}
-    	
-    	public function setUsuario($usr)
-    	{
-      	$this->Usuario= $usr;
-    	}	 	    
-
-*/
-
 	    public function getId_Crea_Playlist()
 	    {
 	      return $this->Id_Crea_Playlist;

@@ -18,35 +18,7 @@ class Genero
 		$this->Fech_Activo=$feactivo;
     }
     
-/*
-    
-    public function setId_Genero($idg)
-    {
-      $this->Id_Genero= $idg;
-    }
-    
-    public function setNom_Genero($nomg)
-    {
-      $this->Nom_Genero= $nomg;
-    }
-    
-    public function setDesc_Genero($desc)
-    {
-      $this->Desc_Genero= $desc;
-    }
-	
-	public function setActivo($activ)
-    {
-      $this->Activo= $activ;
-    }
-    
-	
-    public function setFech_Activo($feactivo)
-    {
-      $this->Fech_Activo= $feactivo;
-    }		
-*/
-    
+   
     public function getId_Genero()
     {
       return $this->Id_Genero;
@@ -101,16 +73,6 @@ class Genero
       $datos= $pu->UpdateGenero($this, $conex);
       return $datos;
     }		
-	
-/*	
-	public function consultaEstado($conex)
-	{
-      $pu= new ExistenciaEstado;
-      return $pu->consultaEstado($this, $conex);
-	  
-    }
-
-*/
 	
 	public function buscaNombreGenero($conex)
     {

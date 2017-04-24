@@ -20,40 +20,6 @@ class Cuenta
 		$this->Fech_Activo=$feactivo;
     }
     
-/*
-  
-    public function setId_Cuenta($idcu)
-    {
-      $this->Id_Cuenta= $idcu;
-    }
-	
-    public function setTipo($tipo)
-    {
-      $this->Tipo= $tipo;
-    }
-    
-    public function setCant_Playlist($play)
-    {
-      $this->Cant_Playlist= $play;
-    }
-    
-    public function setPrecio($precio)
-    {
-      $this->Precio= $precio;
-    }
-	
-	public function setActivo($activ)
-    {
-      $this->Activo= $activ;
-    }
-    
-	public function setFech_Activo($feactivo)
-    {
-      $this->Fech_Activo= $feactivo;
-    }	
-	
-*/
-	
     public function getId_Cuenta()
     {
       return $this->Id_Cuenta;

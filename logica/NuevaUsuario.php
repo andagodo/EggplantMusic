@@ -6,7 +6,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
 
-
 $nom=trim($_POST['nombre']);
 $ape=trim($_POST['apellido']);
 $fnac=trim($_POST['nacimiento']);
@@ -18,7 +17,6 @@ $nac=trim($_POST['nacionalidad']);
 $feal=date("Y-m-d");
 $conf="N";
 $cla = GenerarClave(20,false); 
-
 $url = "http://localhost:8080/presentacion/Registro.php?id=" . $cla;
 
 $conex = conectar();

@@ -6,7 +6,6 @@ class ExistenciaInterprete
     public function altaInterprete($param, $conex)
     {
 
-    //    $idi = $param->getId_Interprete();
         $nom=$param->getNom_Interprete();
         $fot=$param->getLink_Foto_Inter();
         $pais = $param->getPais_Interprete();
@@ -51,7 +50,6 @@ class ExistenciaInterprete
 	
 	public function buscaInterprete($param, $conex)
 	{
-  
 		$nom= trim($param->getNom_Interprete());
         $sql = "SELECT Id_Interprete, Nom_Interprete, Activo FROM Interprete WHERE Nom_Interprete LIKE :nom COLLATE Modern_Spanish_CI_AI";
 		
@@ -59,8 +57,7 @@ class ExistenciaInterprete
 		$nom = "%".$nom."%";
 	    $result->execute(array(":nom" => $nom));
 		$resultados=$result->fetchAll();
-       
-
+      
        return $resultados;
     }
 	
@@ -73,28 +70,9 @@ class ExistenciaInterprete
 	    $result->execute(array(":nom" => $nom));
 		$resultados=$result->fetchAll();
        
-
        return $resultados;
     }
-	
-/*    
-	public function consultaUnoInterprete($param, $conex)
-	{
-//        $idp= trim($param->getIDpersona());   
-		$log= trim($param->getLogin());
-        $sql = "SELECT * FROM persona WHERE Login=:login";
 		
-        $result = $conex->prepare($sql);
-	    $result->execute(array(":login" => $log));
-		$resultados=$result->fetchAll();
-       
-
-       return $resultados;
-    }
-
-*/	
-	
-	
 	public function consultaTodosInterprete($param, $conex)
    {
 
@@ -115,16 +93,6 @@ class ExistenciaInterprete
 		return $resultados;
     }
 	
-/*	
-	public function consultaPerteneceCancion($param, $conex)
-	{
-		$sql = "SELECT Id_Cancion, Nom_Cancion, Dur_Cancion FROM Cancion WHERE cancion.Id_Cancion NOT IN (SELECT Id_Cancion FROM Pertenece_Cancion)";
-        $result = $conex->prepare($sql);
-	    $result->execute();
-		$resultados=$result->fetchAll();
-       return $resultados;
-	}
-	*/
 	
 	public function buscaNombreInterprete($param, $conex)
 	{

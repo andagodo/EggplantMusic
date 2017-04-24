@@ -6,7 +6,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <link rel="stylesheet" type ="text/css" href="/estilos/estilos.css" />
 <?php
 
-//Obtiene los datos ingresados
 $tipo=trim($_POST['tipo']);
 $playlist=trim($_POST['playlist']);
 $precio=trim($_POST['precio']);
@@ -33,5 +32,5 @@ if ($ok){
 		</script>
 		<?php
 	}
-// desconectar($conex);
+
 ?>

@@ -26,10 +26,4 @@
 				$datos_r=$r->LogReproducePlaylist($conex);
 			}
 
-
-
-
-
-
-
-	?>
+?>

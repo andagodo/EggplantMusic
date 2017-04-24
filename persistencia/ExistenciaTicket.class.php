@@ -5,7 +5,6 @@ class ExistenciaTicket
 
     public function altaTicket($param, $conex)
     {
-
         $usu=$param->getId_Usuario();
         $asun=$param->getAsunto_Ticket();
 		$tex=$param->getTexto_Ticket();
@@ -16,7 +15,6 @@ class ExistenciaTicket
 		
 		$result = $conex->prepare($sql);
 		$result->execute(array(":usu" => $usu, ":asun" => $asun,":tex" => $tex, ":ori" => $ori,":res" => $res ));
-        
         
         if($result)
         {

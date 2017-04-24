@@ -28,61 +28,6 @@ class Log_Musica
 		$this->Texto=$tex;
 	}
     
-/*
-    
-    public function setId_Log_Musica($idlm)
-    {
-      $this->Id_Log_Musica= $idlm;
-    }
-	
-	public function setFech_Log_Musica($felm)
-    {
-      $this->Fech_Log_Musica= $felm;
-    }
-    
-    
-    public function setId_Usuario($idu)
-    {
-      $this->Id_Usuario= $idu;
-    }
-    
-	public function setId_Item($item)
-    {
-      $this->Id_Item= $item;
-    }
-    
-     public function setItem_Log($itemlog)
-    {
-      $this->Item_Log= $itemlog;
-    }
-
-	public function setAccion_Log($accion)
-    {
-      $this->Accion_Log= $accion;
-    }
-    
-	public function setCantidad($cant)
-    {
-      $this->Cantidad= $cant;
-    }
-
-	public function setFecha_Ini($feini)
-    {
-      $this->Fecha_Ini= $feini;
-    }
-    
-	public function setFecha_Fin($fefin)
-    {
-      $this->Fecha_Fin= $fefin;
-    }
-	
-	public function setTexto($tex)
-    {
-      $this->Texto= $tex;
-    }
-	
-    
-*/
     
     public function getId_Log_Musica()
     {

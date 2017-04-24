@@ -10,9 +10,6 @@ $mus=$_POST['mus'];
 $Cuenta=count($mus);
 
 for ($i=0;$i<$Cuenta;$i++){
-	
-
-
 	try {
 		$conex = conectar();
 		$u= new Admin ('','',$mus[$i]);
@@ -24,8 +21,7 @@ for ($i=0;$i<$Cuenta;$i++){
 				window.alert("Eliminaste Administrador/es exitosamente.");
 				location.href="/presentacion/Menu.php";
 			</script>
- <?php
-
+			<?php
 		}
 	}catch (PDOException $e) {
 		print "Error en la base de datos!: " . "<br/>" . $e->getMessage() . "<br/>";
@@ -33,8 +29,4 @@ for ($i=0;$i<$Cuenta;$i++){
 	}
 	
 }
-	
-
-// desconectar($conex);
- 
 ?>

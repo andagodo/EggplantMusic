@@ -8,7 +8,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 <?php
 
 $conex = conectar();
-
 $asuntoticket=trim($_POST['asuntoticket']);
 $textoticket=trim($_POST['textoticket']);
 $origen="B";

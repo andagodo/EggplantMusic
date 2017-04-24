@@ -13,18 +13,6 @@ class TienePlaylist
 		$this->Id_Contiene_Al= $idca;
     }
     
-/*
-    public function Id_Playlist($idpl)
-    {
-      $this->Id_Playlist= $idpl;
-    }    
-
-    public function setId_Contiene_Al($idca)
-    {
-      $this->Id_Contiene_Al= $idca;
-    }    
- 
-*/
 
     public function getId_Playlist()
     {
@@ -55,22 +43,6 @@ class TienePlaylist
       return $pu->consultaCancionPL($this, $conex);
     }	
 
-/*		
-    
-	public function consultaAlbum($conex)
-    {
-      $pu= new ExistenciaAlbum;
-      $datos= $pu->consultaAlbum($this, $conex);
-      return $datos;
-    }
-	
-	public function consultaTodosAlbum($conex)
-    {
-      $pu= new ExistenciaAlbum;
-      $datos= $pu->consultaTodosAlbum($conex);
-      return $datos;
-    }	
-*/
 
 	public function consultaIDContieneAl($conex)
 	{

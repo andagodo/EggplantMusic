@@ -23,18 +23,8 @@
 	}
 	function desconectar($con){
 		$con = null;
-		//sqlsrv_close($con);
 	}
-/*
-	function BrunitoPesadito ($conex)
-	{ 
-		$sql = "SELECT scope_identity()";
-		$result = $conex->prepare($sql);
-		$result->execute();
-		$resultados= $result->fetchAll();
-		return $resultados;
-	}
-*/	
+
 	function ActivacionMail($mail, $nom, $ape, $url){
 		$destinatario = $mail;
 		$asunto = "Eggplant Music - Activar Usuario";
@@ -83,7 +73,7 @@
 	}
 	
 	function GenerarClave($longitud,$especiales){
-		// Array con los valores a escoger
+		// Array con los valores a elegir
 		$semilla = array();
 		$semilla[] = array('a','e','i','o','u');
 		$semilla[] = array('b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z');

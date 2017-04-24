@@ -26,52 +26,6 @@ class Admin
 		$this->Clave=$cla;
     }
 	
-/*
-    public function setTipo_Usr_Sist($tus)
-    {
-      $this->Tipo_Usr_Sist= $tus;
-    }
-	
-	public function setFech_Alta_Usr_Sist($feal)
-    {
-      $this->Fech_Alta_Usr_Sist= $feal;
-    }
-    
-    public function setNombre_Usr_Sist($nomu)
-    {
-      $this->Nombre_Usr_Sist= $nomu;
-    }
-    
-	public function setMail_Usr_Sist($mus)
-    {
-      $this->Mail_Usr_Sist= $mus;
-    }
-    
-     public function setPass_Usr_Sist($pus)
-    {
-      $this->Pass_Usr_Sist= $pus;
-    }
-
-	public function setActivo($activ)
-    {
-      $this->Activo= $activ;
-    }
-    
-    public function setFech_Activo($feactivo)
-    {
-      $this->Fech_Activo= $feactivo;
-    }	
-
-    public function setApellido_Usr_Sist($apell)
-    {
-      $this->Apellido_Usr_Sist= $apell;
-    }	
-
-    public function setClave($cla)
-    {
-      $this->Clave= $cla;
-    }		
-*/   
     public function getTipo_Usr_Sist()
     {
       return $this->Tipo_Usr_Sist;
@@ -297,7 +251,6 @@ class Admin
     {
         $pu= new ExistenciaAdmin;
 		return $pu->consultaAdminTodosNoAct($this, $conex);
-    }	
-	
+    }
 }
 ?>
