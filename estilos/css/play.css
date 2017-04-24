@@ -246,7 +246,7 @@ display: inline-block;
     padding: 0;
     margin: 0;
     }
-    #album> li{
+    #album > li, #playlist_usr > li{
       border-bottom-style: solid;
       border-bottom: 1px solid #6D1F6F;
     }
@@ -385,7 +385,8 @@ display: inline-block;
       padding-left: 6px;
       border-bottom: 1px solid #6D1F6F;
       padding-bottom:3px;
-      padding-top: 5px;
+      padding-top: 12px;
+      cursor: default;
     }
     .botonespl{
       align-items:  left; 
@@ -394,6 +395,7 @@ display: inline-block;
     .filtro{
       padding: 7px 7px;
     }
+
 
 
 

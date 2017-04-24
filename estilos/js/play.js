@@ -301,8 +301,9 @@ $(function(){
 	                        $div.append($li);
 	                        $('#playlist').append($div);
 
-	                        $.post( "/front_logica/logica_logs.php", {"consulta": 'LBA', "ida" :$ss, "idu":IdUsr }, null)
+	                        
 	                    }
+	                    $.post( "/front_logica/logica_logs.php", {"consulta": 'LBA', "ida" :$ss, "idu":IdUsr }, null)
 	                    cargaplaylistjs();
 	                    if ( console && console.log ) {
 	                    console.log( "La solicitud se ha completado correctamente." );
