@@ -1,6 +1,6 @@
 <?php
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/CreaPlaylist.class.php';
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/playlist.class.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/clases/Playlist.class.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/logica/funciones.php';
 
 	$conex = conectar();
