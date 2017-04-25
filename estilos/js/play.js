@@ -206,9 +206,9 @@ $(function(){
 	 $('#mventana1').click(function(){
 	 	  $.post( "/front_logica/consplaylist.php", { "idu" : IdUsr }, null, "json" )
           .done(function( data, textStatus, jqXHR ) {
-          	console.log(data.playlist.length);
           	console.log($cuenta_Cant_PlaylistxC);
-          	cant_canc = $("#playerul .cancionnow li .btn-cancioncola").length;
+          	if (data.confirm == 'true') {
+          		cant_canc = $("#playerul .cancionnow li .btn-cancioncola").length;
           	if ($cuenta_Tipo == 'Premium') {
           		console.log('Premium');
           		if (cant_canc == '0') {
@@ -231,7 +231,17 @@ $(function(){
           	}else{
           		$.alert('Llegaste al máximo de playlist que permite esta membresía.<br> Tipo de membresía: '+$cuenta_Tipo+'');
           	}
+          	}
+          	
 
+          	}else{
+          		cant_canc = $("#playerul .cancionnow li .btn-cancioncola").length;
+          			if (cant_canc == '0') {
+						$.alert('Agrega una o mas canción para poder crear la playlist ');
+
+					}else{
+						$('#ventana1').modal('show');
+					}
           	}
 
 	 })
@@ -422,7 +432,7 @@ $(function(){
                 $('#album').append($buscador);
                 $('#album').append('<div class="tit_album"> Album </div>')
                 for (var i = 0; i < result.length; i++) {
-                    $li = $('<li><a href="#" data-id='+ result[i].id +'>'+ result[i].nom +'</li>');
+                    $li = $('<li><a href="#" data-id='+ result[i].id +'>'+ result[i].nom +'<div class="btns pull-right"><span class="glyphicon glyphicon-play-circle"></span></div></li>');
                     $('#album').append($li);
                     }
                     reload_album();
