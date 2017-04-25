@@ -14,7 +14,7 @@ if ($ok){
 	echo "<tr height='400'>";
        echo "<td class='leyenda'>";
 			echo "Muchas gracias por confirmar tu correo, ahora puedes usar la aplicación.";
-			echo " </br><a href=\"\" style='color: black'>Volver</a>";
+			echo " </br><a href="https://eggplantmusic.com" style='color: black'>Volver</a>";
        echo "</td>";
 	echo "</tr>";
 	echo "</table>";	

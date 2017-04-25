@@ -17,7 +17,7 @@ $nac=trim($_POST['nacionalidad']);
 $feal=date("Y-m-d");
 $conf="N";
 $cla = GenerarClave(20,false); 
-$url = "http://eggplantblue.com/presentacion/Registro.php?id=" . $cla;
+$url = "https://eggplantblue.com/presentacion/Registro.php?id=" . $cla;
 
 $conex = conectar();
 $u= new Usuario ('',$nom,$ape,$fnac,$tel,$mail,$pass,$gen,$nac,$feal,$conf,$cla);
