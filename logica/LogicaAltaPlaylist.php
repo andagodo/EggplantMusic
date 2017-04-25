@@ -37,7 +37,7 @@ if ($nompl == ""){
 	$activa=trim($_POST['activa']);
 	$idcaString=$_SESSION['playlistPronta'];
 	$idcaArray = $idcaString;
-	$idu="1";
+	$idu="1087";
 
 	$pl= new Playlist ('',$nompl,$fecha,$activa,$fecha,$tags);
 	$existeNombre=$pl->BuscoNombrePlaylist($conex);
