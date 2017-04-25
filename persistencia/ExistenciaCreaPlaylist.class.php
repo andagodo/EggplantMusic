@@ -35,7 +35,7 @@ class ExistenciaCreaPlaylist
 
     public function ConsultaIdPlaylistSist($param, $conex)
     {
-        $sql = "SELECT Id_Playlist FROM Crea_Playlist WHERE Id_Usuario = '1' AND Activo = 'S'";
+        $sql = "SELECT Id_Playlist FROM Crea_Playlist WHERE Id_Usuario = '1087' AND Activo = 'S'";
         $result = $conex->prepare($sql);
         $result->execute();
         $resultados=$result->fetchAll();
