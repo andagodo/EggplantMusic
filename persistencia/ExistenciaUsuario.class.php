@@ -162,7 +162,7 @@ class ExistenciaUsuario
 		$fefin = strtotime ( '+1 year' , strtotime ( $feini ) ) ;
 		$fefin = date ( "Y-m-d" , $fefin );
 		
-		$sql = "INSERT INTO Tiene_Cuenta (FK_Id_Usuario, FK_Id_Cuenta, Fecha_Ini_Cuenta, Fecha_Fin_Cuenta) VALUES (:idu, 1, :feini, :fefin)";
+		$sql = "INSERT INTO Tiene_Cuenta (FK_Id_Usuario, FK_Id_Cuenta, Fecha_Ini_Cuenta, Fecha_Fin_Cuenta) VALUES (:idu,9, :feini, :fefin)";
 		$result = $conex->prepare($sql);
 		$result->execute(array(":idu" => $idu,":feini" => $feini,":fefin" => $fefin));
 		
