@@ -6,7 +6,7 @@ class ExistenciaCreaPlaylist
 		$idu=$param->getId_Usuario();
 		$idp=$param->getId_Playlist();
 		$act="S";
-        $fecha=date("d/m/Y H:i:s");
+        $fecha=date("Y-m-d H:i:s");
 
         $sql = "INSERT INTO Crea_Playlist (Id_Usuario, Id_Playlist, Activo, Fech_Activo) VALUES ( :idusuario, :idplaylist, :activo, :fechactivo)";
 		$result = $conex->prepare($sql);
