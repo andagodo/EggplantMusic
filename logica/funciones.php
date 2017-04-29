@@ -3,8 +3,8 @@
 		try {
 			//si es windows ejecuto un driver de pdo
 			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'){
-				$sqlserver = "sqlsrv:Server=192.168.3.10;Database=eggplantmusic";
-				$con = new PDO($sqlserver, "usrweb", "eggplantmusic");
+				$sqlserver = "sqlsrv:Server=eggplantmusic.clskzrvaahy9.us-west-2.rds.amazonaws.com;Database=eggplantmusic";
+				$con = new PDO($sqlserver, "eggplantmusic", "eggplantmusic");
 			}else{
 			//si no es windows uso otro driver de pdo
 				$con = new PDO("dblib:host=mssql;dbname=eggplantmusic", "usrweb", "eggplantmusic");
